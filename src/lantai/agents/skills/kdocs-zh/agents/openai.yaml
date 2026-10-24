@@ -1,0 +1,4 @@
+interface:
+  display_name: "金山文档"
+  short_description: "搜索、读写、创建和整理 WPS 云文档"
+  default_prompt: "使用 $kdocs 搜索并整理我的金山文档。"

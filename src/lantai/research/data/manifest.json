@@ -1,0 +1,54 @@
+{
+  "engine": {
+    "version": "2.4.63",
+    "url": "https://registry.npmjs.org/citeproc/-/citeproc-2.4.63.tgz",
+    "license": "CPAL-1.0",
+    "sha256": "55abba1a8b8b48c14323fd053f9646013b4b7a0c977938064ecf5195a502b9f1"
+  },
+  "styles_commit": "5dd83d1a61ed1df6275ec97c0e5bf4ea77a2c115",
+  "locales_commit": "a89adece41013402236e2c9020972d7e931fbab8",
+  "files": {
+    "apa.csl": {
+      "url": "https://raw.githubusercontent.com/citation-style-language/styles/5dd83d1a61ed1df6275ec97c0e5bf4ea77a2c115/apa.csl",
+      "sha256": "3917def5fc951b104d64216c3373096042368b9704ba269ca83c14ebaba889fc",
+      "license": "CC-BY-SA-3.0"
+    },
+    "ieee.csl": {
+      "url": "https://raw.githubusercontent.com/citation-style-language/styles/5dd83d1a61ed1df6275ec97c0e5bf4ea77a2c115/ieee.csl",
+      "sha256": "b4c7619fc16c45a31e4cc3271eab94ffe83192d3b4c7fc729470a3b459448de3",
+      "license": "CC-BY-SA-3.0"
+    },
+    "gb7714.csl": {
+      "url": "https://raw.githubusercontent.com/citation-style-language/styles/5dd83d1a61ed1df6275ec97c0e5bf4ea77a2c115/china-national-standard-gb-t-7714-2015-numeric.csl",
+      "sha256": "d9cd04f94bc21a99dc320d0a2230d5a1fb47e3634c17c5820cf975c40db3c0c7",
+      "license": "CC-BY-SA-3.0"
+    },
+    "locales-en-US.xml": {
+      "url": "https://raw.githubusercontent.com/citation-style-language/locales/a89adece41013402236e2c9020972d7e931fbab8/locales-en-US.xml",
+      "sha256": "ac864c7c21166b4390d82c31792cdc509400727fa0060b43d8aa17e07f9cb079",
+      "license": "CC-BY-SA-3.0"
+    },
+    "locales-en-GB.xml": {
+      "url": "https://raw.githubusercontent.com/citation-style-language/locales/a89adece41013402236e2c9020972d7e931fbab8/locales-en-GB.xml",
+      "sha256": "e4a1fed9cec04b5fed5e9027b4055925cd4d8f7c9fe233eb0ceca6d4be3999f6",
+      "license": "CC-BY-SA-3.0"
+    },
+    "locales-zh-CN.xml": {
+      "url": "https://raw.githubusercontent.com/citation-style-language/locales/a89adece41013402236e2c9020972d7e931fbab8/locales-zh-CN.xml",
+      "sha256": "95cebc667f2da8fb5b9864e49941e3f867d59f79feba929bc58e8ed6bfd4d582",
+      "license": "CC-BY-SA-3.0"
+    },
+    "locales-zh-TW.xml": {
+      "url": "https://raw.githubusercontent.com/citation-style-language/locales/a89adece41013402236e2c9020972d7e931fbab8/locales-zh-TW.xml",
+      "sha256": "207f39ff0c6f287fbffbd08d48b263d6aee8053125b7db54f4ef26899f5a7912",
+      "license": "CC-BY-SA-3.0"
+    },
+    "LantaiResearchSans-Regular.ttf": {
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf",
+      "upstream_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+      "sha256": "eccf4da4a6a2c12ef8938f16edb85b4a4d6b5b83e2b37b8176fdab8394011e23",
+      "license": "OFL-1.1",
+      "derivation": "fontTools instantiateVariableFont wght=400; family renamed Lantai Research Sans; full character coverage retained"
+    }
+  }
+}

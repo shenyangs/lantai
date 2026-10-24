@@ -1,0 +1,49 @@
+.button {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--lt-quiet-control-border);
+  border-radius: var(--lt-radius-control);
+  color: var(--lt-quiet-icon-color);
+  background: var(--lt-glass-control-bg);
+  cursor: pointer;
+  box-shadow: var(--lt-quiet-control-shadow);
+  transition:
+    color var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    background var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    border-color var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    transform var(--lt-motion-duration-instant) var(--lt-motion-ease-out);
+
+  &:hover {
+    color: var(--lt-quiet-icon-hover-color);
+    border-color: var(--lt-border-hover);
+    background: var(--lt-glass-control-hover-bg);
+  }
+
+  &:active {
+    transform: scale(var(--lt-motion-press-scale));
+    background: var(--lt-surface-pressed);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--lt-focus-shadow);
+  }
+}
+
+@media (pointer: coarse) {
+  .button {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

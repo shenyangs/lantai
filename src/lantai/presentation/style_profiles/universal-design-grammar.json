@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "principles": [
+    "understand the information relationship before composing the page",
+    "use the title to state a conclusion or judgment whenever evidence supports one",
+    "establish a clear hierarchy and one dominant visual anchor",
+    "allocate visual weight intentionally instead of distributing it evenly",
+    "use whitespace as an information-organization tool",
+    "prefer alignment and spatial relationships over container proliferation",
+    "keep one design language across a deck while varying composition by meaning",
+    "alternate dense, quiet, transition and peak pages to create deck rhythm",
+    "make every decorative element serve information or remove it",
+    "solve high density with editing, grid and hierarchy before shrinking type",
+    "preserve content truth, immutable facts and source provenance",
+    "make key text, numbers, charts and structural shapes natively editable"
+  ]
+}

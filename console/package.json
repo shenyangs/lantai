@@ -1,0 +1,346 @@
+{
+  "name": "lantai-console",
+  "private": true,
+  "version": "3.2.0",
+  "description": "Lantai desktop console",
+  "author": "Lantai",
+  "type": "module",
+  "scripts": {
+    "postinstall": "npm --prefix vendor/lantai-docx-editor ci",
+    "dev": "vite --host",
+    "build": "npm run build:native-helpers && npm run build:office-editors && npm run check:office-editors && tsc -b && vite build",
+    "build:prod": "npm run build:native-helpers && npm run build:office-editors && npm run check:office-editors && tsc -b && vite build --mode production",
+    "build:test": "npm run build:native-helpers && npm run build:office-editors && npm run check:office-editors && tsc -b && vite build --mode test",
+    "build:native-helpers": "npm run build:mac-use-helper && npm run build:window-material && npm run build:notification-delivery",
+    "build:mac-use-helper": "node scripts/build-mac-use-helper.cjs",
+    "build:office-editors": "npm --prefix vendor/lantai-docx-editor run build",
+    "build:docx-editor": "npm run build:office-editors",
+    "check:office-editors": "node scripts/check-docx-editor-runtime.mjs",
+    "ensure:electron-runtime": "node scripts/ensure-electron-runtime.cjs",
+    "smoke:office-editors": "electron scripts/smoke-office-runtime-load.cjs",
+    "check:docx-editor": "npm run check:office-editors",
+    "format": "tsc -b --noEmit && node scripts/format-changed.mjs --write && npm --prefix vendor/lantai-docx-editor run format",
+    "format:check": "tsc -b --noEmit && node scripts/format-changed.mjs --check && npm --prefix vendor/lantai-docx-editor run format:check",
+    "lint": "eslint src vite.config.ts",
+    "lint:all": "eslint .",
+    "check:ui": "node scripts/check-ui-consistency.mjs",
+    "check:motion": "node scripts/check-motion.mjs",
+    "capture:motion": "node scripts/capture-motion-matrix.mjs",
+    "capture:ui-review": "node scripts/capture-ui-review-chrome.mjs",
+    "preview": "vite preview",
+    "preview:prod": "vite preview --mode production",
+    "preview:test": "vite preview --mode test",
+    "test": "vitest",
+    "test:run": "npm run test:pdf-visibility && npm run test:source-pin && npm run test:preserved-session && npm run test:config && node --max-old-space-size=4096 node_modules/vitest/vitest.mjs run --maxWorkers=2",
+    "test:pdf-visibility": "node --test scripts/pdf-visibility-lifecycle.test.cjs",
+    "test:config": "node --test scripts/test-environments.test.mjs",
+    "test:source-pin": "node --test scripts/sourcePin.test.mjs",
+    "test:electron": "node --test electron/*.test.cjs",
+    "smoke:browser-workbench": "electron electron/browserWorkbenchSmoke.cjs",
+    "smoke:mac-use": "electron electron/macUseSmoke.cjs",
+    "smoke:mac-use-lock": "electron electron/macUseLockSmoke.cjs",
+    "smoke:mac-use-textedit": "electron electron/macUseTextEditSmoke.cjs",
+    "smoke:browser-sidecar": "electron electron/browserSidecarRealSmoke.cjs",
+    "login:browser-workbench:wechat": "electron electron/browserWorkbenchManualLogin.cjs --profile-id=wechat-work --url=https://mp.weixin.qq.com/",
+    "test:coverage": "npm run test:pdf-visibility && npm run test:source-pin && npm run test:preserved-session && npm run test:config && node --max-old-space-size=4096 node_modules/vitest/vitest.mjs run --coverage --maxWorkers=2",
+    "electron:dev": "npm run build:native-helpers && NODE_ENV=development electron electron/main.cjs",
+    "electron:build": "node scripts/build-electron-candidate.cjs",
+    "electron:preview": "electron electron/main.cjs",
+    "build:window-material": "node scripts/build-window-material.cjs",
+    "build:notification-delivery": "node scripts/build-notification-delivery.cjs",
+    "test:preserved-session": "node --test scripts/preservedSessionMerge.test.cjs"
+  },
+  "dependencies": {
+    "chrome-devtools-mcp": "1.8.0",
+    "pptxgenjs": "4.0.1"
+  },
+  "overrides": {
+    "dompurify": "3.4.13"
+  },
+  "repository": "https://github.com/shenyangs/lantai",
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.lantai.app",
+    "productName": "澜台",
+    "publish": null,
+    "directories": {
+      "output": "../release"
+    },
+    "artifactName": "Lantai-${version}-${arch}.${ext}",
+    "files": [
+      "electron/appWindowController.cjs",
+      "electron/backendLifecycleController.cjs",
+      "electron/backendProcess.cjs",
+      "electron/browserWorkbenchController.cjs",
+      "electron/customizationRecoveryController.cjs",
+      "electron/consoleMessageDetails.cjs",
+      "electron/desktopIpcController.cjs",
+      "electron/desktopSecurityHeaders.cjs",
+      "electron/docxEditorController.cjs",
+      "electron/officeEditorController.cjs",
+      "electron/officeWorkbenchController.cjs",
+      "electron/markdownEditorController.cjs",
+      "electron/markdown-editor/**/*",
+      "electron/documentEntryController.cjs",
+      "electron/dockIconController.cjs",
+      "electron/logRedaction.cjs",
+      "electron/launchServicesController.cjs",
+      "electron/macUseController.cjs",
+      "electron/main.cjs",
+      "electron/preload.js",
+      "electron/runtimePaths.cjs",
+      "electron/rendererDocumentTrust.cjs",
+      "electron/systemBehaviorController.cjs",
+      "electron/notificationDeliveryObserver.cjs",
+      "electron/trayController.cjs",
+      "electron/windowState.cjs",
+      "electron/workspaceGrantBookmarkStore.cjs",
+      "package.json",
+      "build/icon.icns",
+      "node_modules/core-util-is/**/*",
+      "node_modules/chrome-devtools-mcp/**/*",
+      "node_modules/https/**/*",
+      "node_modules/image-size/**/*",
+      "node_modules/immediate/**/*",
+      "node_modules/inherits/**/*",
+      "node_modules/isarray/**/*",
+      "node_modules/jszip/**/*",
+      "node_modules/lie/**/*",
+      "node_modules/pako/**/*",
+      "node_modules/pptxgenjs/**/*",
+      "node_modules/process-nextick-args/**/*",
+      "node_modules/queue/**/*",
+      "node_modules/readable-stream/**/*",
+      "node_modules/safe-buffer/**/*",
+      "node_modules/setimmediate/**/*",
+      "node_modules/string_decoder/**/*",
+      "node_modules/util-deprecate/**/*",
+      "electron/windowMaterialController.cjs",
+      "electron/native/bin/window-material.node",
+      "electron/native/bin/notification-delivery.node"
+    ],
+    "asarUnpack": [
+      "node_modules/**/*",
+      "electron/native/bin/window-material.node",
+      "electron/native/bin/notification-delivery.node"
+    ],
+    "mac": {
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity",
+      "hardenedRuntime": true,
+      "extendInfo": {
+        "NSDesktopFolderUsageDescription": "澜台需要访问您选择作为 Agent 工作区的桌面文件夹。",
+        "NSDocumentsFolderUsageDescription": "澜台需要访问您选择作为 Agent 工作区的文稿文件夹。",
+        "NSDownloadsFolderUsageDescription": "澜台需要访问您选择作为 Agent 工作区的下载文件夹。",
+        "NSAppleEventsUsageDescription": "澜台只会在您明确发起跨应用自动化任务时请求控制 Finder、浏览器或终端等目标应用。"
+      },
+      "signIgnore": [
+        "\\.pak$",
+        "\\.py$",
+        "\\.pyc$",
+        "/pytz/zoneinfo/",
+        "/pdfminer/cmap/",
+        "/pdfjs/cmaps/"
+      ],
+      "entitlements": "electron/entitlements/developer-id.app.plist",
+      "entitlementsInherit": "electron/entitlements/developer-id.electron-helper.plist"
+    },
+    "dmg": {
+      "background": "build/dmg-background-shenxingzhi.png",
+      "iconSize": 104,
+      "iconTextSize": 13,
+      "window": {
+        "width": 793,
+        "height": 496
+      },
+      "contents": [
+        {
+          "x": 625,
+          "y": 165
+        },
+        {
+          "x": 625,
+          "y": 345,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "extraResources": [
+      {
+        "from": "electron-dist/mac-use/",
+        "to": "mac-use/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "electron-dist/lantai-server/",
+        "to": "lantai-server/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "public/lantai.png",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "public/lantai-mark.png",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "public/lantai-trayTemplate.png",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "public/lantai-trayTemplate@2x.png",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "dist/",
+        "to": "console/dist/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "vendor/lantai-docx-editor/apps/docs/out/",
+        "to": "lantai-docx-editor/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "vendor/lantai-docx-editor/apps/sheets/out/",
+        "to": "lantai-office-editors/sheets/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "vendor/lantai-docx-editor/apps/sheets/native-bin/darwin-arm64/",
+        "to": "lantai-office-editors/sheets/native/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "vendor/lantai-docx-editor/apps/slides/out/",
+        "to": "lantai-office-editors/slides/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "vendor/lantai-docx-editor/apps/pdf/out/",
+        "to": "lantai-office-editors/pdf/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "vendor/lantai-docx-editor/apps/pdf/generated-native/darwin-arm64/",
+        "to": "lantai-office-editors/pdf/native/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "vendor/lantai-docx-editor/LICENSE",
+        "to": "lantai-docx-editor/THIRD_PARTY_LICENSE.txt"
+      },
+      {
+        "from": "vendor/lantai-docx-editor/NOTICE",
+        "to": "lantai-docx-editor/THIRD_PARTY_NOTICE.txt"
+      },
+      {
+        "from": "vendor/lantai-docx-editor/SOURCE.md",
+        "to": "lantai-docx-editor/THIRD_PARTY_SOURCE.md"
+      },
+      {
+        "from": "vendor/lantai-docx-editor/LICENSE",
+        "to": "lantai-office-editors/THIRD_PARTY_LICENSE.txt"
+      },
+      {
+        "from": "vendor/lantai-docx-editor/NOTICE",
+        "to": "lantai-office-editors/THIRD_PARTY_NOTICE.txt"
+      },
+      {
+        "from": "vendor/lantai-docx-editor/SOURCE.md",
+        "to": "lantai-office-editors/THIRD_PARTY_SOURCE.md"
+      },
+      {
+        "from": "vendor/lantai-docx-editor/INTEGRATION_PROVENANCE.json",
+        "to": "lantai-office-editors/OFFICE_RUNTIME_PROVENANCE.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "@ant-design/plots": "^2.6.8",
+    "@ant-design/x-markdown": "^2.2.2",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@eslint/js": "^10.0.1",
+    "@monaco-editor/react": "^4.7.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@types/react-window": "^1.8.8",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-v8": "^4.1.6",
+    "@vvo/tzdb": "^6.198.0",
+    "ahooks": "^3.9.6",
+    "antd": "^5.29.1",
+    "antd-style": "^3.7.1",
+    "dayjs": "^1.11.13",
+    "echarts": "^6.1.0",
+    "electron": "^42.9.0",
+    "electron-builder": "^26.15.3",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "i18next": "^25.8.4",
+    "jsdom": "^29.1.1",
+    "less": "^4.8.1",
+    "lucide-react": "^0.562.0",
+    "node-api-headers": "1.9.0",
+    "prettier": "^3.8.3",
+    "pretty-bytes": "^7.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-i18next": "^16.5.4",
+    "react-markdown": "^10.1.0",
+    "react-resizable-panels": "^4.11.2",
+    "react-router-dom": "^7.18.2",
+    "react-window": "^1.8.10",
+    "remark-gfm": "^4.0.1",
+    "scheduler": "^0.27.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.59.3",
+    "vite": "^8.0.11",
+    "vitest": "^4.1.6",
+    "zustand": "^5.0.3"
+  }
+}

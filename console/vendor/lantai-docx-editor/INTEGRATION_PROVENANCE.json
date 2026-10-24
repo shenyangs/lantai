@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "component_id": "lantai-local-office-runtime",
+  "integration_revision": "2026.09.21.2",
+  "verified_at": "2026-09-21T00:47:00+08:00",
+  "review_baseline": {
+    "lantai_git_sha": "a61b467928baaba22530ff96b12d8acef197cf53",
+    "original_upstream_git_sha": "fd33934dab1fdf8666af3f88b9794e7b4e19474a",
+    "target_upstream_release": "v0.10.639",
+    "target_upstream_git_sha": "80d2a4651e923bb56d48bcdfff077b556eced944",
+    "reviewed_upstream_main_git_sha": "f5247d33e5c1332979db7acb5b314acae155c7ff"
+  },
+  "baseline_model": "selective-composite",
+  "runtime_apps": ["docs", "sheets", "slides", "pdf"],
+  "authority": {
+    "host_shell": "lantai",
+    "navigation": "lantai",
+    "ai_product": "lantai",
+    "persona": "lantai",
+    "permissions": "lantai",
+    "document_entry_and_save_boundary": "lantai",
+    "editor_engines": "selectively-integrated-open-source"
+  },
+  "adopted_upstream_changes": [
+    {
+      "git_sha": "9fb2be7d98aeebb6a7afe51b755c479e0e8564ba",
+      "scope": "docx-chart-base26-columns",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "698dfe1106d1521dc157ffb6cd2a6a841fb87b36",
+      "scope": "docx-protection-spincount-dos-guard",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "aa157924bdffbf07d0525af03bfdc2e77d66befb",
+      "scope": "pptx-malformed-slide-size-fallback",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "4d55b049c945afbecf9ce0e1461c9f69c2d0049a",
+      "scope": "pptx-degenerate-render-viewport-guard",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "d1280d153362071de433a6439ca31585af4af8f7",
+      "scope": "pptx-presentation-relationship-order-and-orphan-exclusion",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "b524dc78785963058d68bb1f261ca94fb591b844",
+      "scope": "pptx-relationship-backslash-normalization-and-root-clamp",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "92383a3ad199b5e0b44ace590a3adabed3fc35a9",
+      "scope": "pptx-text-extraction-tab-stop-preservation",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "3cfb70f0200fe9b4be9bd3cb6f7d0de180ce0ae8",
+      "scope": "xlsx-empty-shared-string-and-malformed-reference-parser",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "18e146bfc418424e870a3d638a6cc0feda134540",
+      "scope": "xlsx-workbook-relationship-target-normalization",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "ab8962366fa8ed4a88562d0ef9a22f388451b1e0",
+      "scope": "slides-save-state-reset-and-edit-node-remap",
+      "adoption": "adapted"
+    },
+    {
+      "git_sha": "af0fd91ba5ce7c95f3d536e5026efb93d96364ab",
+      "scope": "pdf-redaction-save-copy-path-alias-guard",
+      "adoption": "adapted-to-existing-lantai-raster-redaction"
+    }
+  ],
+  "equivalent_local_capabilities": [
+    {
+      "upstream_git_shas": [
+        "af0fd91ba5ce7c95f3d536e5026efb93d96364ab",
+        "75e165b5ae2b77535183ca813b9a4eb6fa265717"
+      ],
+      "scope": "permanent-pdf-redaction-and-bounded-validation",
+      "local_implementation": "selected pages are rebuilt from rasterized PNG bytes into a new PDF; the source is preserved and AI use requires exact-text confirmation"
+    }
+  ],
+  "excluded_product_surfaces": [
+    "upstream-shell",
+    "upstream-account",
+    "upstream-cloud-ai-product",
+    "upstream-model-settings",
+    "upstream-auto-update",
+    "upstream-telemetry",
+    "upstream-remote-services",
+    "upstream-ee"
+  ]
+}

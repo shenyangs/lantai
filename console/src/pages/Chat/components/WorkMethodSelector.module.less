@@ -1,0 +1,169 @@
+.trigger {
+  width: auto !important;
+  min-width: 80px !important;
+  max-width: 156px;
+  height: 32px !important;
+  padding: 0 9px !important;
+  border: 1px solid var(--lt-material-border) !important;
+  border-radius: 9px !important;
+  background: var(--lt-material-inset) !important;
+  color: var(--lt-text-muted) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  flex: 0 0 auto !important;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 590;
+  line-height: 1 !important;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    border-color var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    background var(--lt-motion-duration-fast) var(--lt-motion-ease-out);
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  svg {
+    flex: 0 0 auto;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--lt-border-hover) !important;
+    background: var(--lt-quiet-hover-bg) !important;
+    color: var(--lt-text) !important;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--lt-focus-shadow);
+  }
+}
+
+.popover {
+  z-index: 1060;
+
+  :global(.lantai-popover-inner),
+  :global(.ant-popover-inner) {
+    padding: 7px !important;
+    border: 1px solid var(--lt-material-border-strong);
+    border-radius: var(--lt-radius-card) !important;
+    background: var(--lt-surface-elevated) !important;
+    box-shadow: var(--lt-popover-shadow), var(--lt-material-highlight);
+  }
+}
+
+.menu {
+  width: min(390px, calc(100vw - 32px));
+  display: grid;
+  gap: 2px;
+}
+
+.menuHeader {
+  display: grid;
+  gap: 2px;
+  padding: 7px 10px 9px;
+  color: var(--lt-text);
+  font-size: 12px;
+  font-weight: 650;
+
+  span:last-child {
+    color: var(--lt-text-faint);
+    font-size: 11px;
+    font-weight: 450;
+  }
+}
+
+.option {
+  width: 100%;
+  min-height: 64px;
+  padding: 10px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--lt-text);
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 20px;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--lt-quiet-hover-bg);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--lt-focus-ring);
+  }
+}
+
+.optionSelected {
+  background: var(--lt-accent-wash);
+
+  .optionIcon,
+  .checkSlot {
+    color: var(--lt-accent-hover);
+  }
+}
+
+.optionIcon,
+.checkSlot {
+  color: var(--lt-text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.optionCopy {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.optionLabel {
+  color: var(--lt-text);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.35;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.optionDescription {
+  color: var(--lt-text-faint);
+  font-size: 11.5px;
+  line-height: 1.42;
+}
+
+.customBadge {
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: var(--lt-surface-muted);
+  color: var(--lt-text-faint);
+  font-size: 10px;
+  font-weight: 550;
+}
+
+@media (max-width: 720px) {
+  .trigger {
+    width: 32px !important;
+    min-width: 32px !important;
+    padding: 0 !important;
+
+    span,
+    svg:last-child {
+      display: none;
+    }
+  }
+}

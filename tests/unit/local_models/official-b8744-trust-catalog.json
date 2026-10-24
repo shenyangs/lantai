@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "repository": "ggml-org/llama.cpp",
+  "release_tag": "b8744",
+  "release_page_url": "https://github.com/ggml-org/llama.cpp/releases/tag/b8744",
+  "sha256_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+  "generated_at_utc": "2026-10-04T08:42:02.445416+00:00",
+  "trust_basis": "Official GitHub HTTPS release metadata; independent of archive body. Not a publisher-signed manifest.",
+  "api_status": {
+    "http_status": 403,
+    "reason": "public unauthenticated rate limit exhausted",
+    "reset_at_utc": "2026-10-04T09:14:54+00:00",
+    "exact_size_api_verification": "not available at collection time"
+  },
+  "asset_body_downloaded": false,
+  "binary_executed": false,
+  "source_fingerprints": {
+    "src/lantai/local_models/llamacpp.py": "9b789592d45a4ba3d05330825456fd07e1a797885099c365d27cc63a0c191507",
+    "src/lantai/local_models/manager.py": "a3a378ffa84dcff6e58602c9cc7805d4de95dde6dafc5036ebd872f3ad99e146"
+  },
+  "html_sha256": "15b4dce44f794eef408197a6b8e6d769d521ff026c33cdc3450833d4a66f549d",
+  "supported_assets": [
+    {
+      "release_tag": "b8744",
+      "os": "macos",
+      "architecture": "x64",
+      "backend": "cpu",
+      "cuda_version": null,
+      "filename": "llama-b8744-bin-macos-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/llama-b8744-bin-macos-x64.tar.gz",
+      "sha256": "6215dc2cb105a6577167b3458b1add4bdde9bf06c9bc064312c541674f0bb435",
+      "web_display_size": "38.8 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 40654119,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE6BD6F59B\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:46:28 GMT",
+      "head_content_type": "application/octet-stream"
+    },
+    {
+      "release_tag": "b8744",
+      "os": "macos",
+      "architecture": "arm64",
+      "backend": "cpu",
+      "cuda_version": null,
+      "filename": "llama-b8744-bin-macos-arm64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/llama-b8744-bin-macos-arm64.tar.gz",
+      "sha256": "4d6db38e68993c0f338a52f5ae6887f5b18c5b2c602c488470aa52e8ca96021f",
+      "web_display_size": "38.7 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 40582913,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE6AB1C057\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:46:26 GMT",
+      "head_content_type": "application/octet-stream"
+    },
+    {
+      "release_tag": "b8744",
+      "os": "linux",
+      "architecture": "x64",
+      "backend": "cpu",
+      "cuda_version": null,
+      "filename": "llama-b8744-bin-ubuntu-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/llama-b8744-bin-ubuntu-x64.tar.gz",
+      "sha256": "00f649740be0a5364e011053b874fe76dbda105629c087d024e221f963a93677",
+      "web_display_size": "30.5 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 31974603,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE77419EE1\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:46:48 GMT",
+      "head_content_type": "application/octet-stream"
+    },
+    {
+      "release_tag": "b8744",
+      "os": "linux",
+      "architecture": "arm64",
+      "backend": "cpu",
+      "cuda_version": null,
+      "filename": "llama-b8744-bin-ubuntu-arm64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/llama-b8744-bin-ubuntu-arm64.tar.gz",
+      "sha256": "a4d50fe88828beba8ffc57b19fc747e82ed3b4a58f1c973dc60f1637a376e4d3",
+      "web_display_size": "26.9 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 28165115,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE6CBC3566\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:46:30 GMT",
+      "head_content_type": "application/octet-stream"
+    },
+    {
+      "release_tag": "b8744",
+      "os": "windows",
+      "architecture": "x64",
+      "backend": "cpu",
+      "cuda_version": null,
+      "filename": "llama-b8744-bin-win-cpu-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/llama-b8744-bin-win-cpu-x64.zip",
+      "sha256": "631ba5afa627de5de8ce3dcfd03153cf974fb2dc31ba459076cf0948fdfb39f5",
+      "web_display_size": "37.8 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 39669314,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE7941BF46\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:46:51 GMT",
+      "head_content_type": "application/octet-stream"
+    },
+    {
+      "release_tag": "b8744",
+      "os": "windows",
+      "architecture": "arm64",
+      "backend": "cpu",
+      "cuda_version": null,
+      "filename": "llama-b8744-bin-win-cpu-arm64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/llama-b8744-bin-win-cpu-arm64.zip",
+      "sha256": "f2c09ab011133f9187eddfc45f6ed43a8bc49f9213a0381ae5c3a3bc43b3e7ca",
+      "web_display_size": "30.9 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 32452420,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE7833A18C\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:46:49 GMT",
+      "head_content_type": "application/octet-stream"
+    },
+    {
+      "release_tag": "b8744",
+      "os": "windows",
+      "architecture": "x64",
+      "backend": "cuda",
+      "cuda_version": "12.4",
+      "filename": "llama-b8744-bin-win-cuda-12.4-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/llama-b8744-bin-win-cuda-12.4-x64.zip",
+      "sha256": "fcca7c42a8b5a3a820c9dc5638223ffcfea9a1ca8ebe5d7e166da6af8126b033",
+      "web_display_size": "241 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 252783509,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE7D73ADBA\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:46:58 GMT",
+      "head_content_type": "application/octet-stream"
+    },
+    {
+      "release_tag": "b8744",
+      "os": "windows",
+      "architecture": "x64",
+      "backend": "cuda",
+      "cuda_version": "13.1",
+      "filename": "llama-b8744-bin-win-cuda-13.1-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/llama-b8744-bin-win-cuda-13.1-x64.zip",
+      "sha256": "631b308eeb4bca28c86a64efaa87dff36d36161ae8306d3dc3bc4e9533100d39",
+      "web_display_size": "161 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 168897611,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE80E3C21B\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:47:04 GMT",
+      "head_content_type": "application/octet-stream"
+    }
+  ],
+  "release_linked_cuda_runtime_assets_not_selected_by_current_installer": [
+    {
+      "release_tag": "b8744",
+      "os": "windows",
+      "architecture": "x64",
+      "backend": "cuda-runtime",
+      "cuda_version": "12.4",
+      "filename": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/cudart-llama-bin-win-cuda-12.4-x64.zip",
+      "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6",
+      "web_display_size": "373 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 391443627,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE5B290F89\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:46:00 GMT",
+      "head_content_type": "application/octet-stream"
+    },
+    {
+      "release_tag": "b8744",
+      "os": "windows",
+      "architecture": "x64",
+      "backend": "cuda-runtime",
+      "cuda_version": "13.1",
+      "filename": "cudart-llama-bin-win-cuda-13.1-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b8744/cudart-llama-bin-win-cuda-13.1-x64.zip",
+      "sha256": "f96935e7e385e3b2d0189239077c10fe8fd7e95690fea4afec455b1b6c7e3f18",
+      "web_display_size": "384 MB",
+      "metadata_source_url": "https://github.com/ggml-org/llama.cpp/releases/expanded_assets/b8744",
+      "size_bytes": 402582216,
+      "size_source": "official asset HEAD Content-Length",
+      "head_status": 200,
+      "metadata_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "head_etag": "\"0x8DE96EE61BE7993\"",
+      "head_last_modified": "Fri, 10 Apr 2026 10:46:11 GMT",
+      "head_content_type": "application/octet-stream"
+    }
+  ],
+  "source_filename_matrix_verified": true,
+  "official_release_commit_url": "https://github.com/ggml-org/llama.cpp/commit/d7ff074c87ecacd57d5760e2f678866ba9fe7149",
+  "official_release_commit_sha": "d7ff074c87ecacd57d5760e2f678866ba9fe7149",
+  "source_fingerprints_still_match": true
+}

@@ -1,0 +1,149 @@
+/* Skill scanner modal — themed by the active appearance tokens. */
+.lantai-scan-modal .ant-modal-confirm-title,
+.lantai-scan-modal .lantai-modal-confirm-title {
+  color: var(--lt-text) !important;
+}
+
+.lantai-scan-modal .ant-modal-confirm-content,
+.lantai-scan-modal .lantai-modal-confirm-content {
+  color: var(--lt-text-muted) !important;
+}
+
+.lantai-scan-modal .ant-modal-confirm-btns .ant-btn-primary,
+.lantai-scan-modal .ant-modal-confirm-btns .lantai-btn-primary {
+  background: var(--lt-accent) !important;
+  border-color: var(--lt-accent) !important;
+  color: var(--lt-text-inverse) !important;
+  box-shadow: none !important;
+}
+
+.lantai-scan-modal .ant-modal-confirm-btns .ant-btn-primary:hover,
+.lantai-scan-modal .ant-modal-confirm-btns .lantai-btn-primary:hover {
+  background: var(--lt-accent-hover) !important;
+  border-color: var(--lt-accent-hover) !important;
+}
+
+.lantai-scan-modal-root-icon {
+  color: var(--lt-accent);
+}
+
+.lantai-scan-modal--blocked .lantai-scan-modal-root-icon {
+  color: var(--lt-danger);
+}
+
+.lantai-scan-modal-intro {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  margin-top: 4px;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-accent-wash);
+}
+
+.lantai-scan-modal-intro--blocked {
+  background: color-mix(in srgb, var(--lt-danger) 9%, transparent);
+}
+
+.lantai-scan-modal-intro-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: var(--lt-radius-icon);
+  color: var(--lt-accent);
+  background: var(--lt-accent-soft);
+}
+
+.lantai-scan-modal-intro--blocked .lantai-scan-modal-intro-icon {
+  color: var(--lt-danger);
+  background: color-mix(in srgb, var(--lt-danger) 14%, transparent);
+}
+
+.lantai-scan-modal-status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 2px 8px;
+  margin-bottom: 6px;
+  border-radius: var(--lt-radius-pill);
+  color: var(--lt-accent);
+  background: var(--lt-accent-soft);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lantai-scan-modal-intro--blocked .lantai-scan-modal-status {
+  color: var(--lt-danger);
+  background: color-mix(in srgb, var(--lt-danger) 14%, transparent);
+}
+
+.lantai-scan-modal-summary {
+  color: var(--lt-text-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.lantai-scan-modal-findings-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  color: var(--lt-text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lantai-scan-modal-findings-header svg {
+  color: var(--lt-accent);
+}
+
+.lantai-scan-modal--blocked .lantai-scan-modal-findings-header svg {
+  color: var(--lt-danger);
+}
+
+.lantai-scan-modal-findings-list {
+  max-height: 300px;
+  overflow: auto;
+  display: grid;
+  gap: 8px;
+}
+
+.lantai-scan-modal-finding {
+  padding: 10px 12px;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-surface-muted);
+}
+
+.lantai-scan-modal-finding-title {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--lt-text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.lantai-scan-modal-finding-path {
+  overflow-wrap: anywhere;
+  color: var(--lt-text-muted);
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+}
+
+.lantai-scan-modal-finding-description {
+  margin-top: 4px;
+  color: var(--lt-text-faint);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.lantai-scan-modal-more {
+  padding: 6px 2px;
+  color: var(--lt-text-muted);
+  font-size: 12px;
+}

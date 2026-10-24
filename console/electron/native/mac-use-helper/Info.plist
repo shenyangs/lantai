@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>zh_CN</string>
+  <key>CFBundleDisplayName</key>
+  <string>澜台 Mac 操作</string>
+  <key>CFBundleExecutable</key>
+  <string>lantai-mac-use-helper</string>
+  <key>CFBundleIdentifier</key>
+  <string>com.lantai.app.mac-use-helper</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundleName</key>
+  <string>Lantai Mac Use Helper</string>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>CFBundleShortVersionString</key>
+  <string>2.1.8</string>
+  <key>CFBundleVersion</key>
+  <string>2.1.8</string>
+  <key>LSUIElement</key>
+  <true/>
+  <key>LSMinimumSystemVersion</key>
+  <string>14.0</string>
+  <key>NSAppleEventsUsageDescription</key>
+  <string>澜台只会在您明确发起跨应用任务时操作已选定的 Mac 应用。</string>
+</dict>
+</plist>

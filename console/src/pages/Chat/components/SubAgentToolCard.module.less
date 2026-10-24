@@ -1,0 +1,793 @@
+.subAgentCard {
+  --agent-accent: #5d7891;
+  --agent-bg: #e7eef4;
+
+  width: min(100%, 880px);
+  margin: 8px 0 10px;
+  overflow: hidden;
+  border: 1px solid
+    color-mix(in srgb, var(--agent-accent) 18%, var(--lt-material-border));
+  border-radius: var(--lt-radius-card);
+  background: color-mix(
+    in srgb,
+    var(--lt-material-panel-strong) 96%,
+    var(--agent-bg)
+  );
+  box-shadow: var(--lt-material-highlight);
+  color: var(--lt-text);
+}
+
+.headerButton {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  width: 100%;
+  min-height: 56px;
+  padding: 10px 13px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    transform var(--lt-motion-duration-instant) var(--lt-motion-ease-out);
+
+  &:hover {
+    background: color-mix(in srgb, var(--agent-accent) 5.5%, transparent);
+  }
+
+  &:active {
+    transform: scale(0.995);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px
+      color-mix(in srgb, var(--agent-accent) 48%, transparent);
+  }
+}
+
+.avatarWrap {
+  position: relative;
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  margin-right: 11px;
+}
+
+.avatar,
+.teamIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--agent-bg);
+  color: var(--agent-accent);
+  font-weight: 700;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 0;
+  font-size: 12px;
+  line-height: 1;
+  background: transparent;
+}
+
+.presenceDot {
+  position: absolute;
+  right: -2px;
+  bottom: 0;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--lt-material-panel-strong);
+  border-radius: 50%;
+  background: #22b98f;
+}
+
+.teamIcon {
+  width: 34px;
+  height: 34px;
+  margin-right: 11px;
+  border-radius: 9px;
+}
+
+.headerMain {
+  min-width: 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 7px;
+}
+
+.agentName {
+  overflow: hidden;
+  color: var(--lt-text);
+  font-size: 14px;
+  font-weight: 660;
+  letter-spacing: -0.008em;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.roleText {
+  overflow: hidden;
+  min-width: 40px;
+  color: var(--lt-text-faint);
+  font-size: 12px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.statusBadge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+  color: var(--agent-accent);
+  font-size: 12px;
+  font-weight: 630;
+  line-height: 1.35;
+}
+
+.taskLine {
+  display: block;
+  overflow: hidden;
+  margin-top: 3px;
+  color: var(--lt-text-muted);
+  font-size: 13px;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  margin-left: 12px;
+  color: var(--lt-text-faint);
+  transition: transform var(--lt-motion-duration-fast) var(--lt-motion-ease-out);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.details {
+  padding: 0 13px 14px 58px;
+}
+
+.detailSection {
+  margin-top: 12px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 28px;
+}
+
+.sectionLabel {
+  color: var(--lt-text-faint);
+  font-size: 12px;
+  font-weight: 620;
+  line-height: 1.4;
+}
+
+.activityLine {
+  margin-top: 6px;
+  color: var(--lt-text-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.promptPreview {
+  margin-top: 6px;
+  color: var(--lt-text);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.resultBox {
+  max-height: 360px;
+  margin-top: 7px;
+  padding: 15px 16px;
+  overflow: auto;
+  border: 1px solid var(--lt-material-border);
+  border-radius: 10px;
+  background: var(--lt-material-inset);
+  color: var(--lt-text);
+  font-size: 14px;
+  line-height: 1.75;
+  word-break: break-word;
+
+  :global(h1),
+  :global(h2),
+  :global(h3) {
+    margin: 0.6em 0 0.45em;
+    color: var(--lt-text);
+    font-weight: 680;
+    line-height: 1.35;
+  }
+
+  :global(h1) {
+    font-size: 20px;
+  }
+
+  :global(h2) {
+    font-size: 17px;
+  }
+
+  :global(h3) {
+    font-size: 15px;
+  }
+
+  :global(p),
+  :global(ul),
+  :global(ol) {
+    margin: 0.45em 0;
+  }
+
+  :global(code) {
+    padding: 1px 5px;
+    border-radius: 5px;
+    background: var(--lt-material-inset-strong);
+    color: var(--lt-accent-hover);
+    font-family: var(--lt-font-mono);
+    font-size: 0.92em;
+  }
+
+  :global(pre) {
+    overflow: auto;
+    padding: 12px;
+    border-radius: 9px;
+    background: var(--lt-material-inset-strong);
+  }
+
+  :global(pre code) {
+    padding: 0;
+    background: transparent;
+  }
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: var(--lt-radius-icon);
+  background: transparent;
+  color: var(--lt-text-faint);
+  cursor: pointer;
+  transition:
+    background var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    color var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    transform var(--lt-motion-duration-instant) var(--lt-motion-ease-out);
+
+  &:hover:not(:disabled) {
+    background: var(--lt-quiet-hover-bg);
+    color: var(--lt-text);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.35;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(var(--lt-motion-press-scale));
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--lt-focus-shadow);
+  }
+}
+
+.spin {
+  animation: subAgentSpin 1s linear infinite;
+}
+
+.running {
+  border-color: rgba(76, 124, 168, 0.26);
+
+  .presenceDot {
+    background: #4c7ca8;
+  }
+
+  .statusBadge {
+    color: #4c7ca8;
+  }
+}
+
+.submitted {
+  border-color: rgba(95, 121, 183, 0.24);
+
+  .presenceDot {
+    background: #5f79b7;
+  }
+
+  .statusBadge {
+    color: #5f79b7;
+  }
+}
+
+.done {
+  border-color: rgba(34, 185, 143, 0.24);
+
+  .statusBadge {
+    color: #1d9b78;
+  }
+}
+
+.failed {
+  border-color: rgba(190, 74, 74, 0.28);
+
+  .presenceDot {
+    background: #c94b4b;
+  }
+
+  .statusBadge {
+    color: #c94b4b;
+  }
+}
+
+.pending {
+  .presenceDot {
+    background: #94a3ad;
+  }
+}
+
+.rosterCard {
+  .headerButton {
+    min-height: 54px;
+    cursor: default;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.batchPanel {
+  width: min(100%, 920px);
+  margin: 8px 0 10px;
+  overflow: hidden;
+  border: 1px solid var(--lt-material-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-material-panel-strong);
+  color: var(--lt-text);
+}
+
+.batchHeader {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  width: 100%;
+  min-height: 88px;
+  padding: 11px 13px;
+  border: 0;
+  border-bottom: 1px solid var(--lt-material-border);
+  color: inherit;
+  background: transparent;
+  text-align: left;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:hover:not(:disabled) {
+    background: var(--lt-quiet-hover-bg);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px
+      color-mix(in srgb, var(--lt-accent) 42%, transparent);
+  }
+}
+
+.roomOpenIcon {
+  margin-left: 10px;
+  color: var(--lt-text-faint);
+}
+
+.batchHeading {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+
+  small {
+    color: var(--lt-accent);
+    font-size: 10.5px;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+  }
+
+  strong {
+    color: var(--lt-text);
+    font-size: 14px;
+    font-weight: 670;
+    line-height: 1.4;
+  }
+
+  > span {
+    overflow: hidden;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    line-height: 1.4;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.batchGoal {
+  color: var(--lt-text-secondary) !important;
+  font-size: 12.5px !important;
+}
+
+.batchWhy {
+  overflow: hidden;
+  color: var(--lt-text-faint);
+  font-size: 11.5px;
+  font-style: normal;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.batchSummary {
+  min-height: 38px;
+  padding: 8px 13px 8px 58px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  border-bottom: 1px solid var(--lt-material-border);
+  background: color-mix(in srgb, var(--lt-material-inset) 52%, transparent);
+
+  strong {
+    flex: 0 0 auto;
+    color: var(--lt-text-secondary);
+    font-size: 11.5px;
+  }
+
+  span {
+    overflow: hidden;
+    color: var(--lt-text-faint);
+    font-size: 11.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.batchStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--lt-accent);
+  font-size: 12px;
+  font-weight: 640;
+  white-space: nowrap;
+}
+
+.batchStatus_completed {
+  color: #1d8f70;
+}
+
+.batchStatus_partial {
+  color: #a56b21;
+}
+
+.batchStatus_failed,
+.batchStatus_cancelled {
+  color: #b94747;
+}
+
+.batchMembers {
+  display: flex;
+  flex-direction: column;
+}
+
+.batchMember {
+  --agent-accent: #5d7891;
+  --agent-bg: #e7eef4;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--lt-material-border);
+  }
+}
+
+.batchMemberButton {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  width: 100%;
+  min-height: 66px;
+  padding: 9px 13px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: default;
+  text-align: left;
+  transition: background var(--lt-motion-duration-fast)
+    var(--lt-motion-ease-out);
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--agent-accent) 4.5%, transparent);
+  }
+
+  &:disabled {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px
+      color-mix(in srgb, var(--agent-accent) 42%, transparent);
+  }
+}
+
+.batchAvatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-right: 11px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.batchMemberIdentity {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+
+  > span:first-child {
+    display: flex;
+    min-width: 0;
+    align-items: baseline;
+    gap: 7px;
+  }
+
+  strong {
+    flex: 0 0 auto;
+    color: var(--lt-text);
+    font-size: 14px;
+    font-weight: 660;
+    line-height: 1.35;
+  }
+
+  small {
+    overflow: hidden;
+    color: var(--lt-text-faint);
+    font-size: 12px;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.batchTaskLabel {
+  overflow: hidden;
+  color: var(--lt-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.batchMemberStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 14px;
+  color: var(--lt-text-faint);
+  font-size: 12px;
+  font-weight: 620;
+  white-space: nowrap;
+
+  small {
+    color: var(--lt-text-faint);
+    font-size: 11px;
+    font-weight: 500;
+  }
+}
+
+.member_running,
+.member_retrying {
+  .batchMemberStatus {
+    color: #4c7ca8;
+  }
+}
+
+.member_completed {
+  .batchMemberStatus {
+    color: #1d8f70;
+  }
+}
+
+.member_failed,
+.member_cancelled {
+  .batchMemberStatus {
+    color: #b94747;
+  }
+}
+
+.batchResult {
+  padding: 2px 52px 14px 58px;
+  color: var(--lt-text-muted);
+  font-size: 13px;
+  line-height: 1.65;
+  word-break: break-word;
+
+  > :global(p),
+  > :global(ul),
+  > :global(ol) {
+    margin: 7px 0 0;
+  }
+}
+
+@keyframes subAgentSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+:global(.dark-mode) {
+  .subAgentCard {
+    border-color: color-mix(
+      in srgb,
+      var(--agent-accent) 18%,
+      var(--lt-material-border)
+    );
+    background: color-mix(
+      in srgb,
+      var(--lt-material-panel-strong) 96%,
+      var(--agent-bg)
+    );
+    box-shadow: var(--lt-material-highlight);
+    color: var(--lt-text);
+  }
+
+  .headerButton:hover {
+    background: color-mix(in srgb, var(--agent-accent) 7%, transparent);
+  }
+
+  .presenceDot {
+    border-color: var(--lt-material-panel-strong);
+  }
+
+  .agentName,
+  .resultBox :global(h1),
+  .resultBox :global(h2),
+  .resultBox :global(h3) {
+    color: var(--lt-text);
+  }
+
+  .roleText,
+  .sectionLabel {
+    color: var(--lt-text-faint);
+  }
+
+  .taskLine,
+  .activityLine,
+  .promptPreview,
+  .resultBox {
+    color: var(--lt-text-muted);
+  }
+
+  .chevron,
+  .iconButton {
+    color: rgba(245, 245, 245, 0.48);
+  }
+
+  .resultBox {
+    border-color: var(--lt-material-border);
+    background: var(--lt-material-inset);
+
+    :global(code) {
+      background: var(--lt-material-inset-strong);
+      color: var(--lt-accent);
+    }
+
+    :global(pre) {
+      background: var(--lt-material-inset-strong);
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .subAgentCard,
+  .batchPanel {
+    width: 100%;
+  }
+
+  .headerButton {
+    min-height: 54px;
+    padding: 10px 11px;
+  }
+
+  .avatarWrap,
+  .teamIcon {
+    margin-right: 10px;
+  }
+
+  .roleText {
+    display: none;
+  }
+
+  .details {
+    padding-right: 12px;
+    padding-left: 66px;
+  }
+
+  .resultBox {
+    max-height: 320px;
+    padding: 13px 14px;
+  }
+
+  .batchMemberButton {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    min-height: 62px;
+    padding: 9px 11px;
+  }
+
+  .batchMemberIdentity small {
+    display: none;
+  }
+
+  .batchMemberStatus {
+    margin-left: 8px;
+
+    small {
+      display: none;
+    }
+  }
+
+  .batchMemberButton > .chevron {
+    display: none;
+  }
+
+  .batchResult {
+    padding-right: 12px;
+    padding-left: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headerButton,
+  .iconButton,
+  .batchMemberButton {
+    transition: none;
+    transform: none;
+  }
+
+  .spin {
+    animation: none;
+  }
+}

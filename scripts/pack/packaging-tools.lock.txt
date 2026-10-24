@@ -1,0 +1,7 @@
+# Exact PyPI wheels for the isolated packaging interpreter (Python >=3.10).
+# These tools never resolve or replace conda-owned packaging distributions.
+pip==26.2 --hash=sha256:931c303696af6fa3417112103b1cad26890e5a07eccb5b99783700e33f2b8aad
+packaging==26.2 --hash=sha256:5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e
+setuptools==82.0.1 --hash=sha256:a59e362652f08dcd477c78bb6e7bd9d80a7995bc73ce773050228a348ce2e5bb
+wheel==0.46.2 --hash=sha256:33ae60725d69eaa249bc1982e739943c23b34b58d51f1cb6253453773aca6e65
+conda-pack==0.9.2 --hash=sha256:437c1acadcdfe3d4f44233513eb116129cde3911088f72ae00871802c7943e47

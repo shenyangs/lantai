@@ -1,0 +1,116 @@
+/* ---- Theme toggle button ---- */
+.toggleBtn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+  color: rgba(0, 0, 0, 0.65);
+  padding: 0;
+  flex-shrink: 0;
+  line-height: 1;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  :global(.ant-btn-icon),
+  :global(.lantai-btn-icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    line-height: 1;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: #111;
+  }
+}
+
+/* ---- Theme Dropdown ---- */
+.themeDropdown {
+  :global {
+    .lantai-dropdown-menu,
+    .ant-dropdown-menu {
+      padding: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      border-radius: 8px;
+      background: #fff !important;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .lantai-dropdown-menu-item,
+    .ant-dropdown-menu-item {
+      min-width: 132px;
+      border-radius: 6px;
+      color: rgba(40, 40, 40, 0.72);
+      font-weight: 650;
+
+      &:hover {
+        background: rgba(95, 148, 191, 0.1) !important;
+      }
+    }
+
+    .lantai-dropdown-menu-item-selected,
+    .ant-dropdown-menu-item-selected {
+      background: rgba(95, 148, 191, 0.14) !important;
+      color: rgba(20, 20, 20, 0.92) !important;
+    }
+  }
+}
+
+/* Dark mode overrides */
+:global(.dark-mode) {
+  .toggleBtn {
+    color: rgba(235, 235, 235, 0.72);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.96);
+    }
+  }
+
+  .themeDropdown {
+    border-radius: 8px;
+    overflow: hidden;
+
+    :global {
+      .lantai-dropdown-menu,
+      .ant-dropdown-menu {
+        background: rgba(35, 35, 35, 0.98) !important;
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: none;
+      }
+
+      .lantai-dropdown-menu-item,
+      .ant-dropdown-menu-item {
+        color: rgba(235, 235, 235, 0.72);
+
+        &:hover {
+          color: rgba(255, 255, 255, 0.96);
+          background: rgba(255, 255, 255, 0.075) !important;
+        }
+      }
+
+      .lantai-dropdown-menu-item-selected,
+      .ant-dropdown-menu-item-selected {
+        background: rgba(120, 169, 204, 0.16) !important;
+        color: rgba(255, 255, 255, 0.96) !important;
+      }
+    }
+  }
+}

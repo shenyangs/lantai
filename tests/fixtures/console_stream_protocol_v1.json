@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "transcript_objects": ["response", "message", "content"],
+  "control_objects": ["turn_receipt", "runtime_progress"]
+}

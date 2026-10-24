@@ -1,0 +1,24 @@
+{
+  "base_profile_id": "factory",
+  "color": "#7a5d46",
+  "created_at": "2026-07-20T08:30:00Z",
+  "description": "1.x 升级保护样本",
+  "icon": "moon",
+  "id": "profile_v1_upgrade_fixture",
+  "name": "夜航旧配置",
+  "overrides": {
+    "appearance.composer_size": "spacious",
+    "appearance.palette": "warm",
+    "conversation.show_thinking": true,
+    "persona.presence": "quiet"
+  },
+  "owner": "personal",
+  "references": {},
+  "revision": 3,
+  "schema_version": 1,
+  "scope": {
+    "kind": "global",
+    "ref": null
+  },
+  "updated_at": "2026-07-26T21:15:00Z"
+}

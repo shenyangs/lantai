@@ -1,0 +1,31 @@
+{
+  "name": "lantai-office-editor-runtime",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Pinned local Office editor runtimes for Lantai",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10"
+  },
+  "workspaces": [
+    "apps/docs",
+    "apps/sheets",
+    "apps/slides",
+    "apps/pdf",
+    "packages/*"
+  ],
+  "scripts": {
+    "format": "node tools/format-changed.mjs --write",
+    "format:check": "node tools/format-changed.mjs --check",
+    "check:theme-colors": "node tools/check-theme-colors.mjs",
+    "build": "npm run build:docs && npm run build:sheets && npm run build:slides && npm run build:pdf",
+    "build:docs": "npm run build -w @lantai/docx-editor",
+    "build:sheets": "npm run build -w @lantai/sheets-editor",
+    "build:slides": "npm run build -w @lantai/slides-editor",
+    "build:pdf": "npm run build -w @lantai/pdf-editor",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:engine": "npm run test -w @genoffice/docx-engine"
+  }
+}

@@ -1,0 +1,223 @@
+.localAdvancedConfigFieldRow {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.localAdvancedConfigLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+/* ---- Page Layout ---- */
+.settingsPage {
+  height: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--lt-text);
+  background: var(--lt-bg);
+}
+
+/* ---- Page Header (breadcrumb style) ---- */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  border-bottom: 1px solid var(--lt-border-subtle);
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+/* ---- Scrollable Content ---- */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  background: var(--lt-bg);
+}
+
+.breadcrumbHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.breadcrumbParent {
+  color: var(--lt-text-faint);
+  font-weight: 400;
+}
+
+.breadcrumbSeparator {
+  color: var(--lt-border-strong);
+  margin: 0 4px;
+}
+
+.breadcrumbCurrent {
+  color: var(--lt-text);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px;
+}
+
+.loadingText {
+  color: var(--lt-text-faint);
+}
+
+/* ---- Sections ---- */
+
+.section {
+  margin-bottom: 32px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  margin-bottom: 4px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.sectionDesc {
+  margin: 0 0 24px;
+  color: var(--lt-text-faint);
+  font-size: 14px;
+}
+
+/* ---- Providers Block (LLM below, providers below) ---- */
+
+.providersBlock {
+  margin: 24px 0 32px;
+}
+
+.gatewayEntry {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  margin: 16px 20px 20px;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--lt-accent) 24%, var(--lt-border-subtle));
+  border-radius: var(--lt-radius-card);
+  background:
+    linear-gradient(
+      105deg,
+      color-mix(in srgb, var(--lt-accent) 8%, transparent),
+      transparent 56%
+    ),
+    var(--lt-material-panel);
+  box-shadow: var(--lt-material-highlight), var(--lt-shadow-xs);
+}
+
+.gatewayEntryIcon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 10px;
+  color: var(--lt-accent);
+  background: color-mix(in srgb, var(--lt-accent) 12%, var(--lt-material-inset));
+  font-size: 18px;
+}
+
+.gatewayEntryCopy {
+  min-width: 0;
+
+  p {
+    max-width: 760px;
+    margin: 4px 0 0;
+    color: var(--lt-text-subtle);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+}
+
+.gatewayEntryTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  h3 {
+    margin: 0;
+    color: var(--lt-text);
+    font-size: 15px;
+    font-weight: 720;
+  }
+
+  span {
+    padding: 2px 7px;
+    border-radius: var(--lt-radius-pill);
+    color: var(--lt-accent);
+    background: color-mix(in srgb, var(--lt-accent) 10%, transparent);
+    font-size: 11px;
+    font-weight: 650;
+  }
+}
+
+.gatewayEntryButton {
+  flex-shrink: 0;
+}
+
+/* ---- Provider Groups ---- */
+
+.providerGroup {
+  padding: 0 20px;
+  margin-top: 18px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.providerGroupHeading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+
+  > span {
+    min-width: 22px;
+    padding: 1px 7px;
+    border: 1px solid var(--lt-border-subtle);
+    border-radius: var(--lt-radius-pill);
+    color: var(--lt-text-subtle);
+    background: var(--lt-material-inset);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    line-height: 18px;
+    text-align: center;
+  }
+}
+
+.providerGroupTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--lt-text);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Provider Cards ---- */
+
+@media (max-width: 760px) {
+  .gatewayEntry {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .gatewayEntryButton {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}

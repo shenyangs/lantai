@@ -1,0 +1,22 @@
+// LTA-021: actual native modules with finite offline collaborators.
+require('./test-support/atomic_native.cases.cjs');
+require('./test-support/docs_pending_document.cases.cjs');
+require('./test-support/generate_html_epoch.cases.cjs');
+require('./test-support/helper_bundles.cases.cjs');
+require('./test-support/main_save_epoch.cases.cjs');
+require('./test-support/native.cases.cjs');
+require('./test-support/native_ai.cases.cjs');
+require('./test-support/native_legal.cases.cjs');
+require('./test-support/native_on.cases.cjs');
+require('./test-support/native_open_epoch.cases.cjs');
+require('./test-support/native_session_publish.cases.cjs');
+require('./test-support/navigation_signature.cases.cjs');
+require('./test-support/other_close_pending.cases.cjs');
+require('./test-support/pdf_pending_document.cases.cjs');
+require('./test-support/perimeter.cases.cjs');
+require('./test-support/pptx_deep.cases.cjs');
+require('./test-support/sheets.cases.cjs');
+require('./test-support/sheets_reopen_ownership.cases.cjs');
+require('./test-support/slides_print_epoch.cases.cjs');
+require('./test-support/slides_save_commit_epoch.cases.cjs');
+require('./test-support/thumbnail_epoch.cases.cjs');

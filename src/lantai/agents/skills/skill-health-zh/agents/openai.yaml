@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill 体检"
+  short_description: "扫描 Skill 规范、依赖、触发重叠和平台耦合风险"
+  default_prompt: "使用 $skill-health-zh 检查当前 Skill 库并给出可执行修复建议。"

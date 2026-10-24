@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "contract_id": "lantai-runtime-v2-invariants-v1",
+  "phase": "RT2-00",
+  "source_plan": "docs/runtime-2.0-fusion-master-plan-2026-09-14-zh.md",
+  "migration_mode": "staged_single_authority",
+  "package_gate_required": true,
+  "identity_envelope": {
+    "name": "RuntimeEnvelopeV2",
+    "required_fields": [
+      "schema_version",
+      "event_id",
+      "recorded_seq",
+      "recorded_at",
+      "conversation_id",
+      "turn_id",
+      "run_id",
+      "attempt_id",
+      "causation_id",
+      "correlation_id",
+      "producer",
+      "payload_type",
+      "payload_version",
+      "payload"
+    ],
+    "effect_identity_fields": ["tool_call_id", "effect_id", "approval_id"],
+    "collaboration_identity_fields": ["collaboration_id", "member_id"],
+    "message_identity_fields": ["message_id"]
+  },
+  "invariants": [
+    {"id": "RT2-INV-001", "statement": "每个事实域在任一迁移阶段只有一个可写权威。"},
+    {"id": "RT2-INV-002", "statement": "持久事件必须携带完整的 conversation、turn、run 和 attempt 身份。"},
+    {"id": "RT2-INV-003", "statement": "消息、历史和最终回答只有提交成功后才能对用户可见。"},
+    {"id": "RT2-INV-004", "statement": "事件流只负责增量传输，恢复必须使用快照、游标和可重放日志。"},
+    {"id": "RT2-INV-005", "statement": "界面只能投影运行状态，不能自行裁决运行事实。"},
+    {"id": "RT2-INV-006", "statement": "终态单调，终态 attempt 不得重新进入运行态。"},
+    {"id": "RT2-INV-007", "statement": "外部副作用必须先记录意图，再执行副作用。"},
+    {"id": "RT2-INV-008", "statement": "结果不明的副作用不得自动重放。"},
+    {"id": "RT2-INV-009", "statement": "路径权限基于规范化目标、工作区授权和操作类型，不能依赖模糊命令文本。"},
+    {"id": "RT2-INV-010", "statement": "页面或会话导航不得转移异步任务的所有权。"},
+    {"id": "RT2-INV-011", "statement": "内部协作者和研究 worker 使用中性上下文，最终回答由主 Agent 应用用户可见人格。"},
+    {"id": "RT2-INV-012", "statement": "网络、模型、组队、加载和恢复步骤必须有有界截止时间及可理解的降级状态。"},
+    {"id": "RT2-INV-013", "statement": "低频能力按需展开，不常驻占用主对话输入区。"},
+    {"id": "RT2-INV-014", "statement": "迁移必须支持回滚，并能以只读方式读取旧数据。"},
+    {"id": "RT2-INV-015", "statement": "Runtime 迁移不得削弱 Foundation Experience 受保护契约。"},
+    {"id": "RT2-INV-016", "statement": "主回答提交后，蛐蛐等附加生成不得阻塞 turn 终态；超时或失败必须记录为可降级结果。"}
+  ],
+  "forbidden_patterns": [
+    "parallel_writable_authorities",
+    "durable_dual_write",
+    "ui_inferred_run_state",
+    "blind_effect_retry",
+    "fuzzy_text_path_authority",
+    "navigation_owned_async_state",
+    "worker_persona_delivery",
+    "unbounded_loading_state",
+    "optional_post_answer_blocks_terminal"
+  ]
+}

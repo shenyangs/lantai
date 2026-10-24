@@ -1,0 +1,71 @@
+{
+  "schema": "lantai.provider-stream-exchange.v1",
+  "cases": [
+    {
+      "id": "ordinary-delta-with-identical-tokens",
+      "provider_id": "custom-openai",
+      "model_id": "plain-delta-model",
+      "family": "openai",
+      "channel": "text",
+      "chunks": ["哈", "哈"],
+      "expected_deltas": ["哈", "哈"],
+      "expected_full": "哈哈",
+      "expected_old_difference": "equality-is-not-snapshot-proof"
+    },
+    {
+      "id": "cumulative-prefix-snapshots",
+      "provider_id": "kimi-cn",
+      "model_id": "kimi-k2.5",
+      "family": "openai",
+      "channel": "text",
+      "chunks": ["答", "答案", "答案"],
+      "expected_deltas": ["答", "案"],
+      "expected_full": "答案"
+    },
+    {
+      "id": "cumulative-thinking-snapshots",
+      "provider_id": "minimax-cn",
+      "model_id": "MiniMax-M3",
+      "family": "openai",
+      "channel": "thinking",
+      "chunks": ["想", "想明", "想明白"],
+      "expected_deltas": ["想", "明", "白"],
+      "expected_full": "想明白"
+    }
+  ],
+  "snapshot_block_cases": [
+    {
+      "id": "minimax-pre-tool-snapshot-triplicate",
+      "provider_id": "minimax-cn",
+      "model_id": "MiniMax-M3",
+      "family": "openai",
+      "payload": {
+        "content": [
+          {"type": "thinking", "thinking": "先检查"},
+          {"type": "thinking", "thinking": "先检查"},
+          {"type": "thinking", "thinking": "先检查"},
+          {"type": "text", "text": "开始执行"},
+          {"type": "text", "text": "开始执行"},
+          {"type": "text", "text": "开始执行"}
+        ]
+      },
+      "expected_thinking": "先检查",
+      "expected_text": "开始执行",
+      "expected_old_difference": "duplicate-blocks-belong-to-one-provider-snapshot"
+    },
+    {
+      "id": "ordinary-provider-preserves-identical-blocks",
+      "provider_id": "anthropic",
+      "model_id": "claude-test",
+      "family": "anthropic",
+      "payload": {
+        "content": [
+          {"type": "text", "text": "有意重复"},
+          {"type": "text", "text": "有意重复"}
+        ]
+      },
+      "expected_thinking": "",
+      "expected_text": "有意重复\n有意重复"
+    }
+  ]
+}

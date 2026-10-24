@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "label_source": "Engineering synthetic note evidence annotations; no external expert validation claimed.",
+  "minimum_accuracy": 0.95,
+  "cases": [
+    {
+      "id": "user_note_is_not_trial",
+      "note_provider": "user",
+      "source": "我认为干预可能使恢复率提高30%，这只是我的猜测，尚未查看论文结果。",
+      "report": "论文试验结果已经证实干预使恢复率提高30%。",
+      "expected_assessment": "insufficient"
+    },
+    {
+      "id": "model_summary_is_not_trial",
+      "note_provider": "assistant-chat",
+      "source": "待核验的模型摘要：干预使恢复率提高30%。模型没有读取原论文，这一数字不应当作研究结果。",
+      "report": "原论文的实测结果是干预使恢复率提高30%。",
+      "expected_assessment": "insufficient"
+    },
+    {
+      "id": "accurate_note_attribution",
+      "note_provider": "user",
+      "source": "我的笔记建议后续设计随机试验；目前只有观察性资料，不能建立因果关系。",
+      "report": "用户笔记建议后续设计随机试验，并提醒现有观察性资料不能建立因果关系。",
+      "expected_assessment": "supports"
+    }
+  ]
+}

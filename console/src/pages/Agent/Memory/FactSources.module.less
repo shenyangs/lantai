@@ -1,0 +1,60 @@
+.container {
+  margin-top: 10px;
+  width: 100%;
+  color: var(--memory-muted);
+  font-size: 13px;
+
+  summary {
+    cursor: pointer;
+  }
+}
+
+.sources {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.source {
+  padding: 12px 0;
+  border-top: 1px solid var(--memory-line);
+
+  a {
+    display: inline-block;
+    margin-top: 8px;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  align-items: baseline;
+
+  strong {
+    color: var(--memory-text);
+  }
+}
+
+.quote {
+  margin: 10px 0;
+  padding: 8px 12px;
+  border-left: 2px solid currentColor;
+  color: var(--memory-text);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.context {
+  margin-top: 10px;
+
+  pre {
+    max-height: 350px;
+    margin: 8px 0;
+    overflow: auto;
+    color: var(--memory-text);
+    font: inherit;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}

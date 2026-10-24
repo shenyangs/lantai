@@ -1,0 +1,277 @@
+.aboutPage {
+  min-height: 100%;
+  color: var(--lt-text);
+  background: var(--lt-surface);
+}
+
+.aboutContent {
+  width: min(720px, calc(100% - 48px));
+  margin: 38px auto 64px;
+}
+
+.brandIdentity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.brandMark {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  border-radius: 18px;
+  box-shadow: var(--lt-shadow-sm);
+}
+
+.brandCopy {
+  min-width: 0;
+
+  h2 {
+    margin: 0;
+    color: var(--lt-text);
+    font-size: 30px;
+    font-weight: 760;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  p {
+    margin: 5px 0 0;
+    color: var(--lt-text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+.versionText {
+  display: block;
+  margin-top: 8px;
+  color: var(--lt-text-faint);
+  font-size: 12px;
+  font-weight: 560;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+.buildIdentity {
+  margin-top: 28px;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: minmax(160px, 0.75fr) minmax(0, 1.25fr);
+  gap: 24px;
+  background: var(--lt-surface-muted);
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: 14px;
+
+  h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 720;
+  }
+
+  p {
+    margin: 5px 0 0;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px 20px;
+  }
+
+  dl > div {
+    min-width: 0;
+  }
+
+  dt {
+    color: var(--lt-text-faint);
+    font-size: 11px;
+  }
+
+  dd {
+    margin: 3px 0 0;
+    overflow: hidden;
+    color: var(--lt-text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.developerSection {
+  margin-top: 34px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  overflow: hidden;
+  background: var(--lt-surface-muted);
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: 14px;
+}
+
+.developerProfile {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.developerAvatar {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  object-fit: cover;
+  border-radius: 13px;
+  box-shadow: var(--lt-shadow-xs);
+}
+
+.developerDetails {
+  min-width: 0;
+
+  h2 {
+    margin: 0;
+    color: var(--lt-text);
+    font-size: 18px;
+    font-weight: 720;
+    line-height: 1.35;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: var(--lt-text-muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  a {
+    width: fit-content;
+    margin-top: 11px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--lt-text);
+    font-size: 13px;
+    font-weight: 650;
+    text-decoration: none;
+    transition: color var(--lt-motion-duration-fast) var(--lt-motion-ease-out);
+
+    &:hover {
+      color: var(--lt-accent);
+    }
+
+    &:focus-visible {
+      outline: 0;
+      border-radius: 4px;
+      box-shadow: var(--lt-focus-shadow);
+    }
+  }
+}
+
+.externalLinkError {
+  display: block;
+  margin-top: 7px;
+  color: var(--lt-danger);
+  font-size: 12px;
+}
+
+.wechatContact {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 1px solid var(--lt-border-subtle);
+
+  figcaption {
+    width: 94px;
+    display: grid;
+    gap: 5px;
+  }
+
+  strong {
+    color: var(--lt-text);
+    font-size: 13px;
+    font-weight: 680;
+  }
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+.wechatQr {
+  width: 88px;
+  height: 88px;
+  padding: 6px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid rgb(29 29 31 / 0.08);
+  border-radius: 10px;
+  box-shadow: var(--lt-shadow-xs);
+}
+
+@media (max-width: 760px) {
+  .aboutContent {
+    width: calc(100% - 32px);
+    margin-top: 26px;
+  }
+
+  .developerSection {
+    grid-template-columns: 1fr;
+  }
+
+  .buildIdentity {
+    grid-template-columns: 1fr;
+  }
+
+  .wechatContact {
+    padding: 20px 0 0;
+    border-top: 1px solid var(--lt-border-subtle);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 460px) {
+  .brandIdentity {
+    align-items: flex-start;
+  }
+
+  .brandMark {
+    width: 64px;
+    height: 64px;
+    flex-basis: 64px;
+    border-radius: 16px;
+  }
+
+  .brandCopy h2 {
+    font-size: 28px;
+  }
+
+  .developerSection {
+    padding: 18px;
+  }
+
+  .developerProfile {
+    align-items: flex-start;
+  }
+
+  .buildIdentity dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+:global(.dark-mode) {
+  .aboutPage {
+    background: var(--lt-bg);
+  }
+}

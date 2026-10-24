@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill 创建与评测"
+  short_description: "创建、改进并用真实任务评测可复用的澜台 Skill"
+  default_prompt: "使用 $skill-creator-zh 创建或改进一个可验证的澜台 Skill。"

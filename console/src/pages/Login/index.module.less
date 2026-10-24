@@ -1,0 +1,76 @@
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--lt-space-6);
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  color: var(--lt-text);
+  background:
+    radial-gradient(
+      circle at 50% 16%,
+      color-mix(in srgb, var(--lt-accent) 10%, transparent),
+      transparent 36%
+    ),
+    linear-gradient(180deg, var(--lt-shell-edge-bg), var(--lt-window-bg));
+}
+
+.panel {
+  width: min(100%, 400px);
+  padding: var(--lt-space-8);
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: var(--lt-radius-panel);
+  background: var(--lt-material-panel-strong);
+  box-shadow: var(--lt-shadow-md);
+}
+
+.identity {
+  margin-bottom: var(--lt-space-7);
+  text-align: center;
+}
+
+.identity img {
+  height: 46px;
+  margin-bottom: var(--lt-space-3);
+}
+
+.identity h1 {
+  margin: 0;
+  font-size: var(--lt-type-page-title);
+  line-height: var(--lt-leading-title);
+  font-weight: var(--lt-weight-title);
+  letter-spacing: -0.015em;
+}
+
+.identity p {
+  margin: var(--lt-space-2) 0 0;
+  color: var(--lt-text-muted);
+  font-size: var(--lt-type-caption);
+  line-height: var(--lt-leading-body);
+}
+
+.fieldIcon {
+  color: var(--lt-text-faint);
+}
+
+.submitItem {
+  margin-block: var(--lt-space-2) 0;
+}
+
+.submitButton {
+  height: var(--lt-control-height-lg) !important;
+  border-radius: var(--lt-radius-control) !important;
+  font-weight: var(--lt-weight-emphasis) !important;
+}
+
+@media (max-width: 520px) {
+  .page {
+    padding: var(--lt-space-4);
+    align-items: start;
+  }
+
+  .panel {
+    margin-top: 12vh;
+    padding: var(--lt-space-6);
+  }
+}

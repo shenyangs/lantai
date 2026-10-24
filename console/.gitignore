@@ -1,0 +1,6 @@
+
+# test coverage
+coverage/
+
+# Compiled universal AppKit bridge
+electron/native/bin/

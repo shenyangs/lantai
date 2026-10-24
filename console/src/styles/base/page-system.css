@@ -1,0 +1,15 @@
+/* Shared page rhythm; editors, charts and dense tables retain their own layout. */
+:root {
+  --lt-page-gutter: 34px;
+  --lt-settings-measure: 1040px;
+  --lt-page-title-size: 22px;
+  --lt-page-title-weight: 650;
+  --lt-section-title-size: 15px;
+  --lt-section-title-weight: 650;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --lt-page-gutter: 16px;
+  }
+}

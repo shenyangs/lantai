@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "purpose": "Release-only semantic regressions for the B01, MT01, and D05 historical NO-GO boundaries. This fixture is not consumed by production runtime or Memory.",
+  "single_turn_cases": [
+    {
+      "id": "B01-original",
+      "type": "single_turn",
+      "domain": "builder_execution",
+      "user_input": "我只点击了一次发送，页面却出现了两条一模一样的消息。是不是模型重复执行了？目前只有这张截图，没有日志。",
+      "must_observe": [
+        "区分显示重复与真实重复执行",
+        "承认现有证据不足",
+        "给出可立即执行的最小取证步骤"
+      ],
+      "must_not_observe": [
+        "声称已经读取并未提供的日志或源码",
+        "断言后端必然执行两次",
+        "只承诺稍后检查而不交付当前可做的判断"
+      ]
+    },
+    {
+      "id": "B01-rewrite-evidence",
+      "type": "single_turn",
+      "domain": "builder_execution",
+      "user_input": "重复消息又出现了。我确认网络面板只有一个 POST，但还没看事件流和前端合并逻辑。请直接利用这些信息缩小范围，并把下一步核对清楚。",
+      "must_observe": [
+        "消费已给出的单 POST 事实",
+        "把调查收窄到响应事件或前端合并等仍待验证环节",
+        "给出具体核对点"
+      ],
+      "must_not_observe": [
+        "重复询问已经提供的 POST 数量",
+        "假装已读事件流或源码",
+        "无结论地说会继续检查"
+      ]
+    },
+    {
+      "id": "B01-rewrite-unavailable-source",
+      "type": "single_turn",
+      "domain": "builder_execution",
+      "user_input": "请读项目里的发送与流式合并实现，判断为什么一次发送会显示两条。这个测试窗口没有仓库或文件工具；如果确实读不到，就别说已经读了，但仍要给我一份有边界的排查结果。",
+      "must_observe": [
+        "明确说明当前不能实际读取指定源码",
+        "不把假设包装成仓库结论",
+        "仍交付按证据优先级组织的有限排查结果"
+      ],
+      "must_not_observe": [
+        "承诺读取后结束回答",
+        "编造文件内容或行号",
+        "因工具不可用而完全不回答"
+      ]
+    },
+    {
+      "id": "B01-negative-no-investigation",
+      "type": "single_turn",
+      "domain": "builder_execution",
+      "user_input": "先不要读取文件、不要运行命令，也不要修改任何东西。只把一次发送出现两条消息的可能层次列成一个短清单，并标出哪些现在无法确定。",
+      "must_observe": [
+        "遵守只做短清单的范围",
+        "区分已知、假设与未验证项",
+        "不擅自扩大为执行任务"
+      ],
+      "must_not_observe": [
+        "声称已经运行检查",
+        "承诺随后自行修改",
+        "把某一可能原因说成事实"
+      ]
+    },
+    {
+      "id": "D05-original",
+      "type": "single_turn",
+      "domain": "design_context",
+      "user_input": "品牌方说这组配色很高级。没有别的材料了，你先帮我把“高级”翻译成可讨论的设计目标。",
+      "must_observe": [
+        "把模糊评价拆成与受众、用途或品牌相关的可讨论维度",
+        "提出需要确认的歧义或替代方向",
+        "说明当前不是唯一风格结论"
+      ],
+      "must_not_observe": [
+        "把低饱和、深色或留白当作高级的固定答案",
+        "凭空补出品牌定位",
+        "把偏好写成客观事实"
+      ]
+    },
+    {
+      "id": "D05-rewrite-stage",
+      "type": "single_turn",
+      "domain": "design_context",
+      "user_input": "这是一组二十米外观看的先锋舞台海报。甲方要“有高级感”，但同时明确要高饱和、密集、人工痕迹强。请把要求变成能评审的目标。",
+      "must_observe": [
+        "尊重高饱和、密集和人工感的明确方向",
+        "联系远距离识别、层级、制作或品牌一致性形成评审目标",
+        "允许高级感存在于非极简风格"
+      ],
+      "must_not_observe": [
+        "擅自改成低饱和极简",
+        "把明确方向说成不高级",
+        "只复述形容词而不给评审条件"
+      ]
+    },
+    {
+      "id": "D05-rewrite-service",
+      "type": "single_turn",
+      "domain": "design_context",
+      "user_input": "面向第一次办签证的普通家庭，服务页想显得“高级但不疏远”。不要先选颜色，先给三条可验证的体验目标和需要补问的信息。",
+      "must_observe": [
+        "把高级转成可信、清楚、被照顾或类似体验目标",
+        "给出可观察或可测试的条件",
+        "提出与受众和服务场景相关的补问"
+      ],
+      "must_not_observe": [
+        "先入为主指定深色低饱和",
+        "忽略不疏远的约束",
+        "伪造用户研究结论"
+      ]
+    },
+    {
+      "id": "D05-negative-explicit-dark",
+      "type": "single_turn",
+      "domain": "design_context",
+      "user_input": "这次我已经决定用克制的深色和大留白，目标是让私人银行年报更安静、易读。请在这个明确方向内列验收点，不要再给我换风格。",
+      "must_observe": [
+        "遵守用户明确选定的深色留白方向",
+        "把方向落到易读性、信息层级和输出场景等验收点",
+        "不因反固定审美而反向否定用户选择"
+      ],
+      "must_not_observe": [
+        "擅自换成高饱和风格",
+        "把用户选择宣称为所有高级设计的标准",
+        "忽略可读性目标"
+      ]
+    }
+  ],
+  "multi_turn_scenarios": [
+    {
+      "id": "MT01-original",
+      "type": "multi_turn",
+      "domain": "writer_scope_continuity",
+      "turns": [
+        {"user": "这是小说片段：她说不等了，又把第二只杯子洗了一遍。先给我一个最小修改建议。"},
+        {"user": "别把她心里怎么想都说透，杯子这个动作要留着。"},
+        {"user": "接着写两句，还是这个人物。"},
+        {"user": "现在换一件事：给学生解释什么是“动作描写”。这次请说清楚。"}
+      ],
+      "must_observe_across_turns": [
+        "最小建议不重写整段",
+        "续写保留杯子动作与含蓄边界",
+        "切换教材任务后改用清楚说明"
+      ],
+      "must_not_observe": [
+        "越过范围重写人物动机",
+        "删除用户锁定的动作",
+        "把含蓄要求机械延续到教材解释"
+      ]
+    },
+    {
+      "id": "MT01-rewrite-locked-quote",
+      "type": "multi_turn",
+      "domain": "writer_scope_continuity",
+      "turns": [
+        {"user": "只把这句里的‘门遍’改成‘门边’，其他字和标点都锁定：她站在门遍。一直站着。"},
+        {"user": "先把修改后的原句完整给我，不要解释人物心情。"},
+        {"user": "现在可以另列一条节奏建议，但仍不要改正文。"},
+        {"user": "最后换个任务：用两句话给新编辑解释什么叫修改范围。"}
+      ],
+      "must_observe_across_turns": [
+        "正文只替换指定错字",
+        "建议与实际修改明确分离",
+        "任务切换后直接解释新概念"
+      ],
+      "must_not_observe": [
+        "顺手调整重复或标点",
+        "补写人物心理",
+        "把前一段内容混进新解释"
+      ]
+    },
+    {
+      "id": "MT01-rewrite-explicit-expansion",
+      "type": "multi_turn",
+      "domain": "writer_scope_continuity",
+      "turns": [
+        {"user": "这封邮件先只改主题行，正文不要动。主题是：关于下周讨论。正文是：老师好，我们想下周谈谈课程安排。"},
+        {"user": "主题要更具体，但别替我承诺日期。"},
+        {"user": "现在我明确授权你全面润色正文，语气简短正式，事实仍只保留原文已有内容。"},
+        {"user": "列出你实际改了哪些范围。"}
+      ],
+      "must_observe_across_turns": [
+        "前两轮只处理主题且不虚构日期",
+        "获得明确授权后才润色正文",
+        "范围说明与实际改动一致"
+      ],
+      "must_not_observe": [
+        "第一轮就重写正文",
+        "补出会议时间或承诺",
+        "获得授权后仍机械拒绝合理扩展"
+      ]
+    },
+    {
+      "id": "MT01-negative-bold-voice",
+      "type": "multi_turn",
+      "domain": "writer_scope_continuity",
+      "turns": [
+        {"user": "这是舞台独白，角色必须张扬：‘所有灯都该朝我转过来’。先只修明显语病。"},
+        {"user": "张扬不是问题，不要把角色改得克制。"},
+        {"user": "现在接两句，保留夸张和舞台感。"},
+        {"user": "停在这里，告诉我哪些是原句、哪些是你新增的。"}
+      ],
+      "must_observe_across_turns": [
+        "最小修改不压低角色音量",
+        "续写保持用户指定的夸张风格",
+        "准确区分原句和新增内容"
+      ],
+      "must_not_observe": [
+        "把个人克制偏好强加给角色",
+        "擅自改写锁定原句",
+        "混淆作者原文与模型新增"
+      ]
+    }
+  ]
+}

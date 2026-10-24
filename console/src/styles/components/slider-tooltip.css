@@ -1,0 +1,56 @@
+/* Slider */
+html.dark-mode .lantai-slider-rail,
+html.dark-mode .ant-slider-rail {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html.dark-mode .lantai-slider-track,
+html.dark-mode .ant-slider-track {
+  background-color: var(--lt-accent) !important;
+}
+
+html.dark-mode .lantai-slider-mark-text,
+html.dark-mode .ant-slider-mark-text {
+  color: var(--lt-accent-hover) !important;
+}
+
+html.dark-mode .lantai-form-item-label > label .lantai-form-item-tooltip,
+html.dark-mode .ant-form-item-label > label .ant-form-item-tooltip {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+html.dark-mode .lantai-slider-handle::after,
+html.dark-mode .ant-slider-handle::after {
+  box-shadow: 0 0 0 2px var(--lt-accent) !important;
+  background-color: var(--lt-surface-raised) !important;
+}
+
+html.dark-mode .lantai-slider-dot,
+html.dark-mode .ant-slider-dot {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  background-color: var(--lt-control-bg) !important;
+}
+
+/* Tooltip popup (slider value) */
+html.dark-mode .lantai-tooltip-inner,
+html.dark-mode .ant-tooltip-inner {
+  background-color: var(--lt-control-bg) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-tooltip-arrow::before,
+html.dark-mode .ant-tooltip-arrow::before {
+  background: var(--lt-control-bg) !important;
+}
+
+/* Tooltip global override — force opaque background in light mode */
+.lantai-tooltip-inner,
+.ant-tooltip-inner {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  color: var(--lt-text-inverse) !important;
+}
+
+.lantai-tooltip-arrow::before,
+.ant-tooltip-arrow::before {
+  background: rgba(0, 0, 0, 0.75) !important;
+}

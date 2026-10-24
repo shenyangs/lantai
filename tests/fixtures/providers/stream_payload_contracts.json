@@ -1,0 +1,194 @@
+{
+  "cases": [
+    {
+      "id": "openai-compatible-text-thinking-tool-usage",
+      "family": "openai",
+      "payload": {
+        "choices": [
+          {
+            "delta": {
+              "reasoning_content": "plan",
+              "content": "answer",
+              "tool_calls": [
+                {
+                  "index": 0,
+                  "id": "call_1",
+                  "function": {
+                    "name": "search",
+                    "arguments": "{\"q\":\"docs\"}"
+                  }
+                }
+              ]
+            },
+            "finish_reason": "tool_calls"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 4,
+          "total_tokens": 14,
+          "prompt_tokens_details": {
+            "cached_tokens": 3
+          }
+        }
+      },
+      "expected": {
+        "text_delta": "answer",
+        "thinking_delta": "plan",
+        "finish_reason": "tool_calls",
+        "done": true,
+        "usage_delta": {
+          "input_tokens": 10,
+          "output_tokens": 4,
+          "total_tokens": 14,
+          "cached_tokens": 3
+        },
+        "tool_call_delta": [
+          {
+            "index": 0,
+            "id": "call_1",
+            "name": "search",
+            "arguments": "{\"q\":\"docs\"}"
+          }
+        ]
+      }
+    },
+    {
+      "id": "anthropic-content-block-text-delta",
+      "family": "anthropic",
+      "payload": {
+        "type": "content_block_delta",
+        "index": 0,
+        "delta": {
+          "type": "text_delta",
+          "text": "hello"
+        }
+      },
+      "expected": {
+        "text_delta": "hello",
+        "thinking_delta": "",
+        "done": false
+      }
+    },
+    {
+      "id": "anthropic-thinking-and-tool-start",
+      "family": "anthropic",
+      "payload": {
+        "type": "content_block_start",
+        "index": 1,
+        "content_block": {
+          "type": "tool_use",
+          "id": "toolu_1",
+          "name": "lookup",
+          "input": {
+            "term": "release"
+          }
+        }
+      },
+      "expected": {
+        "tool_call_delta": [
+          {
+            "index": 1,
+            "id": "toolu_1",
+            "name": "lookup",
+            "arguments": "{\"term\":\"release\"}"
+          }
+        ],
+        "done": false
+      }
+    },
+    {
+      "id": "anthropic-message-delta-usage-finish",
+      "family": "anthropic",
+      "payload": {
+        "type": "message_delta",
+        "delta": {
+          "stop_reason": "end_turn"
+        },
+        "usage": {
+          "input_tokens": 8,
+          "output_tokens": 5,
+          "cache_read_input_tokens": 2
+        }
+      },
+      "expected": {
+        "finish_reason": "end_turn",
+        "done": true,
+        "usage_delta": {
+          "input_tokens": 8,
+          "output_tokens": 5,
+          "total_tokens": 13,
+          "cached_tokens": 2
+        }
+      }
+    },
+    {
+      "id": "gemini-text-thinking-tool-usage",
+      "family": "gemini",
+      "payload": {
+        "candidates": [
+          {
+            "content": {
+              "parts": [
+                {
+                  "text": "internal plan",
+                  "thought": true
+                },
+                {
+                  "text": "visible answer"
+                },
+                {
+                  "functionCall": {
+                    "name": "lookup",
+                    "args": {
+                      "term": "release"
+                    }
+                  }
+                }
+              ]
+            },
+            "finishReason": "STOP"
+          }
+        ],
+        "usageMetadata": {
+          "promptTokenCount": 6,
+          "candidatesTokenCount": 7,
+          "totalTokenCount": 13,
+          "cachedContentTokenCount": 1
+        }
+      },
+      "expected": {
+        "text_delta": "visible answer",
+        "thinking_delta": "internal plan",
+        "finish_reason": "STOP",
+        "done": true,
+        "usage_delta": {
+          "input_tokens": 6,
+          "output_tokens": 7,
+          "total_tokens": 13,
+          "cached_tokens": 1
+        },
+        "tool_call_delta": [
+          {
+            "index": 0,
+            "name": "lookup",
+            "arguments": "{\"term\":\"release\"}"
+          }
+        ]
+      }
+    },
+    {
+      "id": "provider-error-message",
+      "family": "openai",
+      "payload": {
+        "error": {
+          "message": "rate limited"
+        }
+      },
+      "expected": {
+        "error": "rate limited",
+        "done": true
+      }
+    }
+  ]
+}

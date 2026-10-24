@@ -1,0 +1,124 @@
+/* ═══ Lantai-style overrides for Lantai chat bubbles ═══════════════════════ */
+
+/* Chat page background */
+.lantai-chat-anywhere,
+.lantai-bubble-list-wrapper,
+.lantai-chat-anywhere-message-list-welcome {
+  background: var(--lt-chat-bg) !important;
+}
+
+/* User bubble - palette-aware charcoal surface */
+.lantai-bubble-end,
+.lantai-bubble-user {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.lantai-bubble-end .lantai-bubble-content-filled,
+.lantai-bubble-user .lantai-bubble-content-filled {
+  display: inline-block !important;
+  width: fit-content !important;
+  max-width: var(--lt-user-bubble-max-width, min(680px, 64%)) !important;
+  max-inline-size: var(
+    --lt-user-bubble-max-width,
+    min(680px, 64%)
+  ) !important;
+  margin-left: auto !important;
+  background: var(--lt-chat-user-bg) !important;
+  color: var(--lt-chat-user-text) !important;
+  border-radius: var(--lt-chat-user-radius) !important;
+  box-shadow: none !important;
+  padding: var(--lt-chat-user-padding-block) var(--lt-chat-user-padding-inline) !important;
+  white-space: pre-wrap !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  line-break: auto !important;
+  text-align: left !important;
+}
+
+/* Assistant bubble - transparent with slight background */
+.lantai-bubble-start .lantai-bubble-content-filled,
+.lantai-bubble-content-filled {
+  background: transparent !important;
+  color: var(--lt-chat-assistant-text) !important;
+  padding: 0 !important;
+}
+
+/* Bubble list item spacing */
+.lantai-bubble-list .lantai-bubble {
+  margin-bottom: 16px !important;
+}
+
+/* Chat input area */
+.lantai-chat-anywhere-input,
+.lantai-chat-anywhere-default-footer {
+  background: var(--lt-chat-bg) !important;
+}
+
+.lantai-sender-content {
+  background: var(--lt-surface) !important;
+  border: 1px solid var(--lt-border) !important;
+  border-radius: 8px !important;
+}
+
+/* Page content - lantai paper color */
+.page-content {
+  background-color: var(--lt-surface);
+  border: 1px solid var(--lt-border-subtle);
+}
+
+/* Body background */
+body {
+  background: var(--lt-chat-bg);
+}
+
+.ant-layout {
+  background: var(--lt-chat-bg);
+}
+
+.ant-layout-content {
+  background: var(--lt-chat-bg);
+}
+
+/* Menu background */
+.lantai-menu,
+.ant-menu {
+  background: var(--lt-menu-bg) !important;
+}
+
+/* Menu selected item */
+.lantai-menu-item-selected,
+.ant-menu-item-selected {
+  background: var(--lt-menu-selected-bg) !important;
+  color: var(--lt-menu-selected-text) !important;
+}
+
+/* Tool call blocks */
+[class*="tool-call-block"] {
+  background: var(--lt-surface) !important;
+  border: 1px solid var(--lt-border-subtle) !important;
+  border-radius: 8px !important;
+}
+
+/* Final dark-mode sender surface normalization. Keep nested sender surfaces
+   on Lantai tokens. */
+html.dark-mode .lantai-sender,
+html.dark-mode [class*="sender-root"] {
+  background: var(--lt-surface-elevated) !important;
+  background-color: var(--lt-surface-elevated) !important;
+  border-color: var(--lt-border-strong) !important;
+}
+
+html.dark-mode .lantai-sender-content,
+html.dark-mode [class*="sender-content"],
+html.dark-mode .lantai-sender-content-bottom,
+html.dark-mode [class*="sender-content-bottom"],
+html.dark-mode .lantai-sender-prefix,
+html.dark-mode [class*="sender-prefix"],
+html.dark-mode .lantai-sender-actions,
+html.dark-mode [class*="sender-actions"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "浏览器测试"
+  short_description: "使用澜台浏览器完成可复现的页面测试、截图和交付验收"
+  default_prompt: "使用 $browser-testing-zh 对这个页面执行关键流程测试并保存证据。"

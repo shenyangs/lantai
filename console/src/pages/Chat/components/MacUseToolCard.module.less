@@ -1,0 +1,77 @@
+.card {
+  overflow: hidden;
+  border: 1px solid var(--ant-color-border-secondary, rgba(0, 0, 0, 0.08));
+  border-radius: 12px;
+  background: var(--ant-color-bg-container, #fff);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+}
+
+.identity {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.identityCopy {
+  min-width: 0;
+}
+
+.identityCopy strong,
+.identityCopy span {
+  display: block;
+}
+
+.identityCopy span {
+  margin-top: 2px;
+  color: var(--ant-color-text-secondary, rgba(0, 0, 0, 0.58));
+  font-size: 12px;
+}
+
+.status {
+  flex: none;
+  padding: 3px 8px;
+  color: var(--ant-color-text-secondary, rgba(0, 0, 0, 0.58));
+  font-size: 12px;
+  border-radius: 999px;
+  background: var(--ant-color-fill-tertiary, rgba(0, 0, 0, 0.04));
+}
+
+.status[data-tone="success"] {
+  color: var(--ant-color-success, #52c41a);
+}
+
+.status[data-tone="warning"] {
+  color: var(--ant-color-warning, #faad14);
+}
+
+.status[data-tone="error"] {
+  color: var(--ant-color-error, #ff4d4f);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  padding: 0 14px 12px 48px;
+}
+
+.details {
+  padding: 9px 14px;
+  color: var(--ant-color-text-secondary, rgba(0, 0, 0, 0.58));
+  font-size: 12px;
+  border-top: 1px solid var(--ant-color-border-secondary, rgba(0, 0, 0, 0.08));
+}
+
+.details pre {
+  max-height: 220px;
+  margin: 8px 0 0;
+  overflow: auto;
+  white-space: pre-wrap;
+}

@@ -1,0 +1,320 @@
+/* Codex-leaning flat surface rules.
+   Design tokens live in base/tokens.css; this file only maps them onto
+   shared component surfaces. */
+
+:where(.lantai-card, .ant-card) {
+  border: 1px solid var(--lt-border-muted) !important;
+  border-radius: var(--lt-radius-card) !important;
+  background: var(--lt-card-bg) !important;
+  box-shadow: var(--lt-card-shadow) !important;
+  transition:
+    border-color 0.16s ease,
+    background 0.16s ease,
+    box-shadow 0.16s ease,
+    transform 0.16s ease !important;
+}
+
+:where(
+  .lantai-modal-content,
+  .ant-modal-content,
+  .lantai-drawer-content,
+  .ant-drawer-content,
+  .lantai-popover-inner,
+  .ant-popover-inner,
+  .lantai-dropdown-menu,
+  .ant-dropdown-menu,
+  .lantai-select-dropdown,
+  .ant-select-dropdown,
+  .lantai-picker-dropdown .lantai-picker-panel-container,
+  .ant-picker-dropdown .ant-picker-panel-container
+) {
+  border: 1px solid var(--lt-quiet-control-border) !important;
+  border-radius: var(--lt-radius-card) !important;
+  box-shadow: var(--lt-glass-shadow) !important;
+}
+
+:where(
+  .lantai-modal-content,
+  .ant-modal-content,
+  .lantai-drawer-content,
+  .ant-drawer-content
+) {
+  background: var(--lt-dialog-surface) !important;
+  backdrop-filter: blur(var(--lt-dialog-blur))
+    saturate(var(--lt-dialog-saturate));
+  -webkit-backdrop-filter: blur(var(--lt-dialog-blur))
+    saturate(var(--lt-dialog-saturate));
+}
+
+:where(
+  .lantai-popover-inner,
+  .ant-popover-inner,
+  .lantai-dropdown-menu,
+  .ant-dropdown-menu,
+  .lantai-select-dropdown,
+  .ant-select-dropdown,
+  .lantai-picker-dropdown .lantai-picker-panel-container,
+  .ant-picker-dropdown .ant-picker-panel-container
+) {
+  background: var(--lt-float-surface) !important;
+  backdrop-filter: blur(var(--lt-float-blur)) saturate(var(--lt-float-saturate));
+  -webkit-backdrop-filter: blur(var(--lt-float-blur))
+    saturate(var(--lt-float-saturate));
+}
+
+:where(
+  .lantai-btn,
+  .ant-btn,
+  .lantai-input,
+  .ant-input,
+  .lantai-input-affix-wrapper,
+  .ant-input-affix-wrapper,
+  .lantai-input-number,
+  .ant-input-number,
+  .lantai-select-selector,
+  .ant-select-selector,
+  .lantai-picker,
+  .ant-picker,
+  .lantai-segmented,
+  .ant-segmented
+) {
+  border-radius: var(--lt-radius-control) !important;
+  box-shadow: none !important;
+  transition:
+    border-color 0.16s ease,
+    background 0.16s ease,
+    box-shadow 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease !important;
+}
+
+:where(
+  .lantai-btn .lantai-btn-icon > svg,
+  .lantai-btn .ant-btn-icon > svg,
+  .lantai-btn > svg,
+  .ant-btn .ant-btn-icon > svg,
+  .ant-btn > svg,
+  .spark-button .ant-btn-icon > svg,
+  .spark-button > svg
+) {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+}
+
+:where(.lantai-segmented-item, .ant-segmented-item) {
+  border-radius: var(--lt-radius-control) !important;
+  transition:
+    color 0.16s ease,
+    background 0.16s ease !important;
+}
+
+:where(
+  .lantai-input,
+  .ant-input,
+  .lantai-input-affix-wrapper,
+  .ant-input-affix-wrapper,
+  .lantai-input-number,
+  .ant-input-number,
+  .lantai-select-selector,
+  .ant-select-selector,
+  .lantai-picker,
+  .ant-picker
+) {
+  border-color: var(--lt-border-muted) !important;
+  background: var(--lt-flat-panel) !important;
+  color: var(--lt-flat-text) !important;
+}
+
+:where(
+  .lantai-input:hover,
+  .ant-input:hover,
+  .lantai-input-affix-wrapper:hover,
+  .ant-input-affix-wrapper:hover,
+  .lantai-select-selector:hover,
+  .ant-select-selector:hover,
+  .lantai-picker:hover,
+  .ant-picker:hover
+) {
+  border-color: var(--lt-quiet-control-border) !important;
+  box-shadow: var(--lt-quiet-control-shadow) !important;
+}
+
+:where(
+  .lantai-input:focus,
+  .ant-input:focus,
+  .lantai-input-affix-wrapper-focused,
+  .ant-input-affix-wrapper-focused,
+  .lantai-select-focused .lantai-select-selector,
+  .ant-select-focused .ant-select-selector,
+  .lantai-picker-focused,
+  .ant-picker-focused
+) {
+  border-color: color-mix(
+    in srgb,
+    var(--lt-flat-accent) 54%,
+    var(--lt-border)
+  ) !important;
+  box-shadow: var(--lt-focus-shadow) !important;
+}
+
+:where(.lantai-btn-primary, .ant-btn-primary) {
+  border-color: var(--lt-flat-accent) !important;
+  background: var(--lt-flat-accent) !important;
+  color: var(--lt-accent-contrast) !important;
+  box-shadow: none !important;
+}
+
+:where(.lantai-btn-primary:hover, .ant-btn-primary:hover) {
+  border-color: var(--lt-flat-accent-hover) !important;
+  background: var(--lt-flat-accent-hover) !important;
+}
+
+:where(.lantai-btn-default, .ant-btn-default, .lantai-btn-text, .ant-btn-text) {
+  color: var(--lt-flat-text) !important;
+}
+
+:where(
+  .lantai-btn-default:hover,
+  .ant-btn-default:hover,
+  .lantai-btn-text:hover,
+  .ant-btn-text:hover
+) {
+  border-color: var(--lt-quiet-control-border) !important;
+  background: var(--lt-quiet-hover-bg) !important;
+  color: var(--lt-flat-text) !important;
+  box-shadow: var(--lt-quiet-control-shadow) !important;
+}
+
+:where(.lantai-btn:active, .ant-btn:active) {
+  transform: translateY(1px);
+}
+
+:where(.lantai-tag, .ant-tag) {
+  border-radius: var(--lt-radius-pill) !important;
+  border-color: var(--lt-flat-line) !important;
+  background: var(--lt-flat-muted-panel) !important;
+  color: var(--lt-flat-muted) !important;
+}
+
+:where(.lantai-table, .ant-table, .lantai-list, .ant-list) {
+  background: var(--lt-flat-panel) !important;
+  color: var(--lt-flat-text) !important;
+}
+
+:where(.lantai-table-thead > tr > th, .ant-table-thead > tr > th) {
+  background: var(--lt-flat-muted-panel) !important;
+  color: var(--lt-flat-muted) !important;
+  border-bottom-color: var(--lt-flat-line) !important;
+}
+
+:where(.lantai-table-tbody > tr > td, .ant-table-tbody > tr > td) {
+  border-bottom-color: var(--lt-flat-line) !important;
+}
+
+:where(.lantai-switch, .ant-switch) {
+  background: color-mix(
+    in srgb,
+    var(--lt-flat-text) 24%,
+    transparent
+  ) !important;
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.12),
+    var(--lt-control-shadow) !important;
+}
+
+:where(.lantai-switch-checked, .ant-switch-checked) {
+  background: var(--lt-flat-accent) !important;
+}
+
+:where(.lantai-message-notice-content, .ant-message-notice-content) {
+  border: 1px solid var(--lt-quiet-control-border) !important;
+  border-radius: var(--lt-radius-panel) !important;
+  background: var(--lt-float-surface) !important;
+  color: var(--lt-flat-text) !important;
+  box-shadow: var(--lt-glass-shadow) !important;
+  backdrop-filter: blur(var(--lt-float-blur)) saturate(var(--lt-float-saturate));
+  -webkit-backdrop-filter: blur(var(--lt-float-blur))
+    saturate(var(--lt-float-saturate));
+}
+
+:where(.lantai-form-item-label > label, .ant-form-item-label > label) {
+  color: var(--lt-flat-muted) !important;
+}
+
+:where(.lantai-typography, .ant-typography) {
+  color: var(--lt-flat-text);
+}
+
+:where(
+  .lantai-popover-arrow::before,
+  .ant-popover-arrow::before,
+  .lantai-tooltip-arrow::before,
+  .ant-tooltip-arrow::before
+) {
+  background: var(--lt-float-surface) !important;
+}
+
+:where(
+  .lantai-dropdown-menu-item,
+  .ant-dropdown-menu-item,
+  .lantai-select-item,
+  .ant-select-item
+) {
+  border-radius: var(--lt-radius-md) !important;
+  transition:
+    color 0.14s ease,
+    background 0.14s ease !important;
+}
+
+:where(
+  .lantai-dropdown-menu-item:hover,
+  .ant-dropdown-menu-item:hover,
+  .lantai-select-item-option-active,
+  .ant-select-item-option-active
+) {
+  background: var(--lt-quiet-hover-bg) !important;
+  color: var(--lt-flat-text) !important;
+}
+
+:where(
+  .lantai-dropdown-menu-item-selected,
+  .ant-dropdown-menu-item-selected,
+  .lantai-select-item-option-selected,
+  .ant-select-item-option-selected
+) {
+  background: var(--lt-quiet-active-bg) !important;
+  color: var(--lt-accent-hover) !important;
+}
+
+html.dark-mode
+  :where(
+    .lantai-dropdown-menu-item,
+    .ant-dropdown-menu-item,
+    .lantai-select-item,
+    .ant-select-item
+  ) {
+  color: var(--lt-flat-muted) !important;
+}
+
+html.dark-mode
+  :where(
+    .lantai-dropdown-menu-item:hover,
+    .ant-dropdown-menu-item:hover,
+    .lantai-select-item-option-active,
+    .ant-select-item-option-active
+  ) {
+  background: var(--lt-quiet-hover-bg) !important;
+  color: var(--lt-flat-text) !important;
+}
+
+html.dark-mode
+  :where(
+    .lantai-dropdown-menu-item-selected,
+    .ant-dropdown-menu-item-selected,
+    .lantai-select-item-option-selected,
+    .ant-select-item-option-selected
+  ) {
+  background: var(--lt-quiet-active-bg) !important;
+  color: var(--lt-flat-text) !important;
+}

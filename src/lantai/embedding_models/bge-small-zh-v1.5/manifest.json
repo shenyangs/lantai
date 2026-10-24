@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "model_name": "BAAI/bge-small-zh-v1.5",
+  "dimensions": 512,
+  "revision": "9507db33464b5da99a532ac26b2a251767cbc62b",
+  "source_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "fingerprint": "bge-small-zh-v1.5@9507db33464b5da99a532ac26b2a251767cbc62b:qint8",
+  "license": "MIT",
+  "sha256": {
+    "config.json": "34fa1ea6278c257de3cc8ce7e9bdc48647b802145a9da0fc32e95db620efd04f",
+    "onnx/model_quantized.onnx": "99a6e522710c00220c89f8c52e0cc5aa09d4cbb1c34c0e932eab3a9dfdc65df3",
+    "onnx/model_quantized.onnx_data": "952623481ca8beea884e3d3c9ecaf8a3c7bf1d0c21de29e970cd31af9d37a90b",
+    "tokenizer.json": "3d09c84ebd10306706a79a8276b3ab736a40d8ec03251c7639f4e52c3a1a4f8e",
+    "tokenizer_config.json": "7e3bd6113f18c20975eaa8e8cc03c95b727fd83d6357f8e171e22b3736bf706d"
+  }
+}

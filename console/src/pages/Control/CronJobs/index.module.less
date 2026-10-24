@@ -1,0 +1,997 @@
+.cronJobsPage {
+  :global {
+    .lantai-spark-card-wrapper {
+      padding: 0 !important;
+    }
+    .lantai-table-wrapper
+      .lantai-table-container
+      .lantai-table-thead
+      > tr
+      > th {
+      background: #f9f8f4 !important;
+    }
+  }
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  border-bottom: 1px solid #eae9e7;
+}
+
+.breadcrumbHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.breadcrumbParent {
+  color: #999;
+  font-weight: 400;
+}
+
+.breadcrumbSeparator {
+  color: #ccc;
+  margin: 0 4px;
+}
+
+.breadcrumbCurrent {
+  color: #333;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.description {
+  color: #999;
+  font-size: 14px;
+  margin: 0;
+  display: none;
+}
+
+.tableCard {
+  :global(.ant-card-body) {
+    padding: 0;
+  }
+}
+
+.automationShell {
+  padding: 24px var(--lt-page-gutter) 40px;
+}
+
+.viewHeader {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.viewTabs {
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #e7e8eb;
+  border-radius: var(--lt-radius-panel);
+  background: #f7f9fb;
+}
+
+.viewTab {
+  min-height: 34px;
+  padding: 7px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  border-radius: 8px;
+  color: #697282;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 680;
+  cursor: pointer;
+}
+
+.viewTab:hover {
+  color: #2f6f9a;
+  background: rgba(91, 150, 194, 0.08);
+}
+
+.viewTabActive {
+  color: #1f6f9f;
+  background: #fff;
+  box-shadow: none;
+}
+
+.summaryRail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.summaryRail span {
+  min-height: 32px;
+  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #eceef2;
+  border-radius: 999px;
+  color: #7a8190;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 640;
+}
+
+.summaryRail strong {
+  color: #232b36;
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.calendarCard,
+.tableCard {
+  overflow: hidden;
+  border: 1px solid #e6e8ec;
+  border-radius: var(--lt-radius-panel);
+  box-shadow: var(--lt-card-shadow);
+}
+
+.calendarToolbar {
+  min-height: 62px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #eceef2;
+  background: #fff;
+}
+
+.weekControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.weekRange {
+  min-width: 210px;
+  padding: 0 8px;
+  color: #242b35;
+  font-size: 15px;
+  font-weight: 760;
+  text-align: center;
+}
+
+.projectionHint {
+  max-width: 520px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #4e6678;
+  background: #f1f6fa;
+  font-size: 12px;
+  font-weight: 680;
+  line-height: 1.45;
+}
+
+.calendarStage {
+  position: relative;
+  min-height: 560px;
+  background: #fff;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(132px, 1fr));
+  min-height: 560px;
+  background: #fff;
+}
+
+.calendarGridQuiet {
+  .dayBody {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(232, 235, 240, 0.72) 1px,
+      transparent 1px
+    );
+    background-size: 100% 72px;
+  }
+}
+
+.dayColumn {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #eceef2;
+  background: #fff;
+}
+
+.dayColumn:last-child {
+  border-right: 0;
+}
+
+.dayColumnToday {
+  background: #f8fbfe;
+}
+
+.dayHeader {
+  min-height: 72px;
+  padding: 13px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #eceef2;
+}
+
+.dayHeader span {
+  color: #7a8190;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dayHeader strong {
+  color: #232b36;
+  font-size: 18px;
+  font-weight: 780;
+}
+
+.dayColumnToday .dayHeader span,
+.dayColumnToday .dayHeader strong {
+  color: #1f6f9f;
+}
+
+.dayBody {
+  min-height: 488px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dayEmpty {
+  min-height: 58px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed #e4e7ec;
+  border-radius: 8px;
+  color: #b0b6c2;
+  font-size: 12px;
+}
+
+.occurrenceCard {
+  width: 100%;
+  min-height: 92px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  border: 1px solid #e7e9ee;
+  border-radius: 8px;
+  background: #fff;
+  color: #242b35;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    transform 0.16s ease;
+}
+
+.occurrenceCard:hover {
+  border-color: rgba(91, 150, 194, 0.52);
+  box-shadow: var(--lt-card-shadow);
+}
+
+.occurrence_pending {
+  border-color: color-mix(in srgb, #f08d2f 44%, var(--lt-border));
+}
+
+.occurrence_past {
+  border-color: color-mix(in srgb, #48a868 40%, var(--lt-border));
+}
+
+.occurrenceMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.occurrenceMeta strong {
+  color: #c9732f;
+  font-size: 13px;
+  font-weight: 780;
+}
+
+.occurrenceMeta em {
+  max-width: 72px;
+  padding: 2px 6px;
+  overflow: hidden;
+  border-radius: 6px;
+  color: #3b7ec6;
+  background: #eef5ff;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.occurrenceName {
+  min-height: 34px;
+  display: -webkit-box;
+  overflow: hidden;
+  color: #242b35;
+  font-size: 13px;
+  font-weight: 720;
+  line-height: 1.35;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.occurrenceTimezone {
+  color: #6f7886;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.occurrenceStatus {
+  color: #4aa262;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.occurrence_pending .occurrenceStatus {
+  color: #e37d2a;
+}
+
+.calendarOverlay {
+  position: absolute;
+  inset: 72px 0 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #8b93a0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.calendarOverlay::before {
+  position: absolute;
+  width: min(460px, calc(100% - 48px));
+  height: 220px;
+  content: "";
+  border-radius: var(--lt-radius-panel);
+  background: color-mix(in srgb, var(--lt-surface) 84%, transparent);
+}
+
+.calendarOverlay > * {
+  position: relative;
+  pointer-events: auto;
+}
+
+.calendarOverlay > span {
+  color: #1f1f1f;
+  font-size: 54px;
+}
+
+.calendarOverlay h3 {
+  margin: 0;
+  color: #2b3038;
+  font-size: 18px;
+  font-weight: 760;
+}
+
+.calendarOverlay p {
+  max-width: 360px;
+  margin: -4px 0 2px;
+  color: #697282;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.calendarEmpty {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #8b93a0;
+  text-align: center;
+}
+
+.calendarEmpty > span {
+  color: #1f1f1f;
+  font-size: 54px;
+}
+
+.calendarEmpty h3 {
+  margin: 0;
+  color: #2b3038;
+  font-size: 18px;
+  font-weight: 760;
+}
+
+.calendarEmpty p {
+  max-width: 360px;
+  margin: -4px 0 2px;
+  color: #697282;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.manageHeader {
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #eceef2;
+  background: #fff;
+}
+
+.manageHeader h3 {
+  margin: 0;
+  color: #232b36;
+  font-size: 16px;
+  font-weight: 760;
+}
+
+.manageHeader p {
+  margin: 3px 0 0;
+  color: #7a8190;
+  font-size: 13px;
+}
+
+.clickableRow {
+  cursor: pointer;
+}
+
+.jobNameCell,
+.scheduleCell,
+.dispatchCell,
+.runtimeCell {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.jobNameCell strong,
+.scheduleCell strong {
+  overflow: hidden;
+  color: #242b35;
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jobNameCell span,
+.scheduleCell span,
+.dispatchCell span,
+.runtimeCell span {
+  overflow: hidden;
+  color: #7a8190;
+  font-size: 12px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dispatchCell {
+  align-items: flex-start;
+}
+
+.previewText {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #4b5565;
+  font-size: 12px;
+  line-height: 1.45;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.mutedText {
+  color: #a0a7b2;
+  font-size: 12px;
+}
+
+.detailPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detailHero {
+  padding: 14px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  border: 1px solid #e7e9ee;
+  border-radius: var(--lt-radius-panel);
+  background: #f8fafc;
+}
+
+.detailHero h3 {
+  margin: 0 0 8px;
+  color: #232b36;
+  font-size: 17px;
+  font-weight: 780;
+  line-height: 1.35;
+}
+
+.detailStatusDot {
+  width: 9px;
+  height: 9px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: #c9ced8;
+}
+
+.detailStatusDot.enabled {
+  background: #3ca95f;
+}
+
+.detailStatusDot.disabled {
+  background: #a4abb8;
+}
+
+.detailList {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.detailList div {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.detailList dt {
+  color: #828a98;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.detailList dd {
+  min-width: 0;
+  margin: 0;
+  color: #232b36;
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.detailList code,
+.detailSection pre {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+}
+
+.detailSection {
+  display: grid;
+  gap: 8px;
+}
+
+.detailSection h4 {
+  margin: 0;
+  color: #232b36;
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.detailSection pre,
+.detailSection p {
+  margin: 0;
+  padding: 12px;
+  max-height: 260px;
+  overflow: auto;
+  border: 1px solid #e7e9ee;
+  border-radius: 8px;
+  color: #4b5565;
+  background: #fbfcfe;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.detailActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.debugDetails {
+  border: 1px solid #e7e9ee;
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+.debugDetails summary {
+  padding: 10px 12px;
+  color: #697282;
+  font-size: 13px;
+  font-weight: 720;
+  cursor: pointer;
+}
+
+.debugBody {
+  padding: 0 12px 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.debugToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #828a98;
+  font-size: 12px;
+}
+
+.debugBody pre {
+  margin: 0;
+  max-height: 220px;
+  overflow: auto;
+  padding: 10px;
+  border: 1px solid #e7e9ee;
+  border-radius: 8px;
+  color: #4b5565;
+  background: #fff;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 1320px) {
+  .calendarGrid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .dayHeader {
+    padding-inline: 6px;
+  }
+
+  .dayBody {
+    padding: 8px 6px;
+  }
+
+  .occurrenceCard {
+    min-height: 82px;
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 760px) {
+  .automationShell {
+    padding: 14px;
+  }
+
+  .viewHeader,
+  .calendarToolbar,
+  .manageHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .viewTabs {
+    width: 100%;
+  }
+
+  .viewTab {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .summaryRail span {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .weekControls {
+    align-items: stretch;
+  }
+
+  .weekControls > button {
+    flex: 1;
+  }
+
+  .weekRange {
+    width: 100%;
+    order: -1;
+    padding: 4px 0;
+  }
+
+  .detailList div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Status indicator styling */
+.statusIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+
+  &.enabled {
+    background-color: #52c41a;
+  }
+
+  &.disabled {
+    background-color: #d9d9d9;
+  }
+}
+
+/* Table text styles */
+.tableText {
+  font-size: 12px;
+}
+
+.cronText {
+  font-size: 12px;
+  cursor: help;
+}
+
+.codeText {
+  font-size: 12px;
+}
+
+.codeLink {
+  font-size: 12px;
+  cursor: help;
+  text-decoration: underline dotted;
+}
+
+/* Tooltip content */
+.tooltipContent {
+  position: relative;
+}
+
+.tooltipJsonContent {
+  max-width: 400px;
+  max-height: 300px;
+  overflow: auto;
+  white-space: pre-wrap;
+  font-size: 12px;
+  font-family: monospace;
+  padding-right: 30px;
+}
+
+.copyButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #1890ff;
+  z-index: 10;
+}
+
+/* Form extra text */
+.formExtraText {
+  font-size: 12px;
+  color: #8c8c8c;
+}
+
+.formHelperLink {
+  color: #1890ff;
+}
+
+/* Action column */
+.actionColumn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ─── Dark mode ─────────────────────────────────────────────────────────────── */
+:global(.dark-mode) {
+  .pageHeader {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .breadcrumbParent {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .breadcrumbSeparator {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .breadcrumbCurrent {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .title {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .description {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .viewTabs {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .viewTab {
+    color: rgba(255, 255, 255, 0.56);
+  }
+
+  .viewTab:hover {
+    color: rgba(255, 255, 255, 0.86);
+    background: rgba(105, 177, 255, 0.1);
+  }
+
+  .viewTabActive {
+    color: #8bc8ff;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+  }
+
+  .summaryRail span,
+  .calendarCard,
+  .tableCard,
+  .calendarToolbar,
+  .manageHeader,
+  .dayColumn {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: #171717;
+  }
+
+  .summaryRail span,
+  .manageHeader p,
+  .dayHeader span,
+  .dayEmpty,
+  .calendarEmpty,
+  .detailList dt {
+    color: rgba(255, 255, 255, 0.46);
+  }
+
+  .summaryRail strong,
+  .weekRange,
+  .manageHeader h3,
+  .dayHeader strong,
+  .occurrenceName,
+  .calendarEmpty h3,
+  .detailHero h3,
+  .detailList dd,
+  .detailSection h4,
+  .jobNameCell strong,
+  .scheduleCell strong {
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .calendarGrid {
+    background: #171717;
+  }
+
+  .dayColumnToday {
+    background: rgba(105, 177, 255, 0.07);
+  }
+
+  .dayHeader,
+  .manageHeader,
+  .calendarToolbar {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dayEmpty {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .occurrenceCard {
+    border-color: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.86);
+    background: #202020;
+  }
+
+  .occurrenceCard:hover {
+    border-color: rgba(105, 177, 255, 0.44);
+    box-shadow: var(--lt-card-shadow);
+  }
+
+  .occurrenceMeta em {
+    color: #91caff;
+    background: rgba(105, 177, 255, 0.14);
+  }
+
+  .calendarEmpty > span {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .calendarEmpty p {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .projectionHint {
+    color: #b8d9ef;
+    background: rgba(105, 177, 255, 0.12);
+  }
+
+  .detailHero,
+  .detailSection pre,
+  .detailSection p,
+  .debugDetails,
+  .debugBody pre {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: #1f1f1f;
+  }
+
+  .detailSection pre,
+  .detailSection p,
+  .previewText,
+  .debugBody pre {
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  .jobNameCell span,
+  .scheduleCell span,
+  .dispatchCell span,
+  .runtimeCell span,
+  .mutedText,
+  .debugDetails summary,
+  .debugToolbar {
+    color: rgba(255, 255, 255, 0.46);
+  }
+
+  .statusDot {
+    &.enabled {
+      background-color: #73d13d;
+    }
+
+    &.disabled {
+      background-color: #5a5a5a;
+    }
+  }
+
+  /* Form extra text */
+  .formExtraText {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .formHelperLink {
+    color: #69b1ff !important;
+  }
+}

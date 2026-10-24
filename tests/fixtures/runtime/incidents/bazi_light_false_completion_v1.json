@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "incident_id": "bazi-light-false-completion-v1",
+  "captured_at": "2026-08-09T16:20:00+08:00",
+  "anonymized": true,
+  "task": {
+    "complexity": "light",
+    "difficulty_score": 2,
+    "objective": "做一个可离线打开、根据八字查看每日运势的网页产品",
+    "acceptance": [
+      "主 HTML 可直接打开",
+      "明确承诺的农历、节气和真太阳时与实现一致",
+      "测试包含断言且有真实退出码",
+      "主产物验证后自动进入作品库"
+    ]
+  },
+  "observed": {
+    "elapsed_minutes": 17,
+    "model_calls": 41,
+    "tool_calls": 74,
+    "tool_failures": 27,
+    "tokens": 424245,
+    "routing_complexity": "light",
+    "runtime_budget_was_null": true,
+    "terminal_event_persisted": false,
+    "transport_marked_succeeded": true,
+    "send_file_to_user_called": false,
+    "works_item_created": false,
+    "test_had_assertions": false,
+    "declared_capabilities_missing": ["农历", "真太阳时"],
+    "toolguard_payload_stringified": true,
+    "stale_terminal_projection_reused": true
+  },
+  "required_regressions": [
+    "structured_toolguard_payload",
+    "current_run_overrides_old_terminal_projection",
+    "short_artifact_request_uses_standard_budget",
+    "same_failure_is_scoped_to_identical_arguments",
+    "artifact_requires_completion_gate",
+    "works_registration_is_idempotent",
+    "print_only_test_is_rejected",
+    "spec_implementation_contradiction_is_partial",
+    "reconnect_does_not_change_run_fact"
+  ]
+}

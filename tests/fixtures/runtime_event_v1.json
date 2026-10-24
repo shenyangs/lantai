@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "events": [
+    {
+      "schema_version": 1,
+      "id": "evt-continue-1",
+      "seq": 11,
+      "type": "turn.continue_requested",
+      "status": "info",
+      "source": "user",
+      "session_id": "console:chat-1",
+      "turn_id": "run-1",
+      "item_id": "continue-1",
+      "payload": {
+        "request_id": "continue-1",
+        "mode": "retry",
+        "run_id": "run-1",
+        "attempt_id": "attempt-1",
+        "requested_by": "user-1",
+        "reason": "retry after failed attempt",
+        "revision": 7,
+        "checkpoint_id": "checkpoint-1"
+      },
+      "usage": null,
+      "presentation": null,
+      "created_at": "2026-07-16T08:00:00Z"
+    }
+  ]
+}

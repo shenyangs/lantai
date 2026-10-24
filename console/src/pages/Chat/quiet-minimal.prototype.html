@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>澜台·安静工作台视觉原型</title>
+    <style>
+      /*
+       * PROTOTYPE — throwaway visual exploration.
+       * Two variants of the existing chat page, switchable with ?variant=A|B.
+       * No production behavior or dependencies are used here.
+       */
+      :root {
+        color-scheme: light;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+          "Microsoft YaHei", system-ui, sans-serif;
+        font-synthesis: none;
+        --ink: #171717;
+        --muted: #6b6b6b;
+        --faint: #999;
+        --line: #e8e8e5;
+        --hover: #eeeeec;
+        --pressed: #e8e8e5;
+        --sidebar: #f7f7f5;
+        --canvas: #ffffff;
+        --soft: #f5f5f3;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: var(--canvas);
+        color: var(--ink);
+      }
+
+      button,
+      textarea,
+      input {
+        font: inherit;
+      }
+
+      button {
+        color: inherit;
+      }
+
+      .variant {
+        width: 100%;
+        height: 100%;
+        display: none;
+      }
+
+      html[data-variant="A"] .variant-a,
+      html[data-variant="B"] .variant-b,
+      html[data-variant="C"] .variant-c {
+        display: grid;
+      }
+
+      .app-shell {
+        grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+        background: var(--canvas);
+      }
+
+      .sidebar {
+        min-width: 0;
+        height: 100%;
+        background: var(--sidebar);
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border-right: 1px solid transparent;
+      }
+
+      .sidebar-top {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .search {
+        height: 36px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 0 10px;
+        border-radius: 9px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid #e7e7e4;
+      }
+
+      .search input {
+        width: 100%;
+        min-width: 0;
+        border: 0;
+        padding: 0;
+        outline: none;
+        color: var(--ink);
+        background: transparent;
+        font-size: 13px;
+      }
+
+      .search input::placeholder {
+        color: #898989;
+      }
+
+      .shortcut {
+        margin-left: auto;
+        font-size: 10px;
+        color: #999;
+        border: 1px solid #dededb;
+        border-radius: 5px;
+        padding: 1px 4px;
+        background: rgba(255, 255, 255, 0.65);
+      }
+
+      .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-top: 2px;
+      }
+
+      .nav-group {
+        margin-top: 13px;
+      }
+
+      .nav-label {
+        padding: 0 10px;
+        margin: 0 0 4px;
+        color: #a0a09c;
+        font-size: 11px;
+        line-height: 20px;
+      }
+
+      .nav-item {
+        position: relative;
+        width: 100%;
+        height: 36px;
+        border: 0;
+        border-radius: 9px;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 10px;
+        cursor: default;
+        font-size: 14px;
+        font-weight: 470;
+        text-align: left;
+        transition:
+          background 140ms ease,
+          color 140ms ease;
+      }
+
+      .nav-item:hover {
+        background: var(--hover);
+      }
+
+      .nav-item:active {
+        background: var(--pressed);
+      }
+
+      .nav-item.active {
+        background: #e9e9e6;
+        font-weight: 590;
+      }
+
+      .nav-item .chevron {
+        margin-left: auto;
+      }
+
+      .sidebar-footer {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 4px 2px 10px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .avatar-mini {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: #232323;
+        font-size: 11px;
+        font-weight: 650;
+      }
+
+      .main {
+        min-width: 0;
+        height: 100%;
+        display: grid;
+        grid-template-rows: 52px minmax(0, 1fr);
+        background: var(--canvas);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 0;
+        padding: 0 18px 0 22px;
+      }
+
+      .topbar-title {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 14px;
+        font-weight: 590;
+      }
+
+      .topbar-actions,
+      .tool-row,
+      .tool-cluster {
+        display: flex;
+        align-items: center;
+      }
+
+      .topbar-actions {
+        min-width: 0;
+        gap: 2px;
+      }
+
+      .top-text-button,
+      .icon-button,
+      .tool-button,
+      .send-button {
+        border: 0;
+        background: transparent;
+        cursor: default;
+        transition:
+          background 140ms ease,
+          color 140ms ease,
+          transform 100ms ease;
+      }
+
+      .top-text-button {
+        height: 34px;
+        max-width: 232px;
+        padding: 0 9px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #4f4f4f;
+        font-size: 13px;
+        font-weight: 520;
+      }
+
+      .top-text-button:hover,
+      .icon-button:hover,
+      .tool-button:hover {
+        background: var(--soft);
+      }
+
+      .top-text-button:active,
+      .icon-button:active,
+      .tool-button:active,
+      .send-button:active {
+        transform: translateY(1px);
+      }
+
+      .truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .icon-button {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+      }
+
+      .workspace {
+        position: relative;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .chat-column {
+        width: min(760px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+
+      .welcome {
+        text-align: center;
+      }
+
+      .profile-mark {
+        width: 42px;
+        height: 42px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: #222;
+        font-size: 13px;
+        font-weight: 650;
+        letter-spacing: 0.02em;
+      }
+
+      .welcome h1 {
+        margin: 0;
+        font-size: 26px;
+        line-height: 1.25;
+        letter-spacing: -0.035em;
+        font-weight: 650;
+      }
+
+      .welcome p {
+        max-width: 540px;
+        margin: 12px auto 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .composer {
+        position: relative;
+        background: #fff;
+        border: 1px solid #dededb;
+        transition:
+          border-color 150ms ease,
+          box-shadow 150ms ease;
+      }
+
+      .composer:focus-within {
+        border-color: #b9b9b5;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.035);
+      }
+
+      .composer textarea {
+        width: 100%;
+        resize: none;
+        border: 0;
+        outline: 0;
+        color: var(--ink);
+        background: transparent;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .composer textarea::placeholder {
+        color: #999;
+      }
+
+      .tool-row {
+        justify-content: space-between;
+      }
+
+      .tool-cluster {
+        gap: 2px;
+      }
+
+      .tool-button {
+        height: 32px;
+        padding: 0 9px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #555;
+        font-size: 12px;
+      }
+
+      .tool-button.icon-only {
+        width: 32px;
+        padding: 0;
+        justify-content: center;
+      }
+
+      .count {
+        min-width: 24px;
+        height: 24px;
+        padding: 0 6px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--soft);
+        font-size: 11px;
+        color: #777;
+      }
+
+      .send-button {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: #242424;
+      }
+
+      .send-button:hover {
+        background: #000;
+      }
+
+      .suggestions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .suggestion {
+        height: 32px;
+        padding: 0 12px;
+        border: 0;
+        border-radius: 10px;
+        color: #5c5c5c;
+        background: var(--soft);
+        font-size: 12px;
+        cursor: default;
+        transition:
+          background 140ms ease,
+          color 140ms ease;
+      }
+
+      .suggestion:hover {
+        color: var(--ink);
+        background: #ececea;
+      }
+
+      .suggestion:active {
+        background: #e5e5e2;
+      }
+
+      .icon {
+        width: 17px;
+        height: 17px;
+        flex: 0 0 auto;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .icon.small {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* Variant A — focused, centred and conversational. */
+      .variant-a {
+        --sidebar-width: 224px;
+      }
+
+      .variant-a .welcome {
+        padding-top: clamp(92px, 14vh, 132px);
+      }
+
+      .variant-a .composer {
+        min-height: 136px;
+        margin-top: 26px;
+        padding: 14px 14px 12px;
+        border-radius: 24px;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.04),
+          0 6px 24px rgba(0, 0, 0, 0.035);
+      }
+
+      .variant-a .composer textarea {
+        height: 66px;
+        padding: 0 3px;
+      }
+
+      .variant-a .suggestions {
+        margin-top: 14px;
+      }
+
+      /* Variant B — task-oriented, calmer hierarchy, bottom composer. */
+      .variant-b {
+        --sidebar-width: 248px;
+        --sidebar: #f5f5f3;
+        --canvas: #fbfbfa;
+        --soft: #f1f1ef;
+      }
+
+      .variant-b .sidebar {
+        border-right-color: #e9e9e6;
+        padding: 12px 10px;
+      }
+
+      .variant-b .search {
+        background: transparent;
+        border-color: transparent;
+      }
+
+      .variant-b .search:hover {
+        background: #ededeb;
+      }
+
+      .variant-b .nav-item.active {
+        background: #e8e8e5;
+      }
+
+      .variant-b .main {
+        background: var(--canvas);
+        grid-template-rows: 48px minmax(0, 1fr);
+      }
+
+      .variant-b .topbar {
+        padding-left: 28px;
+        border-bottom: 1px solid #eeeeeb;
+      }
+
+      .variant-b .workspace {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        padding: 30px 34px 26px;
+      }
+
+      .variant-b .thread-context {
+        width: min(880px, 100%);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .variant-b .thread-context-copy {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .variant-b .profile-mark {
+        width: 34px;
+        height: 34px;
+        margin: 0;
+        font-size: 11px;
+      }
+
+      .variant-b .thread-context h1 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.3;
+        letter-spacing: -0.025em;
+        font-weight: 620;
+      }
+
+      .variant-b .thread-context p {
+        margin: 3px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .variant-b .empty-thread {
+        width: min(880px, 100%);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .variant-b .starter-list {
+        width: min(590px, 100%);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .variant-b .starter {
+        min-height: 56px;
+        padding: 11px 13px;
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        text-align: left;
+        color: #555;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        cursor: default;
+        transition:
+          background 140ms ease,
+          color 140ms ease;
+      }
+
+      .variant-b .starter:hover {
+        color: var(--ink);
+        background: #f0f0ee;
+      }
+
+      .variant-b .starter-index {
+        color: #9b9b97;
+        font-size: 11px;
+        line-height: 20px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .variant-b .starter-copy {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .variant-b .composer-wrap {
+        width: min(880px, 100%);
+        margin: 0 auto;
+      }
+
+      .variant-b .composer {
+        min-height: 118px;
+        padding: 13px 13px 11px;
+        border-radius: 18px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.045);
+      }
+
+      .variant-b .composer textarea {
+        height: 55px;
+        padding: 0 3px;
+      }
+
+      .composer-note {
+        margin-top: 8px;
+        text-align: center;
+        color: #a0a09c;
+        font-size: 10px;
+      }
+
+      /* Variant C — visibly different silhouette without changing IA. */
+      .variant-c {
+        --sidebar-width: 248px;
+        --sidebar: #181818;
+        --canvas: #f2f2f0;
+        --soft: #eeeeeb;
+        background: var(--canvas);
+      }
+
+      .variant-c .sidebar {
+        padding: 12px 10px;
+        color: #f4f4f2;
+        border-right: 0;
+      }
+
+      .variant-c .search {
+        color: #b9b9b4;
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .variant-c .search input {
+        color: #fff;
+      }
+
+      .variant-c .search input::placeholder {
+        color: #9a9a96;
+      }
+
+      .variant-c .shortcut {
+        color: #aaa;
+        border-color: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .variant-c .nav-label {
+        color: #686864;
+      }
+
+      .variant-c .nav-item {
+        color: #c9c9c5;
+      }
+
+      .variant-c .nav-item:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .variant-c .nav-item.active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .variant-c .nav-item.active::before {
+        content: "";
+        position: absolute;
+        left: -10px;
+        top: 8px;
+        bottom: 8px;
+        width: 2px;
+        border-radius: 2px;
+        background: #fff;
+      }
+
+      .variant-c .sidebar-footer {
+        color: #777773;
+      }
+
+      .variant-c .avatar-mini,
+      .variant-c .profile-mark {
+        color: #181818;
+        background: #f3f3f0;
+      }
+
+      .variant-c .main {
+        grid-template-rows: 48px minmax(0, 1fr);
+        background: var(--canvas);
+      }
+
+      .variant-c .topbar {
+        padding: 0 18px 0 22px;
+        background: var(--canvas);
+      }
+
+      .variant-c .workspace {
+        padding: 0 16px 16px;
+        background: var(--canvas);
+      }
+
+      .variant-c .thread-surface {
+        width: min(980px, 100%);
+        height: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid #e7e7e3;
+        border-radius: 14px;
+      }
+
+      .variant-c .thread-heading {
+        padding: 48px 54px 24px;
+      }
+
+      .variant-c .eyebrow {
+        color: #9b9b96;
+        font-size: 10px;
+        line-height: 1;
+        font-weight: 620;
+        letter-spacing: 0.11em;
+      }
+
+      .variant-c .thread-heading h1 {
+        margin: 14px 0 0;
+        font-size: 32px;
+        line-height: 1.2;
+        font-weight: 620;
+        letter-spacing: -0.045em;
+      }
+
+      .variant-c .thread-heading p {
+        max-width: 500px;
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .variant-c .thread-starts {
+        width: min(680px, calc(100% - 108px));
+        margin: 20px 54px 0;
+        align-self: start;
+        border-top: 1px solid #ecece8;
+      }
+
+      .variant-c .thread-start {
+        width: 100%;
+        min-height: 54px;
+        padding: 0;
+        border: 0;
+        border-bottom: 1px solid #ecece8;
+        display: grid;
+        grid-template-columns: 30px minmax(0, 1fr) 24px;
+        align-items: center;
+        gap: 8px;
+        color: #454545;
+        background: transparent;
+        text-align: left;
+        cursor: default;
+        transition:
+          color 140ms ease,
+          padding 140ms ease;
+      }
+
+      .variant-c .thread-start:hover {
+        padding-left: 5px;
+        color: #000;
+      }
+
+      .variant-c .thread-start-index {
+        color: #aaa;
+        font-size: 10px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .variant-c .thread-start-copy {
+        font-size: 13px;
+      }
+
+      .variant-c .thread-start-arrow {
+        color: #aaa;
+        transition: transform 140ms ease;
+      }
+
+      .variant-c .thread-start:hover .thread-start-arrow {
+        transform: translateX(3px);
+      }
+
+      .variant-c .composer-wrap {
+        padding: 22px 54px 28px;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 28%);
+      }
+
+      .variant-c .composer {
+        min-height: 112px;
+        padding: 12px 12px 10px;
+        border-color: #d8d8d4;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.045);
+      }
+
+      .variant-c .composer textarea {
+        height: 52px;
+        padding: 0 4px;
+      }
+
+      .variant-c .send-button {
+        border-radius: 8px;
+      }
+
+      .prototype-switcher {
+        position: fixed;
+        z-index: 10;
+        left: 50%;
+        bottom: 16px;
+        transform: translateX(-50%);
+        height: 40px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px;
+        color: #fff;
+        background: rgba(24, 24, 24, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 999px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(12px);
+      }
+
+      .prototype-switcher button {
+        width: 30px;
+        height: 30px;
+        border: 0;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .prototype-switcher button:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .prototype-label {
+        min-width: 166px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 580;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .prototype-badge {
+        position: fixed;
+        right: 14px;
+        bottom: 16px;
+        z-index: 9;
+        color: #969692;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+
+      @media (max-width: 960px) {
+        .variant-a,
+        .variant-b {
+          --sidebar-width: 200px;
+        }
+
+        .top-text-button.workspace-button {
+          max-width: 128px;
+        }
+
+        .variant-b .workspace {
+          padding-inline: 22px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <defs>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 18.5 3.5 21v-4.8A8.5 8.5 0 0 1 12 4h1a8 8 0 0 1 0 16H8.5A8.5 8.5 0 0 1 5 18.5Z"/></symbol>
+        <symbol id="i-works" viewBox="0 0 24 24"><path d="M4 6.5h4v11H4zM10 4h10v16H10z"/></symbol>
+        <symbol id="i-channel" viewBox="0 0 24 24"><path d="m8 15 8-8M6 8.5 3.5 11a3 3 0 0 0 4.2 4.2l2.5-2.5M14 11.3l2.5-2.5a3 3 0 1 0-4.2-4.2L9.8 7.1M18 15.5l2.5-2.5M14.5 19l-2.5 2.5"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24"><path d="M5 17h14l-1.5-2.3V10a5.5 5.5 0 0 0-11 0v4.7L5 17Z"/><path d="M9.5 20h5"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M4 6.5h16V20H4zM8 3.5v6M16 3.5v6M4 10h16"/></symbol>
+        <symbol id="i-book" viewBox="0 0 24 24"><path d="M3.5 5.5A7.5 7.5 0 0 1 12 7v13a7.5 7.5 0 0 0-8.5-1.5zM20.5 5.5A7.5 7.5 0 0 0 12 7v13a7.5 7.5 0 0 1 8.5-1.5z"/></symbol>
+        <symbol id="i-memory" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 0-5 2.2A3.5 3.5 0 0 0 3.5 13 3.5 3.5 0 0 0 9 18M15 4a3 3 0 0 1 5 2.2 3.5 3.5 0 0 1 .5 6.8A3.5 3.5 0 0 1 15 18M9 4v16M15 4v16M9 8H7M15 8h2M9 15H7M15 15h2M9 12h6"/></symbol>
+        <symbol id="i-agent" viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6M3 11v4M21 11v4"/></symbol>
+        <symbol id="i-wand" viewBox="0 0 24 24"><path d="m4 20 11-11M13.5 5.5l5 5M6 4v3M4.5 5.5h3M17 15v4M15 17h4M19 3v3M17.5 4.5h3"/></symbol>
+        <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.5 6.5a4.5 4.5 0 0 0-6 5.8L3.8 17a2.3 2.3 0 1 0 3.2 3.2l4.7-4.7a4.5 4.5 0 0 0 5.8-6l-2.8 2.8-3-3z"/></symbol>
+        <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 13.5v-3l-2-.7-.7-1.7.9-2-2.1-2.1-2 .9-1.7-.7-.7-2h-3l-.7 2-1.7.7-2-.9-2.1 2.1.9 2-.7 1.7-2 .7v3l2 .7.7 1.7-.9 2L5 20l2-.9 1.7.7.7 2h3l.7-2 1.7-.7 2 .9 2.1-2.1-.9-2 .7-1.7z"/></symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></symbol>
+        <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v11H3z"/></symbol>
+        <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="i-history" viewBox="0 0 24 24"><path d="M4 8V4m0 0h4M4 4l3 3a8 8 0 1 1-2 8"/></symbol>
+        <symbol id="i-panel" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M15 4v16M9 9l-2 3 2 3"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 2.8 8 7 10 4.2-2 7-5.4 7-10V6z"/><path d="M12 8v5M12 16h.01"/></symbol>
+        <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h5M15 7h5M9 4v6M4 17h9M19 17h1M13 14v6"/></symbol>
+        <symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M8 3h4v4a2 2 0 1 0 4 0V3h5v6h-3a2 2 0 1 0 0 4h3v8h-7v-3a2 2 0 1 0-4 0v3H3v-7h3a2 2 0 1 0 0-4H3V3z"/></symbol>
+        <symbol id="i-paperclip" viewBox="0 0 24 24"><path d="m9 12 5.5-5.5a3 3 0 0 1 4.2 4.2l-7.4 7.4A4.5 4.5 0 0 1 5 11.7l7.2-7.2"/></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m6 10 6-6 6 6M12 4v16"/></symbol>
+        <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+        <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+      </defs>
+    </svg>
+
+    <div class="variant variant-a app-shell" data-name="Focused centre">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <label class="search">
+            <svg class="icon small"><use href="#i-search" /></svg>
+            <input aria-label="检索记忆与对话" placeholder="检索记忆与对话…" />
+            <span class="shortcut">⌘K</span>
+          </label>
+          <nav class="nav" aria-label="主导航">
+            <button class="nav-item active"><svg class="icon"><use href="#i-chat" /></svg><span>聊天</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-works" /></svg><span>作品</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-channel" /></svg><span>渠道</span><svg class="icon small chevron"><use href="#i-chevron" /></svg></button>
+          </nav>
+        </div>
+        <nav class="nav" aria-label="导航分组">
+          <div class="nav-group">
+            <div class="nav-label">控制</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-bell" /></svg><span>今日</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-calendar" /></svg><span>自动化</span></button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">工作区</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-book" /></svg><span>知识库</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-memory" /></svg><span>记忆</span></button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">能力</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-agent" /></svg><span>智能体</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-wand" /></svg><span>技能</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-tool" /></svg><span>工具</span></button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">系统</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-settings" /></svg><span>设置</span></button>
+          </div>
+        </nav>
+        <div class="sidebar-footer"><span>澜台</span><div class="avatar-mini">澜</div></div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-title">New Chat <svg class="icon small"><use href="#i-chevron" /></svg></div>
+          <div class="topbar-actions">
+            <button class="top-text-button"><span>选择模型</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+            <button class="top-text-button workspace-button"><svg class="icon"><use href="#i-folder" /></svg><span class="truncate">…/default/topic-works…</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+            <button class="icon-button" aria-label="打开桌面"><svg class="icon"><use href="#i-monitor" /></svg></button>
+            <button class="icon-button" aria-label="新建"><svg class="icon"><use href="#i-plus" /></svg></button>
+            <button class="icon-button" aria-label="历史"><svg class="icon"><use href="#i-history" /></svg></button>
+            <button class="icon-button" aria-label="面板"><svg class="icon"><use href="#i-panel" /></svg></button>
+          </div>
+        </header>
+        <section class="workspace">
+          <div class="chat-column">
+            <div class="welcome">
+              <div class="profile-mark">澜</div>
+              <h1>今天想聊点什么？</h1>
+              <p>我是沈行知。正事、废话、一个没想明白的念头，或者想一起弄出来的东西，都可以从这里开始。</p>
+            </div>
+            <div class="composer">
+              <textarea aria-label="消息" placeholder="输入消息，按 / 使用快捷指令"></textarea>
+              <div class="tool-row">
+                <div class="tool-cluster">
+                  <button class="tool-button"><svg class="icon"><use href="#i-shield" /></svg><span>风险询问</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+                  <button class="tool-button"><svg class="icon"><use href="#i-sliders" /></svg><span>标准</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+                  <button class="tool-button icon-only" aria-label="技能"><svg class="icon"><use href="#i-puzzle" /></svg></button>
+                  <span class="count">0</span>
+                  <button class="tool-button icon-only" aria-label="附件"><svg class="icon"><use href="#i-paperclip" /></svg></button>
+                </div>
+                <button class="send-button" aria-label="发送"><svg class="icon"><use href="#i-arrow-up" /></svg></button>
+              </div>
+            </div>
+            <div class="suggestions">
+              <button class="suggestion">随便聊聊</button>
+              <button class="suggestion">陪我想想</button>
+              <button class="suggestion">一起玩个念头</button>
+              <button class="suggestion">帮我弄一下</button>
+              <button class="suggestion">帮我查清楚</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="variant variant-b app-shell" data-name="Working thread">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <label class="search">
+            <svg class="icon small"><use href="#i-search" /></svg>
+            <input aria-label="检索记忆与对话" placeholder="检索记忆与对话…" />
+            <span class="shortcut">⌘K</span>
+          </label>
+          <nav class="nav" aria-label="主导航">
+            <button class="nav-item active"><svg class="icon"><use href="#i-chat" /></svg><span>聊天</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-works" /></svg><span>作品</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-channel" /></svg><span>渠道</span><svg class="icon small chevron"><use href="#i-chevron" /></svg></button>
+          </nav>
+        </div>
+        <nav class="nav" aria-label="导航分组">
+          <div class="nav-group">
+            <div class="nav-label">控制</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-bell" /></svg><span>今日</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-calendar" /></svg><span>自动化</span></button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">工作区</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-book" /></svg><span>知识库</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-memory" /></svg><span>记忆</span></button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">能力</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-agent" /></svg><span>智能体</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-wand" /></svg><span>技能</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-tool" /></svg><span>工具</span></button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">系统</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-settings" /></svg><span>设置</span></button>
+          </div>
+        </nav>
+        <div class="sidebar-footer"><span>澜台</span><div class="avatar-mini">澜</div></div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-title">New Chat <svg class="icon small"><use href="#i-chevron" /></svg></div>
+          <div class="topbar-actions">
+            <button class="top-text-button"><span>选择模型</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+            <button class="top-text-button workspace-button"><svg class="icon"><use href="#i-folder" /></svg><span class="truncate">…/default/topic-works…</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+            <button class="icon-button"><svg class="icon"><use href="#i-monitor" /></svg></button>
+            <button class="icon-button"><svg class="icon"><use href="#i-plus" /></svg></button>
+            <button class="icon-button"><svg class="icon"><use href="#i-history" /></svg></button>
+            <button class="icon-button"><svg class="icon"><use href="#i-panel" /></svg></button>
+          </div>
+        </header>
+        <section class="workspace">
+          <div class="thread-context">
+            <div class="thread-context-copy">
+              <div class="profile-mark">澜</div>
+              <div>
+                <h1>今天想聊点什么？</h1>
+                <p>从一个念头开始，我们一起往前推。</p>
+              </div>
+            </div>
+          </div>
+          <div class="empty-thread">
+            <div class="starter-list">
+              <button class="starter"><span class="starter-index">01</span><span class="starter-copy">随便聊聊，说说你现在在想什么</span></button>
+              <button class="starter"><span class="starter-index">02</span><span class="starter-copy">陪我梳理一个还没想清楚的问题</span></button>
+              <button class="starter"><span class="starter-index">03</span><span class="starter-copy">一起把一个新念头变成可执行的东西</span></button>
+              <button class="starter"><span class="starter-index">04</span><span class="starter-copy">帮我查清楚一件事，给出可验证的结论</span></button>
+            </div>
+          </div>
+          <div class="composer-wrap">
+            <div class="composer">
+              <textarea aria-label="消息" placeholder="给澜台发消息…"></textarea>
+              <div class="tool-row">
+                <div class="tool-cluster">
+                  <button class="tool-button"><svg class="icon"><use href="#i-shield" /></svg><span>风险询问</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+                  <button class="tool-button"><svg class="icon"><use href="#i-sliders" /></svg><span>标准</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+                  <button class="tool-button icon-only"><svg class="icon"><use href="#i-puzzle" /></svg></button>
+                  <span class="count">0</span>
+                  <button class="tool-button icon-only"><svg class="icon"><use href="#i-paperclip" /></svg></button>
+                </div>
+                <button class="send-button" aria-label="发送"><svg class="icon"><use href="#i-arrow-up" /></svg></button>
+              </div>
+            </div>
+            <div class="composer-note">澜台可能会犯错。请核对重要信息。</div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="variant variant-c app-shell" data-name="Flat contrast">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <label class="search">
+            <svg class="icon small"><use href="#i-search" /></svg>
+            <input aria-label="检索记忆与对话" placeholder="检索记忆与对话…" />
+            <span class="shortcut">⌘K</span>
+          </label>
+          <nav class="nav" aria-label="主导航">
+            <button class="nav-item active"><svg class="icon"><use href="#i-chat" /></svg><span>聊天</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-works" /></svg><span>作品</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-channel" /></svg><span>渠道</span><svg class="icon small chevron"><use href="#i-chevron" /></svg></button>
+          </nav>
+        </div>
+        <nav class="nav" aria-label="导航分组">
+          <div class="nav-group">
+            <div class="nav-label">控制</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-bell" /></svg><span>今日</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-calendar" /></svg><span>自动化</span></button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">工作区</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-book" /></svg><span>知识库</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-memory" /></svg><span>记忆</span></button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">能力</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-agent" /></svg><span>智能体</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-wand" /></svg><span>技能</span></button>
+            <button class="nav-item"><svg class="icon"><use href="#i-tool" /></svg><span>工具</span></button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-label">系统</div>
+            <button class="nav-item"><svg class="icon"><use href="#i-settings" /></svg><span>设置</span></button>
+          </div>
+        </nav>
+        <div class="sidebar-footer"><span>澜台</span><div class="avatar-mini">澜</div></div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-title">New Chat <svg class="icon small"><use href="#i-chevron" /></svg></div>
+          <div class="topbar-actions">
+            <button class="top-text-button"><span>选择模型</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+            <button class="top-text-button workspace-button"><svg class="icon"><use href="#i-folder" /></svg><span class="truncate">…/default/topic-works…</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+            <button class="icon-button"><svg class="icon"><use href="#i-monitor" /></svg></button>
+            <button class="icon-button"><svg class="icon"><use href="#i-plus" /></svg></button>
+            <button class="icon-button"><svg class="icon"><use href="#i-history" /></svg></button>
+            <button class="icon-button"><svg class="icon"><use href="#i-panel" /></svg></button>
+          </div>
+        </header>
+        <section class="workspace">
+          <div class="thread-surface">
+            <div class="thread-heading">
+              <div class="eyebrow">NEW CONVERSATION</div>
+              <h1>你想从哪里开始？</h1>
+              <p>聊点什么，弄清一个问题，或者一起把一件事做完。</p>
+            </div>
+            <div class="thread-starts">
+              <button class="thread-start"><span class="thread-start-index">01</span><span class="thread-start-copy">随便聊聊，说说你现在在想什么</span><svg class="icon small thread-start-arrow"><use href="#i-arrow-right" /></svg></button>
+              <button class="thread-start"><span class="thread-start-index">02</span><span class="thread-start-copy">陪我梳理一个还没想清楚的问题</span><svg class="icon small thread-start-arrow"><use href="#i-arrow-right" /></svg></button>
+              <button class="thread-start"><span class="thread-start-index">03</span><span class="thread-start-copy">把一个新念头变成可执行的东西</span><svg class="icon small thread-start-arrow"><use href="#i-arrow-right" /></svg></button>
+              <button class="thread-start"><span class="thread-start-index">04</span><span class="thread-start-copy">查清楚一件事，给出可验证的结论</span><svg class="icon small thread-start-arrow"><use href="#i-arrow-right" /></svg></button>
+            </div>
+            <div class="composer-wrap">
+              <div class="composer">
+                <textarea aria-label="消息" placeholder="给澜台发消息…"></textarea>
+                <div class="tool-row">
+                  <div class="tool-cluster">
+                    <button class="tool-button"><svg class="icon"><use href="#i-shield" /></svg><span>风险询问</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+                    <button class="tool-button"><svg class="icon"><use href="#i-sliders" /></svg><span>标准</span><svg class="icon small"><use href="#i-chevron" /></svg></button>
+                    <button class="tool-button icon-only"><svg class="icon"><use href="#i-puzzle" /></svg></button>
+                    <span class="count">0</span>
+                    <button class="tool-button icon-only"><svg class="icon"><use href="#i-paperclip" /></svg></button>
+                  </div>
+                  <button class="send-button" aria-label="发送"><svg class="icon"><use href="#i-arrow-up" /></svg></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="prototype-switcher" role="toolbar" aria-label="原型变体切换">
+      <button id="previous" aria-label="上一个变体"><svg class="icon"><use href="#i-arrow-left" /></svg></button>
+      <div class="prototype-label" id="prototype-label"></div>
+      <button id="next" aria-label="下一个变体"><svg class="icon"><use href="#i-arrow-right" /></svg></button>
+    </div>
+    <div class="prototype-badge">THROWAWAY PROTOTYPE</div>
+
+    <script>
+      const variants = [
+        { key: "A", name: "Focused centre" },
+        { key: "B", name: "Working thread" },
+        { key: "C", name: "Flat contrast" },
+      ];
+
+      const params = new URLSearchParams(window.location.search);
+      const requested = String(params.get("variant") || "A").toUpperCase();
+      let index = Math.max(0, variants.findIndex((item) => item.key === requested));
+
+      function render() {
+        const current = variants[index];
+        document.documentElement.dataset.variant = current.key;
+        document.getElementById("prototype-label").textContent =
+          `${current.key} — ${current.name}`;
+        const nextParams = new URLSearchParams(window.location.search);
+        nextParams.set("variant", current.key);
+        history.replaceState(null, "", `${window.location.pathname}?${nextParams}`);
+      }
+
+      function move(delta) {
+        index = (index + delta + variants.length) % variants.length;
+        render();
+      }
+
+      document.getElementById("previous").addEventListener("click", () => move(-1));
+      document.getElementById("next").addEventListener("click", () => move(1));
+
+      document.addEventListener("keydown", (event) => {
+        const target = event.target;
+        if (target.matches("input, textarea, [contenteditable='true']")) return;
+        if (event.key === "ArrowLeft") move(-1);
+        if (event.key === "ArrowRight") move(1);
+      });
+
+      document.querySelectorAll(".suggestion, .starter").forEach((button) => {
+        button.addEventListener("click", () => {
+          const active = document.querySelector(
+            `html[data-variant='${variants[index].key}'] .variant:not([style*='display: none']) textarea`,
+          );
+          const textarea = active || document.querySelector(`.variant-${variants[index].key.toLowerCase()} textarea`);
+          if (!textarea) return;
+          textarea.value = button.textContent.trim().replace(/^\d+\s*/, "");
+          textarea.focus();
+        });
+      });
+
+      render();
+    </script>
+  </body>
+</html>

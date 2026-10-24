@@ -1,0 +1,35 @@
+/* Menu background in light mode */
+.lantai-menu,
+.ant-menu {
+  background: var(--lt-surface) !important;
+}
+
+/* Menu selected item in light mode */
+.lantai-menu-item-selected,
+.ant-menu-item-selected {
+  background: rgba(43, 18, 0, 0.08) !important;
+  color: inherit !important;
+}
+
+/* Hide submenu arrow in light mode */
+.lantai-menu-submenu-arrow,
+.ant-menu-submenu-arrow {
+  display: none !important;
+}
+
+/* Group title (一级菜单) in light mode */
+.lantai-menu-submenu-title,
+.ant-menu-submenu-title {
+  font-family: "PingFang SC", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 32px !important;
+  letter-spacing: normal !important;
+  color: rgba(26, 23, 22, 0.25) !important;
+}
+
+/* Remove submenu indent - align with parent in light mode */
+.lantai-menu-submenu .lantai-menu-item,
+.ant-menu-submenu .ant-menu-item {
+  padding-left: 12px !important;
+}

@@ -1,0 +1,104 @@
+{
+  "suite_id": "knowledge_graph_v1",
+  "version": 1,
+  "documents": [
+    {
+      "document": {
+        "source_id": "doc:project",
+        "source_path": "docs/project.md",
+        "content": "北辰计划由澜台研究组负责。",
+        "revision": "v1",
+        "trust": 0.8
+      },
+      "extraction": {
+        "schema_version": 1,
+        "extractor_version": "gold-v1",
+        "prompt_version": "gold-v1",
+        "model_label": "fixture",
+        "entities": [
+          {
+            "local_id": "project",
+            "name": "北辰计划",
+            "kind": "project",
+            "aliases": ["Project Polaris"]
+          },
+          {
+            "local_id": "team",
+            "name": "澜台研究组",
+            "kind": "organization",
+            "aliases": ["Lantai Research Group"]
+          }
+        ],
+        "relations": [
+          {
+            "subject_id": "team",
+            "predicate": "负责",
+            "object_id": "project",
+            "evidence_quote": "北辰计划由澜台研究组负责。",
+            "polarity": "positive",
+            "confidence": 0.98
+          }
+        ]
+      }
+    },
+    {
+      "document": {
+        "source_id": "doc:leader",
+        "source_path": "docs/leader.md",
+        "content": "林舟是澜台研究组负责人。",
+        "revision": "v1",
+        "trust": 0.9
+      },
+      "extraction": {
+        "schema_version": 1,
+        "extractor_version": "gold-v1",
+        "prompt_version": "gold-v1",
+        "model_label": "fixture",
+        "entities": [
+          {
+            "local_id": "leader",
+            "name": "林舟",
+            "kind": "person",
+            "aliases": ["Lin Zhou"]
+          },
+          {
+            "local_id": "team",
+            "name": "澜台研究组",
+            "kind": "organization",
+            "aliases": ["Lantai Research Group"]
+          }
+        ],
+        "relations": [
+          {
+            "subject_id": "leader",
+            "predicate": "领导",
+            "object_id": "team",
+            "evidence_quote": "林舟是澜台研究组负责人。",
+            "polarity": "positive",
+            "confidence": 0.97
+          }
+        ]
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "zh_two_hop",
+      "query": "北辰计划由谁领导？",
+      "expected_hops": 2,
+      "expected_citations": [
+        "docs/project.md",
+        "docs/leader.md"
+      ]
+    },
+    {
+      "id": "en_alias_two_hop",
+      "query": "Who leads Project Polaris?",
+      "expected_hops": 2,
+      "expected_citations": [
+        "docs/project.md",
+        "docs/leader.md"
+      ]
+    }
+  ]
+}

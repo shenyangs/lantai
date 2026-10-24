@@ -1,0 +1,120 @@
+.workbench {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--lt-window-bg);
+}
+
+.toolbar {
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--lt-quiet-hairline);
+  background: var(--lt-window-bg);
+}
+
+.identity {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  strong {
+    max-width: min(42vw, 520px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  span {
+    color: var(--lt-text-tertiary);
+    font-size: 12px;
+  }
+}
+
+.hint {
+  margin-left: auto;
+  color: var(--lt-text-tertiary);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.operationError {
+  margin-left: auto;
+  max-width: min(44vw, 520px);
+  overflow: hidden;
+  color: var(--lt-danger);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.editorHost {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  background: #1f1f1f;
+}
+
+.stateStage {
+  flex: 1;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 32px;
+  color: var(--lt-text-muted);
+  text-align: center;
+
+  > svg {
+    color: var(--lt-text-faint);
+  }
+
+  > strong {
+    color: var(--lt-text);
+    font-size: 17px;
+  }
+
+  > span {
+    max-width: 56ch;
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+}
+
+.stateActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.spin {
+  color: var(--lt-accent) !important;
+  animation: office-workbench-spin 1s linear infinite;
+}
+
+@keyframes office-workbench-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hint {
+    display: none;
+  }
+}

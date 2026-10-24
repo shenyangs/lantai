@@ -1,0 +1,33 @@
+.artifact {
+  margin: 12px 0;
+  border: 1px solid var(--border-color, #dce3e5);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--card-bg, #fff);
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px 0;
+  font-weight: 600;
+}
+
+.evidence {
+  padding: 12px 16px 16px;
+  border-top: 1px solid var(--border-color, #dce3e5);
+
+  summary { cursor: pointer; font-weight: 600; }
+  dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 12px; }
+  dt { color: #66767a; }
+  dd { margin: 0; overflow-wrap: anywhere; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  caption { text-align: left; color: #66767a; padding-bottom: 8px; }
+  th, td { text-align: left; border-bottom: 1px solid #e8ecee; padding: 7px 8px; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+}
+
+.notice { margin: 10px 16px; color: #8a541f; }
+.loading, .error { margin: 12px 0; padding: 14px; border: 1px solid #dce3e5; border-radius: 10px; }
+.error { display: flex; align-items: center; gap: 8px; color: #a03232; }

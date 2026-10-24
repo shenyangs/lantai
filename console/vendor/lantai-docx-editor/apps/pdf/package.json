@@ -1,0 +1,42 @@
+{
+  "name": "@lantai/pdf-editor",
+  "productName": "澜台 PDF",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "description": "Local PDF editor embedded in Lantai",
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "dev:renderer": "vite --config vite.renderer.config.ts",
+    "native:build": "node scripts/build-vision.mjs",
+    "build": "npm run native:build && electron-vite build",
+    "test": "npm run native:build && vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@lantai/office-ai-bridge": "*",
+    "@embedpdf/pdfium": "^2.15.0",
+    "@genoffice/agent-core": "*",
+    "@genoffice/ai-provider": "*",
+    "@genoffice/electron-utils": "*",
+    "@genoffice/i18n": "*",
+    "@genoffice/ui": "*",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.0.4",
+    "electron": "^43.3.0",
+    "electron-vite": "^5.0.0",
+    "harfbuzzjs": "^0.10.3",
+    "jsdom": "^28.0.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.2.108",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-static-copy": "^3.0.0",
+    "vitest": "^4.1.10"
+  },
+  "author": "Lantai"
+}

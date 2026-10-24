@@ -1,0 +1,12 @@
+OfficeCLI vendored binary
+
+Version: 1.0.143
+Platform: macOS Apple Silicon (arm64)
+Source: https://github.com/iOfficeAI/OfficeCLI/releases/download/v1.0.143/officecli-mac-arm64
+SHA256: 2f158d46f9b6c5eb0dfe4eb02038114001e17acc47b67347417c56dcf9659096
+License: Apache-2.0
+License-Source: https://raw.githubusercontent.com/iOfficeAI/OfficeCLI/v1.0.143/LICENSE
+License-SHA256: 7e282402a5a6db33995fe638bb3fe79013f9884d8f7d15a42e481c1e86aadda1
+Notice-Source: https://raw.githubusercontent.com/iOfficeAI/OfficeCLI/v1.0.143/NOTICE
+
+Bundled at build time only. Runtime invocations set OFFICECLI_SKIP_UPDATE=1.

@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "id": "editorial-executive-reference-benchmark",
+  "source_deck": "abstracted controlled benchmark",
+  "source_format": "builtin",
+  "visual_personality": [
+    "typography-first",
+    "editorial",
+    "executive",
+    "restrained",
+    "information-dense",
+    "minimal-decoration"
+  ],
+  "typography": {
+    "title_font": "Noto Sans SC",
+    "body_font": "Noto Sans SC",
+    "title_size": 32,
+    "body_size": 17,
+    "caption_size": 12.2
+  },
+  "palette": ["FCFCFA", "141414", "757575", "3D3D3D", "E6E6E0"],
+  "color_roles": {
+    "canvas": "FCFCFA",
+    "ink": "141414",
+    "muted": "757575",
+    "accent": "3D3D3D",
+    "subtle": "E6E6E0"
+  },
+  "grid": {
+    "columns": 12,
+    "margin_x": 0.75,
+    "margin_y": 0.4,
+    "gutter": 0.24
+  },
+  "spacing_scale": [0.12, 0.2, 0.32, 0.52, 0.84],
+  "margins": {
+    "left": 0.75,
+    "right": 0.75,
+    "top": 0.4,
+    "bottom": 0.42
+  },
+  "hierarchy": {
+    "title_ratio": 1.88,
+    "support_ratio": 1.22,
+    "muted_weight": 0.42
+  },
+  "density": "adaptive",
+  "shape_language": ["open fields", "fine rules", "square corners", "few containers"],
+  "rule_language": ["alignment before borders", "one dominant anchor", "supporting evidence recedes"],
+  "number_language": ["dominant metric", "direct labels", "quiet support metrics"],
+  "chart_language": ["direct labels", "quiet axes", "single emphasis color"],
+  "image_language": ["content-bearing evidence", "editorial crop", "no decorative stock imagery"],
+  "header_system": {"enabled": true, "position": "top-rail", "weight": "quiet"},
+  "footer_system": {"enabled": true, "position": "bottom-rail", "page_number": true},
+  "recurring_motifs": ["editorial rule", "source rail", "page marker"],
+  "composition_principles": ["asymmetric balance", "typography first", "alternate density and visual anchors"],
+  "preferred_relationships": ["thesis", "comparison", "process", "hierarchy", "data_trend", "metric_dashboard", "summary"],
+  "preferred_compositions": ["editorial-column", "metric-field", "comparison-field", "dense-report", "closing-statement"],
+  "anti_patterns": ["card spam", "equal visual weight", "decorative gradients", "tiny body copy"],
+  "composition_policy": {
+    "motif_family": "editorial-rule",
+    "title_scale": 1.0,
+    "whitespace_bias": 0.58,
+    "container_density": 0.15,
+    "asymmetry": 0.62
+  },
+  "variation_seed": 0
+}

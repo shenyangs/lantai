@@ -1,0 +1,304 @@
+{
+  "plain_answer": [
+    {
+      "id": "plain-1",
+      "seq": 1,
+      "type": "turn.started",
+      "status": "running",
+      "source": "user",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {}
+    },
+    {
+      "id": "plain-2",
+      "seq": 2,
+      "type": "message.delta",
+      "status": "running",
+      "source": "assistant",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "message": {
+          "id": "msg-1",
+          "role": "assistant",
+          "name": "Friday",
+          "content": [{"type": "text", "text": "hello"}],
+          "metadata": {}
+        }
+      }
+    },
+    {
+      "id": "plain-3",
+      "seq": 3,
+      "type": "message.completed",
+      "status": "completed",
+      "source": "assistant",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "message": {
+          "id": "msg-1",
+          "role": "assistant",
+          "name": "Friday",
+          "content": [{"type": "text", "text": "hello"}],
+          "metadata": {}
+        }
+      }
+    },
+    {
+      "id": "plain-4",
+      "seq": 4,
+      "type": "turn.completed",
+      "status": "completed",
+      "source": "system",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {}
+    }
+  ],
+  "thinking": [
+    {
+      "id": "thinking-1",
+      "seq": 1,
+      "type": "message.delta",
+      "status": "running",
+      "source": "assistant",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "message": {
+          "id": "msg-thinking",
+          "role": "assistant",
+          "name": "Friday",
+          "content": [{"type": "thinking", "text": "想"}],
+          "metadata": {}
+        }
+      }
+    },
+    {
+      "id": "thinking-2",
+      "seq": 2,
+      "type": "message.delta",
+      "status": "running",
+      "source": "assistant",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "message": {
+          "id": "msg-thinking",
+          "role": "assistant",
+          "name": "Friday",
+          "content": [{"type": "text", "text": "答"}],
+          "metadata": {}
+        }
+      }
+    }
+  ],
+  "single_tool": [
+    {
+      "id": "single-tool-1",
+      "seq": 1,
+      "type": "tool.call.started",
+      "status": "running",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-1",
+        "name": "lookup",
+        "tool_name": "lookup",
+        "arguments": {"query": "澜台"}
+      }
+    },
+    {
+      "id": "single-tool-2",
+      "seq": 2,
+      "type": "tool.call.completed",
+      "status": "completed",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-1",
+        "name": "lookup",
+        "tool_name": "lookup",
+        "ok": true,
+        "output": [{"type": "text", "text": "found"}]
+      }
+    }
+  ],
+  "multi_tool": [
+    {
+      "id": "multi-tool-1",
+      "seq": 1,
+      "type": "tool.call.started",
+      "status": "running",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-1",
+        "name": "lookup",
+        "tool_name": "lookup",
+        "arguments": {"query": "澜台"}
+      }
+    },
+    {
+      "id": "multi-tool-2",
+      "seq": 2,
+      "type": "tool.call.completed",
+      "status": "completed",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-1",
+        "name": "lookup",
+        "tool_name": "lookup",
+        "ok": true,
+        "output": [{"type": "text", "text": "found"}]
+      }
+    },
+    {
+      "id": "multi-tool-3",
+      "seq": 3,
+      "type": "tool.call.started",
+      "status": "running",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-2",
+        "name": "calculator",
+        "tool_name": "calculator",
+        "arguments": {"expr": "1+1"}
+      }
+    },
+    {
+      "id": "multi-tool-4",
+      "seq": 4,
+      "type": "tool.call.completed",
+      "status": "completed",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-2",
+        "name": "calculator",
+        "tool_name": "calculator",
+        "ok": true,
+        "output": [{"type": "text", "text": "2"}]
+      }
+    }
+  ],
+  "approval": [
+    {
+      "id": "approval-1",
+      "seq": 1,
+      "type": "approval.requested",
+      "status": "running",
+      "source": "system",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "item_id": "approval-1",
+      "payload": {
+        "request_id": "approval-1",
+        "tool_name": "shell"
+      }
+    },
+    {
+      "id": "approval-2",
+      "seq": 2,
+      "type": "approval.resolved",
+      "status": "completed",
+      "source": "system",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "item_id": "approval-1",
+      "payload": {
+        "request_id": "approval-1",
+        "tool_name": "shell",
+        "decision": "approved"
+      }
+    }
+  ],
+  "mcp": [
+    {
+      "id": "mcp-1",
+      "seq": 1,
+      "type": "tool.call.started",
+      "status": "running",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-mcp",
+        "name": "mcp_echo",
+        "tool_name": "mcp_echo",
+        "arguments": {"value": "ok"}
+      }
+    },
+    {
+      "id": "mcp-2",
+      "seq": 2,
+      "type": "tool.call.completed",
+      "status": "completed",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-mcp",
+        "name": "mcp_echo",
+        "tool_name": "mcp_echo",
+        "ok": true,
+        "output": [{"type": "text", "text": "mcp_echo:ok"}]
+      }
+    }
+  ],
+  "tool_failure": [
+    {
+      "id": "tool-failure-1",
+      "seq": 1,
+      "type": "tool.call.started",
+      "status": "running",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-shell",
+        "name": "shell",
+        "tool_name": "shell",
+        "arguments": {"command": "pwd"}
+      }
+    },
+    {
+      "id": "tool-failure-2",
+      "seq": 2,
+      "type": "tool.call.completed",
+      "status": "failed",
+      "source": "tool",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {
+        "id": "call-shell",
+        "name": "shell",
+        "tool_name": "shell",
+        "ok": false,
+        "output": [{"type": "text", "text": "permission denied"}]
+      }
+    }
+  ],
+  "cancel_interrupt": [
+    {
+      "id": "cancel-1",
+      "seq": 1,
+      "type": "turn.interrupted",
+      "status": "interrupted",
+      "source": "system",
+      "session_id": "session-1",
+      "turn_id": "run-1",
+      "payload": {}
+    }
+  ]
+}

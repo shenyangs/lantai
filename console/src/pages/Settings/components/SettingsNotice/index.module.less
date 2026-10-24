@@ -1,0 +1,57 @@
+.notice {
+  --notice-accent: var(--lt-accent);
+
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid
+    color-mix(in srgb, var(--notice-accent) 18%, var(--lt-material-border));
+  border-radius: var(--lt-radius-md);
+  color: var(--lt-text);
+  background: color-mix(
+    in srgb,
+    var(--notice-accent) 6%,
+    var(--lt-material-inset)
+  );
+
+  strong {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--lt-text);
+    font-size: 13px;
+    font-weight: 690;
+    line-height: 1.45;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--notice-accent);
+  font-size: 15px;
+}
+
+.description {
+  max-width: 78ch;
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.success {
+  --notice-accent: var(--lt-success);
+}
+
+.warning {
+  --notice-accent: var(--lt-warning);
+}
+
+.error {
+  --notice-accent: var(--lt-danger);
+}

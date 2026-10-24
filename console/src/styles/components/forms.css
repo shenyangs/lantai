@@ -1,0 +1,297 @@
+/* Page titles (h1) */
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3 {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Input / Textarea */
+html.dark-mode .lantai-input,
+html.dark-mode .ant-input {
+  background: var(--lt-control-bg) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Disabled input */
+html.dark-mode .lantai-input[disabled],
+html.dark-mode .ant-input[disabled],
+html.dark-mode .lantai-input-disabled,
+html.dark-mode .ant-input-disabled {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  cursor: not-allowed;
+}
+
+/* Disabled InputNumber */
+html.dark-mode .lantai-input-number-disabled,
+html.dark-mode .ant-input-number-disabled,
+html.dark-mode .lantai-input-number-disabled .lantai-input-number-input,
+html.dark-mode .ant-input-number-disabled .ant-input-number-input {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+html.dark-mode .lantai-input::placeholder,
+html.dark-mode .ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.25) !important;
+}
+
+html.dark-mode .lantai-input-affix-wrapper,
+html.dark-mode .ant-input-affix-wrapper {
+  background: var(--lt-control-bg) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Select */
+html.dark-mode .lantai-select-selector,
+html.dark-mode .ant-select-selector {
+  background: var(--lt-control-bg) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-select-selection-placeholder,
+html.dark-mode .ant-select-selection-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important;
+}
+
+html.dark-mode .lantai-select-arrow,
+html.dark-mode .ant-select-arrow {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Select dropdown */
+html.dark-mode .lantai-select-dropdown,
+html.dark-mode .ant-select-dropdown {
+  background: var(--lt-surface-raised) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark-mode .lantai-select-item,
+html.dark-mode .ant-select-item {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-select-item-empty,
+html.dark-mode .ant-select-item-empty {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+html.dark-mode .lantai-select-item-option-active,
+html.dark-mode .ant-select-item-option-active {
+  background: var(--lt-menu-selected-bg) !important;
+}
+
+html.dark-mode .lantai-select-item-option-selected,
+html.dark-mode .ant-select-item-option-selected {
+  background: var(--lt-focus-ring) !important;
+  color: var(--lt-accent-hover) !important;
+}
+
+/* Form labels */
+html.dark-mode .lantai-form-item-label > label,
+html.dark-mode .ant-form-item-label > label {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html.dark-mode .lantai-form-item-required::before,
+html.dark-mode .ant-form-item-required::before {
+  color: var(--lt-danger) !important;
+}
+
+/* InputNumber */
+html.dark-mode .lantai-input-number,
+html.dark-mode .ant-input-number {
+  background: var(--lt-control-bg) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-input-number-input,
+html.dark-mode .ant-input-number-input {
+  background: var(--lt-control-bg) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-input-number-handler-wrap,
+html.dark-mode .ant-input-number-handler-wrap {
+  background: var(--lt-control-bg) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark-mode .lantai-input-number-handler,
+html.dark-mode .ant-input-number-handler {
+  color: rgba(255, 255, 255, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* TimePicker */
+html.dark-mode .lantai-picker,
+html.dark-mode .ant-picker {
+  background: var(--lt-control-bg) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-picker-input > input,
+html.dark-mode .ant-picker-input > input {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-picker-suffix,
+html.dark-mode .ant-picker-suffix {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+html.dark-mode .lantai-picker-dropdown,
+html.dark-mode .ant-picker-dropdown {
+  background: var(--lt-surface-raised) !important;
+}
+
+html.dark-mode .lantai-picker-panel,
+html.dark-mode .ant-picker-panel {
+  background: var(--lt-surface-raised) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark-mode .lantai-picker-time-panel-cell-inner,
+html.dark-mode .ant-picker-time-panel-cell-inner {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode
+  .lantai-picker-time-panel-cell-selected
+  .lantai-picker-time-panel-cell-inner,
+html.dark-mode
+  .ant-picker-time-panel-cell-selected
+  .ant-picker-time-panel-cell-inner {
+  background: var(--lt-focus-ring) !important;
+  color: var(--lt-accent-hover) !important;
+}
+
+/* DatePicker / RangePicker calendar panel */
+html.dark-mode .lantai-picker-dropdown,
+html.dark-mode .ant-picker-dropdown {
+  background: transparent !important;
+}
+
+html.dark-mode .lantai-picker-panel-container,
+html.dark-mode .ant-picker-panel-container {
+  background: var(--lt-surface-raised) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Header (month/year nav) */
+html.dark-mode .lantai-picker-header,
+html.dark-mode .ant-picker-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-picker-header-view button,
+html.dark-mode .ant-picker-header-view button,
+html.dark-mode .lantai-picker-prev-icon,
+html.dark-mode .lantai-picker-next-icon,
+html.dark-mode .lantai-picker-super-prev-icon,
+html.dark-mode .lantai-picker-super-next-icon,
+html.dark-mode .ant-picker-prev-icon,
+html.dark-mode .ant-picker-next-icon,
+html.dark-mode .ant-picker-super-prev-icon,
+html.dark-mode .ant-picker-super-next-icon {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html.dark-mode .lantai-picker-header button:hover,
+html.dark-mode .ant-picker-header button:hover {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Week day labels (Su Mo Tu ...) */
+html.dark-mode .lantai-picker-content th,
+html.dark-mode .ant-picker-content th {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Normal date cells */
+html.dark-mode .lantai-picker-cell .lantai-picker-cell-inner,
+html.dark-mode .ant-picker-cell .ant-picker-cell-inner {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html.dark-mode .lantai-picker-cell:hover .lantai-picker-cell-inner,
+html.dark-mode .ant-picker-cell:hover .ant-picker-cell-inner {
+  background: var(--lt-focus-ring) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Outside-month cells */
+html.dark-mode .lantai-picker-cell-disabled .lantai-picker-cell-inner,
+html.dark-mode .ant-picker-cell-disabled .ant-picker-cell-inner,
+html.dark-mode .lantai-picker-cell-disabled,
+html.dark-mode .ant-picker-cell-disabled {
+  color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Today marker */
+html.dark-mode .lantai-picker-cell-today .lantai-picker-cell-inner::before,
+html.dark-mode .ant-picker-cell-today .ant-picker-cell-inner::before {
+  border-color: var(--lt-accent-hover) !important;
+}
+
+/* Selected start/end cell */
+html.dark-mode .lantai-picker-cell-selected .lantai-picker-cell-inner,
+html.dark-mode .ant-picker-cell-selected .ant-picker-cell-inner,
+html.dark-mode .lantai-picker-cell-range-start .lantai-picker-cell-inner,
+html.dark-mode .ant-picker-cell-range-start .ant-picker-cell-inner,
+html.dark-mode .lantai-picker-cell-range-end .lantai-picker-cell-inner,
+html.dark-mode .ant-picker-cell-range-end .ant-picker-cell-inner {
+  background: var(--lt-accent) !important;
+  color: var(--lt-text-inverse) !important;
+}
+
+/* Range in-between cells */
+html.dark-mode .lantai-picker-cell-in-range::before,
+html.dark-mode .ant-picker-cell-in-range::before {
+  background: var(--lt-focus-ring) !important;
+}
+
+html.dark-mode .lantai-picker-cell-in-range .lantai-picker-cell-inner,
+html.dark-mode .ant-picker-cell-in-range .ant-picker-cell-inner {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Range hover preview */
+html.dark-mode
+  .lantai-picker-cell-in-view.lantai-picker-cell-range-hover::before,
+html.dark-mode .ant-picker-cell-in-view.ant-picker-cell-range-hover::before,
+html.dark-mode
+  .lantai-picker-cell-in-view.lantai-picker-cell-range-hover-start::after,
+html.dark-mode
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-start::after,
+html.dark-mode
+  .lantai-picker-cell-in-view.lantai-picker-cell-range-hover-end::after,
+html.dark-mode .ant-picker-cell-in-view.ant-picker-cell-range-hover-end::after {
+  border-color: var(--lt-accent-hover) !important;
+}
+
+/* Panel footer (OK button area) */
+html.dark-mode .lantai-picker-footer,
+html.dark-mode .ant-picker-footer {
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+  background: var(--lt-surface-raised) !important;
+}
+
+html.dark-mode .lantai-picker-today-btn,
+html.dark-mode .ant-picker-today-btn {
+  color: var(--lt-accent-hover) !important;
+}
+
+/* Divider between two panels in RangePicker */
+html.dark-mode .lantai-picker-panel + .lantai-picker-panel,
+html.dark-mode .ant-picker-panel + .ant-picker-panel {
+  border-left-color: rgba(255, 255, 255, 0.08) !important;
+}

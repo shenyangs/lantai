@@ -1,0 +1,254 @@
+.page {
+  min-height: 100vh;
+  padding: 34px 34px 64px;
+  background:
+    radial-gradient(
+      circle at 9% -4%,
+      color-mix(in srgb, var(--lt-accent-soft, #e8f3ff) 68%, transparent),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      var(--lt-bg, #f6f7f9),
+      color-mix(in srgb, var(--lt-surface, #fff) 84%, var(--lt-bg, #f6f7f9))
+    );
+  color: var(--lt-text, #202124);
+}
+
+.hero {
+  display: grid;
+  gap: 6px;
+  max-width: 1100px;
+  margin: 0 auto 24px;
+
+  h1 {
+    margin: 0;
+    color: var(--lt-text, #202124);
+    font-size: 34px;
+    font-weight: 720;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  p {
+    margin: 0;
+    color: var(--lt-text-muted, rgba(32, 33, 36, 0.62));
+    font-size: 13px;
+    line-height: 1.55;
+  }
+}
+
+.eyebrow {
+  color: var(--lt-accent, #256f9f);
+  font-size: 11px;
+  font-weight: 780;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.matrixGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 1320px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.section {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--lt-material-border);
+  border-radius: 16px;
+  background: var(--lt-material-panel);
+  box-shadow: var(--lt-material-shadow);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 13px;
+  border-bottom: 1px solid var(--lt-border-subtle, rgba(32, 33, 36, 0.07));
+  background: color-mix(
+    in srgb,
+    var(--lt-material-panel-strong) 84%,
+    transparent
+  );
+
+  span {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  strong {
+    color: var(--lt-text, #202124);
+    font-size: 13px;
+    font-weight: 680;
+    line-height: 18px;
+  }
+
+  small {
+    color: var(--lt-text-faint, rgba(32, 33, 36, 0.46));
+    font-size: 11px;
+    font-weight: 520;
+    line-height: 16px;
+  }
+}
+
+.shellFixture {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  min-height: 260px;
+
+  :global(.dark-mode) & {
+    background: var(--lt-bg, #151515);
+  }
+}
+
+.fixtureSider {
+  height: 260px !important;
+}
+
+.shellMain {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  background: var(--lt-bg, #f6f7f9);
+}
+
+.workspaceHint {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  padding: 20px;
+  color: var(--lt-text-faint, rgba(32, 33, 36, 0.46));
+  font-size: 13px;
+}
+
+.popoverGrid {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.72fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 16px;
+}
+
+.selectorFixture {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.sessionList {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+}
+
+.sessionSelected {
+  background: color-mix(
+    in srgb,
+    var(--lt-accent-soft, #e8f3ff) 72%,
+    transparent
+  );
+}
+
+.cardStack {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px 16px;
+}
+
+.section :global(.ant-card) {
+  margin: 12px 14px 16px;
+}
+
+.section :global(.ant-card),
+.section :global(.ant-card-body) {
+  max-width: 100%;
+}
+
+.traceFixture {
+  display: grid !important;
+  gap: 10px;
+  padding: 12px 14px 16px;
+}
+
+.traceStatusMatrix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.traceStatusState {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  line-height: 18px;
+
+  strong {
+    color: var(--lt-text);
+    font-weight: 700;
+  }
+
+  small {
+    color: var(--lt-text-faint);
+    font-size: 11px;
+  }
+}
+
+.traceFixture :global(button) {
+  justify-self: start;
+}
+
+.traceFixtureCard {
+  position: static !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  max-height: none !important;
+}
+
+:global(.dark-mode) {
+  .page {
+    background:
+      radial-gradient(
+        circle at 10% 0%,
+        color-mix(in srgb, var(--lt-accent-soft, #1f3446) 62%, transparent),
+        transparent 34%
+      ),
+      linear-gradient(
+        180deg,
+        var(--lt-bg, #151515),
+        color-mix(
+          in srgb,
+          var(--lt-surface, #202124) 78%,
+          var(--lt-bg, #151515)
+        )
+      );
+  }
+
+  .section {
+    background: var(--lt-material-panel);
+    box-shadow: var(--lt-material-shadow);
+  }
+}
+
+@media (max-width: 1080px) {
+  .matrixGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "图片表格提取"
+  short_description: "把表格截图可靠转换为可核对的 CSV 或 Excel 数据"
+  default_prompt: "使用 $image-table-extractor-zh 把这张表格图片提取成可核对的结构化数据。"

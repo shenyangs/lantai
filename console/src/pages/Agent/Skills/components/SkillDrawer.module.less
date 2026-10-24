@@ -1,0 +1,124 @@
+.drawer {
+  :global(.lantai-drawer-body) {
+    padding: 20px 22px;
+  }
+
+  :global(.lantai-form-item-label > label) {
+    color: var(--lt-text);
+    font-size: 13px;
+    font-weight: 650;
+  }
+
+  :global(.lantai-input::placeholder),
+  :global(textarea::placeholder) {
+    color: var(--lt-text-muted);
+    opacity: 0.78;
+  }
+}
+
+.form {
+  :global(.lantai-form-item) {
+    margin-bottom: 20px;
+  }
+}
+
+.fieldHint {
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.kdocsPanel {
+  margin-bottom: 22px;
+  padding: 16px;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--lt-accent-soft) 28%, var(--lt-surface));
+}
+
+.kdocsHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.kdocsTitle {
+  color: var(--lt-text);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.kdocsDescription {
+  margin-top: 4px;
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.kdocsStatus {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 5px;
+  min-height: 24px;
+  padding: 2px 9px;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: 999px;
+  background: var(--lt-surface);
+  color: var(--lt-text-muted);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.kdocsStatusConnected {
+  border-color: color-mix(in srgb, var(--lt-success) 30%, transparent);
+  background: var(--lt-success-bg);
+  color: var(--lt-success);
+}
+
+.kdocsVersion {
+  margin-top: 8px;
+  color: var(--lt-text-muted);
+  font-size: 11px;
+}
+
+.kdocsSteps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  color: var(--lt-text);
+  font-size: 12px;
+}
+
+.kdocsTokenLabel {
+  display: block;
+  margin: 14px 0 6px;
+  color: var(--lt-text);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.kdocsConnectRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  > span {
+    flex: 1;
+  }
+}
+
+.kdocsPrivacyHint {
+  margin-top: 8px;
+  color: var(--lt-text-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.kdocsDisconnect {
+  margin-top: 8px;
+  margin-left: -8px;
+}

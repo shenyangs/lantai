@@ -1,0 +1,427 @@
+{
+  "schema_version": 1,
+  "library_id": "lantai-p0-chat-incidents-v1",
+  "captured_at": "2026-08-14T00:00:00+08:00",
+  "anonymized": true,
+  "required_classes": [
+    "chat_cross_talk",
+    "chat_navigation_owner_race",
+    "duplicate_execution_and_reply",
+    "false_completion",
+    "restart_stale_generation",
+    "empty_reply",
+    "optimistic_false_stop",
+    "retry_destroys_partial_output",
+    "tool_trace_order_collapse",
+    "model_selector_keyboard_inaccessible",
+    "model_load_failure_masquerades_empty",
+    "attachment_error_hover_only",
+    "session_mutation_failure_silent",
+    "tool_status_not_announced",
+    "token_progress_layout_jank",
+    "completed_interim_narration_hydration_loss",
+    "provider_repeated_snapshot_projection",
+    "route_hydration_phantom_run",
+    "generated_artifact_missing_card",
+    "malformed_tool_argument_protocol_leak",
+    "ququ_private_marker_leak"
+  ],
+  "incidents": [
+    {
+      "incident_id": "chat-cross-talk-v1",
+      "incident_class": "chat_cross_talk",
+      "replay_targets": [
+        "console/src/pages/Chat/runtimeEventSubscriptionRegistry.ts",
+        "console/src/vendor/lantaiChat.ts"
+      ],
+      "input": {
+        "subscribed_chat_id": "incident-chat-a",
+        "foreign_chat_id": "incident-chat-b",
+        "foreign_seq": 41,
+        "owned_seq": 42,
+        "visible_chat_id": "incident-chat-b",
+        "active_chat_id": "incident-chat-a",
+        "visible_message_ids": ["incident-foreign-visible-message"],
+        "active_message_ids": ["incident-owned-history-message"]
+      },
+      "expected": {
+        "delivered_chat_ids": ["incident-chat-a"],
+        "dropped_foreign_responses": 1,
+        "projected_message_ids": ["incident-owned-history-message"]
+      }
+    },
+    {
+      "incident_id": "chat-navigation-owner-race-v1",
+      "incident_class": "chat_navigation_owner_race",
+      "replay_targets": [
+        "console/src/pages/Chat/ChatPage.test.tsx",
+        "console/src/pages/Chat/sessionApi/sessionApi.test.ts",
+        "console/src/vendor/lantaiChat.test.tsx",
+        "tests/unit/app/test_console_chat_smoke.py"
+      ],
+      "input": {
+        "request_chat_id": "incident-chat-owner-a",
+        "request_session_id": "console:owner-a",
+        "visible_chat_after_navigation": "incident-chat-owner-b",
+        "shared_ambiguous_session_id": "console:shared",
+        "late_operations": [
+          "workspace_resolution",
+          "transient_progress",
+          "history_clear",
+          "stream_frame"
+        ]
+      },
+      "expected": {
+        "submitted_chat_id": "incident-chat-owner-a",
+        "visible_chat_after_navigation": "incident-chat-owner-b",
+        "late_operations_applied_to_visible_chat": 0,
+        "ambiguous_alias_merge_rejected": true,
+        "backend_identity_mismatch_status": 409
+      }
+    },
+    {
+      "incident_id": "duplicate-execution-and-reply-v1",
+      "incident_class": "duplicate_execution_and_reply",
+      "replay_targets": [
+        "src/lantai/runtime/turn_control.py",
+        "console/src/pages/Chat/runtimeEventStream.ts"
+      ],
+      "input": {
+        "chat_id": "incident-chat-duplicate",
+        "client_turn_id": "incident-client-turn-duplicate",
+        "first_run_id": "incident-run-original",
+        "first_attempt_id": "incident-attempt-original",
+        "retry_run_id": "incident-run-retry",
+        "retry_attempt_id": "incident-attempt-retry",
+        "first_event_id": "incident-event-direct",
+        "mirror_event_id": "incident-event-ledger",
+        "first_item_id": "incident-provider-direct",
+        "mirror_item_id": "incident-provider-ledger",
+        "source_message_id": "incident-source-message-duplicate",
+        "visible_text": "行，那就没事。想说了随时喊我。"
+      },
+      "expected": {
+        "executed_run_id": "incident-run-original",
+        "receipt_count": 1,
+        "visible_output_count": 1,
+        "visible_text_instances": 1
+      }
+    },
+    {
+      "incident_id": "false-completion-without-artifact-v1",
+      "incident_class": "false_completion",
+      "source_fixture": "bazi_light_false_completion_v1.json",
+      "replay_targets": ["src/lantai/app/completion_gate.py"],
+      "input": {
+        "chat_id": "incident-chat-false-completion",
+        "run_id": "incident-run-false-completion",
+        "objective": "创建一个可离线打开的 HTML 网站",
+        "assistant_text": "网站已经完成并交付。",
+        "response_status": "completed",
+        "final_response_id": "incident-response-false-completion"
+      },
+      "expected": {
+        "allow_success": false,
+        "delivery_status": "not_delivered",
+        "works_item_count": 0
+      }
+    },
+    {
+      "incident_id": "restart-stale-generation-v1",
+      "incident_class": "restart_stale_generation",
+      "replay_targets": ["console/src/pages/Chat/runtimeEventStream.ts"],
+      "input": {
+        "chat_id": "incident-chat-restart",
+        "old_stream_epoch": "incident-epoch-old",
+        "new_stream_epoch": "incident-epoch-new",
+        "old_run_id": "incident-run-old",
+        "new_run_id": "incident-run-new",
+        "old_event_id": "incident-event-old-terminal",
+        "old_event_seq": 91,
+        "new_event_id": "incident-event-new-start",
+        "new_event_seq": 1,
+        "new_cursor": "incident-epoch-new:1"
+      },
+      "expected": {
+        "status": "running",
+        "stream_epoch": "incident-epoch-new",
+        "run_id": "incident-run-new",
+        "preview_event_ids": ["incident-event-new-start"]
+      }
+    },
+    {
+      "incident_id": "empty-first-final-response-v1",
+      "incident_class": "empty_reply",
+      "replay_targets": ["src/lantai/runtime/adapters/native_runtime.py"],
+      "input": {
+        "chat_id": "incident-chat-empty-reply",
+        "run_id": "incident-run-empty-reply",
+        "empty_message_id": "incident-message-empty",
+        "recovery_message_id": "incident-message-recovery",
+        "recovery_text": "我在。你可以慢慢说。"
+      },
+      "expected": {
+        "model_request_count": 2,
+        "visible_completed_count": 1,
+        "final_event_type": "turn.completed"
+      }
+    },
+    {
+      "incident_id": "optimistic-false-stop-v1",
+      "incident_class": "optimistic_false_stop",
+      "replay_targets": ["console/src/vendor/lantaiChat.ts"],
+      "input": {
+        "chat_id": "incident-chat-stop-confirmation",
+        "cancel_acknowledged": false,
+        "visible_partial_text": "已经生成的内容"
+      },
+      "expected": {
+        "visible_status": "stop_unconfirmed",
+        "announces_stopped": false,
+        "partial_text_preserved": true
+      }
+    },
+    {
+      "incident_id": "retry-destroys-partial-output-v1",
+      "incident_class": "retry_destroys_partial_output",
+      "replay_targets": ["console/src/vendor/lantaiChat.ts"],
+      "input": {
+        "chat_id": "incident-chat-nondestructive-retry",
+        "original_attempt_text": "上一版已有结果",
+        "retry_requested": true
+      },
+      "expected": {
+        "original_attempt_preserved": true,
+        "retry_uses_new_attempt_or_branch": true
+      }
+    },
+    {
+      "incident_id": "tool-trace-order-collapse-v1",
+      "incident_class": "tool_trace_order_collapse",
+      "replay_targets": [
+        "console/src/pages/Chat/components/QuquResponseCard.tsx"
+      ],
+      "input": {
+        "event_order": ["reasoning", "tool", "answer", "tool", "answer"],
+        "tool_names": ["read_file", "web_search"]
+      },
+      "expected": {
+        "event_order_preserved": true,
+        "collapsed_summary_uses_user_language": true,
+        "expanded_trace_keeps_raw_tool_identity": true
+      }
+    },
+    {
+      "incident_id": "model-selector-keyboard-inaccessible-v1",
+      "incident_class": "model_selector_keyboard_inaccessible",
+      "replay_targets": ["console/src/pages/Chat/ModelSelector/index.tsx"],
+      "input": {
+        "control": "model_selector",
+        "interaction": "keyboard_enter"
+      },
+      "expected": {
+        "semantic_button": true,
+        "expanded_state_exposed": true,
+        "selector_opens": true
+      }
+    },
+    {
+      "incident_id": "model-load-failure-masquerades-empty-v1",
+      "incident_class": "model_load_failure_masquerades_empty",
+      "replay_targets": ["console/src/pages/Chat/ModelSelector/index.tsx"],
+      "input": {
+        "provider_request": "failed",
+        "configured_model_count": 1
+      },
+      "expected": {
+        "shows_load_failure": true,
+        "shows_empty_configuration": false,
+        "offers_retry": true
+      }
+    },
+    {
+      "incident_id": "attachment-error-hover-only-v1",
+      "incident_class": "attachment_error_hover_only",
+      "replay_targets": ["console/src/vendor/lantaiChat.ts"],
+      "input": {
+        "attachment_status": "error",
+        "error": "上传超时"
+      },
+      "expected": {
+        "visible_error_reason": "上传超时",
+        "hover_required": false
+      }
+    },
+    {
+      "incident_id": "session-mutation-failure-silent-v1",
+      "incident_class": "session_mutation_failure_silent",
+      "replay_targets": [
+        "console/src/pages/Chat/components/ChatSessionDrawer/index.tsx"
+      ],
+      "input": {
+        "actions": ["rename", "pin"],
+        "server_result": "failed"
+      },
+      "expected": {
+        "visible_inline_error": true,
+        "previous_state_preserved": true
+      }
+    },
+    {
+      "incident_id": "tool-status-not-announced-v1",
+      "incident_class": "tool_status_not_announced",
+      "replay_targets": ["console/src/pages/Chat/components/ToolCallCard.tsx"],
+      "input": {
+        "tool_status": "running"
+      },
+      "expected": {
+        "polite_live_region": true,
+        "status_text": "执行中"
+      }
+    },
+    {
+      "incident_id": "token-progress-layout-jank-v1",
+      "incident_class": "token_progress_layout_jank",
+      "replay_targets": ["console/src/pages/Chat/index.module.less"],
+      "input": {
+        "progress_updates": [0.1, 0.4, 0.8]
+      },
+      "expected": {
+        "uses_compositor_transform": true,
+        "animates_width": false
+      }
+    },
+    {
+      "incident_id": "completed-interim-narration-hydration-loss-v1",
+      "incident_class": "completed_interim_narration_hydration_loss",
+      "replay_targets": [
+        "tests/unit/app/test_chat_history_runtime_projection.py",
+        "console/src/pages/Chat/components/RuntimeEventStreamBridge.test.tsx",
+        "console/src/vendor/lantaiChat.test.tsx"
+      ],
+      "input": {
+        "runtime_event_order": [
+          "message.completed:interim",
+          "tool.call.started",
+          "tool.call.completed",
+          "message.completed:final"
+        ],
+        "live_session_rows_before_tool_frame": ["user", "assistant:interim"],
+        "stale_runtime_bridge_rows": ["user"],
+        "legacy_memory_rows": ["user", "assistant:final"],
+        "live_visible_rows": ["assistant:interim"]
+      },
+      "expected": {
+        "hydrated_event_order": [
+          "assistant:interim",
+          "tool.call.started",
+          "tool.call.completed",
+          "assistant:final"
+        ],
+        "live_visible_rows_during_tool_frame": ["assistant:interim"],
+        "completed_visible_rows_deleted": 0,
+        "duplicate_visible_rows": 0
+      }
+    },
+    {
+      "incident_id": "provider-repeated-snapshot-projection-v1",
+      "incident_class": "provider_repeated_snapshot_projection",
+      "replay_targets": [
+        "tests/unit/runtime/test_model_client.py",
+        "tests/unit/runtime/test_native_runtime.py",
+        "console/src/vendor/lantaiChat.test.tsx"
+      ],
+      "input": {
+        "provider": "openai-compatible",
+        "stream_semantics": "repeated_cumulative_snapshot",
+        "blocks": [
+          {"kind": "thinking", "text": "先检查文件。", "revision": 1},
+          {"kind": "thinking", "text": "先检查文件。", "revision": 1},
+          {"kind": "text", "text": "文件已经生成。", "revision": 2},
+          {"kind": "text", "text": "文件已经生成。", "revision": 2}
+        ]
+      },
+      "expected": {
+        "visible_thinking_instances": 1,
+        "visible_answer_instances": 1,
+        "tool_or_effect_replays": 0
+      }
+    },
+    {
+      "incident_id": "route-hydration-phantom-run-v1",
+      "incident_class": "route_hydration_phantom_run",
+      "replay_targets": [
+        "console/src/pages/Chat/runtimeEventStream.test.ts",
+        "console/src/vendor/lantaiChat.test.tsx"
+      ],
+      "input": {
+        "navigation": "settings_to_completed_chat",
+        "durable_turn_status": "completed",
+        "durable_answer_message_id": "incident-route-terminal-answer",
+        "optimistic_tail": {"status": "waiting", "text": ""},
+        "active_run": null
+      },
+      "expected": {
+        "phantom_waiting_cards": 0,
+        "starts_new_run": false,
+        "terminal_answer_preserved": true
+      }
+    },
+    {
+      "incident_id": "generated-artifact-missing-card-v1",
+      "incident_class": "generated_artifact_missing_card",
+      "replay_targets": [
+        "tests/unit/agents/test_file_delivery_contract.py",
+        "console/src/vendor/lantaiChat.test.tsx"
+      ],
+      "input": {
+        "workspace_file": "no-work-today.html",
+        "file_exists": true,
+        "assistant_text_contains_path": true,
+        "classifier_available": false
+      },
+      "expected": {
+        "artifact_card_count": 1,
+        "workspace_containment_verified": true,
+        "input_or_incidental_file_delivered": false
+      }
+    },
+    {
+      "incident_id": "malformed-tool-argument-protocol-leak-v1",
+      "incident_class": "malformed_tool_argument_protocol_leak",
+      "replay_targets": [
+        "tests/unit/runtime/test_native_runtime.py",
+        "tests/unit/runtime/test_model_client.py"
+      ],
+      "input": {
+        "tool_name": "write_file",
+        "arguments": {"content": "<html></html>"},
+        "missing_required_arguments": ["file_path"],
+        "batch_size": 1
+      },
+      "expected": {
+        "malformed_batch_executions_before_repair": 0,
+        "bounded_repair_requests": 1,
+        "raw_protocol_error_visible": false,
+        "unrelated_effects_executed": 0
+      }
+    },
+    {
+      "incident_id": "ququ-private-marker-leak-v1",
+      "incident_class": "ququ_private_marker_leak",
+      "replay_targets": [
+        "tests/unit/agents/persona/test_post_answer_reflection.py",
+        "console/src/pages/Chat/ququ.test.ts"
+      ],
+      "input": {
+        "raw_ququ": "~>~>刚才那句说得太满了，自己先记一笔。",
+        "marker": "~>"
+      },
+      "expected": {
+        "visible_ququ": "刚才那句说得太满了，自己先记一笔。",
+        "private_marker_visible": false,
+        "fallback_persona_text_inserted": false
+      }
+    }
+  ]
+}

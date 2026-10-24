@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "benchmark_id": "editorial-executive-typography-first",
+  "tests": {
+    "style_fidelity": {
+      "deck_count": 3,
+      "slide_range": [12, 20],
+      "content_policy": "Three unrelated, Lantai-owned content sets use one style profile with different compositions.",
+      "checks": [
+        "consistent style DNA without coordinate reuse",
+        "relationship-driven composition",
+        "no repeated fixed-layout run",
+        "native editable text, shape, number, chart where applicable",
+        "actual PPTX render and full-deck montage review"
+      ]
+    },
+    "style_generalization": {
+      "profiles": ["editorial-executive", "minimal-keynote", "product-launch", "data-analytical"],
+      "content_policy": "Comparable content is generated through the same planner, compiler, critic, and repair stack.",
+      "checks": [
+        "profiles differ in composition language, not only palette",
+        "compiler contains no style-specific branch",
+        "no-reference profile synthesis remains first-class"
+      ]
+    },
+    "template_arbitration": {
+      "cases": ["good-reference", "weak-corporate-template", "intentionally-bad-template"],
+      "checks": [
+        "identity constraints remain hard where required",
+        "weak layout traits are optimized in brand-preserve mode",
+        "tiny type, stretched images, card spam, uncontrolled color, bevel, and heavy shadow are rejected"
+      ]
+    }
+  },
+  "prohibited": [
+    "source slide templates",
+    "source text or media",
+    "fixed source coordinates",
+    "style-specific compiler branches",
+    "file-generation-only acceptance"
+  ]
+}

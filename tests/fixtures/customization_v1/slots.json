@@ -1,0 +1,25 @@
+[
+  {
+    "color": "#7a5d46",
+    "icon": "moon",
+    "index": 1,
+    "label": "夜航旧配置",
+    "profile_id": "profile_v1_upgrade_fixture"
+  },
+  {
+    "index": 2,
+    "profile_id": null
+  },
+  {
+    "index": 3,
+    "profile_id": null
+  },
+  {
+    "index": 4,
+    "profile_id": null
+  },
+  {
+    "index": 5,
+    "profile_id": null
+  }
+]

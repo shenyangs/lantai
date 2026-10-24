@@ -1,0 +1,62 @@
+/* ─── Global disabled button styles ────────────────────────────────────────── */
+/* Primary button disabled state - must show border and gray background */
+.ant-btn-primary:disabled,
+.ant-btn-primary[disabled],
+.ant-btn-primary.ant-btn-disabled,
+.lantai-btn-primary:disabled,
+.lantai-btn-primary[disabled],
+.lantai-btn-primary.lantai-btn-disabled {
+  background-color: var(--lt-control-disabled-bg) !important;
+  background: var(--lt-control-disabled-bg) !important;
+  color: var(--lt-control-disabled-text) !important;
+  border: 1px solid var(--lt-border-strong) !important;
+  box-shadow: none !important;
+}
+
+/* Dark mode - disabled primary button */
+html.dark-mode .ant-btn-primary:disabled,
+html.dark-mode .ant-btn-primary[disabled],
+html.dark-mode .ant-btn-primary.ant-btn-disabled,
+html.dark-mode .lantai-btn-primary:disabled,
+html.dark-mode .lantai-btn-primary[disabled],
+html.dark-mode .lantai-btn-primary.lantai-btn-disabled {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: none !important;
+}
+
+/* Dark mode - default button */
+html.dark-mode .ant-btn-default,
+html.dark-mode .lantai-btn-default {
+  color: var(--lt-text) !important;
+  background-color: var(--lt-control-bg) !important;
+  border: 1px solid var(--lt-border-strong) !important;
+}
+
+/* Dark mode - danger button */
+html.dark-mode .ant-btn-dangerous,
+html.dark-mode .lantai-btn-dangerous,
+html.dark-mode .ant-btn-danger,
+html.dark-mode .lantai-btn-danger {
+  background: rgba(129, 46, 46, 0.25) !important;
+  color: var(--lt-danger) !important;
+}
+
+/* Dark mode - danger button disabled state */
+html.dark-mode .ant-btn-dangerous:disabled,
+html.dark-mode .ant-btn-dangerous[disabled],
+html.dark-mode .ant-btn-dangerous.ant-btn-disabled,
+html.dark-mode .lantai-btn-dangerous:disabled,
+html.dark-mode .lantai-btn-dangerous[disabled],
+html.dark-mode .lantai-btn-dangerous.lantai-btn-disabled,
+html.dark-mode .ant-btn-danger:disabled,
+html.dark-mode .ant-btn-danger[disabled],
+html.dark-mode .ant-btn-danger.ant-btn-disabled,
+html.dark-mode .lantai-btn-danger:disabled,
+html.dark-mode .lantai-btn-danger[disabled],
+html.dark-mode .lantai-btn-danger.lantai-btn-disabled {
+  background: rgba(129, 46, 46, 0.32) !important;
+  color: rgba(165, 50, 48, 0.8) !important;
+}

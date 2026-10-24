@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "label_source": "Engineering annotations; no external expert validation claimed.",
+  "minimum_accuracy": 0.95,
+  "cases": [
+    {
+      "id": "bounded_correlation",
+      "source": "该研究是观察性研究，样本量为 80 人，仅发现干预与恢复相关，不能据此证明因果关系。",
+      "report": "该研究发现相关性，不能据此证明因果关系。",
+      "expected_assessment": "supports"
+    },
+    {
+      "id": "causal_leap",
+      "source": "该研究是观察性研究，样本量为 80 人，仅发现干预与恢复相关，不能据此证明因果关系。",
+      "report": "该观察研究证明了干预会导致恢复。",
+      "expected_assessment": "overclaim"
+    },
+    {
+      "id": "wrong_sample",
+      "source": "该研究是观察性研究，样本量为 80 人，仅发现干预与恢复相关，不能据此证明因果关系。",
+      "report": "该研究样本量为 800 人。",
+      "expected_assessment": "contradicts"
+    },
+    {
+      "id": "universal_comparator",
+      "source": "该研究是观察性研究，样本量为 80 人，仅发现干预与恢复相关，不能据此证明因果关系。",
+      "report": "这种方法在全球所有场景中都优于其他方法。",
+      "expected_assessment": "insufficient"
+    },
+    {
+      "id": "same_population",
+      "source": "试验仅纳入18至25岁健康成人，随访8周，报告平均睡眠时间增加20分钟。",
+      "report": "在该试验纳入的18至25岁健康成人中，8周时平均睡眠时间增加20分钟。",
+      "expected_assessment": "supports"
+    },
+    {
+      "id": "population_leap",
+      "source": "试验仅纳入18至25岁健康成人，随访8周，报告平均睡眠时间增加20分钟。",
+      "report": "该试验已证明所有年龄和健康状况的人都会增加睡眠时间。",
+      "expected_assessment": "overclaim"
+    },
+    {
+      "id": "wrong_duration",
+      "source": "试验随访8周，长期结果未测量。",
+      "report": "这项试验的实际随访为8年。",
+      "expected_assessment": "contradicts"
+    },
+    {
+      "id": "unmeasured_longterm",
+      "source": "试验随访8周，长期结果未测量。",
+      "report": "这项试验证实了五年后死亡率下降。",
+      "expected_assessment": "insufficient"
+    },
+    {
+      "id": "counter_result",
+      "source": "随机试验的两组差异为0.2分，95%置信区间为-1.2至1.6。研究未发现显著差异。",
+      "report": "该试验未发现两组之间的显著差异。",
+      "expected_assessment": "supports"
+    },
+    {
+      "id": "null_certainty",
+      "source": "随机试验的两组差异为0.2分，95%置信区间为-1.2至1.6。研究未发现显著差异。",
+      "report": "该试验已经确定两种方案在任何条件下完全等效。",
+      "expected_assessment": "overclaim"
+    },
+    {
+      "id": "wrong_direction",
+      "source": "资料报告2024年销售额较2023年下降12%。",
+      "report": "资料报告2024年销售额较2023年上升12%。",
+      "expected_assessment": "contradicts"
+    },
+    {
+      "id": "economy_causal",
+      "source": "资料报告2024年销售额較2023年下降12%，未分析原因。",
+      "report": "资料已证明降价是销售下降的唯一原因。",
+      "expected_assessment": "insufficient"
+    },
+    {
+      "id": "abstract_boundary",
+      "source": "这是论文摘要：研究采用横断面调查，发现用药和睡眠相关。摘要没有完整方法或不良事件统计。",
+      "report": "现有摘要报告横断面相关性，无法据此确认因果关系或完整不良事件数据。",
+      "expected_assessment": "supports"
+    },
+    {
+      "id": "abstract_method",
+      "source": "这是论文摘要：研究采用横断面调查，发现用药和睡眠相关。摘要没有完整方法或不良事件统计。",
+      "report": "这份摘要完整记录了全部不良事件的逐例发生率。",
+      "expected_assessment": "contradicts"
+    },
+    {
+      "id": "missing_safety",
+      "source": "材料介绍了一种检索算法的索引结构，没有临床或安全性数据。",
+      "report": "该算法在人体试验中从未产生任何不良事件。",
+      "expected_assessment": "insufficient"
+    },
+    {
+      "id": "weak_certainty",
+      "source": "小规模先导研究显示准确率可能提高，但估计区间较宽，作者表示结果需要复核。",
+      "report": "这项研究确定无疑地证明准确率提高。",
+      "expected_assessment": "overclaim"
+    },
+    {
+      "id": "measured_count",
+      "source": "The experiment evaluated four datasets and reported an average precision of 0.72.",
+      "report": "The experiment evaluated four datasets.",
+      "expected_assessment": "supports"
+    },
+    {
+      "id": "recommendation",
+      "source": "材料介绍了一种检索算法的索引结构，没有临床或安全性数据。",
+      "report": "建议下一步开展独立验证，再考虑实际应用。",
+      "expected_assessment": "nonfactual"
+    },
+    {
+      "id": "preference",
+      "source": "材料介绍了一种检索算法的索引结构，没有临床或安全性数据。",
+      "report": "我更倾向于优先探索这个研究方向。",
+      "expected_assessment": "nonfactual"
+    },
+    {
+      "id": "different_task",
+      "source": "The experiment evaluated four datasets and reported an average precision of 0.72.",
+      "report": "The system outperforms every competing model on all multilingual reasoning tasks.",
+      "expected_assessment": "insufficient"
+    }
+  ]
+}

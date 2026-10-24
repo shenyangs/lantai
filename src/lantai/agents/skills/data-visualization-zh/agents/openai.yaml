@@ -1,0 +1,4 @@
+interface:
+  display_name: "数据可视化"
+  short_description: "把可靠数据制作成可验证、可交互且安全的 ECharts 图表"
+  default_prompt: "请检查数据口径，选择合适的图形，并输出澜台可安全渲染的 ECharts JSON。"

@@ -1,0 +1,690 @@
+.page {
+  :global(.ant-modal-body) {
+    max-height: 70vh;
+    overflow: auto;
+  }
+}
+
+.loading {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tabs {
+  :global(.ant-tabs-nav) {
+    margin-bottom: 18px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+
+  h2 {
+    margin: 0;
+    color: var(--lt-text);
+    font-size: 18px;
+    font-weight: 760;
+    line-height: 1.35;
+  }
+
+  p {
+    margin: 5px 0 0;
+    color: var(--lt-text-muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.evolutionSafetyGuide {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 1fr);
+  gap: 18px;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--lt-accent) 24%, var(--lt-border));
+  border-radius: var(--lt-radius-card);
+  background: color-mix(in srgb, var(--lt-accent) 5%, var(--lt-surface));
+
+  > div {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  strong {
+    color: var(--lt-text);
+    font-size: 14px;
+    font-weight: 760;
+  }
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  ol {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: evolution-step;
+  }
+
+  li {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    font-weight: 650;
+    counter-increment: evolution-step;
+
+    &::before {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: var(--lt-accent);
+      background: var(--lt-surface);
+      box-shadow: inset 0 0 0 1px var(--lt-border);
+      content: counter(evolution-step);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+}
+
+.evolutionCardFooter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 9px 14px;
+
+  > span {
+    color: var(--lt-text-faint);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+}
+
+.evolutionDraftNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 13px;
+  border: 1px solid color-mix(in srgb, var(--lt-accent) 24%, var(--lt-border));
+  border-radius: var(--lt-radius-md);
+  background: color-mix(in srgb, var(--lt-accent) 5%, var(--lt-surface));
+
+  strong {
+    flex: 0 0 auto;
+    color: var(--lt-accent);
+    font-size: 13px;
+    font-weight: 760;
+  }
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 900px) {
+  .evolutionSafetyGuide {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .evolutionSafetyGuide ol {
+    grid-template-columns: 1fr;
+  }
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-surface);
+}
+
+.taskIcon {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-icon);
+  color: var(--lt-accent);
+  background: var(--lt-surface-muted);
+}
+
+.taskCopy {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  strong {
+    color: var(--lt-text);
+    font-size: 14px;
+    font-weight: 740;
+  }
+
+  > span {
+    color: var(--lt-text-muted);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+}
+
+.taskChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid var(--lt-border);
+    border-radius: var(--lt-radius-card);
+    background: var(--lt-surface);
+  }
+
+  h3 {
+    margin: 0;
+    color: var(--lt-text);
+    font-size: 15px;
+    font-weight: 760;
+  }
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  label {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    font-weight: 650;
+  }
+}
+
+.fullField,
+.runForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    font-weight: 650;
+  }
+}
+
+.switchLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--lt-text-muted);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.reviewBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--lt-text-muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
+
+.suggestedSkillPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  p {
+    margin: 0;
+    color: var(--lt-text-muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+}
+
+.suggestedSkillList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.suggestedSkillItem {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-surface-muted);
+  cursor: pointer;
+}
+
+.suggestedSkillCopy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  strong {
+    color: var(--lt-text);
+    font-size: 13px;
+    font-weight: 760;
+  }
+
+  em,
+  small {
+    color: var(--lt-text-muted);
+    font-style: normal;
+    line-height: 1.45;
+  }
+}
+
+.visualEditor {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.visualEditor[data-primary-asset="skill"] .suggestedSkillPanel {
+  order: -2;
+}
+
+.visualEditor[data-primary-asset="skill"] .reviewBox {
+  order: -1;
+}
+
+.editorBasics,
+.parameterPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-surface);
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  strong {
+    color: var(--lt-text);
+    font-size: 14px;
+    font-weight: 760;
+  }
+}
+
+.parameterRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 130px 34px;
+  gap: 8px;
+  align-items: center;
+}
+
+.flowEditorGrid {
+  display: grid;
+  grid-template-columns: 170px minmax(320px, 1fr) 300px;
+  gap: 12px;
+  min-height: 480px;
+}
+
+.nodeLibrary,
+.propertyPanel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-surface);
+
+  strong {
+    color: var(--lt-text);
+    font-size: 14px;
+    font-weight: 760;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  > label > span {
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    font-weight: 650;
+  }
+}
+
+.flowCanvas {
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  padding: 16px 16px 16px 88px;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-card);
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--lt-border) 35%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--lt-border) 35%, transparent) 1px,
+      transparent 1px
+    ),
+    var(--lt-surface-muted);
+  background-size: 28px 28px;
+}
+
+.flowSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.flowEdge {
+  fill: none;
+  stroke: var(--lt-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 5 5;
+  opacity: 0.45;
+}
+
+.flowList {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flowNode {
+  width: min(420px, 100%);
+  min-height: 74px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  padding: 13px 15px;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-surface);
+  color: var(--lt-text);
+  text-align: left;
+  cursor: grab;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.06);
+
+  strong {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 760;
+  }
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 12px;
+  }
+}
+
+.flowNodeSelected {
+  border-color: var(--lt-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lt-accent) 18%, transparent);
+}
+
+.flowNodeRisk {
+  border-color: color-mix(in srgb, #f59e0b 55%, var(--lt-border));
+  background: color-mix(in srgb, #f59e0b 7%, var(--lt-surface));
+}
+
+.timelinePreview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 3px;
+
+  span {
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: var(--lt-surface-muted);
+    color: var(--lt-text-muted);
+    font-size: 12px;
+  }
+}
+
+.runItem {
+  padding: 14px;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-surface);
+}
+
+.runTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+
+  .runStep {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 80px;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    background: var(--lt-surface-muted);
+  }
+
+  .runStep > span {
+    color: var(--lt-text);
+    font-size: 13px;
+    font-weight: 650;
+  }
+
+  .runStep > em {
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    font-style: normal;
+    text-align: right;
+  }
+
+  code {
+    grid-column: 1 / -1;
+    overflow: hidden;
+    color: var(--lt-text-muted);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.browserTaskEvidence {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--lt-border);
+  border-radius: 8px;
+  background: var(--lt-surface);
+
+  div:first-child {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+  }
+
+  strong {
+    color: var(--lt-text);
+    font-size: 13px;
+  }
+
+  small {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.browserTaskChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.runForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scheduleHint {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+:global(.dark-mode) {
+  .taskItem,
+  .editor section,
+  .editorBasics,
+  .parameterPanel,
+  .nodeLibrary,
+  .propertyPanel,
+  .runItem {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: var(--lt-card-bg);
+  }
+
+  .taskIcon {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .flowCanvas {
+    border-color: rgba(255, 255, 255, 0.12);
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      color-mix(in srgb, var(--lt-card-bg) 90%, #000);
+    background-size: 28px 28px;
+  }
+
+  .flowNode {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: var(--lt-card-bg);
+  }
+}
+
+@media (max-width: 860px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .flowEditorGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .parameterRow {
+    grid-template-columns: 1fr;
+  }
+
+  .taskItem {
+    align-items: flex-start;
+  }
+}

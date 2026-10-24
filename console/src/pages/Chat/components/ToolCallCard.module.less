@@ -1,0 +1,487 @@
+.toolCallCard {
+  width: min(100%, 880px);
+  margin: 9px 0 12px;
+  color: var(--lt-text-muted);
+}
+
+.summaryButton {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+  padding: 7px 9px 7px 5px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    border-color var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    color var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    transform var(--lt-motion-duration-instant) var(--lt-motion-ease-out);
+
+  &:hover {
+    border-color: var(--lt-material-border);
+    background: var(--lt-material-inset);
+  }
+
+  &:active {
+    transform: scale(0.995);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: color-mix(in srgb, var(--lt-accent) 40%, var(--lt-border));
+    box-shadow: var(--lt-focus-shadow);
+  }
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 7px;
+  color: var(--lt-text-faint);
+}
+
+.summaryText {
+  min-width: 0;
+}
+
+.titleLine,
+.previewLine {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.titleLine {
+  gap: 7px;
+  margin-bottom: 3px;
+}
+
+.processLabel {
+  flex: 0 0 auto;
+  color: var(--lt-text-faint) !important;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.toolName {
+  overflow: hidden;
+  color: var(--lt-text) !important;
+  font-family: var(--lt-font-mono);
+  font-size: 12.5px;
+  font-weight: 620;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 620;
+  line-height: 1.45;
+  color: var(--lt-text-faint);
+
+  &::before {
+    width: 5px;
+    height: 5px;
+    border-radius: var(--lt-radius-pill);
+    background: currentColor;
+    content: "";
+  }
+}
+
+.previewLine {
+  overflow: hidden;
+  color: var(--lt-text-faint) !important;
+  font-size: 12px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.previewDivider {
+  margin: 0 6px;
+  color: var(--lt-text-tertiary, rgba(32, 33, 36, 0.28));
+}
+
+.chevron {
+  flex: 0 0 auto;
+  margin-left: 8px;
+  color: var(--lt-text-faint);
+  transition: transform var(--lt-motion-duration-fast) var(--lt-motion-ease-out);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.running {
+  .iconWrap,
+  .status {
+    color: #4c8fbd;
+  }
+}
+
+.failed {
+  .iconWrap,
+  .status {
+    color: color-mix(in srgb, var(--lt-warning) 62%, var(--lt-text-muted));
+  }
+}
+
+.done {
+  .iconWrap,
+  .status {
+    color: #5c946e;
+  }
+}
+
+.pending {
+  .iconWrap,
+  .status {
+    color: rgba(32, 33, 36, 0.42);
+  }
+}
+
+.spin {
+  animation: toolSpin 1s linear infinite;
+}
+
+.details {
+  display: grid;
+  gap: 12px;
+  margin: 7px 0 2px 19px;
+  padding: 9px 0 3px 17px;
+  border-left: 1px solid var(--lt-material-border-strong);
+}
+
+.processStep {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+}
+
+.stepMarker {
+  position: absolute;
+  top: 8px;
+  left: -23px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--lt-surface);
+  border-radius: 999px;
+  background: var(--lt-text-tertiary, rgba(32, 33, 36, 0.3));
+  box-shadow: 0 0 0 1px var(--lt-material-border-strong);
+}
+
+.stepBody {
+  min-width: 0;
+}
+
+.stepTitle {
+  margin-bottom: 4px;
+  color: var(--lt-text-tertiary, rgba(32, 33, 36, 0.48));
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.processSummary {
+  margin: 0;
+  color: var(--lt-text-muted, rgba(32, 33, 36, 0.6));
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.toolInvokeLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  color: var(--lt-text-muted, rgba(32, 33, 36, 0.6));
+  font-size: 13px;
+  line-height: 1.5;
+
+  code {
+    max-width: 100%;
+    padding: 2px 7px;
+    overflow-wrap: anywhere;
+    border: 1px solid var(--lt-material-border);
+    border-radius: 6px;
+    background: var(--lt-material-inset);
+    color: var(--lt-text) !important;
+    font-family: var(--lt-font-mono);
+    font-size: 12px;
+  }
+
+  span,
+  em {
+    font-style: normal;
+  }
+
+  em {
+    color: var(--lt-text-tertiary, rgba(32, 33, 36, 0.44));
+  }
+}
+
+.vibeSignal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  color: var(--lt-text-muted, rgba(32, 33, 36, 0.62));
+  font-size: 13px;
+  line-height: 1.5;
+
+  svg {
+    flex: 0 0 auto;
+    color: #4c8fbd;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 100%;
+    color: #2f6f9f;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.vibeSignalChecking svg {
+  color: #7a6acb;
+}
+
+.vibeSignalReachable svg {
+  color: #5c946e;
+}
+
+.vibeSignalUnreachable svg {
+  color: #c98942;
+}
+
+.detailBlock {
+  margin: 0 0 8px;
+}
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 28px;
+  color: var(--lt-text-muted, rgba(32, 33, 36, 0.58)) !important;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: var(--lt-radius-icon);
+  background: transparent;
+  color: var(--lt-text-tertiary, rgba(32, 33, 36, 0.42));
+  cursor: pointer;
+  transition:
+    background var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    color var(--lt-motion-duration-fast) var(--lt-motion-ease-out),
+    transform var(--lt-motion-duration-instant) var(--lt-motion-ease-out);
+
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--lt-text, #202124) 6%, transparent);
+    color: var(--lt-text, rgba(32, 33, 36, 0.72));
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.35;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(var(--lt-motion-press-scale));
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--lt-focus-shadow);
+  }
+}
+
+.detailContent {
+  max-height: 300px;
+  margin: 0;
+  padding: 10px 12px;
+  overflow: auto;
+  border: 1px solid var(--lt-material-border);
+  border-radius: 9px;
+  background: var(--lt-material-inset);
+  color: var(--lt-text-muted);
+  font-family: var(--lt-font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.copyError {
+  margin: 6px 0 0;
+  color: var(--lt-danger, #b3261e);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@keyframes toolSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+:global(.dark-mode) {
+  .toolCallCard {
+    color: rgba(245, 245, 245, 0.76);
+  }
+
+  .summaryButton {
+    background: transparent;
+
+    &:hover {
+      border-color: var(--lt-material-border);
+      background: var(--lt-material-inset);
+    }
+  }
+
+  .iconWrap,
+  .chevron {
+    color: rgba(245, 245, 245, 0.46);
+  }
+
+  .toolName {
+    color: rgba(245, 245, 245, 0.88) !important;
+  }
+
+  .processLabel,
+  .status,
+  .previewLine,
+  .detailHeader,
+  .stepTitle,
+  .processSummary,
+  .toolInvokeLine {
+    color: rgba(245, 245, 245, 0.5) !important;
+  }
+
+  .previewDivider {
+    color: rgba(245, 245, 245, 0.25);
+  }
+
+  .details {
+    border-left-color: var(--lt-material-border-strong);
+  }
+
+  .stepMarker {
+    border-color: var(--lt-bg, #151515);
+    background: rgba(245, 245, 245, 0.34);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .toolInvokeLine code {
+    border-color: var(--lt-material-border);
+    background: var(--lt-material-inset);
+    color: var(--lt-text) !important;
+  }
+
+  .vibeSignal {
+    color: rgba(245, 245, 245, 0.58);
+
+    a {
+      color: #90bfe4;
+    }
+  }
+
+  .copyButton {
+    color: rgba(245, 245, 245, 0.45);
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(245, 245, 245, 0.78);
+    }
+  }
+
+  .detailContent {
+    border-color: var(--lt-material-border);
+    background: var(--lt-material-inset);
+    color: var(--lt-text-muted);
+  }
+
+  .running {
+    .iconWrap,
+    .status {
+      color: #78a9cc;
+    }
+  }
+
+  .done {
+    .iconWrap,
+    .status {
+      color: #79b88a;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .toolCallCard {
+    width: 100%;
+  }
+
+  .summaryButton {
+    min-height: 40px;
+    padding: 7px 8px;
+  }
+
+  .previewLine {
+    display: none;
+  }
+
+  .details {
+    margin-left: 14px;
+    padding-left: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .summaryButton,
+  .copyButton {
+    transform: none;
+  }
+
+  .spin {
+    animation: none;
+  }
+}

@@ -1,0 +1,18 @@
+# Build output
+dist/
+build/
+electron-dist/
+release/
+
+# Dependencies
+node_modules/
+
+# Cache
+.cache/
+*.cache
+
+# Misc
+coverage/
+.vscode/
+.idea/
+vendor/

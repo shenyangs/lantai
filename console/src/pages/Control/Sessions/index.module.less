@@ -1,0 +1,301 @@
+.sessionsPage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  :global {
+    .lantai-spark-card-wrapper {
+      padding: 0 !important;
+    }
+    .lantai-table-wrapper
+      .lantai-table-container
+      .lantai-table-thead
+      > tr
+      > th {
+      background: #f9f8f4 !important;
+    }
+  }
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  border-bottom: 1px solid #eae9e7;
+  flex-shrink: 0;
+}
+
+.breadcrumbHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.breadcrumbParent {
+  color: #999;
+  font-weight: 400;
+}
+
+.breadcrumbSeparator {
+  color: #ccc;
+  margin: 0 4px;
+}
+
+.breadcrumbCurrent {
+  color: #333;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.description {
+  color: #999;
+  font-size: 14px;
+  margin: 0;
+  display: none;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tableCard {
+  :global(.ant-card-body) {
+    padding: 0;
+  }
+  overflow-y: auto;
+}
+
+.sessionsTableHeader {
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #eceef2;
+  background: #fff;
+}
+
+.sessionsTableHeader h3 {
+  margin: 0;
+  color: #232b36;
+  font-size: 16px;
+  font-weight: 760;
+}
+
+.sessionsTableHeader p {
+  margin: 3px 0 0;
+  color: #7a8190;
+  font-size: 13px;
+}
+
+.sessionSummaryRail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sessionSummaryRail span {
+  min-height: 32px;
+  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #eceef2;
+  border-radius: 999px;
+  color: #7a8190;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 640;
+}
+
+.sessionSummaryRail strong {
+  color: #232b36;
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.sessionNameCell,
+.sessionSourceCell {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sessionNameCell strong {
+  overflow: hidden;
+  color: #242b35;
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sessionNameCell span,
+.sessionSourceCell span {
+  overflow: hidden;
+  color: #7a8190;
+  font-size: 12px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sessionSourceCell {
+  align-items: flex-start;
+}
+
+.actionColumn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.debugDetails {
+  margin-top: 12px;
+  border: 1px solid #e7e9ee;
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+.debugDetails summary {
+  padding: 10px 12px;
+  color: #697282;
+  font-size: 13px;
+  font-weight: 720;
+  cursor: pointer;
+}
+
+.debugDetails pre {
+  margin: 0 12px 12px;
+  max-height: 220px;
+  overflow: auto;
+  padding: 10px;
+  border: 1px solid #e7e9ee;
+  border-radius: 8px;
+  color: #4b5565;
+  background: #fff;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+/* ─── Dark mode ─────────────────────────────────────────────────────────────── */
+:global(.dark-mode) {
+  .sessionsPage {
+  }
+
+  .pageHeader {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .breadcrumbParent {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .breadcrumbSeparator {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .breadcrumbCurrent {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .title {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .description {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .sessionsTableHeader,
+  .sessionSummaryRail span,
+  .debugDetails,
+  .debugDetails pre {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: #171717;
+  }
+
+  .sessionsTableHeader h3,
+  .sessionSummaryRail strong,
+  .sessionNameCell strong {
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .sessionsTableHeader p,
+  .sessionSummaryRail span,
+  .sessionNameCell span,
+  .sessionSourceCell span,
+  .debugDetails summary,
+  .debugDetails pre {
+    color: rgba(255, 255, 255, 0.52);
+  }
+
+  /* Selected row styling */
+  .selectedRow > td {
+    background-color: rgba(97, 92, 237, 0.12) !important;
+  }
+
+  .selectedRow:hover > td {
+    background-color: rgba(97, 92, 237, 0.2) !important;
+  }
+  :global(.sessions-filter-input) {
+    :global(.lantai-input),
+    :global(.ant-input) {
+      background: #2a2a2a !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.25) !important;
+      }
+    }
+  }
+
+  :global(.sessions-filter-select) {
+    :global(.lantai-select-selector),
+    :global(.ant-select-selector) {
+      background: #2a2a2a !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+    }
+
+    :global(.lantai-select-selection-placeholder),
+    :global(.ant-select-selection-placeholder) {
+      color: rgba(255, 255, 255, 0.25) !important;
+    }
+
+    :global(.lantai-select-arrow),
+    :global(.ant-select-arrow) {
+      color: rgba(255, 255, 255, 0.3) !important;
+    }
+  }
+}

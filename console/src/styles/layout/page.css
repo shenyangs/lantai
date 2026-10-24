@@ -1,0 +1,45 @@
+.lantai-menu-submenu .lantai-menu-item-selected,
+.ant-menu-submenu .ant-menu-item-selected {
+  color: inherit !important;
+}
+
+.page-container {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8px;
+  padding-right: 8px;
+}
+
+.page-header {
+  flex: 0 0 auto;
+}
+
+.page-content {
+  flex: 1 1 auto;
+  overflow: auto;
+  background-color: var(--lt-surface);
+  border-radius: var(--lt-radius-panel);
+  box-sizing: border-box;
+  border: 1px solid var(--lt-border-subtle);
+}
+
+.table-container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.table-wrapper {
+  height: 100%;
+  overflow: auto;
+}
+
+/* .ant-card {
+  height: 100%;
+} */
+
+.ant-card-body {
+  height: 100%;
+  padding: 0;
+}

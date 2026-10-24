@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "registry_id": "lantai-foundation-experience-incidents-v1",
+  "source_fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+  "incidents": [
+    {
+      "id": "chat-cross-talk-v1",
+      "contract_ids": ["CHAT-001", "SESSIONS-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "console/src/pages/Chat/runtimeEventSubscriptionRegistry.ts",
+        "console/src/vendor/lantaiChat.ts"
+      ]
+    },
+    {
+      "id": "chat-navigation-owner-race-v1",
+      "contract_ids": ["CHAT-001", "SESSIONS-001", "WORKSPACE-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "console/src/pages/Chat/ChatPage.test.tsx",
+        "console/src/pages/Chat/sessionApi/sessionApi.test.ts",
+        "console/src/vendor/lantaiChat.test.tsx",
+        "tests/unit/app/test_console_chat_smoke.py"
+      ]
+    },
+    {
+      "id": "duplicate-execution-and-reply-v1",
+      "contract_ids": ["CHAT-001", "RUN-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "src/lantai/runtime/turn_control.py",
+        "console/src/pages/Chat/runtimeEventStream.ts"
+      ]
+    },
+    {
+      "id": "false-completion-without-artifact-v1",
+      "contract_ids": ["ARTIFACT-001", "RELEASE-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["src/lantai/app/completion_gate.py"]
+    },
+    {
+      "id": "restart-stale-generation-v1",
+      "contract_ids": ["SESSIONS-001", "RUN-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["console/src/pages/Chat/runtimeEventStream.ts"]
+    },
+    {
+      "id": "empty-first-final-response-v1",
+      "contract_ids": ["CHAT-001", "REASON-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["src/lantai/runtime/adapters/native_runtime.py"]
+    },
+    {
+      "id": "optimistic-false-stop-v1",
+      "contract_ids": ["RUN-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["console/src/vendor/lantaiChat.ts"]
+    },
+    {
+      "id": "retry-destroys-partial-output-v1",
+      "contract_ids": ["RUN-001", "ARTIFACT-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["console/src/vendor/lantaiChat.ts"]
+    },
+    {
+      "id": "tool-trace-order-collapse-v1",
+      "contract_ids": ["TOOLS-001", "REASON-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "console/src/pages/Chat/components/QuquResponseCard.tsx"
+      ]
+    },
+    {
+      "id": "model-selector-keyboard-inaccessible-v1",
+      "contract_ids": ["UX-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["console/src/pages/Chat/ModelSelector/index.tsx"]
+    },
+    {
+      "id": "model-load-failure-masquerades-empty-v1",
+      "contract_ids": ["UX-001", "CHAT-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["console/src/pages/Chat/ModelSelector/index.tsx"]
+    },
+    {
+      "id": "attachment-error-hover-only-v1",
+      "contract_ids": ["UX-001", "FILES-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["console/src/vendor/lantaiChat.ts"]
+    },
+    {
+      "id": "session-mutation-failure-silent-v1",
+      "contract_ids": ["UX-001", "SESSIONS-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "console/src/pages/Chat/components/ChatSessionDrawer/index.tsx"
+      ]
+    },
+    {
+      "id": "tool-status-not-announced-v1",
+      "contract_ids": ["UX-001", "TOOLS-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["console/src/pages/Chat/components/ToolCallCard.tsx"]
+    },
+    {
+      "id": "token-progress-layout-jank-v1",
+      "contract_ids": ["UX-001", "CHAT-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": ["console/src/pages/Chat/index.module.less"]
+    },
+    {
+      "id": "completed-interim-narration-hydration-loss-v1",
+      "contract_ids": ["CHAT-001", "SESSIONS-001", "TOOLS-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "tests/unit/app/test_chat_history_runtime_projection.py",
+        "console/src/pages/Chat/components/RuntimeEventStreamBridge.test.tsx",
+        "console/src/vendor/lantaiChat.test.tsx"
+      ]
+    },
+    {
+      "id": "provider-repeated-snapshot-projection-v1",
+      "contract_ids": ["CHAT-001", "REASON-001", "SESSIONS-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "tests/unit/runtime/test_model_client.py",
+        "tests/unit/runtime/test_native_runtime.py",
+        "console/src/vendor/lantaiChat.test.tsx"
+      ]
+    },
+    {
+      "id": "route-hydration-phantom-run-v1",
+      "contract_ids": ["CHAT-001", "RUN-001", "SESSIONS-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "console/src/pages/Chat/runtimeEventStream.test.ts",
+        "console/src/vendor/lantaiChat.test.tsx"
+      ]
+    },
+    {
+      "id": "generated-artifact-missing-card-v1",
+      "contract_ids": ["ARTIFACT-001", "FILES-001", "SESSIONS-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "tests/unit/agents/test_file_delivery_contract.py",
+        "console/src/vendor/lantaiChat.test.tsx"
+      ]
+    },
+    {
+      "id": "malformed-tool-argument-protocol-leak-v1",
+      "contract_ids": ["TOOLS-001", "RUN-001", "UX-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "tests/unit/runtime/test_native_runtime.py",
+        "tests/unit/runtime/test_model_client.py"
+      ]
+    },
+    {
+      "id": "ququ-private-marker-leak-v1",
+      "contract_ids": ["CHAT-001", "UX-001"],
+      "fixture": "tests/fixtures/runtime/incidents/p0_incident_library_v1.json",
+      "replay_targets": [
+        "tests/unit/agents/persona/test_post_answer_reflection.py",
+        "console/src/pages/Chat/ququ.test.ts"
+      ]
+    }
+  ]
+}

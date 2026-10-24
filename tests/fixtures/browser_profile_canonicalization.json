@@ -1,0 +1,42 @@
+[
+  {
+    "input": "GitHub Work",
+    "canonical": "github-work"
+  },
+  {
+    "input": "  GitHub   Work  ",
+    "canonical": "github-work"
+  },
+  {
+    "input": "\u4e2d\u6587",
+    "canonical": "profile-72726d8818f6"
+  },
+  {
+    "input": "\u5de5\u4f5c Profile",
+    "canonical": "profile-73964d7dc457"
+  },
+  {
+    "input": "\ud83d\ude00",
+    "canonical": "profile-f0443a342c5e"
+  },
+  {
+    "input": "github/work",
+    "canonical": "github-work-8ec6b9842ae7"
+  },
+  {
+    "input": "github--work",
+    "canonical": "github-work-2a8f46c7a761"
+  },
+  {
+    "input": "DEFAULT",
+    "canonical": "default"
+  },
+  {
+    "input": "   ",
+    "canonical": "default"
+  },
+  {
+    "input": "foo_bar",
+    "canonical": "foo_bar"
+  }
+]

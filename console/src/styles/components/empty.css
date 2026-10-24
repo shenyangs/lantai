@@ -1,0 +1,13 @@
+html.dark-mode .lantai-empty-image,
+html.dark-mode .ant-empty-image {
+  opacity: 0.2;
+}
+
+html.dark-mode .lantai-empty-description,
+html.dark-mode .ant-empty-description {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html.dark-mode .lantai-input-prefix {
+  color: rgba(255, 255, 255, 0.85) !important;
+}

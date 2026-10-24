@@ -1,0 +1,1 @@
+export { ConnectorBrandIcon } from "./ConnectorBrandIcon";

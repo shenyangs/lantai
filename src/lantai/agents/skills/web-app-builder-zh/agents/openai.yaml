@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web 应用交付"
+  short_description: "从需求规划到构建验证，交付可运行且可维护的 Web 应用"
+  default_prompt: "使用 $web-app-builder-zh 把这个需求实现成可运行并经过验证的 Web 应用。"

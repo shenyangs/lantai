@@ -1,0 +1,37 @@
+.fieldLabel {
+  margin-bottom: 4px;
+}
+
+.scopeSummary {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--lt-material-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-border-subtle);
+
+  > div {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 3px 10px;
+    padding: 10px 12px;
+    background: var(--lt-material-panel);
+  }
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 11px;
+  }
+
+  strong {
+    color: var(--lt-text);
+    font-size: 12px;
+  }
+
+  small {
+    grid-column: 2;
+    color: var(--lt-text-muted);
+    font-size: 10.5px;
+    line-height: 1.45;
+  }
+}

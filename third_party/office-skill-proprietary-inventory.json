@@ -1,0 +1,2298 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-13",
+  "scope": "Previously bundled Office Skill trees replaced as a clean-room boundary",
+  "policy": "Inventory is provenance evidence only. Listed files must not be restored to the official distribution path without explicit authorization review.",
+  "suspected_source": "anthropics/skills Office skill materials",
+  "detected_license": "Anthropic proprietary terms in each locale tree",
+  "upstream_sha": null,
+  "import_commit": "89a6aad16c0a1338f7882762e10c0e5d4f5ee500",
+  "files": [
+    {
+      "path": "src/lantai/agents/skills/docx-en/LICENSE.txt",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/SKILL.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/accept_changes.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/comment.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/helpers/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/helpers/merge_runs.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/helpers/simplify_redlines.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/pack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/mce/mc.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/microsoft/wml-2010.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/microsoft/wml-2012.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/microsoft/wml-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/soffice.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/unpack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/validate.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/validators/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/validators/base.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/validators/docx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/validators/pptx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/office/validators/redlining.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/templates/comments.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/templates/commentsExtended.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/templates/commentsExtensible.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/templates/commentsIds.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-en/scripts/templates/people.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/LICENSE.txt",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/SKILL.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/accept_changes.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/comment.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/helpers/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/helpers/merge_runs.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/helpers/simplify_redlines.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/pack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/mce/mc.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/microsoft/wml-2010.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/microsoft/wml-2012.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/microsoft/wml-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/soffice.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/unpack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/validate.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/validators/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/validators/base.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/validators/docx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/validators/pptx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/office/validators/redlining.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/templates/comments.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/templates/commentsExtended.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/templates/commentsExtensible.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/templates/commentsIds.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/docx-zh/scripts/templates/people.xml",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/LICENSE.txt",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/SKILL.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/forms.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/reference.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/scripts/check_bounding_boxes.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/scripts/check_fillable_fields.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/scripts/convert_pdf_to_images.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/scripts/create_validation_image.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/scripts/extract_form_field_info.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/scripts/extract_form_structure.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/scripts/fill_fillable_fields.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-en/scripts/fill_pdf_form_with_annotations.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/LICENSE.txt",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/SKILL.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/forms.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/reference.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/scripts/check_bounding_boxes.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/scripts/check_fillable_fields.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/scripts/convert_pdf_to_images.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/scripts/create_validation_image.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/scripts/extract_form_field_info.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/scripts/extract_form_structure.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/scripts/fill_fillable_fields.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pdf-zh/scripts/fill_pdf_form_with_annotations.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/LICENSE.txt",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/SKILL.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/editing.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/pptxgenjs.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/add_slide.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/clean.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/generate_presentation.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/helpers/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/helpers/merge_runs.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/helpers/simplify_redlines.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/pack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/mce/mc.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/microsoft/wml-2010.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/microsoft/wml-2012.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/microsoft/wml-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/soffice.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/unpack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/validate.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/validators/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/validators/base.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/validators/docx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/validators/pptx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/office/validators/redlining.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/pptxgenjs_compat.cjs",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/render_pptxgenjs.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/scripts/thumbnail.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-en/studio-workflow.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/LICENSE.txt",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/SKILL.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/editing.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/pptxgenjs.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/presentation-studio.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/add_slide.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/clean.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/generate_presentation.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/helpers/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/helpers/merge_runs.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/helpers/simplify_redlines.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/pack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/mce/mc.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/microsoft/wml-2010.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/microsoft/wml-2012.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/microsoft/wml-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/soffice.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/unpack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/validate.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/validators/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/validators/base.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/validators/docx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/validators/pptx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/office/validators/redlining.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/pptxgenjs_compat.cjs",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/render_pptxgenjs.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/scripts/thumbnail.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/pptx-zh/studio-workflow.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/LICENSE.txt",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/SKILL.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/helpers/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/helpers/merge_runs.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/helpers/simplify_redlines.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/pack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/mce/mc.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/microsoft/wml-2010.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/microsoft/wml-2012.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/microsoft/wml-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/soffice.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/unpack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/validate.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/validators/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/validators/base.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/validators/docx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/validators/pptx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/office/validators/redlining.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-en/scripts/recalc.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/LICENSE.txt",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/SKILL.md",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/helpers/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/helpers/merge_runs.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/helpers/simplify_redlines.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/pack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/mce/mc.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/microsoft/wml-2010.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/microsoft/wml-2012.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/microsoft/wml-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/soffice.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/unpack.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/validate.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/validators/__init__.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/validators/base.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/validators/docx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/validators/pptx.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/office/validators/redlining.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    },
+    {
+      "path": "src/lantai/agents/skills/xlsx-zh/scripts/recalc.py",
+      "modified": "not-established",
+      "bundled_at_audit": true,
+      "action": "remove"
+    }
+  ]
+}

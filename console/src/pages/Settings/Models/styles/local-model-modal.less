@@ -1,0 +1,607 @@
+/* ---- Model Management Modal ---- */
+
+.localModalIntro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 4px 0 8px;
+}
+
+.localModalTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--lt-text);
+}
+
+.localModalDescription {
+  margin-top: 4px;
+  color: var(--lt-text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.localStatusSummary {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.localSummaryPill {
+  min-width: 120px;
+  padding: 10px 12px;
+  border-radius: var(--lt-radius-panel);
+  background: var(--lt-surface-muted);
+  border: 1px solid var(--lt-border-subtle);
+}
+
+.localSummaryLabel {
+  display: block;
+  color: var(--lt-text-muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.localSummaryValue {
+  display: block;
+  margin-top: 2px;
+  color: var(--lt-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.localRuntimePanel {
+  padding-top: 2px;
+}
+
+.localRuntimePanelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.localSection {
+  margin-top: 8px;
+}
+
+.localSectionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.localSectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lt-text);
+}
+
+.localSectionDescription {
+  margin-top: 3px;
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.localSectionMeta {
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  font-family: "SF Mono", "Menlo", monospace;
+}
+
+.localSectionInfoRow {
+  margin-top: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 8px;
+  background: var(--lt-surface);
+  border: 1px solid var(--lt-border-subtle);
+}
+
+.localSectionInfoContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.localSectionInfoLabel {
+  color: var(--lt-text-muted);
+  font-size: 12px;
+}
+
+.localSectionInfoValue {
+  color: var(--lt-text);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "SF Mono", "Menlo", monospace;
+  text-align: right;
+}
+
+.localSectionInfoContent .localSectionInfoValue {
+  text-align: left;
+}
+
+.localSectionInfoMeta {
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  font-family: "SF Mono", "Menlo", monospace;
+  line-height: 1.5;
+}
+
+.localAdvancedConfigSection {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--lt-border-subtle);
+}
+
+.localAdvancedConfigHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.localAdvancedConfigFields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.localAdvancedConfigField {
+  display: flex;
+  flex-direction: column;
+}
+
+.localAdvancedConfigLabel {
+  color: var(--lt-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.localAdvancedConfigHint {
+  margin-top: 4px;
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.localAdvancedConfigError {
+  margin-top: 6px;
+  color: #dc2626;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.localAdvancedConfigInput {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.localAdvancedConfigChevronOpen,
+.localAdvancedConfigChevronClosed {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.localAdvancedConfigChevronOpen {
+  transform: rotate(0deg);
+}
+
+.localAdvancedConfigChevronClosed {
+  transform: rotate(-90deg);
+}
+
+.localSectionNotice {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--lt-surface);
+  border: 1px solid var(--lt-border-subtle);
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.localEngineStatusRow {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.localEngineStatusItem {
+  min-width: 0;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--lt-surface-muted);
+  border: 1px solid var(--lt-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.localEngineMetricLabel {
+  display: block;
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.localEngineStatusValue {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.localEngineStatusModelName {
+  min-width: 0;
+  max-width: 160px;
+  color: var(--lt-text);
+  font-size: 12px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.localStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22px;
+  padding: 0 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.localStatusBadgeButton {
+  cursor: pointer;
+  appearance: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  outline: none;
+}
+
+.localStatusBadgeButton:hover {
+  filter: brightness(0.98);
+}
+
+.localStatusBadgeAction {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border: 1px solid #60a5fa;
+  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.12);
+}
+
+.localStatusBadgeInstalled,
+.localStatusBadgeRunning {
+  color: rgba(20, 184, 166, 1);
+  background: #ecfdf5;
+  border: 1px solid rgba(20, 184, 166, 1);
+}
+
+.localStatusBadgeMuted {
+  color: var(--lt-text-muted);
+  background: var(--lt-surface-muted);
+  border: 1px solid var(--lt-border-subtle);
+}
+
+.localStatusBadgeDead {
+  color: #faad14;
+  background: #fff7ed;
+  border: 1px solid #faad14;
+}
+
+.localStatusBadgeProgress {
+  color: rgba(29, 212, 215, 1);
+  background: rgba(29, 212, 215, 0.15);
+  border: 1px solid rgba(29, 212, 215, 1);
+}
+
+.modelList {
+  max-height: 480px;
+  overflow-y: auto;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.modelListEmpty {
+  padding: 24px;
+  text-align: center;
+  color: var(--lt-text-faint);
+  font-size: 13px;
+}
+
+.modelListItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--lt-surface-raised);
+  transition: background 0.15s;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: var(--lt-bg-layout);
+  }
+}
+
+.modelListItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.customModelListItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+
+.customModelListItem {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  background: linear-gradient(180deg, #fffaf3 0%, #fffdf8 100%);
+  border-left: 3px solid rgba(255, 127, 22, 0.35);
+}
+
+.customModelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.customModelInputRow {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.customModelRepoInput {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.customModelSourceSelect {
+  flex: 0 0 140px;
+  min-width: 140px;
+}
+
+.customModelHint {
+  font-size: 12px;
+  color: var(--lt-text-faint);
+  line-height: 1.4;
+  white-space: normal;
+}
+
+.modelListItemName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--lt-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modelListItemTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.modelListItemId {
+  font-size: 12px;
+  color: var(--lt-text-faint);
+  font-family: "SF Mono", "Menlo", monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modelListItemMeta {
+  margin-top: 2px;
+  color: var(--lt-text-muted);
+  font-size: 11px;
+  line-height: 1.45;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modelListItemActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.modelListItemStatusButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 11px;
+  border-radius: 6px;
+  color: rgba(20, 184, 166, 1);
+  background: #ecfdf5;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.modelAddForm {
+  margin-top: 12px;
+  padding: 16px;
+  background: var(--lt-bg-layout);
+  border-radius: 8px;
+  border: 1px dashed var(--lt-border-strong);
+}
+
+.modalActionRow {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.localStatusCard {
+  margin-top: 12px;
+  padding: 16px;
+  background: linear-gradient(
+    180deg,
+    var(--lt-bg-layout) 0%,
+    var(--lt-surface-muted) 100%
+  );
+  border-radius: var(--lt-radius-panel);
+  border: 1px solid var(--lt-border-subtle);
+}
+
+.localStatusCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.localStatusCardFooter {
+  margin-top: 12px;
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.localStatusFooterContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.localStatusActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.localStatusHint {
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.localRuntimeDownloadRow {
+  margin-top: 12px;
+}
+
+.localRuntimeProgressBlock {
+  width: 100%;
+  min-width: 0;
+}
+
+.localRuntimeProgressBarRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+.localRuntimeProgress {
+  flex: 1;
+  width: 100%;
+
+  :global(.ant-progress-outer) {
+    margin-inline-end: 0;
+  }
+
+  :global(.ant-progress-inner) {
+    background: rgba(255, 127, 22, 0.14);
+    border-radius: 999px;
+  }
+
+  :global(.ant-progress-bg) {
+    border-radius: 999px;
+  }
+}
+
+.localRuntimeProgressMeta {
+  display: block;
+  margin-top: 6px;
+  color: var(--lt-text-muted);
+  font-size: 11px;
+  line-height: 1.4;
+  font-family: "SF Mono", "Menlo", monospace;
+}
+
+.localInlineProgress {
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  font-family: "SF Mono", "Menlo", monospace;
+}
+
+.localLockedPanel {
+  margin-top: 8px;
+  padding: 10px 20px;
+  border-radius: var(--lt-radius-panel);
+  border: 1px dashed var(--lt-border-strong);
+  background: linear-gradient(
+    135deg,
+    rgba(245, 247, 251, 0.95),
+    rgba(250, 251, 255, 0.98)
+  );
+}
+
+.localLockedPanelTitle {
+  color: var(--lt-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.localLockedPanelDescription {
+  color: var(--lt-text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}

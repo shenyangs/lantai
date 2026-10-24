@@ -1,0 +1,16 @@
+Lantai / 澜台
+Community source snapshot, 2026-10-24.
+Original Lantai code is provided under Apache License 2.0 (see LICENSE).
+
+Third-party components retain their respective licenses and attribution.
+This file supplements, and does not replace, the component notices:
+
+- console/vendor/lantai-docx-editor/LICENSE and NOTICE (GenOffice, Mainfunc, Inc.)
+- scripts/pack/assets/officecli/darwin-arm64/LICENSE and NOTICE (OfficeCLI)
+- src/lantai/embedding_models/bge-small-zh-v1.5/THIRD_PARTY_NOTICE.md (BAAI model, MIT)
+- src/lantai/research/data/THIRD_PARTY.md (citeproc-js CPAL, CSL CC-BY-SA, Noto-derived fonts OFL)
+- src/lantai/app/reading/data/RSSHub-LICENSE
+- third_party/ and individual vendored component license files
+- THIRD_PARTY_NOTICES.md (integration references and optional dependency caveats)
+
+The Apache license of the project does not replace third-party license terms.

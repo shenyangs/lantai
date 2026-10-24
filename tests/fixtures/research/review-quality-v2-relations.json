@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "minimum_accuracy": 0.95,
+  "label_source": "Engineering annotations fixed before model evaluation; no external expert validation claimed.",
+  "cases": [
+    {
+      "id": "unrelated_domain",
+      "source": "The article describes medieval pottery glazing temperatures and ceramic pigments. It contains no health or transport data.",
+      "report": "The new bus route reduced asthma admissions by 18 percent.",
+      "expected_assessment": "unrelated"
+    },
+    {
+      "id": "partial_compound",
+      "source": "The survey measured employment status and found that employment increased by 4 percent. It collected no household income data.",
+      "report": "The survey found that employment and household income increased.",
+      "expected_assessment": "partial_support"
+    },
+    {
+      "id": "ambiguous_result",
+      "source": "Two equally precise trials in the same population reported opposite directions for the same endpoint. A prespecified synthesis could not determine the direction of the effect, and no trial was judged more reliable.",
+      "report": "The treatment has a beneficial effect on the endpoint.",
+      "expected_assessment": "uncertain"
+    },
+    {
+      "id": "disclosed_disagreement",
+      "source": "Trial A found improved outcomes. Trial B found no improvement. Both trials were randomized in the same population.",
+      "report": "Trial A found improved outcomes, while trial B found no improvement; these findings disagree and do not establish a consistent benefit.",
+      "expected_assessment": "supports",
+      "expected_status": "reviewed"
+    }
+  ]
+}

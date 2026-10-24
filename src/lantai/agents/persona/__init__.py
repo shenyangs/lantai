@@ -1,0 +1,141 @@
+"""Stable persona contracts for built-in agents."""
+
+from .constitution import (
+    TemperamentConstitution,
+    TemperamentConstitutionError,
+    get_protected_temperament_enforcement,
+    get_protected_temperament_prompt,
+    load_builtin_temperament_constitution,
+    load_temperament_constitution,
+)
+from .calibration import (
+    CollaborationCalibration,
+    derive_collaboration_calibration,
+)
+from .workspace_sync import (
+    PersonaWorkspaceRollbackResult,
+    PersonaWorkspaceSyncPlanItem,
+    PersonaWorkspaceSyncResult,
+    plan_persona_workspace_templates,
+    rollback_persona_workspace_template,
+    sync_persona_workspace_templates,
+)
+from .benchmark import (
+    PersonaBenchmarkReport,
+    PersonaEvaluation,
+    PersonaScenario,
+    evaluate_persona_response,
+    load_builtin_persona_scenarios,
+    load_persona_scenarios,
+    run_persona_benchmark,
+)
+from .work_state import (
+    WorkState,
+    derive_work_state,
+    project_work_state_prompt,
+)
+from .subjective_reaction import (
+    SubjectiveReaction,
+    current_user_local_time,
+    derive_subjective_reaction,
+    project_subjective_reaction,
+    project_subjective_reaction_prompt,
+)
+from .ququ import (
+    QuquPulse,
+    QuquSpiritState,
+    QuquTurn,
+    prepare_ququ_turn,
+)
+from .ququ_benchmark import (
+    QuquBenchmarkReport,
+    QuquBenchmarkScenario,
+    QuquBenchmarkTurn,
+    evaluate_ququ_turn,
+    load_builtin_ququ_scenarios,
+    run_ququ_benchmark,
+)
+from .perceptible_presence import (
+    PersonaDeliveryReport,
+    PersonaTurnPlan,
+    PresenceState,
+    evaluate_persona_delivery,
+    plan_persona_turn,
+)
+from .subject_continuity import (
+    SubjectContinuityState,
+    SubjectContinuityStore,
+    SubjectEvent,
+    SubjectReflection,
+    SubjectTurnProjection,
+)
+from .subject_continuity_benchmark import (
+    SUBJECT_CONTINUITY_AXES,
+    SubjectBenchmarkScenario,
+    SubjectBenchmarkTurn,
+    SubjectTurnJudgment,
+    build_subject_judge_prompt,
+    load_builtin_subject_continuity_scenarios,
+    load_subject_continuity_scenarios,
+    parse_subject_judgment,
+)
+
+__all__ = [
+    "TemperamentConstitution",
+    "TemperamentConstitutionError",
+    "CollaborationCalibration",
+    "derive_collaboration_calibration",
+    "PersonaWorkspaceSyncResult",
+    "PersonaWorkspaceSyncPlanItem",
+    "PersonaWorkspaceRollbackResult",
+    "plan_persona_workspace_templates",
+    "rollback_persona_workspace_template",
+    "sync_persona_workspace_templates",
+    "PersonaBenchmarkReport",
+    "PersonaEvaluation",
+    "PersonaScenario",
+    "evaluate_persona_response",
+    "load_builtin_persona_scenarios",
+    "load_persona_scenarios",
+    "run_persona_benchmark",
+    "WorkState",
+    "derive_work_state",
+    "project_work_state_prompt",
+    "SubjectiveReaction",
+    "current_user_local_time",
+    "derive_subjective_reaction",
+    "project_subjective_reaction",
+    "project_subjective_reaction_prompt",
+    "QuquPulse",
+    "QuquSpiritState",
+    "QuquTurn",
+    "prepare_ququ_turn",
+    "QuquBenchmarkReport",
+    "QuquBenchmarkScenario",
+    "QuquBenchmarkTurn",
+    "evaluate_ququ_turn",
+    "load_builtin_ququ_scenarios",
+    "run_ququ_benchmark",
+    "PersonaTurnPlan",
+    "PersonaDeliveryReport",
+    "PresenceState",
+    "evaluate_persona_delivery",
+    "plan_persona_turn",
+    "SubjectContinuityState",
+    "SubjectContinuityStore",
+    "SubjectEvent",
+    "SubjectReflection",
+    "SubjectTurnProjection",
+    "SUBJECT_CONTINUITY_AXES",
+    "SubjectBenchmarkScenario",
+    "SubjectBenchmarkTurn",
+    "SubjectTurnJudgment",
+    "build_subject_judge_prompt",
+    "load_builtin_subject_continuity_scenarios",
+    "load_subject_continuity_scenarios",
+    "parse_subject_judgment",
+    "get_protected_temperament_enforcement",
+    "get_protected_temperament_prompt",
+    "load_builtin_temperament_constitution",
+    "load_temperament_constitution",
+]

@@ -1,0 +1,303 @@
+.page {
+  min-height: 100%;
+  padding: 38px clamp(24px, 5vw, 72px) 80px;
+  color: var(--ant-color-text, #172033);
+  background: radial-gradient(
+    circle at 80% -10%,
+    rgba(75, 107, 150, 0.12),
+    transparent 34%
+  );
+}
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto 28px;
+}
+.hero h1 {
+  margin: 6px 0 8px;
+  font:
+    600 clamp(32px, 5vw, 54px)/1.05 ui-serif,
+    Georgia,
+    serif;
+  letter-spacing: -0.035em;
+}
+.hero p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--ant-color-text-secondary, #657084);
+  line-height: 1.7;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #526d91;
+}
+.mode {
+  padding: 8px 12px;
+  border: 1px solid rgba(82, 109, 145, 0.25);
+  border-radius: 99px;
+  color: #526d91;
+  white-space: nowrap;
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(250px, 0.8fr);
+  gap: 18px;
+  max-width: 1200px;
+  margin: auto;
+}
+.composer,
+.history,
+.jobPanel {
+  background: var(--ant-color-bg-container, #fff);
+  border: 1px solid var(--ant-color-border-secondary, #e6e9ef);
+  border-radius: 18px;
+  box-shadow: 0 16px 50px rgba(25, 36, 54, 0.06);
+}
+.composer {
+  padding: 24px;
+}
+.composer > label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 650;
+}
+.composer textarea {
+  width: 100%;
+  min-height: 136px;
+  resize: vertical;
+  border: 1px solid var(--ant-color-border, #d9dee8);
+  border-radius: 12px;
+  padding: 14px;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+.fields {
+  display: grid;
+  grid-template-columns: 1.3fr 0.55fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+.fields label {
+  font-size: 12px;
+  color: var(--ant-color-text-secondary, #667085);
+}
+.fields input,
+.fields select {
+  display: block;
+  width: 100%;
+  height: 38px;
+  margin-top: 6px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: 1px solid var(--ant-color-border, #d9dee8);
+  border-radius: 9px;
+  color: inherit;
+  background: var(--ant-color-bg-container, #fff);
+}
+button {
+  font: inherit;
+}
+.primary {
+  border: 0 !important;
+  border-radius: 10px;
+  padding: 10px 18px;
+  color: #fff !important;
+  background: #526d91 !important;
+  cursor: pointer;
+}
+.primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.history {
+  padding: 18px;
+}
+.history h2 {
+  margin: 2px 4px 12px;
+  font-size: 14px;
+}
+.history button {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px;
+  text-align: left;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.history button:hover,
+.activeJob {
+  background: rgba(82, 109, 145, 0.09) !important;
+}
+.history strong {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+}
+.history span,
+.muted {
+  color: var(--ant-color-text-secondary, #778196);
+  font-size: 12px;
+}
+.jobPanel {
+  max-width: 1200px;
+  margin: 18px auto 0;
+  padding: 22px;
+}
+.jobHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.jobHeader > div:first-child {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  align-items: center;
+}
+.jobHeader small {
+  grid-column: 2;
+  margin-top: 3px;
+  color: var(--ant-color-text-secondary, #758095);
+}
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #9aa4b2;
+  grid-row: 1/3;
+}
+.statusDot[data-running] {
+  background: #4d8066;
+  box-shadow: 0 0 0 5px rgba(77, 128, 102, 0.12);
+  animation: pulse 1.8s infinite;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+}
+.actions button,
+.slides button {
+  border: 1px solid var(--ant-color-border, #d9dee8);
+  border-radius: 9px;
+  padding: 8px 12px;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+.taskDetails {
+  margin: 18px 0;
+}
+.taskDetails summary {
+  cursor: pointer;
+  color: var(--ant-color-text-secondary, #657084);
+  font-size: 13px;
+}
+.taskDetails[open] summary {
+  margin-bottom: 12px;
+}
+.timeline {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.timeline > div {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+.timeline b {
+  color: #526d91;
+  font-variant-numeric: tabular-nums;
+}
+.timeline time {
+  color: var(--ant-color-text-secondary, #8590a3);
+  font-size: 11px;
+}
+.slides {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  border-top: 1px solid var(--ant-color-border-secondary, #e8ebf0);
+  padding-top: 18px;
+}
+.slides article {
+  min-height: 126px;
+  padding: 14px;
+  border: 1px solid var(--ant-color-border-secondary, #e5e9ef);
+  border-radius: 12px;
+  background: rgba(82, 109, 145, 0.035);
+}
+.slides article > span {
+  color: #526d91;
+  font-size: 11px;
+  font-weight: 700;
+}
+.slides h3 {
+  min-height: 40px;
+  margin: 8px 0;
+  font-size: 14px;
+}
+.slides small {
+  display: block;
+  min-height: 26px;
+  color: var(--ant-color-text-secondary, #7c8798);
+}
+.slides textarea {
+  width: 100%;
+  min-height: 72px;
+  box-sizing: border-box;
+  resize: vertical;
+  border: 1px solid var(--ant-color-border, #d9dee8);
+  border-radius: 9px;
+  padding: 8px;
+  color: inherit;
+  background: var(--ant-color-bg-container, #fff);
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.slides button {
+  margin-top: 10px;
+  padding: 5px 8px;
+  font-size: 11px;
+}
+.error {
+  color: #b42318;
+}
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 9px rgba(77, 128, 102, 0);
+  }
+}
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .fields {
+    grid-template-columns: 1fr;
+  }
+  .hero,
+  .jobHeader {
+    flex-direction: column;
+  }
+  .actions {
+    flex-wrap: wrap;
+  }
+}

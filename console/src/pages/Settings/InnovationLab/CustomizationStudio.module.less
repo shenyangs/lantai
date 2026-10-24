@@ -1,0 +1,743 @@
+.studio {
+  display: grid;
+  gap: 1.1rem;
+  padding: clamp(1.15rem, 2.3vw, 1.8rem);
+  border-radius: 1.15rem;
+  background:
+    radial-gradient(circle at 88% 0%, color-mix(in srgb, var(--lt-accent) 12%, transparent), transparent 35%),
+    color-mix(in srgb, var(--lt-surface) 94%, var(--lt-accent) 6%);
+  box-shadow: 0 1.2rem 3rem color-mix(in srgb, var(--lt-accent) 8%, transparent);
+}
+
+.statusRail,
+.intentHeading,
+.intentComposer,
+.planPanel header,
+.planPanel footer,
+.statusActions,
+.historyHint {
+  display: flex;
+  align-items: center;
+}
+
+.profileManager,
+.revisionRail,
+.profileIdentity,
+.profileTools {
+  display: flex;
+  align-items: center;
+}
+
+.profileManager {
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0.85rem;
+  border-block: 1px solid var(--lt-border);
+}
+
+.profileIdentity,
+.profileTools {
+  gap: 0.55rem;
+}
+
+.profileIdentity > button,
+.revisionRail > button {
+  border: 0;
+  color: var(--lt-text);
+  background: transparent;
+  cursor: pointer;
+}
+
+.profileIdentity > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  font-weight: 650;
+}
+
+.profileIdentity > span {
+  color: var(--lt-text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.74rem;
+}
+
+.revisionRail {
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+}
+
+.revisionRail > span,
+.revisionRail > button {
+  flex: 0 0 auto;
+}
+
+.revisionRail > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--lt-text-muted);
+  font-size: 0.76rem;
+}
+
+.revisionRail > button {
+  max-width: 12rem;
+  padding: 0.38rem 0.55rem;
+  overflow: hidden;
+  border-radius: 0.45rem;
+  background: var(--lt-surface-muted);
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.revisionRail > button:hover {
+  color: var(--lt-accent);
+}
+
+.importEditor {
+  margin-top: 0.9rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.libraryList {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.libraryRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.7rem;
+  border-bottom: 1px solid var(--lt-border);
+}
+
+.libraryMark {
+  --profile-color: var(--lt-accent);
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 0.55rem;
+  color: white;
+  font-weight: 700;
+  background: var(--profile-color);
+}
+
+.libraryRow > div:nth-child(2) {
+  display: grid;
+  min-width: 0;
+}
+
+.libraryRow small {
+  color: var(--lt-text-muted);
+}
+
+.libraryActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.statusRail {
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.statusRail h2,
+.planPanel h3 {
+  margin: 0.15rem 0 0;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.statusRail p,
+.intentHeading p {
+  margin: 0.25rem 0 0;
+  color: var(--lt-text-muted);
+  line-height: 1.55;
+}
+
+.eyebrow {
+  color: var(--lt-text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.statusActions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+.healthState,
+.historyHint,
+.planPanel footer > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--lt-text-muted);
+  font-size: 0.8rem;
+}
+
+.healthState {
+  color: var(--lt-accent);
+  font-weight: 600;
+}
+
+.intentStudio {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--lt-accent) 18%, var(--lt-border));
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--lt-surface) 90%, transparent);
+}
+
+.advancedStudio {
+  border: 1px solid var(--lt-border);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--lt-surface) 94%, transparent);
+}
+
+.advancedStudio > button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border: 0;
+  color: var(--lt-text);
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+}
+
+.advancedStudio > button > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.advancedStudio > button > span:first-child > span:last-child {
+  display: grid;
+  gap: 0.16rem;
+}
+
+.advancedStudio small,
+.advancedStudio > button > span:last-child {
+  color: var(--lt-text-muted);
+  font-size: 0.75rem;
+}
+
+.advancedIcon {
+  display: grid;
+  width: 2.15rem;
+  height: 2.15rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.6rem;
+  color: var(--lt-accent);
+  background: color-mix(in srgb, var(--lt-accent) 10%, transparent);
+}
+
+.registryEditor {
+  display: grid;
+  gap: 0.8rem;
+  padding: 0 1rem 1rem;
+}
+
+.registryWelcome {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: var(--lt-surface-muted);
+}
+
+.registryWelcome > div {
+  max-width: 44rem;
+}
+
+.registryWelcome strong {
+  font-size: 0.9rem;
+}
+
+.registryWelcome p {
+  margin: 0.3rem 0 0;
+  color: var(--lt-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.expertNotice {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  padding: 0.8rem 0.9rem;
+  border-radius: 0.7rem;
+  color: color-mix(in srgb, var(--lt-text) 88%, #8b5a16);
+  background: color-mix(in srgb, #d99b3d 12%, var(--lt-surface));
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.expertNotice svg {
+  flex: 0 0 auto;
+  margin-top: 0.08rem;
+  color: #a66a14;
+}
+
+.expertNotice span {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.registryToolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.registryToolbar :global(.ant-input-affix-wrapper) {
+  min-width: 12rem;
+  flex: 1;
+}
+
+.registryToolbar :global(.ant-checkbox-wrapper) {
+  flex: 0 0 auto;
+  min-width: 8rem;
+  white-space: nowrap;
+}
+
+.registryToolbar :global(.ant-checkbox + span) {
+  white-space: nowrap;
+}
+
+.registryEditor details {
+  border-top: 1px solid var(--lt-border);
+}
+
+.registryEditor summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  cursor: pointer;
+  font-weight: 650;
+  list-style: none;
+}
+
+.registryEditor summary > span:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--lt-text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.registryEditor summary > span:last-child svg {
+  transition: transform 160ms ease;
+}
+
+.registryEditor details[open] summary > span:last-child svg {
+  transform: rotate(180deg);
+}
+
+.registryRows {
+  display: grid;
+  gap: 0.55rem;
+  padding-bottom: 0.9rem;
+}
+
+.registryRow {
+  display: grid;
+  grid-template-columns: minmax(15rem, 1fr) minmax(16rem, 0.9fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: start;
+  padding: 0.9rem;
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--lt-surface) 65%, transparent);
+  transition: background 160ms ease;
+}
+
+.registryRowPending {
+  background: color-mix(in srgb, var(--lt-accent) 8%, var(--lt-surface));
+}
+
+.registryMeta,
+.registryControl {
+  display: grid;
+  min-width: 0;
+}
+
+.registryTitleLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.registryTitleLine :global(.ant-tag) {
+  margin-inline-end: 0;
+  font-size: 0.68rem;
+  line-height: 1.25rem;
+}
+
+.registryMeta p {
+  max-width: 62ch;
+  margin: 0.35rem 0 0;
+  color: var(--lt-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.currentValue {
+  margin-top: 0.35rem;
+  color: var(--lt-text-muted);
+  font-size: 0.72rem;
+}
+
+.registryMeta code {
+  margin-top: 0.35rem;
+  overflow: hidden;
+  color: color-mix(in srgb, var(--lt-text-muted) 85%, transparent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.68rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.registryControl {
+  gap: 0.35rem;
+}
+
+.controlStack {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.controlStack > span {
+  color: var(--lt-text-muted);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.controlStack > .fieldError {
+  color: var(--lt-danger, #b42318);
+}
+
+.switchControl {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2rem;
+}
+
+.switchControl > span {
+  color: var(--lt-text-muted);
+  font-size: 0.78rem;
+}
+
+.numberControl {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.numberControl > div:first-child,
+.numberControl > div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.numberControl > div:first-child span {
+  color: var(--lt-text-muted);
+  font-size: 0.75rem;
+}
+
+.numberControl :global(.ant-slider) {
+  flex: 1;
+  margin-inline: 0.45rem;
+}
+
+.numberControl :global(.ant-input-number) {
+  width: 4.25rem;
+}
+
+.fieldActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  min-height: 1.5rem;
+}
+
+.registryRow :global(.ant-select),
+.registryRow :global(.ant-input),
+.registryRow :global(.ant-input-affix-wrapper) {
+  width: 100%;
+}
+
+.registryFooter {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  padding: 0.8rem 0 0.1rem;
+  border-top: 1px solid var(--lt-border);
+  background: var(--lt-surface);
+}
+
+.registryFooter > span {
+  margin-right: auto;
+  color: var(--lt-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.intentHeading {
+  gap: 0.75rem;
+}
+
+.intentIcon {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 0.65rem;
+  color: var(--lt-accent);
+  background: color-mix(in srgb, var(--lt-accent) 12%, transparent);
+}
+
+.intentComposer {
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.intentComposer :global(.ant-input) {
+  resize: none;
+}
+
+.profileStrip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding-block: 0.1rem 0.25rem;
+}
+
+.profileCard {
+  --profile-color: var(--lt-accent);
+  position: relative;
+  display: grid;
+  min-width: 8.5rem;
+  min-height: 7.5rem;
+  align-content: end;
+  gap: 0.25rem;
+  padding: 0.8rem;
+  overflow: hidden;
+  color: var(--lt-text);
+  text-align: left;
+  border: 1px solid var(--lt-border);
+  border-radius: 0.78rem;
+  background: color-mix(in srgb, var(--lt-surface) 92%, transparent);
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.profileCard:hover {
+  border-color: color-mix(in srgb, var(--profile-color) 50%, var(--lt-border));
+  transform: translateY(-2px);
+}
+
+.profileCard:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.profileCard:focus-visible {
+  outline: 2px solid var(--lt-accent);
+  outline-offset: 2px;
+}
+
+.profileCardActive {
+  border-color: color-mix(in srgb, var(--profile-color) 58%, var(--lt-border));
+  background: color-mix(in srgb, var(--profile-color) 10%, var(--lt-surface));
+}
+
+.profileCard > svg {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  color: var(--profile-color);
+}
+
+.factoryMark,
+.profileMark {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 0.55rem;
+  color: white;
+  font-weight: 650;
+  background: var(--profile-color);
+}
+
+.factoryMark {
+  --profile-color: #41566d;
+}
+
+.profileCard strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profileCard small,
+.slotIndex {
+  color: var(--lt-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.profileCardEmpty {
+  border-style: dashed;
+  background: transparent;
+}
+
+.slotIndex {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.planPanel {
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background: var(--lt-surface);
+  box-shadow: inset 0 0 0 1px var(--lt-border);
+}
+
+.planPanel header,
+.planPanel footer {
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.changeList {
+  display: grid;
+  gap: 0.3rem;
+  margin: 1rem 0;
+}
+
+.changeRow {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) minmax(5rem, 0.7fr) auto minmax(5rem, 0.7fr);
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.62rem 0.72rem;
+  border-radius: 0.55rem;
+  background: var(--lt-surface-muted);
+  font-size: 0.82rem;
+}
+
+.changeRow code {
+  overflow: hidden;
+  color: var(--lt-text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.changeRow i {
+  color: var(--lt-text-muted);
+  font-style: normal;
+}
+
+.planPanel footer > div {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.emptyHistory {
+  padding-block: 0.25rem;
+}
+
+.historyHint {
+  justify-content: center;
+  padding: 0.35rem;
+}
+
+@media (max-width: 900px) {
+  .statusRail,
+  .intentComposer,
+  .planPanel footer,
+  .profileManager {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .statusActions {
+    justify-content: flex-start;
+  }
+
+  .profileStrip {
+    grid-template-columns: repeat(6, minmax(8.5rem, 1fr));
+  }
+
+  .changeRow {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .changeRow code {
+    grid-column: 1 / -1;
+  }
+
+  .libraryRow {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .libraryActions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+
+  .registryRow {
+    grid-template-columns: 1fr;
+  }
+
+  .registryWelcome,
+  .registryToolbar,
+  .registryFooter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .registryWelcome :global(.ant-segmented),
+  .registryToolbar :global(.ant-input-affix-wrapper) {
+    width: 100%;
+    max-width: none;
+  }
+
+  .registryFooter > span {
+    margin-right: 0;
+  }
+
+  .registryFooter :global(.ant-btn) {
+    width: 100%;
+  }
+}

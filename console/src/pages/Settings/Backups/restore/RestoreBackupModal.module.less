@@ -1,0 +1,137 @@
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.backupInfoSection {
+  margin-bottom: 16px;
+}
+
+.backupDescription {
+  color: var(--ant-color-text-secondary);
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.restoreImpactSummary {
+  display: grid;
+  gap: 1px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid var(--lt-material-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-border-subtle);
+
+  > div {
+    display: grid;
+    grid-template-columns: 86px minmax(0, 1fr);
+    gap: 10px;
+    padding: 9px 11px;
+    background: var(--lt-material-panel);
+  }
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 11px;
+  }
+
+  strong {
+    color: var(--lt-text);
+    font-size: 11.5px;
+    font-weight: 620;
+    line-height: 1.45;
+  }
+}
+
+.workspaceDirSection {
+  margin-bottom: 16px;
+}
+
+.workspaceDirLabel {
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hintIcon {
+  font-size: 13px;
+  color: var(--ant-color-text-quaternary);
+  cursor: help;
+}
+
+.dividerTop {
+  margin: 0 0 16px 0;
+}
+
+.dividerBottom {
+  margin: 16px 0;
+}
+
+.restoreModeSection {
+  margin-bottom: 16px;
+}
+
+.restoreModeLabel {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radioOption {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.radioOptionHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.radioDisabledTag {
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.radioDesc {
+  font-size: 12px;
+}
+
+.fullRestoreAlert {
+  margin-bottom: 16px;
+}
+
+.customOptions {
+  width: 100%;
+}
+
+.checkboxRow {
+  padding: 5px 0;
+}
+
+.secretsHint {
+  color: var(--ant-color-text-tertiary);
+  font-size: 11px;
+  margin-left: 24px;
+  margin-top: 1px;
+}
+
+.customRestoreAlert {
+  margin-bottom: 12px;
+}
+
+.restoreWarningList {
+  margin: 0;
+  padding-left: 18px;
+}

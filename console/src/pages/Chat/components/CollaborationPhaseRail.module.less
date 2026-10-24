@@ -1,0 +1,112 @@
+.rail {
+  width: min(100%, 420px);
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+
+  li {
+    position: relative;
+    min-width: 0;
+    display: grid;
+    grid-template-rows: 8px auto;
+    align-items: start;
+    gap: 5px;
+    color: var(--lt-text-tertiary);
+
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      right: 0;
+      left: 10px;
+      height: 1px;
+      background: var(--lt-border-subtle);
+    }
+
+    > span {
+      z-index: 1;
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--lt-border-strong);
+      border-radius: 50%;
+      background: var(--lt-workspace-bg);
+    }
+
+    > em {
+      z-index: 1;
+      width: fit-content;
+      overflow: hidden;
+      font-size: 10.5px;
+      font-style: normal;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &[data-state="complete"] {
+      color: var(--lt-text-secondary);
+
+      > span,
+      &::after {
+        border-color: var(--lt-accent);
+        background: var(--lt-accent);
+        opacity: 0.58;
+      }
+    }
+
+    &[data-state="current"] {
+      color: var(--lt-text);
+      font-weight: 620;
+
+      > span {
+        border-color: var(--lt-accent);
+        background: var(--lt-accent);
+        box-shadow: 0 0 0 3px
+          color-mix(in srgb, var(--lt-accent) 13%, transparent);
+      }
+    }
+
+    &[data-state="failed"] {
+      color: var(--lt-danger, #c94f4f);
+      font-weight: 620;
+
+      > span {
+        border-color: var(--lt-danger, #c94f4f);
+        background: var(--lt-danger, #c94f4f);
+        box-shadow: 0 0 0 3px
+          color-mix(in srgb, var(--lt-danger, #c94f4f) 12%, transparent);
+      }
+    }
+  }
+
+  &[data-compact="true"] {
+    width: min(100%, 330px);
+
+    li {
+      grid-template-rows: 7px auto;
+      gap: 4px;
+
+      > span {
+        width: 7px;
+        height: 7px;
+      }
+
+      > em {
+        font-size: 10px;
+      }
+
+      &:not(:last-child)::after {
+        right: 0;
+        left: 9px;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail li[data-state="current"] > span {
+    box-shadow: none;
+  }
+}

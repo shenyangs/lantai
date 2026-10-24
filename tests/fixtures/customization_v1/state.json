@@ -1,0 +1,13 @@
+{
+  "active_profile_id": "profile_v1_upgrade_fixture",
+  "active_scoped_profiles": [],
+  "last_known_good": {
+    "profile_v1_upgrade_fixture": 2
+  },
+  "mode": "normal",
+  "pending_boot_validation": {
+    "profile_v1_upgrade_fixture": 3
+  },
+  "schema_version": 1,
+  "updated_at": "2026-07-26T21:15:00Z"
+}

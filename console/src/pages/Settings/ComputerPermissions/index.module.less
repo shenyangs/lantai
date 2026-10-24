@@ -1,0 +1,236 @@
+.permissionsPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--lt-bg);
+}
+
+.content {
+  flex: 1;
+  width: calc(100% - 2 * var(--lt-page-gutter));
+  max-width: var(--lt-settings-measure);
+  margin: 0 auto;
+  padding: 24px 0 42px;
+  overflow-y: auto;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: 180px 180px minmax(0, 1fr);
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.summaryPanel,
+.summaryPanelWide {
+  min-height: 82px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--lt-material-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-material-panel);
+  box-shadow: none;
+}
+
+.summaryPanel {
+  strong {
+    display: block;
+    margin-top: 2px;
+    color: var(--color-text-primary, #1d2327);
+    font-size: 26px;
+    line-height: 1;
+  }
+}
+
+.summaryPanelWide {
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.panelIcon,
+.permissionIcon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #2f6f9d;
+  background: rgba(79, 137, 184, 0.1);
+}
+
+.panelIcon {
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+}
+
+.pathCopy {
+  min-width: 0;
+  flex: 1;
+
+  code {
+    display: block;
+    margin-top: 4px;
+    color: var(--color-text-primary, #1d2327);
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.notice {
+  margin-bottom: 16px;
+}
+
+.permissionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.permissionCard {
+  border-color: var(--lt-material-border) !important;
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-material-panel) !important;
+  box-shadow: none;
+
+  :global(.ant-card-body) {
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+  }
+}
+
+.permissionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+
+  h4 {
+    margin: 0 !important;
+  }
+}
+
+.permissionIcon {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+}
+
+.why {
+  min-height: 48px;
+  margin: 0 0 14px !important;
+  color: var(--color-text-secondary, #6f6a64);
+  line-height: 1.65;
+}
+
+.canDo {
+  padding: 12px 14px;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: var(--lt-radius-md);
+  background: var(--lt-material-inset);
+
+  ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+
+  li + li {
+    margin-top: 5px;
+  }
+}
+
+.manualBox {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px dashed var(--lt-border);
+  border-radius: var(--lt-radius-md);
+
+  p {
+    margin: 6px 0 0;
+    color: var(--color-text-primary, #1d2327);
+    line-height: 1.55;
+  }
+}
+
+.statusHint {
+  color: var(--color-text-secondary, #6f6a64) !important;
+  font-size: 12px;
+}
+
+.actions {
+  margin-top: auto;
+  padding-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.blue {
+  .permissionIcon {
+    color: #2f6f9d;
+    background: rgba(79, 137, 184, 0.1);
+  }
+}
+
+.green {
+  .permissionIcon {
+    color: #1d766e;
+    background: rgba(47, 127, 117, 0.1);
+  }
+}
+
+.gold {
+  .permissionIcon {
+    color: #9a6a12;
+    background: rgba(207, 148, 35, 0.12);
+  }
+}
+
+.red {
+  .permissionIcon {
+    color: #b14b4b;
+    background: rgba(209, 82, 82, 0.1);
+  }
+}
+
+.gray {
+  .permissionIcon {
+    color: #62676d;
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+:global(.dark-mode) {
+  .gray .permissionIcon,
+  .panelIcon {
+    color: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (max-width: 980px) {
+  .summaryGrid,
+  .permissionGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .content {
+    width: calc(100% - 32px);
+    padding: 18px 0 32px;
+  }
+
+  .summaryPanelWide {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

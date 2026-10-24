@@ -1,0 +1,104 @@
+# -*- coding: utf-8 -*-
+"""Unit tests for ``console._extract_placeholder_name``.
+
+The console handler picks an immediate semantic name for a new chat from the
+first content part. Shapes match the legacy content-block
+formats (``{"type": "text", "text": "..."}`` dicts, ``TextBlock``-like
+objects with ``.text``, raw strings, and non-text/media blocks). These
+tests pin that mapping so a future shape change cannot silently produce
+labels like ``{"type": ...`` in the session drawer (regression for PR #3).
+"""
+from __future__ import annotations
+
+from lantai.app.routers.console import _extract_placeholder_name
+
+
+class _TextBlock:
+    """Stand-in for a legacy ``TextBlock`` (object with ``.text``)."""
+
+    def __init__(self, text: str) -> None:
+        self.text = text
+
+
+def test_no_content_parts_returns_new_chat() -> None:
+    name, first_text = _extract_placeholder_name([])
+    assert name == "New Chat"
+    assert first_text == ""
+
+
+def test_string_content_part() -> None:
+    name, first_text = _extract_placeholder_name(["Hello, world!"])
+    assert name == "Hello, world"
+    assert first_text == "Hello, world!"
+
+
+def test_dict_text_block() -> None:
+    """``{"type": "text", "text": "..."}`` is the legacy text block.
+
+    Without the dict-aware branch this would fall through to
+    ``str(content)`` and produce a placeholder like ``{'type': ...``.
+    """
+    parts = [{"type": "text", "text": "What's the weather today?"}]
+    name, first_text = _extract_placeholder_name(parts)
+    assert name == "What's the weather today"
+    assert first_text == "What's the weather today?"
+
+
+def test_dict_without_text_key_is_treated_as_media() -> None:
+    """Image/audio dict blocks lack a ``text`` field and should not produce
+    JSON-shaped placeholders."""
+    parts = [{"type": "image", "image": {"url": "x.png"}}]
+    name, first_text = _extract_placeholder_name(parts)
+    assert name == "Media Message"
+    assert first_text == ""
+
+
+def test_dict_with_non_string_text_is_treated_as_media() -> None:
+    parts = [{"type": "text", "text": 123}]
+    name, first_text = _extract_placeholder_name(parts)
+    assert name == "Media Message"
+    assert first_text == ""
+
+
+def test_object_with_text_attribute() -> None:
+    parts = [_TextBlock("Plan a trip to Tokyo next week")]
+    name, first_text = _extract_placeholder_name(parts)
+    assert name == "Plan a trip to Tokyo next week"
+    assert first_text == "Plan a trip to Tokyo next week"
+
+
+def test_request_command_is_compacted_into_semantic_name() -> None:
+    name, first_text = _extract_placeholder_name(
+        [
+            {
+                "type": "text",
+                "text": (
+                    "请让4个子Agent并行检查滚动锁死问题，然后汇总结论。"
+                ),
+            },
+        ],
+    )
+
+    assert name == "滚动锁死问题排查"
+    assert first_text == "请让4个子Agent并行检查滚动锁死问题，然后汇总结论。"
+
+
+def test_object_with_empty_text_attribute_is_media() -> None:
+    parts = [_TextBlock("")]
+    name, first_text = _extract_placeholder_name(parts)
+    assert name == "Media Message"
+    assert first_text == ""
+
+
+def test_unknown_shape_is_treated_as_media() -> None:
+    """Unknown blocks must NOT be ``str(...)``-coerced into a placeholder."""
+    parts = [object()]
+    name, first_text = _extract_placeholder_name(parts)
+    assert name == "Media Message"
+    assert first_text == ""
+
+
+def test_falsy_first_part_is_media() -> None:
+    name, first_text = _extract_placeholder_name([None])
+    assert name == "Media Message"
+    assert first_text == ""

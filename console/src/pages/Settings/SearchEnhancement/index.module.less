@@ -1,0 +1,378 @@
+.page {
+  min-height: 100%;
+  background: var(--lt-surface);
+}
+
+.content {
+  width: min(
+    var(--lt-settings-measure),
+    calc(100% - 2 * var(--lt-page-gutter))
+  );
+  margin: 28px auto 56px;
+  display: grid;
+  gap: 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--lt-text-muted);
+
+  > svg {
+    margin-top: 3px;
+    color: var(--lt-accent);
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--lt-text);
+    font-size: 15px;
+    font-weight: 720;
+  }
+
+  p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+}
+
+.panel {
+  overflow: hidden;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-card-bg);
+  box-shadow: none;
+}
+
+.providerRow {
+  min-height: 116px;
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fbf3e5;
+  box-shadow: var(--lt-shadow-xs);
+
+  img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 88px;
+    height: 88px;
+    max-width: none;
+    transform: translate(-50%, calc(-50% + 8px));
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.copy {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+
+  strong {
+    color: var(--lt-text);
+    font-size: 16px;
+    font-weight: 750;
+  }
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 13px;
+  }
+
+  em {
+    width: fit-content;
+    margin-top: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--lt-success, #26805b);
+    font-size: 12px;
+    font-style: normal;
+  }
+}
+
+.copy .errorStatus {
+  color: var(--lt-danger, #b42318);
+}
+
+.control {
+  min-width: 56px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.managementGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.managementCard,
+.capabilitiesCard {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--lt-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-card-bg);
+  box-shadow: none;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+
+  h3 {
+    margin: 0;
+    color: var(--lt-text);
+    font-size: 14px;
+    font-weight: 720;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+}
+
+.cardIcon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #a33a2c;
+  background: #fbf3e5;
+}
+
+.runtimeFacts {
+  margin: 18px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+
+  div {
+    min-width: 0;
+  }
+
+  dt {
+    margin-bottom: 4px;
+    color: var(--lt-text-subtle, var(--lt-text-muted));
+    font-size: 11px;
+  }
+
+  dd {
+    margin: 0;
+    overflow: hidden;
+    color: var(--lt-text);
+    font-size: 12px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.runtimeFacts dd.statusReady,
+.runtimeFacts dd.statusDegraded,
+.runtimeFacts dd.statusError,
+.runtimeFacts dd.statusIdle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  > span {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}
+
+.statusReady {
+  color: var(--lt-success, #26805b) !important;
+}
+
+.statusDegraded {
+  color: #a66a1f !important;
+}
+
+.statusError {
+  color: var(--lt-danger, #b42318) !important;
+}
+
+.statusIdle {
+  color: var(--lt-text-muted) !important;
+}
+
+.diagnosticsFooter {
+  margin-top: 18px;
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--lt-border-subtle, var(--lt-border));
+
+  > span {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--lt-text-muted);
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.boundaryList {
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  list-style: none;
+
+  li {
+    min-width: 0;
+    padding: 10px 8px;
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    border-radius: 9px;
+    color: var(--lt-text-muted);
+    background: var(--lt-surface-subtle, rgba(127, 127, 127, 0.06));
+    font-size: 11px;
+    text-align: center;
+
+    svg {
+      color: #a33a2c;
+    }
+  }
+}
+
+.projectMeta {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--lt-text-muted);
+  font-size: 11px;
+
+  > span {
+    display: inline-flex;
+    gap: 5px;
+  }
+
+  strong {
+    color: var(--lt-text);
+    font-weight: 650;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--lt-accent);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--lt-accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+  }
+}
+
+.capabilitiesCard {
+  display: grid;
+  gap: 16px;
+}
+
+.capabilityGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.capabilityItem {
+  min-width: 0;
+  padding: 12px 13px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 10px;
+  background: var(--lt-surface-subtle, rgba(127, 127, 127, 0.06));
+
+  svg {
+    margin-top: 1px;
+    flex: 0 0 auto;
+    color: #a33a2c;
+  }
+
+  p {
+    margin: 0;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+}
+
+@media (max-width: 720px) {
+  .content {
+    width: calc(100% - 28px);
+    margin-top: 18px;
+  }
+
+  .providerRow {
+    padding: 18px;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    gap: 12px;
+  }
+
+  .logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .managementGrid,
+  .capabilityGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .managementCard,
+  .capabilitiesCard {
+    padding: 17px;
+  }
+
+  .diagnosticsFooter,
+  .projectMeta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

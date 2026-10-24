@@ -1,0 +1,256 @@
+.page {
+  min-height: 100%;
+  background: var(--lt-surface);
+}
+
+.content {
+  width: min(
+    var(--lt-settings-measure),
+    calc(100% - 2 * var(--lt-page-gutter))
+  );
+  margin: 28px auto 56px;
+  display: grid;
+  gap: 30px;
+
+  section {
+    display: grid;
+    gap: 12px;
+  }
+
+  h2 {
+    margin: 0 0 2px;
+    color: var(--lt-text-muted);
+    font-size: var(--lt-section-title-size);
+    font-weight: var(--lt-section-title-weight);
+  }
+}
+
+.saveState {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid var(--lt-material-border);
+  border-radius: var(--lt-radius-card);
+  background: var(--lt-material-inset);
+
+  span {
+    color: var(--lt-text-muted);
+    font-size: 11px;
+  }
+
+  strong {
+    color: var(--lt-text);
+    font-size: 11.5px;
+  }
+
+  &[data-state="saved"] strong {
+    color: var(--lt-success);
+  }
+
+  &[data-state="error"] strong {
+    color: var(--lt-danger);
+  }
+}
+
+.loading {
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+}
+
+.panel {
+  overflow: hidden;
+  border: 0;
+  border-bottom: 1px solid var(--lt-border-subtle);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.row {
+  min-height: 68px;
+  padding: 14px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+
+  & + & {
+    border-top: 1px solid var(--lt-border);
+  }
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  display: none;
+  place-items: center;
+  border-radius: var(--lt-radius-icon);
+  color: var(--lt-accent);
+  background: var(--lt-accent-soft);
+  font-size: 18px;
+}
+
+.copy {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+
+  strong {
+    color: var(--lt-text);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  em {
+    color: var(--lt-text-muted);
+    font-size: 13px;
+    font-style: normal;
+    line-height: 1.55;
+  }
+}
+
+.control {
+  min-width: 60px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.select {
+  width: 190px;
+}
+
+.associationPanel {
+  overflow: hidden;
+  border: 0;
+  border-bottom: 1px solid var(--lt-border-subtle);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.associationHeader {
+  min-height: 68px;
+  padding: 14px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.associationActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.associationDetails {
+  padding: 16px 0 20px;
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid var(--lt-border);
+  background: var(--lt-surface-subtle, var(--lt-surface));
+}
+
+.associationStatus,
+.associationError {
+  margin: 0;
+  padding: 0 0 20px;
+  color: var(--lt-text-muted);
+  font-size: 13px;
+}
+
+.associationError {
+  color: var(--lt-danger, #b42318);
+}
+
+.cleanState,
+.warningState {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--lt-success, #26805b);
+  font-size: 13px;
+  font-weight: 680;
+}
+
+.warningState {
+  color: var(--lt-warning, #9a6700);
+}
+
+.currentPath,
+.pathList code {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 10px;
+  color: var(--lt-text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+
+  b {
+    color: var(--lt-text);
+    font-family: inherit;
+    font-weight: 720;
+  }
+}
+
+.pathList {
+  display: grid;
+  gap: 8px;
+}
+
+.cleanupConfirm {
+  display: grid;
+  gap: 14px;
+
+  p {
+    margin: 0;
+    color: var(--lt-text-muted);
+    line-height: 1.65;
+  }
+
+  .pathList {
+    max-height: 280px;
+    padding: 12px;
+    overflow: auto;
+    border: 1px solid var(--lt-border);
+    border-radius: 12px;
+    background: var(--lt-surface-subtle, var(--lt-surface));
+  }
+}
+
+@media (max-width: 720px) {
+  .content {
+    width: calc(100% - 2 * var(--lt-page-gutter));
+    margin-top: 18px;
+  }
+
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .control {
+    grid-column: 1;
+    justify-content: flex-start;
+  }
+
+  .associationHeader {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .associationActions {
+    grid-column: 1;
+    justify-content: flex-start;
+  }
+
+  .associationDetails,
+  .associationStatus,
+  .associationError {
+    padding-left: 0;
+  }
+}

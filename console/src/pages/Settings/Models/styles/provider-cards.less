@@ -1,0 +1,626 @@
+.providerCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: stretch;
+}
+
+.localProviderCards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.providerCard {
+  min-width: 0;
+  border-radius: var(--lt-radius-card);
+  transition:
+    background var(--lt-motion-duration-standard) var(--lt-motion-ease-out),
+    border-color var(--lt-motion-duration-standard) var(--lt-motion-ease-out),
+    box-shadow var(--lt-motion-duration-standard) var(--lt-motion-ease-out),
+    transform var(--lt-motion-duration-fast) var(--lt-motion-ease-out);
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  background: var(--lt-material-panel);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--lt-material-border);
+  padding: 14px;
+  padding-bottom: 58px;
+  box-shadow: var(--lt-material-highlight), var(--lt-shadow-xs);
+
+  &:hover {
+    border-color: var(--lt-material-border-strong);
+    background: var(--lt-material-panel-strong);
+    box-shadow: var(--lt-material-highlight), var(--lt-shadow-sm);
+  }
+
+  :global(.ant-card-body) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    padding: 0 !important;
+  }
+}
+
+/* Card Status Header */
+.cardStatusHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.statusText {
+  font-size: 12px;
+  font-weight: 500;
+
+  &.enabled {
+    color: rgba(20, 184, 166, 1);
+  }
+
+  &.partial {
+    color: #faad14;
+  }
+
+  &.disabled {
+    color: var(--lt-text-faint);
+  }
+}
+
+/* Card Header Row (Icon + Status) */
+.cardHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* Provider Icon */
+.providerIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Card Title Row */
+.cardTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.cardName {
+  font-size: 15px;
+  font-weight: 690;
+  color: var(--lt-text);
+}
+
+/* Tags */
+.builtinTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.customTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  background-color: rgba(255, 247, 230, 0.8);
+  color: var(--lt-warning);
+  border: 1px solid rgba(255, 127, 22, 0.2);
+}
+
+.localTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  background-color: rgba(29, 212, 215, 0.15);
+  color: rgba(29, 212, 215, 1);
+}
+
+.statusContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .statusText {
+    font-size: 12px;
+    font-weight: 500;
+
+    &.enabled {
+      color: rgba(20, 184, 166, 1);
+    }
+
+    &.partial {
+      color: #faad14;
+    }
+
+    &.disabled {
+      color: var(--lt-text-faint);
+    }
+  }
+}
+
+.cardBody {
+  padding: 20px 24px;
+}
+
+.cardHeader {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  :global {
+    .ant-badge-status-success .ant-badge-status-text {
+      color: var(--lt-success) !important;
+    }
+
+    .ant-badge-status-error .ant-badge-status-text {
+      color: var(--lt-danger) !important;
+    }
+  }
+}
+
+.cardName {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--lt-text);
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.infoLabel {
+  color: var(--lt-text-faint);
+  min-width: 58px;
+  flex-shrink: 0;
+  font-weight: 400;
+}
+
+.infoValue {
+  color: var(--lt-text-muted);
+  font-family: var(--lt-font-mono);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.infoEmpty {
+  color: var(--lt-text-faint);
+  font-style: italic;
+}
+
+.localRuntimeHint {
+  margin-top: 3px;
+  padding: 6px 8px;
+  border-radius: var(--lt-radius-sm);
+  background: color-mix(in srgb, var(--lt-warning) 9%, transparent);
+  color: var(--lt-text-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+/* Card Actions */
+.cardActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: transparent;
+  z-index: 10;
+}
+
+.actionBtn {
+  flex: 1;
+  height: 32px;
+  font-size: 13px;
+  border-radius: var(--lt-radius-sm);
+}
+
+.featuredProviderCard {
+  padding: 18px;
+  background: color-mix(in srgb, var(--lt-accent) 4%, var(--lt-material-panel));
+
+  :global(.ant-card-body),
+  :global(.lantai-card-body) {
+    gap: 18px;
+  }
+}
+
+.featuredProviderMain,
+.featuredProviderIdentity,
+.featuredProviderFooter,
+.featuredProviderFacts {
+  display: flex;
+  align-items: center;
+}
+
+.featuredProviderMain,
+.featuredProviderFooter {
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.featuredProviderIdentity {
+  min-width: 0;
+  gap: 12px;
+
+  .cardTitleRow {
+    margin-bottom: 3px;
+  }
+
+  p {
+    max-width: 660px;
+    margin: 0;
+    color: var(--lt-text-muted);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+}
+
+.featuredProviderFacts {
+  min-width: 0;
+  gap: 28px;
+
+  > span {
+    min-width: 116px;
+    display: grid;
+    gap: 3px;
+  }
+
+  small {
+    color: var(--lt-text-faint);
+    font-size: 10.5px;
+  }
+
+  strong {
+    overflow: hidden;
+    color: var(--lt-text);
+    font-size: 12.5px;
+    font-weight: 620;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.featuredProviderActions {
+  position: static;
+  flex: 0 0 auto;
+  min-width: 220px;
+
+  .actionBtn {
+    min-width: 96px;
+  }
+}
+
+/* ---- Modal Footer ---- */
+
+@media (max-width: 1320px) {
+  .providerCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .providerCards,
+  .localProviderCards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.tokendanceProviderBlock {
+  padding: 0 20px;
+  margin-top: 22px;
+  container: tokendance-account / inline-size;
+}
+
+.tokendanceProviderHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 10px;
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    color: var(--lt-text);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    max-width: 620px;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+.tokendanceProviderCards {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.tokendanceAccountPanel {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.8fr) minmax(210px, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+  margin-top: 10px;
+  padding: 16px 18px;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: var(--lt-radius-md);
+  background: var(--lt-material-panel);
+
+  p {
+    margin: 4px 0 0;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+  }
+}
+
+.tokendanceAuthorizationPanel {
+  grid-template-columns: minmax(240px, 1.15fr) minmax(210px, 0.9fr) auto;
+  border-color: color-mix(
+    in srgb,
+    var(--lt-accent) 24%,
+    var(--lt-border-subtle)
+  );
+  background:
+    linear-gradient(
+      120deg,
+      color-mix(in srgb, var(--lt-accent) 8%, transparent),
+      transparent 44%
+    ),
+    var(--lt-material-panel);
+}
+
+.tokendanceAuthorizationIntro {
+  display: grid;
+  gap: 5px;
+
+  > strong {
+    color: var(--lt-text);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+.tokendanceAuthorizationEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--lt-accent);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tokendanceAuthorizationError {
+  color: var(--lt-danger, #b5473f) !important;
+  font-weight: 600;
+}
+
+.tokendanceAuthorizationSteps {
+  display: grid;
+  gap: 8px;
+
+  > span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  b {
+    display: inline-grid;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--lt-accent);
+    background: color-mix(in srgb, var(--lt-accent) 12%, transparent);
+    font-size: 10px;
+  }
+}
+
+.tokendanceAuthorizationAction {
+  display: grid;
+  justify-items: start;
+  gap: 7px;
+
+  :global(.ant-btn) {
+    min-width: 190px;
+  }
+
+  small {
+    max-width: 220px;
+    color: var(--lt-text-muted);
+    font-size: 10px;
+    line-height: 1.45;
+  }
+}
+
+.tokendanceBalanceBlock,
+.tokendanceUsageBlock {
+  display: grid;
+  gap: 3px;
+
+  span,
+  small {
+    color: var(--lt-text-muted);
+    font-size: 11px;
+  }
+
+  strong {
+    color: var(--lt-text);
+    font-size: 18px;
+  }
+}
+
+.tokendanceUsageBlock strong {
+  font-size: 13px;
+}
+
+.tokendanceAccountActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  :global(.ant-input-number) {
+    width: 130px;
+  }
+}
+
+.tokendancePaymentModal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0 4px;
+  text-align: center;
+
+  p {
+    max-width: 360px;
+    margin: 0;
+    color: var(--lt-text-muted);
+    line-height: 1.6;
+  }
+}
+
+.tokendanceRedemptionModal {
+  display: grid;
+  gap: 14px;
+  padding: 8px 0 4px;
+
+  p {
+    margin: 0;
+    color: var(--lt-text-muted);
+    line-height: 1.6;
+  }
+
+  :global(.ant-btn) {
+    justify-self: end;
+  }
+}
+
+.chatVisibilityControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  color: var(--ant-color-text-secondary);
+  font-size: 11px;
+}
+
+@container tokendance-account (max-width: 900px) {
+  .tokendanceAccountPanel,
+  .tokendanceAuthorizationPanel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tokendanceAccountActions,
+  .tokendanceAuthorizationAction {
+    grid-column: 1 / -1;
+  }
+
+  .tokendanceAccountActions {
+    flex-wrap: wrap;
+  }
+}
+
+@container tokendance-account (max-width: 600px) {
+  .tokendanceAccountPanel,
+  .tokendanceAuthorizationPanel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .tokendanceProviderHeading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .featuredProviderMain,
+  .featuredProviderFooter {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .featuredProviderFacts {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .featuredProviderActions {
+    width: 100%;
+  }
+
+  .tokendanceAccountPanel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tokendanceAuthorizationAction {
+    width: 100%;
+
+    :global(.ant-btn) {
+      width: 100%;
+    }
+  }
+
+  .tokendanceAccountActions {
+    flex-wrap: wrap;
+  }
+}

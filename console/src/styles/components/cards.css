@@ -1,0 +1,35 @@
+/* Card components using Lantai and Ant Design class prefixes. */
+html.dark-mode .lantai-card,
+html.dark-mode .ant-card {
+  background: var(--lt-surface) !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  color: rgba(245, 245, 245, 0.9) !important;
+}
+
+html.dark-mode .lantai-card-head,
+html.dark-mode .ant-card-head {
+  background: var(--lt-surface) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(245, 245, 245, 0.9) !important;
+}
+
+html.dark-mode .lantai-card-head-title,
+html.dark-mode .ant-card-head-title {
+  color: rgba(245, 245, 245, 0.9) !important;
+}
+
+/* Card custom title inside card wrappers. */
+html.dark-mode .lantai-card-wrapper .lantai-title,
+html.dark-mode .lantai-spark-title {
+  color: rgba(245, 245, 245, 0.9) !important;
+}
+
+html.dark-mode .lantai-card-wrapper .lantai-info,
+html.dark-mode .lantai-spark-info {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+html.dark-mode .lantai-card-body,
+html.dark-mode .ant-card-body {
+  background: var(--lt-surface) !important;
+}

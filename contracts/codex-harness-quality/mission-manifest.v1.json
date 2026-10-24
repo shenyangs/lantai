@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "lantai-codex-harness-quality",
+  "description": "Read-only Codex Harness missions for Lantai source stability and release-readiness diagnosis.",
+  "policy": {
+    "workspace_mode": "read_only",
+    "network_access": "disabled",
+    "forbid_repo_mutation": true,
+    "artifact_root": ".lantai/codex-harness",
+    "allowed_entrypoints": [
+      "scripts/check_foundation_experience_gate.py",
+      "scripts/check_legacy_intelligence_assembly_baseline.py",
+      "scripts/runtime_evaluator_preflight.py",
+      "module:pytest"
+    ],
+    "forbidden_paths": [
+      "src/lantai/runtime",
+      "src/lantai/prompt_compiler.py",
+      "src/lantai/agents/identity.py",
+      "src/lantai/agents/runtime.py",
+      "src/lantai/app/persona.py",
+      "src/lantai/app/routes/personas.py",
+      "console/src/components/persona"
+    ]
+  },
+  "profiles": {
+    "source-runtime": {
+      "description": "Verify protected interaction contracts, evaluator classification, fault orchestration, and release evidence logic without launching a packaged app.",
+      "timeout_seconds": 1800,
+      "steps": [
+        {
+          "id": "foundation-contracts",
+          "command": [
+            "python3",
+            "scripts/check_foundation_experience_gate.py"
+          ]
+        },
+        {
+          "id": "legacy-intelligence-source-baseline",
+          "command": [
+            ".venv/bin/python",
+            "scripts/check_legacy_intelligence_assembly_baseline.py"
+          ]
+        },
+        {
+          "id": "runtime-evaluator-golden",
+          "command": [
+            ".venv/bin/python",
+            "scripts/runtime_evaluator_preflight.py",
+            "--json"
+          ]
+        },
+        {
+          "id": "reliability-control-plane-tests",
+          "command": [
+            ".venv/bin/python",
+            "-m",
+            "pytest",
+            "tests/unit/scripts/test_agent_reliability_release_gate.py",
+            "tests/unit/scripts/test_build_agent_reliability_release_evidence.py",
+            "tests/unit/scripts/test_run_packaged_agent_sustained_soak.py",
+            "tests/unit/scripts/test_runtime_evaluator_preflight.py",
+            "-p",
+            "no:cacheprovider",
+            "-q"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+component=xlsx-engine
+source_repository=https://github.com/genspark-ai/genoffice
+source_commit=8f523289d6c34f940cd691472ee56b2013d148c8
+source_path=apps/sheets/native/xlsx-engine
+license=Apache-2.0
+target=aarch64-apple-darwin
+rustc=1.97.1
+sha256=9e44512dd51c85965c52a959d7407e129371d56297aeec9895ce212eefb74bce

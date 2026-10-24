@@ -1,0 +1,32 @@
+{
+  "actor": "user",
+  "after_hash": "fixture-after-revision-3",
+  "before_hash": "fixture-before-revision-3",
+  "before_overrides": {
+    "appearance.palette": "warm",
+    "persona.presence": "quiet"
+  },
+  "created_at": "2026-07-26T21:15:00Z",
+  "health": {
+    "checks": [
+      "schema",
+      "resolver",
+      "core_routes"
+    ],
+    "ok": true
+  },
+  "intent": "想看思考过程，输入框也宽松一点",
+  "overrides": {
+    "appearance.composer_size": "spacious",
+    "appearance.palette": "warm",
+    "conversation.show_thinking": true,
+    "persona.presence": "quiet"
+  },
+  "parent_revision": 2,
+  "plan_id": "plan_v1_upgrade_fixture",
+  "profile_id": "profile_v1_upgrade_fixture",
+  "revision": 3,
+  "risk": "low",
+  "source": "customization",
+  "status": "committed"
+}

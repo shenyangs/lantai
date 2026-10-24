@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "label_source": "Synthetic engineering annotations for text references; no expert or image-pixel validation claimed.",
+  "minimum_accuracy": 1.0,
+  "cases": [
+    {
+      "id": "table_consistent",
+      "source": "The study enrolled 80 participants in group A.",
+      "report": "Table 1 lists 80 participants in group A.\n\nTable 1: Enrollment\n\n| Group | Participants |\n| --- | --- |\n| A | 80 |",
+      "expected_assessment": "supports",
+      "expected_reference_assessments": ["consistent"]
+    },
+    {
+      "id": "table_mismatch",
+      "source": "The study enrolled 80 participants in group A.",
+      "report": "Table 1 lists 80 participants in group A.\n\nTable 1: Enrollment\n\n| Group | Participants |\n| --- | --- |\n| A | 81 |",
+      "expected_assessment": "supports",
+      "allowed_assessments": ["supports", "contradicts"],
+      "expected_status": "needs_revision",
+      "expected_reference_assessments": ["mismatch"]
+    },
+    {
+      "id": "table_missing",
+      "source": "The study enrolled 80 participants in group A.",
+      "report": "Table 2 lists 80 participants in group A.",
+      "expected_assessment": "supports",
+      "allowed_assessments": ["supports", "insufficient"],
+      "expected_status": "needs_revision",
+      "expected_reference_assessments": ["missing"]
+    },
+    {
+      "id": "figure_caption_navigation",
+      "source": "The report includes a schematic diagram titled Study workflow, which carries no measured values.",
+      "report": "See Figure 1 for the study workflow schematic.",
+      "figure_caption": "Figure 1: Study workflow schematic",
+      "expected_assessment": "supports",
+      "allowed_assessments": ["supports", "nonfactual"],
+      "expected_reference_assessments": ["consistent"]
+    },
+    {
+      "id": "figure_unseen_pixels",
+      "source": "The study enrolled 80 participants. This text does not describe the plotted values in the report figure.",
+      "report": "The red bar in Figure 1 shows 80 participants.",
+      "figure_caption": "Figure 1: Enrollment",
+      "expected_assessment": "insufficient",
+      "expected_status": "needs_revision",
+      "expected_reference_assessments": ["uncertain"]
+    }
+  ]
+}

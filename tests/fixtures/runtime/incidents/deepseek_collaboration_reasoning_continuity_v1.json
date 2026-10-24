@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "incident_id": "deepseek-collaboration-reasoning-continuity-v1",
+  "anonymized": true,
+  "endpoint": {
+    "provider_id": "deepseek",
+    "model_id": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com/v1"
+  },
+  "observed": {
+    "first_tool_choice": "required",
+    "first_reasoning_effective": false,
+    "assistant_reasoning_content_present": false,
+    "next_request_had_tools": true,
+    "next_request_reenabled_thinking": true,
+    "status_code": 400,
+    "error_marker": "reasoning_content"
+  },
+  "expected": {
+    "open_tool_chain_keeps_thinking_disabled": true,
+    "collaboration_final_synthesis_has_tools": false,
+    "tool_free_final_may_reenable_thinking": true,
+    "disabled_tool_turn_replayed_as_blank_reasoning_content": true,
+    "bounded_legacy_repair_attempts": 1
+  }
+}

@@ -1,0 +1,104 @@
+.state {
+  width: min(100%, 240px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--lt-text);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-4vh);
+  animation: lantai-boot-reveal var(--lt-motion-duration-standard)
+    var(--lt-motion-ease-out) 240ms forwards;
+}
+
+.wordmark {
+  font-family: var(--lt-font-sans);
+  font-size: 17px;
+  font-weight: var(--lt-weight-emphasis);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.progress {
+  position: relative;
+  width: 72px;
+  height: 1px;
+  margin-top: 14px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--lt-accent) 22%, transparent);
+}
+
+.glint {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 14px;
+  background: color-mix(in srgb, var(--lt-accent) 76%, transparent);
+  animation: lantai-boot-glide 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.description {
+  margin-top: 10px;
+  color: var(--lt-quiet-meta-color);
+  font-family: var(--lt-font-sans);
+  font-size: var(--lt-type-caption);
+  font-weight: var(--lt-weight-regular);
+  line-height: var(--lt-leading-body);
+}
+
+@keyframes lantai-boot-reveal {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lantai-boot-glide {
+  0% {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+
+  14%,
+  86% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(72px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .state {
+    opacity: 1;
+    animation: none;
+  }
+
+  .glint {
+    left: 50%;
+    opacity: 0.72;
+    transform: translateX(-50%);
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .progress {
+    background: color-mix(in srgb, var(--lt-accent) 46%, transparent);
+  }
+
+  .description {
+    color: var(--lt-text-muted);
+  }
+}
+
+@media (forced-colors: active) {
+  .progress {
+    background: CanvasText;
+  }
+
+  .glint {
+    background: Highlight;
+  }
+}

@@ -1,0 +1,86 @@
+.windowList {
+  max-height: min(52vh, 440px);
+  overflow: auto;
+  border: 1px solid var(--ant-color-border-secondary, rgba(0, 0, 0, 0.08));
+  border-radius: 12px;
+}
+
+.windowButton {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid
+    var(--ant-color-border-secondary, rgba(0, 0, 0, 0.08));
+  cursor: pointer;
+}
+
+.windowButton:last-child {
+  border-bottom: 0;
+}
+
+.windowButton:hover,
+.windowButton:focus-visible,
+.windowButtonSelected {
+  background: var(--ant-color-fill-tertiary, rgba(0, 0, 0, 0.04));
+  outline: none;
+}
+
+.windowCopy {
+  min-width: 0;
+}
+
+.windowCopy strong,
+.windowCopy span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.windowCopy span {
+  margin-top: 3px;
+  color: var(--ant-color-text-secondary, rgba(0, 0, 0, 0.58));
+  font-size: 12px;
+}
+
+.targetBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 8px;
+  padding: 8px 12px;
+  border: 1px solid
+    color-mix(in srgb, var(--ant-color-primary, #1677ff) 24%, transparent);
+  border-radius: 10px;
+  background: color-mix(
+    in srgb,
+    var(--ant-color-primary, #1677ff) 6%,
+    transparent
+  );
+}
+
+.targetBannerCopy {
+  min-width: 0;
+}
+
+.targetBannerCopy strong,
+.targetBannerCopy span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.targetBannerCopy span {
+  margin-top: 2px;
+  color: var(--ant-color-text-secondary, rgba(0, 0, 0, 0.58));
+  font-size: 12px;
+}

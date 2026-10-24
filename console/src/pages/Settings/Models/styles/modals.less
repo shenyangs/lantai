@@ -1,0 +1,259 @@
+.modalFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalFooterLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modalFooterRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.providerSetupLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.localProviderSetupGuide {
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: 10px;
+  background: var(--lt-surface-muted);
+
+  p {
+    margin: 6px 0 10px;
+    color: var(--lt-text-muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  pre {
+    margin: 0;
+    padding: 9px 11px;
+    border-radius: 7px;
+    background: var(--lt-material-panel-strong);
+    color: var(--lt-text);
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 12px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+  }
+}
+
+.localProviderSetupTitle {
+  color: var(--lt-text);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.advancedConfigSection {
+  margin-top: 4px;
+  border-top: 1px solid var(--lt-border-subtle);
+  padding-top: 16px;
+}
+
+.compatibilityPanel {
+  margin: 0 16px 12px;
+  padding: 14px;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: 10px;
+  background: var(--lt-surface-muted);
+}
+
+.compatibilityPanelHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+
+  h4 {
+    margin: 0;
+    color: var(--lt-text);
+    font-size: 13px;
+    font-weight: 650;
+  }
+
+  p {
+    max-width: 540px;
+    margin: 5px 0 0;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+}
+
+.compatibilityError {
+  margin-top: 10px;
+  color: var(--lt-danger, #cf1322);
+  font-size: 12px;
+}
+
+.compatibilityReport {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--lt-border-subtle);
+}
+
+.compatibilitySummary,
+.compatibilityCheckList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.compatibilitySummary {
+  color: var(--lt-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.compatibilityCheckList {
+  display: grid;
+  gap: 7px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    color: var(--lt-text-muted);
+    font-size: 12px;
+  }
+}
+
+.compatibilityMeta {
+  margin-top: 10px;
+  color: var(--lt-text-subtle, var(--lt-text-muted));
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 10px;
+}
+
+.advancedConfigToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  background: transparent;
+  padding: 0 0 12px;
+  cursor: pointer;
+  color: var(--lt-text);
+}
+
+.advancedConfigToggleLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.jsonEditorContainer {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
+  border: 1px solid var(--lt-border-strong);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--lt-surface-muted);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:focus-within {
+    border-color: var(--lt-warning);
+    box-shadow: 0 0 0 2px rgba(97, 92, 237, 0.12);
+  }
+}
+
+.jsonEditorSpacing {
+  margin-top: 8px;
+}
+
+.jsonEditorCompact {
+  .jsonEditorHighlight,
+  .jsonEditorTextarea {
+    min-height: 100px;
+  }
+}
+
+.jsonEditorExpanded {
+  .jsonEditorHighlight,
+  .jsonEditorTextarea {
+    min-height: 140px;
+  }
+}
+
+.jsonEditorHighlight,
+.jsonEditorTextarea {
+  margin: 0;
+  padding: 12px 14px;
+  min-height: 180px;
+  font-family: Monaco, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  tab-size: 2;
+}
+
+.jsonEditorHighlight {
+  color: var(--lt-text-muted);
+  pointer-events: none;
+  overflow: auto;
+}
+
+.jsonEditorTextarea {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  resize: vertical;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--lt-text);
+  overflow: auto;
+  -webkit-text-fill-color: transparent;
+
+  &::placeholder {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.jsonEditorTokenKey {
+  color: #8b5cf6;
+}
+
+.jsonEditorTokenString {
+  color: #16a34a;
+}
+
+.jsonEditorTokenNumber {
+  color: #2563eb;
+}
+
+.jsonEditorTokenBoolean {
+  color: #ea580c;
+}
+
+.jsonEditorTokenNull {
+  color: #dc2626;
+}
+
+.jsonEditorTokenPunctuation {
+  color: var(--lt-text-muted);
+}

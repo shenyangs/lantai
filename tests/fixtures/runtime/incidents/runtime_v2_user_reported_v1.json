@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "fixture_id": "runtime-v2-user-reported-incidents-v1",
+  "phase": "RT2-00",
+  "anonymized": true,
+  "required_incident_classes": [
+    "external_assistant_persistent_composer",
+    "navigation_return_state_corruption",
+    "workspace_path_false_sensitive_block",
+    "domain_entry_task_center_misdirection",
+    "task_center_unbounded_loading",
+    "collaboration_staffing_delay",
+    "worker_persona_boundary_violation",
+    "ququ_post_answer_blocks_terminal"
+  ],
+  "allowed_source_statuses": [
+    "source_guarded_package_pending",
+    "source_repro_package_pending",
+    "source_unresolved_package_pending"
+  ],
+  "incidents": [
+    {
+      "incident_id": "rt2-external-assistant-persistent-composer-v1",
+      "incident_class": "external_assistant_persistent_composer",
+      "user_symptom": "低频外部助手控件常驻主输入框并挤占对话空间。",
+      "desired_behavior": "外部助手能力已退休；设置、导航、聊天和旧深链均不得暴露或恢复其入口，Runtime 不得暴露工具或启动外部 runner。",
+      "fact_domains": ["conversation"],
+      "source_status": "source_guarded_package_pending",
+      "source_evidence": [
+        "tests/unit/app/test_external_assistant_retirement.py",
+        "console/src/pages/Settings/Home/index.test.tsx",
+        "console/src/navigation/detailNavigation.test.ts"
+      ],
+      "foundation_incident_ids": [],
+      "package_probe_id": "PKG-RT2-00-01"
+    },
+    {
+      "incident_id": "rt2-navigation-return-state-corruption-v1",
+      "incident_class": "navigation_return_state_corruption",
+      "user_symptom": "离开当前会话进入设置、侧边栏功能或其他会话后再返回，旧会话出现串态、重复、假运行或内容丢失。",
+      "desired_behavior": "异步结果始终写回原 conversation，返回页面从权威快照恢复，导航不改变 owner。",
+      "fact_domains": ["conversation", "run", "effect", "collaboration"],
+      "source_status": "source_guarded_package_pending",
+      "source_evidence": [
+        "console/src/vendor/lantaiChat.ts",
+        "console/src/pages/Chat/runtimeEventStream.ts",
+        "console/src/pages/Chat/ChatPage.test.tsx",
+        "tests/unit/app/test_console_chat_smoke.py"
+      ],
+      "foundation_incident_ids": [
+        "chat-navigation-owner-race-v1",
+        "route-hydration-phantom-run-v1"
+      ],
+      "package_probe_id": "PKG-RT2-00-02"
+    },
+    {
+      "incident_id": "rt2-workspace-path-false-sensitive-block-v1",
+      "incident_class": "workspace_path_false_sensitive_block",
+      "user_symptom": "合法工作区写入被误报为禁止写入系统敏感路径，导致正常任务出现无意义失败。",
+      "desired_behavior": "先规范化实际写入目标；工作区授权路径按操作类型放行，真实系统根目录继续硬拒绝。",
+      "fact_domains": ["effect"],
+      "source_status": "source_unresolved_package_pending",
+      "source_evidence": [
+        "src/lantai/security/tool_policy.py",
+        "src/lantai/security/shell_effects.py",
+        "tests/unit/security/test_tool_policy.py"
+      ],
+      "foundation_incident_ids": [],
+      "package_probe_id": "PKG-RT2-00-03"
+    },
+    {
+      "incident_id": "rt2-domain-entry-task-center-misdirection-v1",
+      "incident_class": "domain_entry_task_center_misdirection",
+      "user_symptom": "用户点击应用或领域入口后被带到陌生的任务中心，不知道下一步做什么。",
+      "desired_behavior": "入口进入已预填意图的聊天或可继续的原会话；任务中心只在用户明确管理任务时出现。",
+      "fact_domains": ["conversation", "run"],
+      "source_status": "source_repro_package_pending",
+      "source_evidence": [
+        "src/lantai/runtime/capability_catalog.py",
+        "console/src/layouts/Sidebar.tsx",
+        "console/src/pages/Works/index.tsx",
+        "console/src/pages/Chat/continuationSuggestions.ts"
+      ],
+      "foundation_incident_ids": [],
+      "package_probe_id": "PKG-RT2-00-04"
+    },
+    {
+      "incident_id": "rt2-task-center-unbounded-loading-v1",
+      "incident_class": "task_center_unbounded_loading",
+      "user_symptom": "任务中心长时间停留在骨架屏或转圈，用户无法判断正在加载、失败还是卡死。",
+      "desired_behavior": "加载有明确截止时间；超时后显示可重试的错误状态并保留可用旧快照。",
+      "fact_domains": ["run"],
+      "source_status": "source_repro_package_pending",
+      "source_evidence": [
+        "console/src/pages/Control/TaskCenterV2/index.tsx",
+        "console/src/pages/Control/TaskCenterV2/index.test.tsx",
+        "src/lantai/app/runtime_tasks/service.py"
+      ],
+      "foundation_incident_ids": [],
+      "package_probe_id": "PKG-RT2-00-05"
+    },
+    {
+      "incident_id": "rt2-collaboration-staffing-delay-v1",
+      "incident_class": "collaboration_staffing_delay",
+      "user_symptom": "协作请求长时间停留在组队阶段，简单的成员选择也缺少截止时间和降级反馈。",
+      "desired_behavior": "组队阶段快速产出确定性默认编排；模型优化有截止时间，超时后继续执行或给出可操作状态。",
+      "fact_domains": ["collaboration", "run"],
+      "source_status": "source_repro_package_pending",
+      "source_evidence": [
+        "src/lantai/agents/tools/agent_management.py",
+        "src/lantai/runtime/hosted_collaboration/coordinator.py",
+        "console/src/pages/Chat/components/CollaborationPhaseRail.tsx",
+        "tests/unit/agents/tools/test_agent_management.py"
+      ],
+      "foundation_incident_ids": [],
+      "package_probe_id": "PKG-RT2-00-06"
+    },
+    {
+      "incident_id": "rt2-worker-persona-boundary-v1",
+      "incident_class": "worker_persona_boundary_violation",
+      "user_symptom": "组队和深度研究的内部 worker 可能携带主 Agent 人格，增加开销并让中间结果与最终口吻互相污染。",
+      "desired_behavior": "内部 worker 使用中性任务上下文；主 Agent 汇总已提交结果并应用最终人格。",
+      "fact_domains": ["collaboration", "conversation", "run"],
+      "source_status": "source_guarded_package_pending",
+      "source_evidence": [
+        "src/lantai/runtime/adapters/native_runtime.py",
+        "src/lantai/agents/legacy_lantai_agent.py",
+        "tests/unit/runtime/test_native_runtime.py",
+        "tests/unit/app/test_runner_behavior.py",
+        "tests/unit/agents/test_lantai_agent_contracts.py"
+      ],
+      "foundation_incident_ids": [],
+      "package_probe_id": "PKG-RT2-00-07"
+    },
+    {
+      "incident_id": "rt2-ququ-post-answer-blocks-terminal-v1",
+      "incident_class": "ququ_post_answer_blocks_terminal",
+      "user_symptom": "主回答已经完整显示，但蛐蛐迟迟没有生成，整轮仍保持运行并阻止用户继续对话。",
+      "desired_behavior": "主回答提交即结束前台 turn 并恢复输入；蛐蛐作为有截止时间的后置结果，超时或失败时记录为跳过，迟到时只能按原 turn 身份安全补挂一次。",
+      "fact_domains": ["conversation", "run"],
+      "source_status": "source_repro_package_pending",
+      "source_evidence": [
+        "src/lantai/runtime/session_turn_lifecycle.py",
+        "src/lantai/app/runner/runner.py",
+        "src/lantai/app/post_answer_reflection_service.py",
+        "console/src/vendor/lantaiChat.ts",
+        "tests/unit/app/test_runner_behavior.py",
+        "tests/unit/app/test_post_answer_reflection_service.py"
+      ],
+      "foundation_incident_ids": [],
+      "package_probe_id": "PKG-RT2-00-08"
+    }
+  ],
+  "package_probes": [
+    {
+      "probe_id": "PKG-RT2-00-01",
+      "name": "外部助手已退休",
+      "procedure": "冷启动新会话，检查设置、导航、聊天输入区和旧深链；再发送包含“请 Codex 帮忙”的任务。",
+      "pass_condition": "无入口、无连接页、无模型可见工具、无 ACP 服务或外部 runner 启动；主任务继续使用现有合法能力。",
+      "observation_deadline_seconds": 30,
+      "result": "pending_candidate_build"
+    },
+    {
+      "probe_id": "PKG-RT2-00-02",
+      "name": "跨页面与跨会话返回稳定性",
+      "procedure": "在运行中与完成后分别从会话 A 切到设置、侧边栏能力、会话 B，再返回 A；重复三轮并重启一次。",
+      "pass_condition": "无串话、重复回复、假运行、内容丢失或错误 owner；A 与 B 各自恢复一致。",
+      "observation_deadline_seconds": 120,
+      "result": "pending_candidate_build"
+    },
+    {
+      "probe_id": "PKG-RT2-00-03",
+      "name": "路径权限真值表",
+      "procedure": "分别验证普通工作区路径、含空格路径、符号链接后的工作区路径、工作区外普通路径和真实系统根路径。",
+      "pass_condition": "工作区授权写入不误报系统路径；越界按权限提示；真实系统根继续硬拒绝。",
+      "observation_deadline_seconds": 60,
+      "result": "pending_candidate_build"
+    },
+    {
+      "probe_id": "PKG-RT2-00-04",
+      "name": "应用领域入口去向",
+      "procedure": "从主页面选择一个应用领域，并验证首次使用和存在上次会话两种情况。",
+      "pass_condition": "进入带清晰下一步的预填聊天或原会话；不会无解释跳到任务中心。",
+      "observation_deadline_seconds": 30,
+      "result": "pending_candidate_build"
+    },
+    {
+      "probe_id": "PKG-RT2-00-05",
+      "name": "任务中心加载边界",
+      "procedure": "在正常、慢响应和断开 Runtime 三种条件下打开任务中心并刷新。",
+      "pass_condition": "正常返回真实状态；慢响应与断开时在截止时间内离开骨架屏，显示可重试状态。",
+      "observation_deadline_seconds": 30,
+      "result": "pending_candidate_build"
+    },
+    {
+      "probe_id": "PKG-RT2-00-06",
+      "name": "协作组队延迟",
+      "procedure": "用固定小型文档请求两名协作者，记录从提交到第一份 staffing 事实和第一名成员开始工作的时间。",
+      "pass_condition": "组队有明确进展、截止时间与失败降级；不会无限停留在组队转圈。",
+      "observation_deadline_seconds": 60,
+      "result": "pending_candidate_build"
+    },
+    {
+      "probe_id": "PKG-RT2-00-07",
+      "name": "内部中性与最终人格边界",
+      "procedure": "执行一次协作和一次深度研究，检查内部请求清单与最终用户回复。",
+      "pass_condition": "内部 worker 未注入交付人格；最终回复由主 Agent 应用所选人格且只交付一次。",
+      "observation_deadline_seconds": 120,
+      "result": "pending_candidate_build"
+    },
+    {
+      "probe_id": "PKG-RT2-00-08",
+      "name": "蛐蛐附加生成不阻塞主终态",
+      "procedure": "主回答提交完成后，分别注入蛐蛐慢响应、超时和失败；测量主终态与输入框恢复延迟，并继续观察附加内容 30 秒。",
+      "pass_condition": "主回答提交后 1000 毫秒内主轮次进入终态且输入框可用；蛐蛐慢响应、超时或失败不延长前台轮次，30 秒观察窗内迟到内容最多附着一次。",
+      "foreground_terminal_deadline_ms": 1000,
+      "sidecar_observation_window_seconds": 30,
+      "result": "pending_candidate_build"
+    }
+  ]
+}

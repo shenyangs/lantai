@@ -1,0 +1,14 @@
+{
+  "suite_id": "memory_ledger_v1",
+  "version": 1,
+  "confirmed": "默认使用 pytest 跑单测",
+  "pending": "用户倾向简洁回复",
+  "sensitive": "api_key=do-not-store",
+  "conflict": ["pytest 超时 10 秒", "pytest 超时 20 秒"],
+  "cross_provider": {
+    "confirmed": "默认给代码示例附上最小验证命令",
+    "pending": "用户这一次可能更喜欢展开说明",
+    "provider_before": "provider-a/model-a",
+    "provider_after": "provider-b/model-b"
+  }
+}

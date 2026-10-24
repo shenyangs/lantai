@@ -1,0 +1,1930 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-10-13T16:46:37.024127+00:00",
+  "requests": [
+    {
+      "url": "https://api.crossref.org/works?query=randomized+controlled+trial&rows=100",
+      "retrieved_at": "2026-10-13T16:46:20.899869+00:00",
+      "sha256": "04c470ad3fa5616fc2c954d976baf37f42597042dad5f01d0a73c2d35baca9a7"
+    },
+    {
+      "url": "https://api.crossref.org/works?query=machine+learning&rows=100",
+      "retrieved_at": "2026-10-13T16:46:24.048969+00:00",
+      "sha256": "0b2145bc5debc53d76b9cd35d1a672307d4a27805370e93bc03a1838138496d2"
+    },
+    {
+      "url": "https://api.crossref.org/works?query=climate+change&rows=100",
+      "retrieved_at": "2026-10-13T16:46:26.683249+00:00",
+      "sha256": "1ac2a5518d60268bbe8e328760421d246231a6da4ef57269152d7ee12a63edde"
+    },
+    {
+      "url": "https://api.crossref.org/works?query=%E4%B8%AD%E5%9B%BD&rows=100",
+      "retrieved_at": "2026-10-13T16:46:28.716585+00:00",
+      "sha256": "afc285daec4faf0ec26d1018e678f5036c8793c51be1874ae38b396eb07f192e"
+    },
+    {
+      "url": "https://api.datacite.org/dois?query=climate&page%5Bsize%5D=20",
+      "retrieved_at": "2026-10-13T16:46:31.860121+00:00",
+      "sha256": "1c4fd79a20bb4a4b93eb7b68c66423520a120892ea85fbaee4800aba1c6f49a0"
+    },
+    {
+      "url": "https://api.openalex.org/works?filter=open_access.is_oa%3Atrue%2Chas_doi%3Atrue&per-page=100",
+      "retrieved_at": "2026-10-13T16:46:35.895693+00:00",
+      "sha256": "d37ee96d4094b644eddf9e82190ceb45c40d31d0c780437bc5dbad4d3790f329"
+    }
+  ],
+  "identifiers": [
+    {
+      "id": "10.1093/med/9780198779100.003.0012",
+      "title": "Presenting a randomized controlled trial",
+      "authors": [
+        "Janet L. Peacock",
+        "Sally M. Kerry",
+        "Raymond R. Balise"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "book",
+      "year": 2017,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1093/acprof:oso/9780195333190.003.0005",
+      "title": "Designing the Randomized Controlled Trial",
+      "authors": [
+        "Phyllis Solomon",
+        "Mary M. Cavanaugh",
+        "Jeffrey Draine"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2009,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1093/acprof:oso/9780195333190.003.0003",
+      "title": "Planning the Randomized Controlled Trial",
+      "authors": [
+        "Phyllis Solomon",
+        "Mary M. Cavanaugh",
+        "Jeffrey Draine"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2009,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1093/acprof:oso/9780195333190.003.0006",
+      "title": "Implementing the Randomized Controlled Trial",
+      "authors": [
+        "Phyllis Solomon",
+        "Mary M. Cavanaugh",
+        "Jeffrey Draine"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2009,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.2139/ssrn.5062242",
+      "title": "A Parallel-Group, Randomized Controlled Trial of Enhanced Cue Exposure Therapy for Negative Emotional Eating: Study Protocol for a Randomized Controlled Trial",
+      "authors": [
+        "Wai Sze Chan",
+        "Wing Yee Cheng"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "posted-content",
+      "year": 2024,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.32388/ewi1x6",
+      "title": "Randomized Controlled Clinical Trial",
+      "authors": [
+        "National Cancer Institute"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "reference-entry",
+      "year": 2020,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1186/isrctn78356215",
+      "title": "Flowy randomized controlled pilot trial",
+      "authors": [
+        "Quynh Pham"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "dataset",
+      "year": 2015,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1093/acprof:oso/9780195333190.003.0007",
+      "title": "Generalizing Randomized Controlled Trial Outcomes to Community Practice Settings",
+      "authors": [
+        "Phyllis Solomon",
+        "Mary M. Cavanaugh",
+        "Jeffrey Draine"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2009,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.21236/ada593743",
+      "title": "Randomized, Controlled Trial of CBT Training for PTSD Providers",
+      "authors": [
+        "Josef Ruzek"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "report",
+      "year": 2013,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1093/med/9780198834359.003.0069",
+      "title": "Randomized controlled trial evidence for gabapentin in post-herpetic neuralgia",
+      "authors": [
+        "Rajesh Gupta"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "book",
+      "year": 2018,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1257/rct.16418",
+      "title": "Follow up test trial",
+      "authors": [
+        "Jack Cavanagh"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "dataset",
+      "year": 2026,
+      "relations": {
+        "has-version": [
+          {
+            "id-type": "doi",
+            "id": "10.1257/rct.16418-1.0",
+            "asserted-by": "object"
+          }
+        ]
+      },
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1257/rct.16418-1.0",
+      "title": "Follow up test trial",
+      "authors": [
+        "Jack Cavanagh"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "dataset",
+      "year": 2026,
+      "relations": {
+        "is-version-of": [
+          {
+            "id-type": "doi",
+            "id": "10.1257/rct.16418",
+            "asserted-by": "subject"
+          }
+        ]
+      },
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1186/isrctn56623436",
+      "title": "Prevention of Falls in the Elderly Trial (Profet) - A Randomized Controlled Trial",
+      "authors": [
+        "Jacqueline Close"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "dataset",
+      "year": 2013,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.25148/etd.fidc000057",
+      "title": "Open Trial and Pilot Randomized Controlled Trial of a Novel Program to Reduce Perceived Burdensomeness",
+      "authors": [
+        "Ryan M Hill"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "dissertation",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.5353/th_b3195439",
+      "title": "A randomized controlled trial of home tooth-whitening products",
+      "authors": [
+        "Ho-hang, Anthony Wong"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "dissertation",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.69622/30103930",
+      "title": "Understanding implementation mechanisms : a cluster-randomized controlled trial in schools",
+      "authors": [
+        "Andreas Rödlund"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "posted-content",
+      "year": 2025,
+      "relations": {
+        "has-part": [
+          {
+            "id-type": "pmid",
+            "id": "37481748",
+            "asserted-by": "subject"
+          },
+          {
+            "id-type": "pmid",
+            "id": "40448167",
+            "asserted-by": "subject"
+          }
+        ]
+      },
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.2139/ssrn.2983076",
+      "title": "Credit Scoring vs. Expert Judgment - A Randomized Controlled Trial",
+      "authors": [
+        "Thomas Gietzen"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "posted-content",
+      "year": 2017,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.31390/gradschool_dissertations.4692",
+      "title": "A Randomized Controlled Trial of a Hatha Yoga Intervention for Smokers",
+      "authors": [
+        "",
+        "Emily Jeffries"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "dissertation",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.58837/chula.the.1997.859",
+      "title": "การใช้แสงอัลตราไวโอเลตบีในการรักษาผื่น Pruritic Papular Eruption ในผู้ป่วยโรคเอดส์โดยวีธี Double - Blind Randomized, Placebo - Controlled Trial",
+      "authors": [
+        "",
+        "นฤมล สิทธิ์บูรณะ"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "dissertation",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.21236/ada596676",
+      "title": "Caring Letters for Military Suicide Prevention: A Randomized Controlled Trial",
+      "authors": [
+        "David Luxton"
+      ],
+      "domain": "medicine",
+      "registry": "crossref",
+      "type": "report",
+      "year": 2014,
+      "relations": {},
+      "updates": [],
+      "seed_request": 0
+    },
+    {
+      "id": "10.1093/oso/9780198828044.003.0003",
+      "title": "Machine learning with sklearn",
+      "authors": [
+        "Thomas P. Trappenberg"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2019,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1093/oso/9780190941659.003.0001",
+      "title": "Why Use Automated Machine Learning?",
+      "authors": [
+        "Kai R. Larsen",
+        "Daniel S. Becker"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2021,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022896407371",
+      "title": "Machine Learning and Concept Formation",
+      "authors": [
+        "Pat Langley"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1987,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022661713654",
+      "title": "Machine Learning and Qualitative Reasoning",
+      "authors": [
+        "Ivan Bratko"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1994,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022603230145",
+      "title": "Research Papers in Machine Learning",
+      "authors": [
+        "Pat Langley"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1987,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022665512030",
+      "title": "Machine Learning: A Maturing Field",
+      "authors": [
+        "Jaime Carbonell"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1992,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022808826027",
+      "title": "Machine Learning and Grammar Induction",
+      "authors": [
+        "Pat Langely"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1987,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022854429410",
+      "title": "Editorial: Human and Machine Learning",
+      "authors": [
+        "Pat Langley"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1986,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022840627593",
+      "title": "Editorial: The Terminology of Machine Learning",
+      "authors": [
+        "Pat Langley"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1986,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022817027844",
+      "title": "New Theoretical Directions In Machine Learning",
+      "authors": [
+        "David Haussler"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1988,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022647305786",
+      "title": "Editorial: Advice to Machine Learning Authors",
+      "authors": [
+        "Pat Langley"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1990,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022623814640",
+      "title": "Machine Learning as an Experimental Science",
+      "authors": [
+        "Pat Langley"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1988,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.5772/9374",
+      "title": "Machine Learning Overview",
+      "authors": [
+        "Taiwo Oladipupo"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2010,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1007/978-3-658-42505-0_1",
+      "title": "Einleitung: Vom Batch Machine Learning zum Online Machine Learning",
+      "authors": [
+        "Thomas Bartz-Beielstein"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2024,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1023/a:1022689616458",
+      "title": "Toward a Unified Science of Machine Learning",
+      "authors": [
+        "Pat Langley"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 1989,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1007/978-3-658-46162-1_1",
+      "title": "Einleitung: Vom Batch Machine Learning zum Online Machine Learning",
+      "authors": [
+        "Thomas Bartz-Beielstein"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2024,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1201/9781003606055-5",
+      "title": "Machine learning vs. neutrosophic machine learning",
+      "authors": [
+        "Shabbir Hassan"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2025,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1016/b978-0-12-800953-6.00002-5",
+      "title": "Machine Learning",
+      "authors": [
+        "Peter Wittek"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2014,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1007/978-0-387-30164-8_452",
+      "title": "Learning Curves in Machine Learning",
+      "authors": [
+        "Claudia Perlich"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2011,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1016/j.mlwa.2021.100186",
+      "title": "Application of machine learning algorithms for prediction of sinter machine productivity",
+      "authors": [
+        "Arpit Mallick",
+        "Subhra Dhara",
+        "Sushant Rath"
+      ],
+      "domain": "computing",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 2021,
+      "relations": {},
+      "updates": [],
+      "seed_request": 1
+    },
+    {
+      "id": "10.1093/wentk/9780197647127.003.0007",
+      "title": "Climate Change and You",
+      "authors": [
+        "Joseph Romm"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2022,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1093/hesc/9780198807506.003.0005",
+      "title": "Climate Change and Agriculture",
+      "authors": [
+        "Andrew Sturman",
+        "Hervé Quénol"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2023,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1093/wentk/9780197647127.003.0002",
+      "title": "Extreme Weather and Climate Change",
+      "authors": [
+        "Joseph Romm"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2022,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1332/policypress/9781529203950.003.0005",
+      "title": "Climate change victims",
+      "authors": [
+        "Rob White"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2018,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1093/hesc/9780198807506.003.0007",
+      "title": "Environmental Hazards and Climate Change",
+      "authors": [
+        "Andrew Sturman",
+        "Hervé Quénol"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2023,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1332/policypress/9781529203950.003.0001",
+      "title": "Climate change and criminology",
+      "authors": [
+        "Rob White"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2018,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1017/cbo9780511546013.011",
+      "title": "Industry",
+      "authors": [
+        "Intergovernmental Panel on Climate Change"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1017/cbo9780511546013.005",
+      "title": "Introduction",
+      "authors": [
+        "Intergovernmental Panel on Climate Change"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1093/oso/9780198796282.003.0003",
+      "title": "Animals and Climate Change",
+      "authors": [
+        "Jeff Sebo"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2021,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1017/cbo9780511546013",
+      "title": "Climate Change 2007",
+      "authors": [
+        "Intergovernmental Panel on Climate Change"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "monograph",
+      "year": 2007,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1332/policypress/9781529203950.003.0008",
+      "title": "Criminological responses to climate change",
+      "authors": [
+        "Rob White"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2018,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1017/cbo9780511546013.013",
+      "title": "Forestry",
+      "authors": [
+        "Intergovernmental Panel on Climate Change"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1017/cbo9780511546013.001",
+      "title": "Foreword",
+      "authors": [
+        "Intergovernmental Panel on Climate Change"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1017/cbo9780511546013.002",
+      "title": "Preface",
+      "authors": [
+        "Intergovernmental Panel on Climate Change"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1017/cbo9780511546013.006",
+      "title": "Framing issues",
+      "authors": [
+        "Intergovernmental Panel on Climate Change"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1017/cbo9780511546013.018",
+      "title": "Glossary",
+      "authors": [
+        "Intergovernmental Panel on Climate Change"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1093/oso/9780195078701.003.0005",
+      "title": "Introduction: Apprehending Climate Change",
+      "authors": [
+        "James R. Fleming"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 1998,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1017/cbo9780511546013.004",
+      "title": "Technical Summary",
+      "authors": [
+        "Intergovernmental Panel on Climate Change"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": null,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1332/policypress/9781529203950.003.0007",
+      "title": "Criminal justice responses to climate change",
+      "authors": [
+        "Rob White"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2018,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1093/hesc/9780192895134.003.0007",
+      "title": "Biodiversity, Ecosystem Services, and Climate Change",
+      "authors": [
+        "Steve Tilling"
+      ],
+      "domain": "environment",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2024,
+      "relations": {},
+      "updates": [],
+      "seed_request": 2
+    },
+    {
+      "id": "10.1007/s10143-024-02711-7",
+      "title": "The extracapsular capsule phenomenon of percutaneous balloon compression provides adequate compression of the third branch of the trigeminal nerve: a retrospective study",
+      "authors": [
+        "Lijun Fu",
+        "Zuying Liu",
+        "Huilian Bu",
+        "Zhongyuan Lu",
+        "Cunlong Kong",
+        "Tao Wang",
+        "Letian Ma",
+        "Yuanyuan Wen",
+        "Qingying Liu",
+        "Zhongyu Wang",
+        "Jian Wang",
+        "Xiaochong Fan"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 2024,
+      "relations": {},
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.1142/9789814285780",
+      "title": "大国责任：转型中的中国国际战略",
+      "authors": [
+        "永年 郑"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2004,
+      "relations": {},
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.1186/s12872-024-04140-2",
+      "title": "Kinesiophobia in patients after cardiac surgery: a scoping review",
+      "authors": [
+        "Zhi Zeng",
+        "Yuqi Shen",
+        "Li Wan",
+        "Xiuru Yang",
+        "Qin Hu",
+        "Huaili Luo",
+        "Mei He"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 2024,
+      "relations": {},
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.1186/s12951-025-03899-6",
+      "title": "Magnesium-doped Zr-porphyrin MOF nanoarchitecture with pH/photo dual stimuli-responsiveness for targeted pesticides and improved biosafety",
+      "authors": [
+        "Hongwei Li",
+        "Yang Gao",
+        "Xiquan Ding",
+        "Ze Lv",
+        "Yu Fang",
+        "Zheng Zhang",
+        "Teng Wu",
+        "Yingjian Ma",
+        "Xinyu Guo",
+        "Rui Zhao",
+        "Meng Yu",
+        "Yong Xu",
+        "Xuemin Wu"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 2025,
+      "relations": {},
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.1039/d5cp00845j/v2/response1",
+      "title": "Author response for \"Intrinsic polarization mechanism of CCTO based on optimized Skanavi model with displacement fields modification\"",
+      "authors": [
+        "Qin Xinrui",
+        "Pengfei Cheng",
+        "Hao 中国 Luo",
+        "kejia 中国 Geng",
+        "cuncun 中国 Kong",
+        "xin 中国 Liu",
+        "xueyan 中国 Su",
+        "Yao Heng Su",
+        "Dingze Lu"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "peer-review",
+      "year": 2025,
+      "relations": {
+        "is-review-of": [
+          {
+            "id-type": "doi",
+            "id": "10.1039/D5CP00845J",
+            "asserted-by": "subject"
+          }
+        ]
+      },
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.1039/d5cp00845j/v3/response1",
+      "title": "Author response for \"Intrinsic polarization mechanism of CCTO based on optimized Skanavi model with displacement fields modification\"",
+      "authors": [
+        "Qin Xinrui",
+        "Pengfei Cheng",
+        "Hao 中国 Luo",
+        "kejia 中国 Geng",
+        "cuncun 中国 Kong",
+        "xin 中国 Liu",
+        "xueyan 中国 Su",
+        "Yao Heng Su",
+        "Dingze Lu"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "peer-review",
+      "year": 2025,
+      "relations": {
+        "is-review-of": [
+          {
+            "id-type": "doi",
+            "id": "10.1039/D5CP00845J",
+            "asserted-by": "subject"
+          }
+        ]
+      },
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.1142/g121",
+      "title": "大国责任：转型中的中国国际战略",
+      "authors": [
+        "永年 郑"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "monograph",
+      "year": 2004,
+      "relations": {},
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.1142/9789814285162",
+      "title": "认识中国",
+      "authors": [
+        "至庄 邹",
+        "美香 廖"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2004,
+      "relations": {},
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.1142/9789814285513",
+      "title": "渐进 • 民主：变革中的中国政治",
+      "authors": [
+        "亮 唐"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "book-chapter",
+      "year": 2004,
+      "relations": {},
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.17935/chinan.2012.17..133",
+      "title": "国有经济在“中国模式”中的角色 －中国学者对中国模式的论争和反思－",
+      "authors": [
+        "Kalim Chun",
+        "도국"
+      ],
+      "domain": "chinese",
+      "registry": "crossref",
+      "type": "journal-article",
+      "year": 2012,
+      "relations": {},
+      "updates": [],
+      "seed_request": 3
+    },
+    {
+      "id": "10.83395/a7yf-vd83",
+      "title": "DeepESDL Science Case: Ocean Data Cube for Principal Component Analysis on Time Variability",
+      "authors": [
+        "EarthCODE"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2025,
+      "type": "ComputationalNotebook",
+      "relations": [],
+      "seed_request": 4
+    },
+    {
+      "id": "10.83395/phf5-k525",
+      "title": "Surface soil moisture time series_1 km resolution_Southern Italy_S1",
+      "authors": [
+        "EarthCODE"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2021,
+      "type": "Dataset",
+      "relations": [
+        {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "https://www.sciencedirect.com/science/article/pii/S2352340921006296?via%3Dihub",
+          "relatedIdentifierType": "URL"
+        },
+        {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "10.5281/zenodo.5006307",
+          "relatedIdentifierType": "DOI"
+        }
+      ],
+      "seed_request": 4
+    },
+    {
+      "id": "10.83395/rhcv-en41",
+      "title": "Supraglacial lakes and channels in West Antarctica and Antarctic Peninsula during January 2017 (v.1.1)",
+      "authors": [
+        "EarthCODE"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2021,
+      "type": "Dataset",
+      "relations": [
+        {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "https://zenodo.org/record/5642755#.ZDa5z3bP1aR",
+          "relatedIdentifierType": "URL"
+        },
+        {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "https://essd.copernicus.org/articles/14/209/2022/",
+          "relatedIdentifierType": "URL"
+        }
+      ],
+      "seed_request": 4
+    },
+    {
+      "id": "10.83395/pt8v-xq48",
+      "title": "Sudden Stratospheric Warming (SSW)",
+      "authors": [
+        "EarthCODE"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2021,
+      "type": "Dataset",
+      "relations": [
+        {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "https://www.gfz-potsdam.de/en/section/geomagnetism/projects/archive/vera-vertical-coupling-in-earths-atmosphere-at-mid-and-high-latitudes/#c65013",
+          "relatedIdentifierType": "URL"
+        }
+      ],
+      "seed_request": 4
+    },
+    {
+      "id": "10.83395/sb09-v171",
+      "title": "Southern Ocean Sea Surface Salinity Level 3 maps (V.1.0)",
+      "authors": [
+        "EarthCODE"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2023,
+      "type": "Dataset",
+      "relations": [
+        {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "http://hdl.handle.net/10261/332809",
+          "relatedIdentifierType": "URL"
+        },
+        {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "10.20350/digitalCSIC/15493",
+          "relatedIdentifierType": "DOI"
+        }
+      ],
+      "seed_request": 4
+    },
+    {
+      "id": "10.13140/rg.2.2.20914.16328",
+      "title": "Global literature evidence linking development-framed urban actions with climate changemitigation and adaptation impacts",
+      "authors": [
+        "Han Zhao",
+        "Alexander Baklanov",
+        "Aliyu Barau",
+        "Frederic Bonou",
+        "Sorin Cheval",
+        "Felix Creutzig",
+        "Hong Congkai",
+        "Victor Indasi",
+        "Rui Ito",
+        "Mingyu Lei",
+        "Ruiyao Li",
+        "Weiyi Liao",
+        "Yihui Liu",
+        "Cameron T Mclean",
+        "Elinorata Mbuya",
+        "Rita Nogherotto",
+        "Shaurya Patel",
+        "Minal Pathak",
+        "Géraldine Pflieger",
+        "Giulio Pistolesi",
+        "Debra C Roberts",
+        "Samantha Sharpe",
+        "Andrew Sudmant",
+        "Jinjie Sun",
+        "Yuhan Zhu",
+        "Wenjia Cai"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2026,
+      "type": "Text",
+      "relations": [],
+      "seed_request": 4
+    },
+    {
+      "id": "10.83395/1xjh-1517",
+      "title": "Gridded_Africa_SMOS level 3 products CATDS",
+      "authors": [
+        "EarthCODE"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2018,
+      "type": "Dataset",
+      "relations": [],
+      "seed_request": 4
+    },
+    {
+      "id": "10.17605/osf.io/x9dje",
+      "title": "Supplementary materials and methodological audit for “Quantitative and semi-quantitative fire-risk methods for industrial storage: a systematic scoping review of validity, comparability and transferability”",
+      "authors": [
+        "Rodolphe TASSEMBEDO",
+        "Abdoul Fayçal BAGUIAN",
+        "Tégawendé Justin ZAIDA",
+        "Justin KINDA"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2026,
+      "type": "StudyRegistration",
+      "relations": [
+        {
+          "relationType": "IsIdenticalTo",
+          "relatedIdentifier": "https://archive.org/details/osf-registrations-x9dje-v1",
+          "relatedIdentifierType": "URL"
+        },
+        {
+          "relationType": "IsVersionOf",
+          "relatedIdentifier": "https://osf.io/ap58z",
+          "relatedIdentifierType": "URL"
+        }
+      ],
+      "seed_request": 4
+    },
+    {
+      "id": "10.83395/8wde-hf85",
+      "title": "PolarLakes - Sentinel-1/2 - Antarctica, Bi-weekly/Annually",
+      "authors": [
+        "EarthCODE"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2025,
+      "type": "Dataset",
+      "relations": [
+        {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "https://geoservice.dlr.de/web/datasets/polarlakes",
+          "relatedIdentifierType": "URL"
+        }
+      ],
+      "seed_request": 4
+    },
+    {
+      "id": "10.83395/2fmm-v908",
+      "title": "Monthly Global Particulate Inorganic Carbon dataset (9 km, OC-CCI v4.2)",
+      "authors": [
+        "EarthCODE"
+      ],
+      "domain": "data",
+      "registry": "datacite",
+      "year": 2023,
+      "type": "Dataset",
+      "relations": [
+        {
+          "relationType": "IsDescribedBy",
+          "relatedIdentifier": "https://rsg.pml.ac.uk/shared_files/gku/ESA_animation/PIC_1-month_9km/",
+          "relatedIdentifierType": "URL"
+        }
+      ],
+      "seed_request": 4
+    }
+  ],
+  "title_author": [
+    {
+      "id": "10.1093/med/9780198779100.003.0012",
+      "query": "Presenting a randomized controlled trial Janet L. Peacock",
+      "domain": "medicine"
+    },
+    {
+      "id": "10.1093/acprof:oso/9780195333190.003.0005",
+      "query": "Designing the Randomized Controlled Trial Phyllis Solomon",
+      "domain": "medicine"
+    },
+    {
+      "id": "10.1093/acprof:oso/9780195333190.003.0003",
+      "query": "Planning the Randomized Controlled Trial Phyllis Solomon",
+      "domain": "medicine"
+    },
+    {
+      "id": "10.1093/acprof:oso/9780195333190.003.0006",
+      "query": "Implementing the Randomized Controlled Trial Phyllis Solomon",
+      "domain": "medicine"
+    },
+    {
+      "id": "10.2139/ssrn.5062242",
+      "query": "A Parallel-Group, Randomized Controlled Trial of Enhanced Cue Exposure Therapy for Negative Emotional Eating: Study Protocol for a Randomized Controlled Trial Wai Sze Chan",
+      "domain": "medicine"
+    },
+    {
+      "id": "10.32388/ewi1x6",
+      "query": "Randomized Controlled Clinical Trial National Cancer Institute",
+      "domain": "medicine"
+    },
+    {
+      "id": "10.1186/isrctn78356215",
+      "query": "Flowy randomized controlled pilot trial Quynh Pham",
+      "domain": "medicine"
+    },
+    {
+      "id": "10.1093/acprof:oso/9780195333190.003.0007",
+      "query": "Generalizing Randomized Controlled Trial Outcomes to Community Practice Settings Phyllis Solomon",
+      "domain": "medicine"
+    },
+    {
+      "id": "10.1093/oso/9780198828044.003.0003",
+      "query": "Machine learning with sklearn Thomas P. Trappenberg",
+      "domain": "computing"
+    },
+    {
+      "id": "10.1093/oso/9780190941659.003.0001",
+      "query": "Why Use Automated Machine Learning? Kai R. Larsen",
+      "domain": "computing"
+    },
+    {
+      "id": "10.1023/a:1022896407371",
+      "query": "Machine Learning and Concept Formation Pat Langley",
+      "domain": "computing"
+    },
+    {
+      "id": "10.1023/a:1022661713654",
+      "query": "Machine Learning and Qualitative Reasoning Ivan Bratko",
+      "domain": "computing"
+    },
+    {
+      "id": "10.1023/a:1022603230145",
+      "query": "Research Papers in Machine Learning Pat Langley",
+      "domain": "computing"
+    },
+    {
+      "id": "10.1023/a:1022665512030",
+      "query": "Machine Learning: A Maturing Field Jaime Carbonell",
+      "domain": "computing"
+    },
+    {
+      "id": "10.1023/a:1022808826027",
+      "query": "Machine Learning and Grammar Induction Pat Langely",
+      "domain": "computing"
+    },
+    {
+      "id": "10.1023/a:1022854429410",
+      "query": "Editorial: Human and Machine Learning Pat Langley",
+      "domain": "computing"
+    },
+    {
+      "id": "10.1093/wentk/9780197647127.003.0007",
+      "query": "Climate Change and You Joseph Romm",
+      "domain": "environment"
+    },
+    {
+      "id": "10.1093/hesc/9780198807506.003.0005",
+      "query": "Climate Change and Agriculture Andrew Sturman",
+      "domain": "environment"
+    },
+    {
+      "id": "10.1093/wentk/9780197647127.003.0002",
+      "query": "Extreme Weather and Climate Change Joseph Romm",
+      "domain": "environment"
+    },
+    {
+      "id": "10.1332/policypress/9781529203950.003.0005",
+      "query": "Climate change victims Rob White",
+      "domain": "environment"
+    },
+    {
+      "id": "10.1093/hesc/9780198807506.003.0007",
+      "query": "Environmental Hazards and Climate Change Andrew Sturman",
+      "domain": "environment"
+    },
+    {
+      "id": "10.1332/policypress/9781529203950.003.0001",
+      "query": "Climate change and criminology Rob White",
+      "domain": "environment"
+    },
+    {
+      "id": "10.1017/cbo9780511546013.011",
+      "query": "Industry Intergovernmental Panel on Climate Change",
+      "domain": "environment"
+    },
+    {
+      "id": "10.1017/cbo9780511546013.005",
+      "query": "Introduction Intergovernmental Panel on Climate Change",
+      "domain": "environment"
+    },
+    {
+      "id": "10.1007/s10143-024-02711-7",
+      "query": "The extracapsular capsule phenomenon of percutaneous balloon compression provides adequate compression of the third branch of the trigeminal nerve: a retrospective study Lijun Fu",
+      "domain": "chinese"
+    },
+    {
+      "id": "10.1142/9789814285780",
+      "query": "大国责任：转型中的中国国际战略 永年 郑",
+      "domain": "chinese"
+    },
+    {
+      "id": "10.1186/s12872-024-04140-2",
+      "query": "Kinesiophobia in patients after cardiac surgery: a scoping review Zhi Zeng",
+      "domain": "chinese"
+    },
+    {
+      "id": "10.1186/s12951-025-03899-6",
+      "query": "Magnesium-doped Zr-porphyrin MOF nanoarchitecture with pH/photo dual stimuli-responsiveness for targeted pesticides and improved biosafety Hongwei Li",
+      "domain": "chinese"
+    },
+    {
+      "id": "10.1039/d5cp00845j/v2/response1",
+      "query": "Author response for \"Intrinsic polarization mechanism of CCTO based on optimized Skanavi model with displacement fields modification\" Qin Xinrui",
+      "domain": "chinese"
+    },
+    {
+      "id": "10.1039/d5cp00845j/v3/response1",
+      "query": "Author response for \"Intrinsic polarization mechanism of CCTO based on optimized Skanavi model with displacement fields modification\" Qin Xinrui",
+      "domain": "chinese"
+    }
+  ],
+  "topics": [
+    {
+      "domain": "medicine",
+      "query": "randomized blood pressure treatment",
+      "relevance_labels": null
+    },
+    {
+      "domain": "medicine",
+      "query": "long covid rehabilitation",
+      "relevance_labels": null
+    },
+    {
+      "domain": "medicine",
+      "query": "antibiotic resistance surveillance",
+      "relevance_labels": null
+    },
+    {
+      "domain": "medicine",
+      "query": "diabetes exercise systematic review",
+      "relevance_labels": null
+    },
+    {
+      "domain": "medicine",
+      "query": "vaccine effectiveness cohort",
+      "relevance_labels": null
+    },
+    {
+      "domain": "computing",
+      "query": "retrieval augmented generation evaluation",
+      "relevance_labels": null
+    },
+    {
+      "domain": "computing",
+      "query": "formal verification distributed systems",
+      "relevance_labels": null
+    },
+    {
+      "domain": "computing",
+      "query": "graph neural networks molecular prediction",
+      "relevance_labels": null
+    },
+    {
+      "domain": "computing",
+      "query": "differential privacy federated learning",
+      "relevance_labels": null
+    },
+    {
+      "domain": "computing",
+      "query": "software supply chain security",
+      "relevance_labels": null
+    },
+    {
+      "domain": "environment",
+      "query": "urban heat island mitigation",
+      "relevance_labels": null
+    },
+    {
+      "domain": "environment",
+      "query": "climate adaptation agriculture",
+      "relevance_labels": null
+    },
+    {
+      "domain": "environment",
+      "query": "microplastic marine ecosystem",
+      "relevance_labels": null
+    },
+    {
+      "domain": "environment",
+      "query": "renewable energy storage lifecycle",
+      "relevance_labels": null
+    },
+    {
+      "domain": "environment",
+      "query": "biodiversity conservation land use",
+      "relevance_labels": null
+    },
+    {
+      "domain": "social",
+      "query": "education randomized tutoring intervention",
+      "relevance_labels": null
+    },
+    {
+      "domain": "social",
+      "query": "housing affordability urban migration",
+      "relevance_labels": null
+    },
+    {
+      "domain": "social",
+      "query": "social media misinformation experiments",
+      "relevance_labels": null
+    },
+    {
+      "domain": "social",
+      "query": "income inequality health outcomes",
+      "relevance_labels": null
+    },
+    {
+      "domain": "social",
+      "query": "scientific reproducibility replication",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "气候变化与农业适应",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "城市热岛缓解",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "人工智能教育应用",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "老年人慢性病管理",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "数字经济与就业",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "公共卫生风险沟通",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "机器学习模型可解释性",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "生态系统生物多样性",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "新能源储能技术",
+      "relevance_labels": null
+    },
+    {
+      "domain": "chinese",
+      "query": "科研可重复性",
+      "relevance_labels": null
+    }
+  ],
+  "fulltext": [
+    {
+      "id": "10.1585/pfr.15.2402039",
+      "title": "Radiation Resistant Camera System for Monitoring Deuterium Plasma Discharges in the Large Helical Device",
+      "url": "https://www.jstage.jst.go.jp/article/pfr/15/0/15_2402039/_pdf",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1016/s0021-9258(19)52451-6",
+      "title": "PROTEIN MEASUREMENT WITH THE FOLIN PHENOL REAGENT",
+      "url": "https://www.jbc.org/article/S0021-9258(19)52451-6/pdf",
+      "license": "cc-by",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1191/1478088706qp063oa",
+      "title": "Using thematic analysis in psychology",
+      "url": "https://www.tandfonline.com/doi/abs/10.1191/1478088706qp063oa",
+      "license": "other-oa",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1145/3065386",
+      "title": "ImageNet classification with deep convolutional neural networks",
+      "url": "http://dl.acm.org/ft_gateway.cfm?id=3065386&type=pdf",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1136/bmj.n71",
+      "title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews",
+      "url": "https://www.bmj.com/content/bmj/372/bmj.n71.full.pdf",
+      "license": "cc-by",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1103/physrevb.37.785",
+      "title": "Development of the Colle-Salvetti correlation-energy formula into a functional of the electron density",
+      "url": "https://doi.org/10.17615/zrp0-ry04",
+      "license": null,
+      "is_oa": true,
+      "version": "submittedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1186/s13059-014-0550-8",
+      "title": "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2",
+      "url": "https://genomebiology.biomedcentral.com/counter/pdf/10.1186/s13059-014-0550-8",
+      "license": "cc-by",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1007/978-3-319-24574-4_28",
+      "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+      "url": "https://link.springer.com/content/pdf/10.1007/978-3-319-24574-4_28.pdf",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1107/s0108767307043930",
+      "title": "A short history of SHELX",
+      "url": "https://journals.iucr.org/a/issues/2008/01/00/sc5010/sc5010.pdf",
+      "license": "other-oa",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1016/0749-5978(91)90020-t",
+      "title": "The theory of planned behavior",
+      "url": "https://ojs.unbc.ca/index.php/design/article/download/1887/1414",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.18637/jss.v067.i01",
+      "title": "Fitting Linear Mixed-Effects Models Using lme4",
+      "url": "https://www.jstatsoft.org/index.php/jss/article/view/v067i01/v67i01.pdf",
+      "license": "cc-by",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.3322/caac.21492",
+      "title": "Global cancer statistics 2018: GLOBOCAN estimates of incidence and mortality worldwide for 36 cancers in 185 countries",
+      "url": "https://acsjournals.onlinelibrary.wiley.com/doi/pdfdirect/10.3322/caac.21492",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1136/bmj.b2535",
+      "title": "Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement",
+      "url": "https://www.bmj.com/content/bmj/339/bmj.b2535.full.pdf",
+      "license": "cc-by-nc",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.4230/lipics.itp.2023.19",
+      "title": "Exploiting Generative AI to Scale up Intelligent Tutoring Systems",
+      "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol268-itp2023/LIPIcs.ITP.2023.19/LIPIcs.ITP.2023.19.pdf",
+      "license": "cc-by",
+      "is_oa": true,
+      "version": "submittedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1093/nar/25.17.3389",
+      "title": "Gapped BLAST and PSI-BLAST: a new generation of protein database search programs",
+      "url": "https://academic.oup.com/nar/article-pdf/25/17/3389/3639509/25-17-3389.pdf",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1126/science.1102896",
+      "title": "Electric Field Effect in Atomically Thin Carbon Films",
+      "url": "https://arxiv.org/pdf/cond-mat/0410550",
+      "license": null,
+      "is_oa": true,
+      "version": "submittedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1016/j.cell.2011.02.013",
+      "title": "Hallmarks of Cancer: The Next Generation",
+      "url": "http://www.cell.com/article/S0092867411001279/pdf",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.3758/bf03193146",
+      "title": "G*Power 3: A flexible statistical power analysis program for the social, behavioral, and biomedical sciences",
+      "url": "https://link.springer.com/content/pdf/10.3758%2FBF03193146.pdf",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1093/bioinformatics/btu170",
+      "title": "Trimmomatic: a flexible trimmer for Illumina sequence data",
+      "url": "https://academic.oup.com/bioinformatics/article-pdf/30/15/2114/48924714/bioinformatics_30_15_2114.pdf",
+      "license": "cc-by",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1038/nmeth.2089",
+      "title": "NIH Image to ImageJ: 25 years of image analysis",
+      "url": "https://www.nature.com/articles/nmeth.2089.pdf",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1103/physrev.140.a1133",
+      "title": "Self-Consistent Equations Including Exchange and Correlation Effects",
+      "url": "http://link.aps.org/pdf/10.1103/PhysRev.140.A1133",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1109/tpami.2016.2577031",
+      "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks",
+      "url": "https://arxiv.org/pdf/1506.01497",
+      "license": null,
+      "is_oa": true,
+      "version": "submittedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1371/journal.pmed.1000097",
+      "title": "Preferred Reporting Items for Systematic Reviews and Meta-Analyses: The PRISMA Statement",
+      "url": "https://iris.unimore.it/bitstream/11380/1368022/2/document.pdf",
+      "license": "cc-by",
+      "is_oa": true,
+      "version": "submittedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1136/bmj.327.7414.557",
+      "title": "Measuring inconsistency in meta-analyses",
+      "url": "http://eprints.lincoln.ac.uk/id/eprint/1932/1/MetaAnalysisPaper.pdf",
+      "license": null,
+      "is_oa": false,
+      "version": "acceptedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1093/bioinformatics/btp352",
+      "title": "The Sequence Alignment/Map format and SAMtools",
+      "url": "https://academic.oup.com/bioinformatics/article-pdf/25/16/2078/48994296/bioinformatics_25_16_2078.pdf",
+      "license": "cc-by-nc",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.48550/arxiv.1201.0490",
+      "title": "Scikit-learn: Machine Learning in Python",
+      "url": "https://arxiv.org/pdf/1201.0490",
+      "license": null,
+      "is_oa": true,
+      "version": "submittedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1093/oxfordjournals.molbev.a040454",
+      "title": "The neighbor-joining method: a new method for reconstructing phylogenetic trees.",
+      "url": "https://academic.oup.com/mbe/article-pdf/4/4/406/11167444/7sait.pdf",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1007/bf00994018",
+      "title": "Support-Vector Networks",
+      "url": "https://link.springer.com/content/pdf/10.1007/BF00994018.pdf",
+      "license": null,
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1093/bioinformatics/btp324",
+      "title": "Fast and accurate short read alignment with Burrows–Wheeler transform",
+      "url": "https://academic.oup.com/bioinformatics/article-pdf/25/14/1754/48994219/bioinformatics_25_14_1754.pdf",
+      "license": "cc-by-nc",
+      "is_oa": true,
+      "version": "publishedVersion",
+      "seed_request": 5
+    },
+    {
+      "id": "10.1109/5.726791",
+      "title": "Gradient-based learning applied to document recognition",
+      "url": "https://hal.science/hal-03926082/document",
+      "license": "other-oa",
+      "is_oa": true,
+      "version": "submittedVersion",
+      "seed_request": 5
+    }
+  ],
+  "limitations": [
+    "Provider-selected input set has selection bias and is not independent gold truth",
+    "No expert relevance, edition or retraction labels; missing coverage is explicitly untested",
+    "DataCite identifiers are out of Crossref registry coverage",
+    "Fulltext locations are candidate metadata, not verified files"
+  ]
+}

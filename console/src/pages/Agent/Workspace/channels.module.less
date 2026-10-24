@@ -1,0 +1,227 @@
+.discovery {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: auto;
+}
+.localService {
+  border-block: 1px solid var(--lt-border-subtle);
+  padding: 14px 2px;
+  flex: none;
+}
+.localStatus {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  strong {
+    font-size: 14px;
+  }
+  p {
+    margin: 6px 0 0;
+    color: var(--lt-text-muted);
+    font-size: 13px;
+  }
+}
+.localConfig {
+  margin-top: 10px;
+  p {
+    font-size: 13px;
+    color: var(--lt-text-muted);
+  }
+  label {
+    margin-bottom: 12px;
+  }
+}
+.configValue {
+  display: flex;
+  gap: 8px;
+}
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+  }
+  p {
+    margin: 0;
+    color: var(--lt-text-muted);
+    font-size: 13px;
+  }
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.form {
+  padding: 16px;
+  border: 1px solid var(--lt-border-subtle);
+  border-radius: 12px;
+  display: grid;
+  gap: 12px;
+  p {
+    font-size: 13px;
+    color: var(--lt-text-muted);
+    margin: 0;
+  }
+}
+.browser {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+  flex: 1;
+  min-height: 420px;
+  border-top: 0;
+}
+.catalog {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 12px;
+  padding: 18px 20px 18px 0;
+  border-right: 1px solid var(--lt-border-subtle);
+  overflow: auto;
+}
+.routeList {
+  overflow: auto;
+  min-height: 160px;
+  max-height: 580px;
+  flex: 1;
+  button {
+    width: 100%;
+    display: grid;
+    gap: 7px;
+    border: 0;
+    border-bottom: 1px solid var(--lt-border-subtle);
+    background: transparent;
+    color: var(--lt-text);
+    text-align: left;
+    padding: 14px 10px;
+    cursor: pointer;
+    &:hover,
+    &[aria-current="true"] {
+      background: var(--lt-surface-muted);
+    }
+    strong {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    code,
+    span {
+      font-size: 12px;
+      color: var(--lt-text-muted);
+      overflow-wrap: anywhere;
+    }
+  }
+}
+.detail {
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 14px;
+  overflow: auto;
+  h3 {
+    margin: 0;
+    font-size: 20px;
+  }
+  a {
+    color: var(--lt-accent);
+  }
+  code {
+    overflow-wrap: anywhere;
+  }
+}
+.backToCatalog {
+  display: none;
+}
+.parameterForm {
+  display: grid;
+  gap: 16px;
+}
+.discovery label {
+  display: grid;
+  gap: 7px;
+  font-size: 14px;
+  small {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    color: var(--lt-text-muted);
+    font-size: 12px;
+    max-height: 180px;
+    overflow: auto;
+    line-height: 1.6;
+  }
+}
+.description {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 1.7;
+  max-height: 260px;
+  overflow: auto;
+}
+.meta,
+.catalog > small {
+  color: var(--lt-text-muted);
+  font-size: 12px;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.preview {
+  display: block;
+  padding: 12px;
+  background: var(--lt-surface-muted);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+.discovery summary {
+  cursor: pointer;
+  padding-block: 8px;
+  font-size: 13px;
+}
+.discovery button:focus-visible,
+.discovery a:focus-visible,
+.discovery summary:focus-visible {
+  outline: 2px solid var(--lt-text);
+  outline-offset: 3px;
+}
+@media (max-width: 800px) {
+  .browser {
+    display: flex;
+    flex-direction: column;
+  }
+  .catalog {
+    border-right: 0;
+    padding-right: 0;
+  }
+  .routeList {
+    max-height: 320px;
+    flex: none;
+  }
+  .detail {
+    border-top: 1px solid var(--lt-border-subtle);
+    padding: 20px 0;
+    overflow: visible;
+  }
+  .backToCatalog {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-left: -8px;
+  }
+}

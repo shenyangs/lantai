@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "benchmark_id": "editorial-executive-typography-first",
+  "reference_kind": "controlled-external-reference",
+  "reference_deck_bundled": false,
+  "license_status": "not-bundled-no-redistribution-assumed",
+  "source_content_retained": false,
+  "purpose": "Measure portable design grammar without retaining source slides, text, media, or coordinates.",
+  "measured_canvas": {
+    "width_in": 13.3333,
+    "height_in": 7.5,
+    "slide_count": 16
+  },
+  "observed_object_summary": {
+    "total": 423,
+    "text": 355,
+    "line": 68,
+    "image": 0,
+    "chart": 0,
+    "table": 0
+  }
+}

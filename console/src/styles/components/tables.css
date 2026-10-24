@@ -1,0 +1,151 @@
+/* Table components */
+html.dark-mode .lantai-table,
+html.dark-mode .ant-table {
+  background: var(--lt-surface-raised) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-table-wrapper,
+html.dark-mode .ant-table-wrapper {
+  background: var(--lt-surface-raised) !important;
+}
+
+html.dark-mode .lantai-table-thead > tr > th,
+html.dark-mode .ant-table-thead > tr > th,
+html.dark-mode .lantai-table-thead > tr > td,
+html.dark-mode .ant-table-thead > tr > td,
+html.dark-mode
+  .lantai-table-wrapper
+  .lantai-table-container
+  .lantai-table-thead
+  > tr
+  > th,
+html.dark-mode
+  .ant-table-wrapper
+  .ant-table-container
+  .ant-table-thead
+  > tr
+  > th,
+html.dark-mode
+  .lantai-table-wrapper
+  .lantai-table-container
+  .lantai-table-thead
+  > tr
+  > td,
+html.dark-mode
+  .ant-table-wrapper
+  .ant-table-container
+  .ant-table-thead
+  > tr
+  > td {
+  background: var(--lt-surface-elevated) !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Sticky thead background (scroll.y tables) */
+html.dark-mode .lantai-table-sticky-holder,
+html.dark-mode .ant-table-sticky-holder {
+  background: var(--lt-surface-elevated) !important;
+}
+
+html.dark-mode .lantai-table-sticky-holder .lantai-table-thead > tr > th,
+html.dark-mode .ant-table-sticky-holder .ant-table-thead > tr > th,
+html.dark-mode .lantai-table-sticky-holder .lantai-table-thead > tr > td,
+html.dark-mode .ant-table-sticky-holder .ant-table-thead > tr > td {
+  background: var(--lt-surface-elevated) !important;
+}
+
+/* Fix left/right sticky columns in thead */
+html.dark-mode .lantai-table-thead > tr > th.lantai-table-cell-fix-left,
+html.dark-mode .ant-table-thead > tr > th.ant-table-cell-fix-left,
+html.dark-mode .lantai-table-thead > tr > th.lantai-table-cell-fix-right,
+html.dark-mode .ant-table-thead > tr > th.ant-table-cell-fix-right {
+  background: var(--lt-surface-elevated) !important;
+}
+
+html.dark-mode .lantai-table-tbody > tr > td,
+html.dark-mode .ant-table-tbody > tr > td {
+  background: var(--lt-surface-raised) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark-mode .lantai-table-tbody > tr:hover > td,
+html.dark-mode .ant-table-tbody > tr:hover > td {
+  background: var(--lt-control-bg) !important;
+}
+
+html.dark-mode .lantai-table-tbody > tr.lantai-table-row-selected > td,
+html.dark-mode .ant-table-tbody > tr.ant-table-row-selected > td {
+  background: var(--lt-menu-selected-bg) !important;
+}
+
+/* Table fixed columns shadow in dark mode */
+html.dark-mode .lantai-table-cell-fix-right,
+html.dark-mode .ant-table-cell-fix-right {
+  background: var(--lt-surface-raised) !important;
+}
+
+html.dark-mode .lantai-table-cell-fix-right-first::after,
+html.dark-mode .ant-table-cell-fix-right-first::after {
+  box-shadow: inset -10px 0 8px -8px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Table pagination */
+html.dark-mode .lantai-pagination .lantai-pagination-item,
+html.dark-mode .ant-pagination .ant-pagination-item {
+  background: var(--lt-surface-raised) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark-mode .lantai-pagination .lantai-pagination-item a,
+html.dark-mode .ant-pagination .ant-pagination-item a {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html.dark-mode .lantai-pagination .lantai-pagination-item-active,
+html.dark-mode .ant-pagination .ant-pagination-item-active {
+  background: var(--lt-accent) !important;
+  border-color: var(--lt-accent) !important;
+}
+
+html.dark-mode .lantai-pagination .lantai-pagination-item-active a,
+html.dark-mode .ant-pagination .ant-pagination-item-active a {
+  color: var(--lt-text-inverse) !important;
+}
+
+html.dark-mode .lantai-pagination .lantai-pagination-prev button,
+html.dark-mode .lantai-pagination .lantai-pagination-next button,
+html.dark-mode .ant-pagination .ant-pagination-prev button,
+html.dark-mode .ant-pagination .ant-pagination-next button {
+  background: var(--lt-surface-raised) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* Table sorter icons */
+html.dark-mode .lantai-table-column-sorter,
+html.dark-mode .ant-table-column-sorter {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+html.dark-mode .lantai-table-column-sorter-up.active,
+html.dark-mode .lantai-table-column-sorter-down.active,
+html.dark-mode .ant-table-column-sorter-up.active,
+html.dark-mode .ant-table-column-sorter-down.active {
+  color: var(--lt-accent-hover) !important;
+}
+
+/* Checkbox in table */
+html.dark-mode .lantai-checkbox-inner,
+html.dark-mode .ant-checkbox-inner {
+  background: var(--lt-control-bg) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+html.dark-mode .lantai-checkbox-checked .lantai-checkbox-inner,
+html.dark-mode .ant-checkbox-checked .ant-checkbox-inner {
+  background: var(--lt-accent) !important;
+  border-color: var(--lt-accent) !important;
+}

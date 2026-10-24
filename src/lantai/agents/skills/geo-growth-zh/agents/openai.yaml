@@ -1,0 +1,4 @@
+interface:
+  display_name: "生成式搜索增长"
+  short_description: "审计并提升品牌在生成式搜索与答案引擎中的真实可见性"
+  default_prompt: "使用 $geo-growth-zh 审计这个品牌在生成式搜索中的可见性并制定改进方案。"

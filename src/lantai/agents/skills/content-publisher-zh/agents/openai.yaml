@@ -1,0 +1,4 @@
+interface:
+  display_name: "内容发布工作室"
+  short_description: "把资料或 Markdown 转成可交付的文章、报告与视觉页面"
+  default_prompt: "使用 $content-publisher-zh 把这些材料整理成适合发布的视觉页面。"

@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "preview-clean",
+      "title": "Clean local preview passes",
+      "kind": "preview_harness",
+      "input": {
+        "report": {
+          "url": "http://localhost:5173/",
+          "fetch_url": "http://localhost:5173/",
+          "ok": true,
+          "summary": "预览诊断通过。",
+          "status_code": 200,
+          "content_type": "text/html",
+          "body_text_length": 120,
+          "root_selector_present": true,
+          "findings": []
+        }
+      },
+      "expect": {
+        "conclusion": "pass",
+        "ok": true
+      },
+      "tags": ["preview", "pass"]
+    },
+    {
+      "id": "preview-unreachable",
+      "title": "Unreachable preview needs revision",
+      "kind": "preview_harness",
+      "input": {
+        "report": {
+          "url": "http://localhost:5173/",
+          "fetch_url": "http://localhost:5173/",
+          "ok": false,
+          "summary": "本地预览不可达。",
+          "status_code": null,
+          "network_errors": [
+            {
+              "url": "http://localhost:5173/",
+              "status": null,
+              "error": "Connection refused"
+            }
+          ],
+          "findings": [
+            {
+              "severity": "critical",
+              "category": "availability",
+              "message": "本地预览不可达。",
+              "evidence": "Connection refused",
+              "url": "http://localhost:5173/"
+            }
+          ]
+        }
+      },
+      "expect": {
+        "conclusion": "needs_revision",
+        "category": "availability",
+        "ok": false,
+        "summary_contains": "本地预览不可达",
+        "evidence_contains": "Connection refused"
+      },
+      "tags": ["preview", "availability"]
+    },
+    {
+      "id": "preview-asset-404",
+      "title": "Preview asset failure needs revision",
+      "kind": "preview_harness",
+      "input": {
+        "report": {
+          "url": "http://localhost:5173/",
+          "fetch_url": "http://localhost:5173/",
+          "ok": false,
+          "summary": "预览页面有 1 个资源请求失败。",
+          "status_code": 200,
+          "content_type": "text/html",
+          "network_errors": [
+            {
+              "url": "http://localhost:5173/assets/app.js",
+              "status": 404,
+              "error": "HTTP Error 404: Not Found"
+            }
+          ],
+          "findings": [
+            {
+              "severity": "major",
+              "category": "network",
+              "message": "预览页面有 1 个资源请求失败。",
+              "evidence": "HTTP Error 404: Not Found",
+              "url": "http://localhost:5173/assets/app.js"
+            }
+          ]
+        }
+      },
+      "expect": {
+        "conclusion": "needs_revision",
+        "category": "network",
+        "ok": false,
+        "evidence_contains": "404"
+      },
+      "tags": ["preview", "network"]
+    },
+    {
+      "id": "preview-white-screen",
+      "title": "White-screen preview needs revision",
+      "kind": "preview_harness",
+      "input": {
+        "report": {
+          "url": "http://localhost:5173/",
+          "fetch_url": "http://localhost:5173/",
+          "ok": false,
+          "summary": "页面正文几乎为空，且未发现常见前端挂载节点，可能白屏。",
+          "status_code": 200,
+          "content_type": "text/html",
+          "body_text_length": 0,
+          "root_selector_present": false,
+          "white_screen_likely": true,
+          "findings": [
+            {
+              "severity": "major",
+              "category": "render",
+              "message": "页面正文几乎为空，且未发现常见前端挂载节点，可能白屏。",
+              "evidence": "body_text_length=0",
+              "url": "http://localhost:5173/"
+            }
+          ]
+        }
+      },
+      "expect": {
+        "conclusion": "needs_revision",
+        "category": "render",
+        "ok": false,
+        "summary_contains": "白屏"
+      },
+      "tags": ["preview", "render"]
+    },
+    {
+      "id": "runtime-build-error",
+      "title": "TypeScript build error is classified as build",
+      "kind": "runtime_event",
+      "input": {
+        "event": {
+          "seq": 8,
+          "type": "tool.completed",
+          "status": "failed",
+          "summary": "构建失败",
+          "payload": {
+            "phase": "build",
+            "trace_title": "运行构建：npm",
+            "command": "npm run build",
+            "stderr": "src/App.tsx(12,7): error TS2322: Type 'string' is not assignable to type 'number'.",
+            "exit_code": 2
+          }
+        }
+      },
+      "expect": {
+        "conclusion": "needs_revision",
+        "category": "build",
+        "summary_contains": "构建",
+        "evidence_contains": "TS2322",
+        "next_action_contains": "build/typecheck"
+      },
+      "tags": ["runtime", "build"]
+    },
+    {
+      "id": "runtime-test-failure",
+      "title": "Vitest assertion failure is classified as test",
+      "kind": "runtime_event",
+      "input": {
+        "event": {
+          "seq": 9,
+          "type": "tool.completed",
+          "status": "failed",
+          "summary": "测试失败",
+          "payload": {
+            "phase": "test",
+            "trace_title": "运行测试：vitest",
+            "command": "npm run test:run -- runtimeFailureDiagnosis.test.ts",
+            "stderr": "AssertionError: expected 'ready' to be 'done'",
+            "exit_code": 1
+          }
+        }
+      },
+      "expect": {
+        "conclusion": "needs_revision",
+        "category": "test",
+        "summary_contains": "测试失败",
+        "evidence_contains": "AssertionError",
+        "next_action_contains": "assertion"
+      },
+      "tags": ["runtime", "test"]
+    },
+    {
+      "id": "runtime-dependency-missing",
+      "title": "Missing module is classified as dependency",
+      "kind": "runtime_event",
+      "input": {
+        "event": {
+          "seq": 10,
+          "type": "tool.completed",
+          "status": "failed",
+          "summary": "命令失败",
+          "payload": {
+            "trace_title": "运行脚本：node",
+            "command": "node scripts/check-preview.js",
+            "stderr": "Error: Cannot find module 'playwright'",
+            "exit_code": 1
+          }
+        }
+      },
+      "expect": {
+        "conclusion": "needs_revision",
+        "category": "dependency",
+        "summary_contains": "依赖",
+        "evidence_contains": "Cannot find module",
+        "next_action_contains": "锁文件"
+      },
+      "tags": ["runtime", "dependency"]
+    },
+    {
+      "id": "runtime-policy-blocked",
+      "title": "MAS policy block is classified as blocked",
+      "kind": "runtime_event",
+      "input": {
+        "event": {
+          "seq": 11,
+          "type": "approval.resolved",
+          "status": "failed",
+          "summary": "策略阻断",
+          "payload": {
+            "phase": "approval",
+            "trace_title": "App Store 策略阻断",
+            "failure_reason": "App Store sandbox blocked GUI automation without explicit user confirmation.",
+            "tool_name": "desktop_control"
+          }
+        }
+      },
+      "expect": {
+        "conclusion": "blocked",
+        "category": "blocked",
+        "summary_contains": "权限",
+        "evidence_contains": "sandbox blocked",
+        "next_action_contains": "不要绕过策略"
+      },
+      "tags": ["runtime", "blocked", "mas"]
+    },
+    {
+      "id": "runtime-stalled",
+      "title": "Stalled run is classified as timeout",
+      "kind": "runtime_event",
+      "input": {
+        "event": {
+          "seq": 12,
+          "type": "turn.stalled",
+          "status": "stalled",
+          "summary": "本轮可能卡住",
+          "payload": {
+            "phase": "failure",
+            "trace_title": "本轮可能卡住",
+            "trace_detail": "90 秒内没有新的运行事件，且后端没有活动任务"
+          }
+        }
+      },
+      "expect": {
+        "conclusion": "needs_revision",
+        "category": "timeout",
+        "summary_contains": "超时",
+        "evidence_contains": "没有新的运行事件",
+        "next_action_contains": "最后输出点"
+      },
+      "tags": ["runtime", "stalled"]
+    }
+  ]
+}

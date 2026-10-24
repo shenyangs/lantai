@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "contract_id": "lantai-runtime-v2-authority-map-v1",
+  "phase": "RT2-00",
+  "baseline": {
+    "lantai_commit": "98f5c05f8028b4863c14934d0acf330e92738d24",
+    "deepseek_harness_commit": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+    "codex_harness_commit": "a5254431957149c97f92392ce9780b246622e929"
+  },
+  "collaboration_identity": {
+    "specific_fields": ["collaboration_id", "member_id"],
+    "execution_fields_from_envelope": ["run_id", "attempt_id"]
+  },
+  "domains": [
+    {
+      "domain_id": "conversation",
+      "target_authority": "ConversationStore",
+      "current_status": "fragmented",
+      "current_authoritative_sources": [
+        "src/lantai/app/runner/session.py",
+        "src/lantai/app/routers/messages.py",
+        "console/src/vendor/lantaiChat.ts"
+      ],
+      "owns": ["committed transcript", "message metadata", "attachments"],
+      "forbidden_writers": ["route components", "stream projections"]
+    },
+    {
+      "domain_id": "run",
+      "target_authority": "RunJournal",
+      "current_status": "transitional",
+      "current_authoritative_sources": [
+        "src/lantai/runtime/store.py",
+        "src/lantai/runtime/events.py",
+        "src/lantai/runtime/turn_control.py"
+      ],
+      "owns": ["turn", "run", "attempt", "step", "checkpoint", "terminal state"],
+      "forbidden_writers": ["chat view state", "task center view state"]
+    },
+    {
+      "domain_id": "effect",
+      "target_authority": "EffectLedger",
+      "current_status": "transitional",
+      "current_authoritative_sources": [
+        "src/lantai/runtime/effects.py",
+        "src/lantai/runtime/tool_transaction.py",
+        "src/lantai/security/tool_policy.py"
+      ],
+      "owns": ["intent", "approval", "dispatch", "receipt", "ambiguous outcome", "compensation"],
+      "forbidden_writers": ["tool result cards", "permission copy"]
+    },
+    {
+      "domain_id": "artifact",
+      "target_authority": "ArtifactStore",
+      "current_status": "fragmented",
+      "current_authoritative_sources": [
+        "src/lantai/runtime/artifact_effects.py",
+        "src/lantai/app/capabilities/artifacts.py",
+        "src/lantai/runtime/file_delivery.py"
+      ],
+      "owns": ["artifact identity", "version", "integrity", "delivery state"],
+      "forbidden_writers": ["works cards", "completion copy"]
+    },
+    {
+      "domain_id": "memory",
+      "target_authority": "MemoryLedger",
+      "current_status": "existing_single_authority",
+      "current_authoritative_sources": [
+        "src/lantai/agents/memory/canonical_ledger.py",
+        "src/lantai/agents/memory/layered_memory.py"
+      ],
+      "owns": ["memory proposal", "accepted memory", "forget tombstone", "provenance"],
+      "forbidden_writers": ["prompt compiler", "chat projection"]
+    },
+    {
+      "domain_id": "collaboration",
+      "target_authority": "CollaborationJournal",
+      "current_status": "fragmented",
+      "current_authoritative_sources": [
+        "src/lantai/runtime/collaboration.py",
+        "src/lantai/runtime/hosted_collaboration/coordinator.py",
+        "src/lantai/agents/tools/agent_management.py"
+      ],
+      "owns": ["collaboration", "member", "member run", "staffing", "phase", "result provenance"],
+      "forbidden_writers": ["collaboration phase rail", "chat progress copy"]
+    }
+  ],
+  "runtime_flow_sources": {
+    "ingress": [
+      "src/lantai/app/routers/console.py",
+      "src/lantai/runtime/inbox_admission.py"
+    ],
+    "execution": [
+      "src/lantai/app/runner/runner.py",
+      "src/lantai/app/post_answer_reflection_service.py",
+      "src/lantai/runtime/adapters/native_runtime.py"
+    ],
+    "stream": [
+      "src/lantai/runtime/events.py",
+      "console/src/pages/Chat/runtimeEventStream.ts"
+    ],
+    "projection": [
+      "console/src/vendor/lantaiChat.ts",
+      "console/src/pages/Chat/index.tsx",
+      "console/src/pages/Control/TaskCenterV2/index.tsx"
+    ]
+  }
+}

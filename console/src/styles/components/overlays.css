@@ -1,0 +1,164 @@
+/* Shared elevated surfaces */
+.lantai-modal-mask,
+.ant-modal-mask,
+.lantai-drawer-mask,
+.ant-drawer-mask {
+  background: var(--lt-glass-mask-bg) !important;
+  backdrop-filter: blur(var(--lt-glass-mask-blur));
+  -webkit-backdrop-filter: blur(var(--lt-glass-mask-blur));
+}
+
+.lantai-modal-content,
+.ant-modal-content,
+.lantai-drawer-content,
+.ant-drawer-content {
+  overflow: hidden;
+}
+
+.lantai-modal-header,
+.ant-modal-header,
+.lantai-drawer-header,
+.ant-drawer-header {
+  border-bottom-color: var(--lt-quiet-hairline) !important;
+}
+
+.lantai-modal-footer,
+.ant-modal-footer,
+.lantai-drawer-footer,
+.ant-drawer-footer {
+  border-top-color: var(--lt-quiet-hairline) !important;
+}
+
+/* Modal */
+html.dark-mode .lantai-modal-content,
+html.dark-mode .ant-modal-content {
+  background: var(--lt-dialog-surface) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: var(--lt-glass-shadow) !important;
+  border: 1px solid var(--lt-quiet-control-border) !important;
+}
+
+html.dark-mode .lantai-modal-header,
+html.dark-mode .ant-modal-header {
+  background: transparent !important;
+  border-bottom-color: var(--lt-quiet-hairline) !important;
+}
+
+html.dark-mode .lantai-modal-title,
+html.dark-mode .ant-modal-title {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-modal-close,
+html.dark-mode .ant-modal-close {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+html.dark-mode .lantai-modal-close:hover,
+html.dark-mode .ant-modal-close:hover {
+  color: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark-mode .lantai-modal-body,
+html.dark-mode .ant-modal-body {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-modal-footer,
+html.dark-mode .ant-modal-footer {
+  background: transparent !important;
+  border-top-color: var(--lt-quiet-hairline) !important;
+}
+
+/* Modal.confirm — confirm dialog dark mode */
+html.dark-mode .ant-modal-confirm-content,
+html.dark-mode .lantai-modal-confirm-content {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .ant-modal-confirm-title,
+html.dark-mode .lantai-modal-confirm-title {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .ant-modal-confirm-body,
+html.dark-mode .lantai-modal-confirm-body {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .ant-modal-confirm-paragraph,
+html.dark-mode .lantai-modal-confirm-paragraph {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.lantai-free-model-warning-checkbox-row {
+  margin-top: 16px;
+}
+
+/* Form labels inside modal */
+html.dark-mode .lantai-modal-body .lantai-form-item-label > label,
+html.dark-mode .lantai-modal-body .ant-form-item-label > label,
+html.dark-mode .ant-modal-body .ant-form-item-label > label {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* Extra description text inside modal */
+html.dark-mode .lantai-modal-body .lantai-form-item-extra,
+html.dark-mode .ant-modal-body .ant-form-item-extra {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Drawer */
+html.dark-mode .lantai-drawer-content,
+html.dark-mode .ant-drawer-content {
+  background: var(--lt-dialog-surface) !important;
+}
+
+html.dark-mode .lantai-drawer-header,
+html.dark-mode .ant-drawer-header {
+  background: transparent !important;
+  border-bottom-color: var(--lt-quiet-hairline) !important;
+}
+
+html.dark-mode .lantai-drawer-title,
+html.dark-mode .ant-drawer-title {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-drawer-close,
+html.dark-mode .ant-drawer-close {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+html.dark-mode .lantai-drawer-close:hover,
+html.dark-mode .ant-drawer-close:hover {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-drawer-body,
+html.dark-mode .ant-drawer-body {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark-mode .lantai-drawer-footer,
+html.dark-mode .ant-drawer-footer {
+  background: transparent !important;
+  border-top-color: var(--lt-quiet-hairline) !important;
+}
+
+/* Form labels inside drawer */
+html.dark-mode .lantai-drawer-body .lantai-form-item-label > label,
+html.dark-mode .lantai-drawer-body .ant-form-item-label > label,
+html.dark-mode .ant-drawer-body .ant-form-item-label > label {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* Tooltip info icon inside drawer (Form.Item tooltip only, not Alert icons) */
+html.dark-mode .lantai-drawer-body .lantai-form-item-label .anticon-info-circle,
+html.dark-mode .lantai-drawer-body .ant-form-item-label .anticon-info-circle,
+html.dark-mode .ant-drawer-body .ant-form-item-label .anticon-info-circle {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
