@@ -4,6 +4,7 @@
   "version": "3.2.0",
   "description": "Lantai desktop console",
   "author": "Lantai",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "postinstall": "npm --prefix vendor/lantai-docx-editor ci",

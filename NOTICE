@@ -1,6 +1,9 @@
 Lantai / 澜台
 Community source snapshot, 2026-10-24.
-Original Lantai code is provided under Apache License 2.0 (see LICENSE).
+Original Lantai code is provided under the MIT License (see LICENSE).
+Effective 2026-10-25, this MIT grant also covers the Lantai-authored portions
+of the previously published source snapshot and the 3.2.0 release artifacts.
+Historical commits and signed binaries are retained without modification.
 
 Third-party components retain their respective licenses and attribution.
 This file supplements, and does not replace, the component notices:
@@ -13,4 +16,4 @@ This file supplements, and does not replace, the component notices:
 - third_party/ and individual vendored component license files
 - THIRD_PARTY_NOTICES.md (integration references and optional dependency caveats)
 
-The Apache license of the project does not replace third-party license terms.
+The MIT license of the project does not replace third-party license terms.

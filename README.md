@@ -70,4 +70,6 @@ NODE_PATH="$PWD/console/node_modules" node --test scripts/pdf-visibility-lifecyc
 
 ## 许可证
 
-澜台自身代码沿用 [Apache-2.0](LICENSE)。第三方代码、模型、字体、引用数据和工具按各自许可证提供；请同时阅读 [NOTICE](NOTICE) 与 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)，保留对应声明。本仓库不包含旧私有仓库的 Git 历史、运行数据和内部验收资料。
+澜台自身代码采用 [MIT](LICENSE) 许可，可在保留版权和许可声明的前提下使用、修改、分发及商业复用。第三方代码、模型、字体、引用数据和工具按各自许可证提供；请同时阅读 [NOTICE](NOTICE) 与 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)，保留对应声明。本仓库不包含旧私有仓库的 Git 历史、运行数据和内部验收资料。
+
+2026-10-25 起，MIT 许可也适用于此前公开源码快照和 3.2.0 发行包中由澜台作者持有版权的部分。历史提交和已签名安装包保持原样，Release 随附当前 MIT 许可；第三方组件仍适用各自原有条款。

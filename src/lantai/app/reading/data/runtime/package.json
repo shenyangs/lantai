@@ -1,1 +1,1 @@
-{"name": "lantai-managed-rsshub", "private": true, "version": "1.0.0", "dependencies": {"rsshub": "1.0.0-master.85c7a8a"}, "overrides": {"difflib": "https://codeload.github.com/postlight/difflib.js/tar.gz/32e8e38c7fcd935241b9baab71bb432fd9b166ed"}}
+{"name": "lantai-managed-rsshub", "private": true, "version": "1.0.0", "license": "MIT", "dependencies": {"rsshub": "1.0.0-master.85c7a8a"}, "overrides": {"difflib": "https://codeload.github.com/postlight/difflib.js/tar.gz/32e8e38c7fcd935241b9baab71bb432fd9b166ed"}}
