@@ -478,3 +478,118 @@ async def test_responses_client_rejects_eof_without_protocol_terminal() -> None:
                 ModelRequest(messages=[ModelMessage.text("user", "continue")])
             )
         ]
+
+
+@pytest.mark.parametrize(
+    ("provider_generation", "request_generation", "expected_limit"),
+    [
+        ({}, {"max_tokens": 128}, 128),
+        ({"max_tokens": 64}, {}, 64),
+        ({"max_output_tokens": 64}, {"max_tokens": 128}, 128),
+        ({"max_tokens": 64}, {"max_output_tokens": 128}, 128),
+        ({}, {"max_completion_tokens": 128}, 128),
+        ({}, {"max_tokens": 64, "max_output_tokens": 128}, 128),
+    ],
+)
+async def test_responses_runtime_token_budget_uses_real_sdk_wire_parameter(
+    monkeypatch,
+    provider_generation,
+    request_generation,
+    expected_limit,
+) -> None:
+    import json
+    import httpx
+    from lantai.runtime.adapters import openai_responses_model_client as adapter
+
+    captured = []
+
+    def handle(request):
+        captured.append(json.loads(request.content))
+        events = [
+            {"type": "response.output_text.delta", "delta": "complete"},
+            {
+                "type": "response.completed",
+                "response": {"status": "completed", "usage": None},
+            },
+        ]
+        return httpx.Response(
+            200,
+            headers={"content-type": "text/event-stream"},
+            content="".join(
+                "data: " + json.dumps(event) + "\n\n" for event in events
+            ),
+        )
+
+    monkeypatch.setattr(
+        adapter,
+        "create_openai_async_http_client",
+        lambda: httpx.AsyncClient(transport=httpx.MockTransport(handle)),
+    )
+    client = OpenAIResponsesModelClient(
+        ProviderModelEndpoint(
+            provider_id="opencode",
+            model_id="gpt-fixture",
+            base_url="https://responses.invalid/v1",
+            api_key="synthetic-test-key",
+            native_kind="openai_responses",
+            generate_kwargs=provider_generation,
+        ),
+    )
+    request = ModelRequest(
+        messages=[ModelMessage.text("user", "finish the task")],
+        generation={**request_generation, "temperature": 0.4},
+    )
+    try:
+        events = [event async for event in client.stream(request)]
+    finally:
+        await client._client.close()
+
+    assert len(captured) == 1
+    assert captured[0]["max_output_tokens"] == expected_limit
+    assert "max_tokens" not in captured[0]
+    assert "max_completion_tokens" not in captured[0]
+    assert captured[0]["temperature"] == 0.4
+    assert events[-1].kind == "message_completed"
+    assert events[-1].response.message.text_content() == "complete"
+
+
+@pytest.mark.parametrize("with_text_and_image", [False, True])
+async def test_responses_preserves_uploaded_document_context(
+    tmp_path, with_text_and_image,
+) -> None:
+    from lantai.runtime.adapters.openai_responses_model_client import (
+        _responses_input,
+    )
+    from lantai.runtime.attachment_context import attachment_context_text
+
+    document = tmp_path / "audit-notes.txt"
+    document.write_text(
+        "attachment-marker: total revenue is 24680", encoding="utf-8",
+    )
+    data = {
+        "path": str(document),
+        "name": document.name,
+        "mime_type": "text/plain",
+    }
+    content = [ModelContentBlock(type="file", data=data)]
+    if with_text_and_image:
+        content = [ModelContentBlock(type="text", text="Read the notes"), *content]
+        content.append(
+            ModelContentBlock(
+                type="image", data={"url": "https://example.test/photo.png"},
+            ),
+        )
+    items = _responses_input(
+        ModelRequest(messages=[ModelMessage(role="user", content=content)]),
+    )
+
+    assert len(items) == 1
+    expected_text = attachment_context_text(data)
+    assert "attachment-marker: total revenue is 24680" in expected_text
+    if with_text_and_image:
+        assert items[0]["content"] == [
+            {"type": "input_text", "text": "Read the notes\n" + expected_text},
+            {"type": "input_image", "image_url": "https://example.test/photo.png"},
+        ]
+    else:
+        assert items == [{"role": "user", "content": expected_text}]

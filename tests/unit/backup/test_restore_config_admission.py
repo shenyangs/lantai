@@ -60,12 +60,12 @@ def test_restore_config_rollback_cannot_erase_an_acknowledged_concurrent_update(
         return value.get('last_api', {}).get('port') if kind == 'global_config' else value.get('description')
     expected = 54321 if kind == 'global_config' else 'acknowledged-user-update'
     publisher_script = textwrap.dedent('''
-        import importlib, json, sys
+        import importlib, json, os, sys
         from pathlib import Path
         from lantai.backup.models import RestoreBackupRequest
         restore = importlib.import_module('lantai.backup._ops.restore')
         config = Path(sys.argv[1])
-        rename, dump = Path.rename, json.dump
+        rename, replace = Path.rename, os.replace
         reached = False
         def hold_after_config_promotion(path, destination):
             global reached
@@ -75,13 +75,12 @@ def test_restore_config_rollback_cannot_erase_an_acknowledged_concurrent_update(
                 print('READY_RESTORE_CONFIG_PROMOTED', flush=True)
                 assert sys.stdin.readline().strip() == 'RELEASE'
             return result
-        def fail_actual_config_finalization(value, handle, *args, **kwargs):
-            if reached and Path(handle.name) == config:
-                handle.write('{')
-                handle.flush()
+        def fail_actual_config_finalization(source, destination):
+            # Config saves publish a complete temporary file with os.replace.
+            if reached and Path(destination) == config:
                 raise OSError('synthetic required config write failure')
-            return dump(value, handle, *args, **kwargs)
-        Path.rename, json.dump = hold_after_config_promotion, fail_actual_config_finalization
+            return replace(source, destination)
+        Path.rename, os.replace = hold_after_config_promotion, fail_actual_config_finalization
         try:
             restore._restore_sync('fixture', RestoreBackupRequest(
                 agent_ids=['first', 'second'], include_global_config=False,

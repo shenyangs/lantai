@@ -17347,7 +17347,9 @@ async def test_native_runtime_recovers_once_from_idle_model_stream() -> None:
         model_client_factory=lambda _agent_id: client,
         tool_registry=registry,
         turn_timeout_seconds=1,
-        model_first_event_timeout_seconds=0.01,
+        # First-event expiry has a separate behavior lock. This case must
+        # reach provider output before testing the inter-event idle deadline.
+        model_first_event_timeout_seconds=None,
         model_idle_timeout_seconds=0.01,
         model_request_timeout_seconds=1,
     )

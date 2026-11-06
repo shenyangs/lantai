@@ -387,12 +387,12 @@ function createBackendLifecycleController({
       return false;
     }
 
-    const start = Date.now();
+    const deadline = Date.now() + timeoutMs;
     const readinessUrl = getBackendReadinessUrl(apiBaseUrl);
     const headers = buildBackendAuthHeaders(desktopToken);
     const expectedInstanceNonce = desktopInstanceNonce;
 
-    while (Date.now() - start < timeoutMs) {
+    while (Date.now() < deadline) {
       if (
         backendProcess !== expectedProcess ||
         hasChildExited(expectedProcess)
@@ -400,11 +400,23 @@ function createBackendLifecycleController({
         return false;
       }
 
+      // The outer loop alone cannot bound a request stuck in headers or body.
+      // Keep the same abort signal active until the proof has been consumed.
+      const abort = new AbortController();
+      const probeTimer = setTimeout(
+        () => abort.abort(),
+        Math.min(2000, Math.max(1, deadline - Date.now())),
+      );
       try {
-        const res = await fetchImpl(readinessUrl, { headers });
+        const res = await fetchImpl(readinessUrl, {
+          headers,
+          signal: abort.signal,
+        });
         if (
+          (await hasMatchingReadinessProof(res, expectedInstanceNonce)) &&
           backendProcess === expectedProcess &&
-          (await hasMatchingReadinessProof(res, expectedInstanceNonce))
+          !hasChildExited(expectedProcess) &&
+          Date.now() < deadline
         ) {
           backendRestartCount = 0;
           try {
@@ -418,8 +430,12 @@ function createBackendLifecycleController({
         }
       } catch {
         // backend not ready yet
+      } finally {
+        clearTimeout(probeTimer);
+        abort.abort();
       }
-      await sleep(readinessIntervalMs);
+      const remaining = deadline - Date.now();
+      if (remaining > 0) await sleep(Math.min(readinessIntervalMs, remaining));
     }
 
     return false;

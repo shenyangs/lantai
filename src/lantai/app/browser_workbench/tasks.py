@@ -463,6 +463,7 @@ class BrowserTaskRuntime:
         self._next_index: dict[str, int] = {}
         self._handles: dict[str, asyncio.Task[None]] = {}
         self._runtime_controls: dict[str, asyncio.Task[None]] = {}
+        self._confirmation_locks: dict[str, asyncio.Lock] = {}
         self._pause_requested: set[str] = set()
         self._cancel_requested: set[str] = set()
         self._write_locks: dict[tuple[str, str], str] = {}
@@ -882,10 +883,33 @@ class BrowserTaskRuntime:
         run_id: str,
         confirmation: BrowserTaskConfirmation,
     ) -> BrowserTaskRun:
+        self._require_run(run_id)
+        lock = self._confirmation_locks.setdefault(run_id, asyncio.Lock())
+        async with lock:
+            return await self._confirm(run_id, confirmation)
+
+    async def _confirm(
+        self,
+        run_id: str,
+        confirmation: BrowserTaskConfirmation,
+    ) -> BrowserTaskRun:
         run = self._require_run(run_id)
         pending = run.pending_confirmation
         if run.status != "waiting_for_user_confirmation" or pending is None:
             return run
+        handle = self._handles.get(run_id)
+        if handle is not None and not handle.done():
+            # The waiting projection may precede its canonical write. Finish
+            # that write before resuming, without cancelling the shared worker
+            # if this confirmation request disconnects.
+            await asyncio.shield(handle)
+            run = self._require_run(run_id)
+            pending = run.pending_confirmation
+            if (
+                run.status != "waiting_for_user_confirmation"
+                or pending is None
+            ):
+                return run
         if not confirmation.approved:
             observation = self.broker.deny_confirmation(
                 pending,
@@ -898,7 +922,7 @@ class BrowserTaskRuntime:
                 "task_confirmation_denied",
                 "User denied browser task confirmation.",
             )
-            self._finish(
+            await self._finish_settled(
                 run,
                 "cancelled",
                 "Browser task stopped after user denied confirmation.",
@@ -906,11 +930,39 @@ class BrowserTaskRuntime:
             )
             return run
 
-        confirmation_target = (
-            self._prepare_action(run, pending)
-            if self._agent_loop_enabled(run)
-            else pending
+        resumed = await record_browser_task_runtime_run_control(
+            run,
+            action="resume",
         )
+        if (
+            run.status != "waiting_for_user_confirmation"
+            or run.pending_confirmation is not pending
+        ):
+            return run
+        if run.metadata.get("workspace_dir") and (
+            resumed is None or resumed.status != "running"
+        ):
+            raise RuntimeRunStoreError(
+                "Browser confirmation was not persisted"
+            )
+
+        if self._agent_loop_enabled(run):
+            confirmation_target = self._prepare_action(run, pending)
+        else:
+            index = self._next_index.get(run_id, 0)
+            # The policy prompt already settled the original effect as failed.
+            # Explicit approval starts a new effect without rewriting that fact.
+            confirmation_target = pending.model_copy(
+                update={
+                    "metadata": {
+                        **pending.metadata,
+                        "effect_id": (
+                            f"{self._effect_id_for_action(run, index, pending)}"
+                            ":confirmed"
+                        ),
+                    },
+                },
+            )
         confirm_action = getattr(self.broker, "confirm_action", None)
         if callable(confirm_action):
             approved_action = confirm_action(
@@ -922,7 +974,7 @@ class BrowserTaskRuntime:
                 update={
                     "confirmed": True,
                     "metadata": {
-                        **pending.metadata,
+                        **confirmation_target.metadata,
                         "confirmation_result": "approved",
                         "confirmation_reason": confirmation.reason,
                     },
@@ -944,7 +996,6 @@ class BrowserTaskRuntime:
             "task_confirmation_approved",
             "User approved action.",
         )
-        await record_browser_task_runtime_run_control(run, action="resume")
         self._schedule(run_id)
         return run
 

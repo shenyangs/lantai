@@ -74,7 +74,7 @@ def test_required_restore_finalization_cannot_silently_commit_incomplete_state(t
         working, boundary = Path(sys.argv[1]), sys.argv[2]
         roots = [working / 'workspaces' / aid for aid in ('first', 'second')]
         config = working / 'config.json'
-        original_replace, original_dump = os.replace, json.dump
+        original_replace = os.replace
         injected = False
         original_key = secret_store._get_master_key() if boundary == 'key_then_config_save' else None
         old_cipher = secret_store.encrypt('disposable test value') if original_key is not None else None
@@ -83,18 +83,14 @@ def test_required_restore_finalization_cannot_silently_commit_incomplete_state(t
             if boundary == 'workspace_rewrite' and Path(destination) == roots[0] / 'agent.json':
                 injected = True
                 raise OSError('synthetic required workspace finalization I/O fault')
-            return original_replace(source, destination)
-        def fault_dump(value, handle, *args, **kwargs):
-            global injected
-            if boundary != 'workspace_rewrite' and Path(handle.name) == config:
+            # Config saves publish a complete temporary file with os.replace.
+            if boundary != 'workspace_rewrite' and Path(destination) == config:
                 if original_key is not None:
                     assert secret_store._get_master_key() != original_key
                 injected = True
-                handle.write('{')
-                handle.flush()
                 raise OSError('synthetic required config finalization I/O fault')
-            return original_dump(value, handle, *args, **kwargs)
-        os.replace, json.dump = fault_replace, fault_dump
+            return original_replace(source, destination)
+        os.replace = fault_replace
         raised = False
         try:
             restore._restore_sync('fixture', RestoreBackupRequest(

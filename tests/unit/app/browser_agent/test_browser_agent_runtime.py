@@ -756,3 +756,344 @@ async def test_manual_takeover_return_does_not_steal_another_write_lock(tmp_path
     assert runtime._write_locks[("research", "example.com")] == "other-run"
     current = await RuntimeRunStore(tmp_path).load_contract(run.run_id)
     assert current is not None and current.attempt_id == previous.attempt_id
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("agent_loop", [False, True])
+@pytest.mark.parametrize(
+    "response", ["approve", "deny", "cancel", "disconnect"]
+)
+async def test_confirmation_waits_for_canonical_wait_transition(
+    tmp_path,
+    monkeypatch,
+    agent_loop,
+    response,
+):
+    from lantai.app.browser_workbench import tasks as task_module
+
+    original_control = task_module.record_browser_task_runtime_run_control
+    waiting_started = asyncio.Event()
+    release_waiting = asyncio.Event()
+    resume_started = asyncio.Event()
+
+    async def delayed_control(run, *, action):
+        if action == "wait_approval":
+            waiting_started.set()
+            await release_waiting.wait()
+        if action == "resume":
+            resume_started.set()
+        return await original_control(run, action=action)
+
+    monkeypatch.setattr(
+        task_module,
+        "record_browser_task_runtime_run_control",
+        delayed_control,
+    )
+    runtime, bridge, run = await _confirmation_write_runtime(
+        tmp_path, agent_loop
+    )
+    await asyncio.wait_for(waiting_started.wait(), timeout=2)
+    waiting_worker = runtime._handles[run.run_id]
+    confirmation = BrowserTaskConfirmation(
+        approved=response != "deny",
+        reason="User decision",
+    )
+    confirming = asyncio.create_task(runtime.confirm(run.run_id, confirmation))
+    duplicate = None
+    try:
+        await asyncio.sleep(0)
+        assert not confirming.done()
+        assert not resume_started.is_set()
+        assert [action.action for action in bridge.actions].count("click") == 0
+        if response == "cancel":
+            await runtime.cancel_canonical(run.run_id)
+        elif response == "disconnect":
+            confirming.cancel()
+            with pytest.raises(asyncio.CancelledError):
+                await confirming
+            assert not waiting_worker.done()
+        elif response == "approve":
+            duplicate = asyncio.create_task(
+                runtime.confirm(run.run_id, confirmation),
+            )
+            await asyncio.sleep(0)
+        release_waiting.set()
+        if response == "disconnect":
+            await waiting_worker
+            contract = await RuntimeRunStore(tmp_path).load_contract(
+                run.run_id
+            )
+            assert (
+                contract is not None and contract.status == "waiting_approval"
+            )
+            await runtime.confirm(run.run_id, confirmation)
+        else:
+            await confirming
+        if duplicate is not None:
+            await duplicate
+        expected = (
+            "cancelled" if response in {"deny", "cancel"} else "completed"
+        )
+        settled = await wait_for_status(
+            runtime,
+            run.run_id,
+            {expected, "failed"},
+        )
+        assert settled is not None and settled.status == expected
+        terminal_worker = runtime._handles[run.run_id]
+        await terminal_worker
+        contract = await RuntimeRunStore(tmp_path).load_contract(run.run_id)
+        assert contract is not None
+        assert contract.status == (
+            "succeeded" if expected == "completed" else "cancelled"
+        )
+        assert [action.action for action in bridge.actions].count("click") == (
+            1 if expected == "completed" else 0
+        )
+        assert [action.action for action in bridge.actions].count(
+            "close_task_group"
+        ) == 1
+    finally:
+        release_waiting.set()
+        await asyncio.gather(
+            confirming,
+            *([duplicate] if duplicate is not None else []),
+            return_exceptions=True,
+        )
+        await asyncio.gather(
+            runtime._handles[run.run_id], return_exceptions=True
+        )
+
+
+async def _confirmation_write_runtime(tmp_path, agent_loop=True):
+    runtime, bridge = runtime_fixture(
+        tmp_path,
+        settings={
+            "agent_loop_enabled": agent_loop,
+            "agent_loop_mode": "interactive" if agent_loop else "off",
+            "agent_loop_budget_profile": "draft_write",
+        },
+        durable=True,
+    )
+    run = await runtime.create(
+        BrowserTaskRequest(
+            run_id="confirmation-persistence-race",
+            profile_id="research",
+            target_domains=["example.com"],
+            access="write",
+            instruction="Save the prepared draft without publishing.",
+            actions=[
+                BrowserAction(
+                    action="click",
+                    profile_id="research",
+                    url="https://example.com/editor",
+                    selector="#save",
+                    access="write",
+                    reason="Save draft",
+                )
+            ],
+        ),
+    )
+    return runtime, bridge, run
+
+
+@pytest.mark.asyncio
+async def test_confirmation_persistence_failure_keeps_action_pending(
+    tmp_path, monkeypatch
+):
+    from lantai.app.browser_workbench import tasks as task_module
+    from lantai.runtime.store import RuntimeRunStoreError
+
+    runtime, bridge, run = await _confirmation_write_runtime(tmp_path)
+    waiting = await wait_for_status(
+        runtime, run.run_id, {"waiting_for_user_confirmation"}
+    )
+    assert (
+        waiting is not None
+        and waiting.status == "waiting_for_user_confirmation"
+    )
+    await runtime._handles[run.run_id]
+    original_control = task_module.record_browser_task_runtime_run_control
+
+    async def fail_resume(run, *, action):
+        if action == "resume":
+            return None
+        return await original_control(run, action=action)
+
+    monkeypatch.setattr(
+        task_module, "record_browser_task_runtime_run_control", fail_resume
+    )
+    confirmation = BrowserTaskConfirmation(approved=True, reason="Save once")
+    with pytest.raises(
+        RuntimeRunStoreError, match="confirmation was not persisted"
+    ):
+        await runtime.confirm(run.run_id, confirmation)
+    assert run.status == "waiting_for_user_confirmation"
+    assert run.pending_confirmation is not None
+    assert [action.action for action in bridge.actions].count("click") == 0
+    contract = await RuntimeRunStore(tmp_path).load_contract(run.run_id)
+    assert contract is not None and contract.status == "waiting_approval"
+
+    monkeypatch.setattr(
+        task_module,
+        "record_browser_task_runtime_run_control",
+        original_control,
+    )
+    await runtime.confirm(run.run_id, confirmation)
+    completed = await wait_for_status(
+        runtime, run.run_id, {"completed", "failed"}
+    )
+    assert completed is not None and completed.status == "completed"
+    assert [action.action for action in bridge.actions].count("click") == 1
+    await runtime._handles[run.run_id]
+
+
+@pytest.mark.asyncio
+async def test_cancellation_during_confirmation_persistence_does_not_execute(
+    tmp_path, monkeypatch
+):
+    from lantai.app.browser_workbench import tasks as task_module
+
+    runtime, bridge, run = await _confirmation_write_runtime(tmp_path)
+    waiting = await wait_for_status(
+        runtime, run.run_id, {"waiting_for_user_confirmation"}
+    )
+    assert (
+        waiting is not None
+        and waiting.status == "waiting_for_user_confirmation"
+    )
+    await runtime._handles[run.run_id]
+    original_control = task_module.record_browser_task_runtime_run_control
+    resume_started = asyncio.Event()
+    release_resume = asyncio.Event()
+
+    async def delayed_resume(run, *, action):
+        if action == "resume":
+            resume_started.set()
+            await release_resume.wait()
+        return await original_control(run, action=action)
+
+    monkeypatch.setattr(
+        task_module, "record_browser_task_runtime_run_control", delayed_resume
+    )
+    confirming = asyncio.create_task(
+        runtime.confirm(run.run_id, BrowserTaskConfirmation(approved=True))
+    )
+    try:
+        await asyncio.wait_for(resume_started.wait(), timeout=2)
+        await runtime.cancel_canonical(run.run_id)
+    finally:
+        release_resume.set()
+        await confirming
+    assert run.status == "cancelled"
+    assert [action.action for action in bridge.actions].count("click") == 0
+    contract = await RuntimeRunStore(tmp_path).load_contract(run.run_id)
+    assert contract is not None and contract.status == "cancelled"
+
+
+@pytest.mark.asyncio
+async def test_confirmation_denial_finishes_before_a_concurrent_approval(
+    tmp_path, monkeypatch
+):
+    runtime, bridge, run = await _confirmation_write_runtime(tmp_path)
+    waiting = await wait_for_status(
+        runtime, run.run_id, {"waiting_for_user_confirmation"}
+    )
+    assert (
+        waiting is not None
+        and waiting.status == "waiting_for_user_confirmation"
+    )
+    await runtime._handles[run.run_id]
+    original_cleanup = runtime._cleanup_terminal_task_tabs
+    cleanup_started = asyncio.Event()
+    release_cleanup = asyncio.Event()
+
+    async def delayed_cleanup(run):
+        cleanup_started.set()
+        await release_cleanup.wait()
+        await original_cleanup(run)
+
+    monkeypatch.setattr(
+        runtime, "_cleanup_terminal_task_tabs", delayed_cleanup
+    )
+    denying = asyncio.create_task(
+        runtime.confirm(run.run_id, BrowserTaskConfirmation(approved=False))
+    )
+    approving = None
+    try:
+        await asyncio.wait_for(cleanup_started.wait(), timeout=2)
+        approving = asyncio.create_task(
+            runtime.confirm(run.run_id, BrowserTaskConfirmation(approved=True))
+        )
+        await asyncio.sleep(0)
+        assert not approving.done()
+    finally:
+        release_cleanup.set()
+        await denying
+        if approving is not None:
+            await approving
+    assert run.status == "cancelled"
+    assert [action.action for action in bridge.actions].count("click") == 0
+    contract = await RuntimeRunStore(tmp_path).load_contract(run.run_id)
+    assert contract is not None and contract.status == "cancelled"
+
+
+@pytest.mark.asyncio
+async def test_confirmation_can_retry_after_disconnect_during_resume(
+    tmp_path,
+    monkeypatch,
+):
+    from lantai.app.browser_workbench import tasks as task_module
+
+    runtime, bridge, run = await _confirmation_write_runtime(tmp_path)
+    waiting = await wait_for_status(
+        runtime,
+        run.run_id,
+        {"waiting_for_user_confirmation"},
+    )
+    assert waiting is not None
+    assert waiting.status == "waiting_for_user_confirmation"
+    await runtime._handles[run.run_id]
+    original_control = task_module.record_browser_task_runtime_run_control
+    resume_committed = asyncio.Event()
+    release_response = asyncio.Event()
+
+    async def delayed_response(run, *, action):
+        result = await original_control(run, action=action)
+        if action == "resume":
+            resume_committed.set()
+            await release_response.wait()
+        return result
+
+    monkeypatch.setattr(
+        task_module,
+        "record_browser_task_runtime_run_control",
+        delayed_response,
+    )
+    confirmation = BrowserTaskConfirmation(approved=True, reason="Save once")
+    confirming = asyncio.create_task(runtime.confirm(run.run_id, confirmation))
+    try:
+        await asyncio.wait_for(resume_committed.wait(), timeout=2)
+        confirming.cancel()
+        with pytest.raises(asyncio.CancelledError):
+            await confirming
+        assert run.status == "waiting_for_user_confirmation"
+        assert run.pending_confirmation is not None
+        assert [action.action for action in bridge.actions].count("click") == 0
+        contract = await RuntimeRunStore(tmp_path).load_contract(run.run_id)
+        assert contract is not None and contract.status == "running"
+    finally:
+        release_response.set()
+        await asyncio.gather(confirming, return_exceptions=True)
+    monkeypatch.setattr(
+        task_module,
+        "record_browser_task_runtime_run_control",
+        original_control,
+    )
+    await runtime.confirm(run.run_id, confirmation)
+    completed = await wait_for_status(
+        runtime, run.run_id, {"completed", "failed"}
+    )
+    assert completed is not None and completed.status == "completed"
+    assert [action.action for action in bridge.actions].count("click") == 1
+    await runtime._handles[run.run_id]

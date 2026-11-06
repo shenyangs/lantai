@@ -38,6 +38,7 @@ from .config import (
 )
 from ..app.workspace_access import should_defer_desktop_workspace_io
 from ..utils.restore_fence import restore_read_fence
+from .persistence import atomic_write_config_json
 from .snapshots import (
     acknowledge_save, file_identity, merge_loaded_changes, remember_read,
 )
@@ -556,8 +557,7 @@ def _rewrite_legacy_weixin_key_on_disk(config_path: Path) -> None:
             f".{uuid.uuid4().hex[:8]}.weixin-migrate.bak",
         )
         shutil.copy2(config_path, backup_path)
-        with open(config_path, "w", encoding="utf-8") as file:
-            json.dump(raw_data, file, indent=2, ensure_ascii=False)
+        atomic_write_config_json(config_path, raw_data)
         logger.warning(
             "Migrated legacy 'channels.weixin' -> 'channels.wechat' in %s "
             "(backup: %s)",
@@ -583,8 +583,7 @@ def _load_and_validate_config(
                 f".{uuid.uuid4().hex[:8]}.tavily-placeholder.bak",
             )
             shutil.copy2(config_path, backup_path)
-            with open(config_path, "w", encoding="utf-8") as file:
-                json.dump(data, file, indent=2, ensure_ascii=False)
+            atomic_write_config_json(config_path, data)
             logger.info(
                 "Retired untouched Tavily MCP placeholder in %s (backup: %s)",
                 config_path,
@@ -725,13 +724,10 @@ def save_config(config: Config, config_path: Optional[Path] = None) -> None:
     key = str(config_path.resolve())
     saved = merge_loaded_changes(config, load_config(config_path), key, by_alias=True)
     config_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(config_path, "w", encoding="utf-8") as file:
-        json.dump(
-            saved.model_dump(mode="json", by_alias=True),
-            file,
-            indent=2,
-            ensure_ascii=False,
-        )
+    atomic_write_config_json(
+        config_path,
+        saved.model_dump(mode="json", by_alias=True),
+    )
 
     # Invalidate cache after saving
     with _config_lock:

@@ -111,3 +111,123 @@ async def test_browser_task_writes_failed_effect_record_on_action_failure(tmp_pa
     assert failed is not None
     assert failed.status == "failed"
     assert [record.status for record in records] == ["intent", "running", "failed"]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("explicit_effect_id", [False, True])
+async def test_durable_static_confirmation_has_a_fresh_effect(
+    tmp_path,
+    explicit_effect_id,
+):
+    from lantai.app.browser_workbench.broker import BrowserActionBroker
+    from lantai.app.browser_workbench.models import (
+        BrowserProfile,
+        BrowserTaskConfirmation,
+    )
+    from lantai.app.browser_workbench.profiles import BrowserProfileService
+    from lantai.app.browser_workbench.replay import BrowserReplayStore
+    from lantai.app.browser_workbench.tasks import BrowserTaskStore
+    from lantai.runtime.store import RuntimeRunStore
+
+    class RecordingBridge:
+        available = True
+
+        def __init__(self):
+            self.actions = []
+
+        async def execute(self, action):
+            self.actions.append(action)
+            return {
+                "ok": True,
+                "runtime": "electron_bridge",
+                "profile_id": action.profile_id,
+                "page_id": action.page_id,
+                "url": action.url,
+            }
+
+    profiles = BrowserProfileService(tmp_path)
+    profiles.upsert_profile(
+        BrowserProfile(
+            id="research",
+            name="Research",
+            allowed_domains=["example.com"],
+            agent_control_enabled=True,
+            risk_policy="write",
+        )
+    )
+    bridge = RecordingBridge()
+    journal = RuntimeEffectJournal(tmp_path)
+    runtime = BrowserTaskRuntime(
+        broker=BrowserActionBroker(
+            profiles=profiles,
+            replay=BrowserReplayStore(tmp_path),
+            bridge=bridge,
+        ),
+        app_store_distribution=lambda: False,
+        agent_loop_settings=lambda: {"agent_loop_enabled": False},
+        store=BrowserTaskStore(tmp_path),
+        effect_journal=journal,
+    )
+    action_metadata = (
+        {"effect_id": "save-draft", "idempotency_key": "draft-save-once"}
+        if explicit_effect_id
+        else {}
+    )
+    run = await runtime.create(
+        BrowserTaskRequest(
+            run_id="static-confirmation",
+            profile_id="research",
+            target_domains=["example.com"],
+            access="write",
+            actions=[
+                BrowserAction(
+                    action="click",
+                    profile_id="research",
+                    url="https://example.com/editor",
+                    selector="#save",
+                    access="write",
+                    metadata=action_metadata,
+                )
+            ],
+        )
+    )
+    await runtime._handles[run.run_id]
+    assert run.status == "waiting_for_user_confirmation"
+    assert not bridge.actions
+    attempt_id = runtime._attempt_id_for_run(run)
+    before = journal.list_effects(run.run_id, attempt_id)
+    assert [record.status for record in before] == [
+        "intent",
+        "running",
+        "failed",
+    ]
+
+    confirmation = BrowserTaskConfirmation(
+        approved=True, reason="Save this draft once"
+    )
+    await runtime.confirm(run.run_id, confirmation)
+    await runtime._handles[run.run_id]
+    assert run.status == "completed", (run.status, run.error_code)
+    await runtime.confirm(run.run_id, confirmation)
+    assert [action.action for action in bridge.actions].count("click") == 1
+    assert [action.action for action in bridge.actions].count(
+        "close_task_group"
+    ) == 1
+    assert run.completed_action_count == run.planned_action_count == 1
+    contract = await RuntimeRunStore(tmp_path).load_contract(run.run_id)
+    assert contract is not None and contract.status == "succeeded"
+    after = journal.list_effects(run.run_id, attempt_id)
+    assert [record.status for record in after] == [
+        "intent",
+        "running",
+        "failed",
+        "intent",
+        "running",
+        "committed",
+    ]
+    assert after[:3] == before
+    assert after[0].effect_id != after[3].effect_id
+    assert len({record.effect_id for record in after[3:]}) == 1
+    if explicit_effect_id:
+        assert after[0].effect_id == "save-draft"
+        assert after[3].idempotency_key == "draft-save-once"

@@ -27,46 +27,16 @@ This file contains:
 from __future__ import annotations
 
 import asyncio
-import importlib
 import json
-import sys
 import tempfile
 from pathlib import Path
-from types import ModuleType
 from typing import Any
 from unittest.mock import MagicMock
 
 import pytest
 
-
-# ---------------------------------------------------------------------------
-# Import TaskTracker directly (bypass heavy __init__.py chains that pull in
-# heavyweight runtime packages, numpy, etc.).
-# ---------------------------------------------------------------------------
-
-
-def _import_module_directly(module_name: str, file_path: str) -> ModuleType:
-    """Import a single module file without triggering package __init__.py."""
-    spec = importlib.util.spec_from_file_location(module_name, file_path)
-    assert (
-        spec is not None and spec.loader is not None
-    ), f"Failed to create module spec for {file_path}"
-    mod = importlib.util.module_from_spec(spec)
-    sys.modules[module_name] = mod
-    spec.loader.exec_module(mod)
-    return mod
-
-
-_SRC = Path(__file__).resolve().parents[3] / "src"
-
-# Use a test-unique module name so the isolated import does not shadow
-# the real ``lantai.app.runner.task_tracker`` in ``sys.modules`` for
-# other tests that run in the same pytest session.
-_task_tracker_mod = _import_module_directly(
-    "_test_issue_3275_task_tracker",
-    str(_SRC / "lantai" / "app" / "runner" / "task_tracker.py"),
-)
-TaskTracker = _task_tracker_mod.TaskTracker
+from lantai.app.runner import task_tracker as task_tracker_module
+from lantai.app.runner.task_tracker import TaskTracker
 
 
 # ---------------------------------------------------------------------------
@@ -462,10 +432,11 @@ async def test_task_tracker_snapshot_replays_active_buffer():
         await release.wait()
         yield "data: second\n\n"
 
-    _queue, is_new = await tracker.attach_or_start("chat-1", {}, stream)
+    queue, is_new = await tracker.attach_or_start("chat-1", {}, stream)
     assert is_new is True
 
-    await asyncio.sleep(0)
+    # Wait for publication, including the asynchronous replay spool write.
+    assert await asyncio.wait_for(queue.get(), timeout=1.0) == "data: first\n\n"
     snapshot = await tracker.get_snapshot("chat-1")
     assert snapshot is not None
     assert snapshot["status"] == "running"
@@ -480,7 +451,7 @@ async def test_task_tracker_snapshot_replays_active_buffer():
 async def test_stream_from_queue_emits_keepalive(monkeypatch):
     """Idle streams should keep the SSE connection alive."""
     monkeypatch.setattr(
-        _task_tracker_mod,
+        task_tracker_module,
         "_STREAM_KEEPALIVE_SECONDS",
         0.01,
     )

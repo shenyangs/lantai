@@ -417,3 +417,42 @@ async def test_internal_stop_waits_for_stream_cancellation_lifecycle() -> None:
     assert stream_settled.is_set()
     assert await asyncio.wait_for(queue.get(), timeout=1.0) is None
     assert await registry.get_snapshot("chat-stop-settlement") is None
+
+
+@pytest.mark.parametrize("retry_text", ["continue the task", ""])
+@pytest.mark.asyncio
+async def test_retry_chat_turn_prepares_draft_without_starting_ghost_run(
+    tmp_path, retry_text,
+) -> None:
+    from lantai.app.runner.api import retry_chat_turn
+    from lantai.runtime.store import RuntimeRunStore
+
+    workspace_dir = tmp_path / "topic-workspace"
+    workspace_dir.mkdir()
+    chat = SimpleNamespace(
+        id="chat-retry",
+        session_id="session-retry",
+        meta={
+            "topic_workspace_dir": str(workspace_dir),
+            "last_turn_text": retry_text,
+        },
+    )
+    workspace = SimpleNamespace(agent_id="default", workspace_dir=tmp_path)
+    result = await retry_chat_turn(
+        chat.id,
+        "finished-attempt",
+        mgr=_FakeChatManager(chat),
+        workspace=workspace,
+    )
+
+    assert result["queued"] is False
+    assert result["reason"] == "retry_requires_frontend_resubmit"
+    assert result["text"] == retry_text
+    assert list(RuntimeRunStore(workspace_dir).list_contracts()) == []
+    events = build_runtime_events_response(workspace_dir, chat.id).events
+    assert [event.type for event in events] == ["turn.continue_requested"]
+    assert events[0].status == "info"
+    assert events[0].payload["run_id"] == "finished-attempt"
+    assert events[0].payload["mode"] == "retry"
+    assert events[0].payload["reason"] == "retry_requires_frontend_resubmit"
+    assert events[0].payload["active_run"] is False

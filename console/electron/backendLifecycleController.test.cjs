@@ -1,5 +1,6 @@
 const assert = require("node:assert/strict");
 const { EventEmitter } = require("node:events");
+const http = require("node:http");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
@@ -103,6 +104,7 @@ function createFakeChildProcess({ pid = 12345, onKill } = {}) {
 
 function createController({
   fetchImpl,
+  pickPort = async () => 19090,
   tokens = [],
   spawnImpl,
   listDescendantPids,
@@ -156,7 +158,7 @@ function createController({
     settlementIntervalMs: 1,
     fetchImpl,
     randomToken: () => tokenQueue.shift() || "extra-token",
-    pickPort: async () => 19090,
+    pickPort,
     sleep: async () => {},
     readinessIntervalMs: 1,
     processTerminationGraceMs,
@@ -392,6 +394,42 @@ test("backend readiness rejects a fake health response without instance proof", 
   });
 });
 
+for (const stall of ["headers", "body"]) {
+  test(`backend readiness deadline includes stalled ${stall} and allows recovery`, async () => {
+    let recover = false;
+    const server = http.createServer((_req, res) => {
+      if (recover) {
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify({status: "ok", desktop: true, instance_nonce: "desktop-nonce", pid: 12345}));
+      } else if (stall === "body") {
+        res.writeHead(200, {"Content-Type": "application/json"});
+        res.write('{"status":');
+      }
+    });
+    await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+    const { controller } = createController({
+      tokens: ["desktop-token", "desktop-nonce"],
+      pickPort: async () => server.address().port,
+    });
+    let watchdog;
+    try {
+      await controller.start();
+      const result = await Promise.race([
+        controller.waitForReady(50),
+        new Promise((resolve) => { watchdog = setTimeout(() => resolve("hung"), 600); }),
+      ]);
+      assert.equal(result, false, "readiness request outlived its deadline");
+      assert.equal(controller.getState().hasBackendProcess, true, "a slow live process must be preserved");
+      recover = true;
+      assert.equal(await controller.waitForReady(1000), true);
+    } finally {
+      clearTimeout(watchdog);
+      server.closeAllConnections();
+      await new Promise((resolve) => server.close(resolve));
+    }
+  });
+}
+
 test("backend readiness accepts only the matching desktop instance proof", async () => {
   const fetchCalls = [];
   const { controller, spawnCalls } = createController({
@@ -422,6 +460,23 @@ test("backend readiness accepts only the matching desktop instance proof", async
     spawnCalls[0].options.env.LANTAI_DESKTOP_INSTANCE_NONCE,
     "desktop-nonce",
   );
+});
+
+test("backend readiness rechecks process liveness after reading the proof", async () => {
+  const child = createFakeChildProcess();
+  const { controller } = createController({
+    tokens: ["desktop-token", "desktop-nonce"],
+    spawnImpl: () => child,
+    fetchImpl: async () => ({
+      ok: true,
+      json: async () => {
+        child.exitCode = 1;
+        return {status: "ok", desktop: true, instance_nonce: "desktop-nonce", pid: child.pid};
+      },
+    }),
+  });
+  await controller.start();
+  assert.equal(await controller.waitForReady(50), false);
 });
 
 test("backend readiness observer receives lifecycle state after proof", async () => {

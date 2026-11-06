@@ -1025,6 +1025,7 @@ type SessionRunState = {
   submitting: boolean;
   stopping: boolean;
   controller: AbortController | null;
+  primaryStreamOwner: AbortController | null;
   steerControllers: Set<AbortController>;
   queue: SubmissionDraft[];
   bindingGuidanceMessageIds: Set<string>;
@@ -4966,6 +4967,7 @@ export const LantaiRuntimeWebUI = forwardRef<
         submitting: false,
         stopping: false,
         controller: null,
+        primaryStreamOwner: null,
         steerControllers: new Set<AbortController>(),
         queue: queuedDraftsFromMessages(sessionMessages),
         bindingGuidanceMessageIds: new Set<string>(),
@@ -6164,7 +6166,37 @@ export const LantaiRuntimeWebUI = forwardRef<
   );
 
   const refreshSessionsAfterTurn = useCallback(
-    async (sessionId?: string) => {
+    async (sessionId?: string, completedStreamOwner?: AbortController) => {
+      const refreshOwners = new Map(
+        Array.from(
+          sessionRunStatesRef.current.values(),
+          (state) => [state, state.primaryStreamOwner] as const,
+        ),
+      );
+      if (sessionId && completedStreamOwner) {
+        refreshOwners.set(getSessionRunState(sessionId), completedStreamOwner);
+      }
+      const preserveNewerPrimaryTurn = (
+        previous: ILantaiChatSession | undefined,
+        incoming: ILantaiChatSession,
+      ): ILantaiChatSession => {
+        if (!previous) return incoming;
+        const state = getSessionRunState(previous.id);
+        if (state.primaryStreamOwner === (refreshOwners.get(state) ?? null)) {
+          return incoming;
+        }
+        // A completed turn's delayed metadata/history response has no authority
+        // over a later submission, even if that later stream has also settled.
+        return {
+          ...incoming,
+          runtimeState: previous.runtimeState,
+          generating: previous.generating,
+          status: previous.status,
+          __primaryStreamActive: previous.__primaryStreamActive,
+          __primaryStreamStartedAt: previous.__primaryStreamStartedAt,
+          __primaryStreamSettledAt: previous.__primaryStreamSettledAt,
+        };
+      };
       try {
         const refreshed = await sessionApi?.getSessionList?.();
         if (refreshed) {
@@ -6190,9 +6222,12 @@ export const LantaiRuntimeWebUI = forwardRef<
                       previousSession.__primaryStreamSettledAt,
                   }
                 : session;
-              return preserveLocallySettledRuntimeState(
+              return preserveNewerPrimaryTurn(
                 previousSession,
-                sessionWithMessages,
+                preserveLocallySettledRuntimeState(
+                  previousSession,
+                  sessionWithMessages,
+                ),
               );
             });
           });
@@ -6222,7 +6257,10 @@ export const LantaiRuntimeWebUI = forwardRef<
               __primaryStreamSettledAt:
                 session.__primaryStreamSettledAt || Date.now(),
             };
-            return preserveLocallySettledRuntimeState(session, hydratedSession);
+            return preserveNewerPrimaryTurn(
+              session,
+              preserveLocallySettledRuntimeState(session, hydratedSession),
+            );
           });
         });
       } catch {
@@ -6230,7 +6268,7 @@ export const LantaiRuntimeWebUI = forwardRef<
         // briefly unavailable; the runtime ledger can retry reconciliation.
       }
     },
-    [sessionApi, setSessions],
+    [getSessionRunState, sessionApi, setSessions],
   );
 
   const readCurrentDraft = useCallback((): SubmissionDraft => {
@@ -6934,7 +6972,11 @@ export const LantaiRuntimeWebUI = forwardRef<
   );
 
   const submit = useCallback(
-    async (draft?: SubmissionDraft, requestedSessionId?: string) => {
+    async (
+      draft?: SubmissionDraft,
+      requestedSessionId?: string,
+      prepareComposerText = false,
+    ) => {
       let submissionSessionId =
         requestedSessionId || currentSessionIdRef.current || "";
       if (!submissionSessionId) {
@@ -6967,9 +7009,13 @@ export const LantaiRuntimeWebUI = forwardRef<
         setSessionLoading(submissionSessionId, false);
       };
 
+      const composerTextBeforeHook = inputValueRef.current;
+      let preparedComposerText = composerTextBeforeHook;
       let allowed: boolean | void;
       try {
-        allowed = await options.sender?.beforeSubmit?.();
+        const beforeSubmitResult = options.sender?.beforeSubmit?.();
+        preparedComposerText = inputValueRef.current;
+        allowed = await beforeSubmitResult;
       } catch (error) {
         finishBeforeStream();
         appendSyntheticPayload(
@@ -6994,6 +7040,20 @@ export const LantaiRuntimeWebUI = forwardRef<
       }
 
       let submissionDraft = draft || readCurrentDraft();
+      if (
+        prepareComposerText &&
+        currentSessionIdRef.current === submissionSessionId &&
+        preparedComposerText !== composerTextBeforeHook
+      ) {
+        // Capture synchronous document/plan preparation before awaiting the
+        // hook, so later user edits cannot replace the submitted draft. Only
+        // composer submissions consume it; queued/retried drafts keep their
+        // own text and attachments.
+        submissionDraft = {
+          ...submissionDraft,
+          text: normalizeText(preparedComposerText),
+        };
+      }
       if (shouldConfirmAttachmentRoles(submissionDraft.attachments)) {
         const confirmed = await confirmAttachmentRoleReview(
           submissionDraft.attachments,
@@ -7139,6 +7199,7 @@ export const LantaiRuntimeWebUI = forwardRef<
 
       const controller = new AbortController();
       runState.controller = controller;
+      runState.primaryStreamOwner = controller;
       try {
         const session = sessionsRef.current.find(
           (item) => item.id === submissionSessionId,
@@ -7221,7 +7282,7 @@ export const LantaiRuntimeWebUI = forwardRef<
             });
           }
         }
-        void refreshSessionsAfterTurn(submissionSessionId);
+        void refreshSessionsAfterTurn(submissionSessionId, controller);
       }
     },
     [
@@ -7781,6 +7842,7 @@ export const LantaiRuntimeWebUI = forwardRef<
             branchFromMessageId: editingMessageId || undefined,
           },
           sessionId || undefined,
+          true,
         );
         return;
       }

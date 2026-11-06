@@ -67,7 +67,7 @@ from ..experience import (
     build_runtime_events_response,
     iter_runtime_events_through_seq,
     build_turn_event_preview,
-    record_chat_turn_started,
+    record_chat_turn_continue_requested,
     record_chat_turn_stop_requested,
     resolve_effective_workspace_dir_from_meta,
     runtime_event_stream_generation,
@@ -2858,14 +2858,16 @@ async def retry_chat_turn(
         chat_spec,
         root_workspace_dir=workspace.workspace_dir,
     )
-    await record_chat_turn_started(
+    await record_chat_turn_continue_requested(
         workspace_dir=workspace_dir,
         agent_id=workspace.agent_id,
         chat_id=chat_spec.id,
         session_id=chat_spec.session_id,
-        text_preview=retry_text or "重试请求",
-        effective_workspace_dir=str(workspace_dir),
-        run_id=f"retry:{turn_id}",
+        run_id=turn_id,
+        mode="retry",
+        reason="retry_requires_frontend_resubmit",
+        active_run=False,
+        workspace_path=str(workspace_dir),
     )
     return {
         "queued": False,

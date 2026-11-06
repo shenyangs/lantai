@@ -19,6 +19,7 @@ from lantai.exceptions import ConfigurationException
 
 from .timezone import detect_system_timezone
 from ..utils.restore_fence import restore_read_fence
+from .persistence import atomic_write_config_json
 from .snapshots import (
     acknowledge_save, file_identity, merge_loaded_changes, remember_read,
 )
@@ -2823,8 +2824,7 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                 f".{_uuid.uuid4().hex[:8]}.mcp-credentials.bak",
             )
             _shutil.copy2(agent_config_path, backup_path)
-            with open(agent_config_path, "w", encoding="utf-8") as f:
-                json.dump(protected_data, f, ensure_ascii=False, indent=2)
+            atomic_write_config_json(agent_config_path, protected_data)
             try:
                 current_mtime = file_identity(agent_config_path)
             except OSError:
@@ -2845,13 +2845,10 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                 )
                 _shutil.copy2(agent_config_path, backup_path)
                 protected_tavily_data, _ = protect_agent_mcp_credentials(data)
-                with open(agent_config_path, "w", encoding="utf-8") as f:
-                    json.dump(
-                        protected_tavily_data,
-                        f,
-                        ensure_ascii=False,
-                        indent=2,
-                    )
+                atomic_write_config_json(
+                    agent_config_path,
+                    protected_tavily_data,
+                )
                 try:
                     current_mtime = file_identity(agent_config_path)
                 except OSError:
@@ -2877,12 +2874,7 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                     f".{_uuid.uuid4().hex[:8]}.weixin-migrate.bak",
                 )
                 _shutil.copy2(agent_config_path, backup_path)
-                with open(
-                    agent_config_path,
-                    "w",
-                    encoding="utf-8",
-                ) as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
+                atomic_write_config_json(agent_config_path, data)
                 # Refresh mtime cache key after rewriting the file so the
                 # cached config still reflects the on-disk state.
                 try:
@@ -2924,8 +2916,7 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                         f".{_uuid.uuid4().hex[:8]}.memory-defaults.bak",
                     )
                     _shutil.copy2(agent_config_path, backup_path)
-                    with open(agent_config_path, "w", encoding="utf-8") as f:
-                        json.dump(data, f, ensure_ascii=False, indent=2)
+                    atomic_write_config_json(agent_config_path, data)
                     try:
                         current_mtime = file_identity(agent_config_path)
                     except OSError:
@@ -2945,8 +2936,7 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                     f".{_uuid.uuid4().hex[:8]}.shell-sync-defaults.bak",
                 )
                 _shutil.copy2(agent_config_path, backup_path)
-                with open(agent_config_path, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
+                atomic_write_config_json(agent_config_path, data)
                 try:
                     current_mtime = file_identity(agent_config_path)
                 except OSError:
@@ -2966,8 +2956,7 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                     f".{_uuid.uuid4().hex[:8]}.agent-context-256k.bak",
                 )
                 _shutil.copy2(agent_config_path, backup_path)
-                with open(agent_config_path, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
+                atomic_write_config_json(agent_config_path, data)
                 try:
                     current_mtime = file_identity(agent_config_path)
                 except OSError:
@@ -2987,8 +2976,7 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                     f".{_uuid.uuid4().hex[:8]}.native-runtime-default.bak",
                 )
                 _shutil.copy2(agent_config_path, backup_path)
-                with open(agent_config_path, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
+                atomic_write_config_json(agent_config_path, data)
                 try:
                     current_mtime = file_identity(agent_config_path)
                 except OSError:
@@ -3007,8 +2995,7 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                     f".{_uuid.uuid4().hex[:8]}.llm-acquire-timeout.bak",
                 )
                 _shutil.copy2(agent_config_path, backup_path)
-                with open(agent_config_path, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
+                atomic_write_config_json(agent_config_path, data)
                 try:
                     current_mtime = file_identity(agent_config_path)
                 except OSError:
@@ -3029,13 +3016,10 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                 )
                 _shutil.copy2(agent_config_path, backup_path)
                 protected_prompt_data, _ = protect_agent_mcp_credentials(data)
-                with open(agent_config_path, "w", encoding="utf-8") as f:
-                    json.dump(
-                        protected_prompt_data,
-                        f,
-                        ensure_ascii=False,
-                        indent=2,
-                    )
+                atomic_write_config_json(
+                    agent_config_path,
+                    protected_prompt_data,
+                )
                 try:
                     current_mtime = file_identity(agent_config_path)
                 except OSError:
@@ -3054,13 +3038,7 @@ def load_agent_config(agent_id: str) -> AgentProfileConfig:
                 protect_agent_mcp_credentials(final_disk_data)
             )
             if final_credentials_changed:
-                with open(agent_config_path, "w", encoding="utf-8") as f:
-                    json.dump(
-                        protected_final,
-                        f,
-                        ensure_ascii=False,
-                        indent=2,
-                    )
+                atomic_write_config_json(agent_config_path, protected_final)
                 try:
                     current_mtime = file_identity(agent_config_path)
                 except OSError:
@@ -3132,13 +3110,7 @@ def save_agent_config(
     payload, _ = protect_agent_mcp_credentials(
         saved.model_dump(exclude_none=True),
     )
-    with open(agent_config_path, "w", encoding="utf-8") as f:
-        json.dump(
-            payload,
-            f,
-            ensure_ascii=False,
-            indent=2,
-        )
+    atomic_write_config_json(agent_config_path, payload)
 
     # Invalidate cache after saving
     with _agent_config_lock:
@@ -3218,13 +3190,10 @@ def migrate_legacy_config_to_multi_agent() -> bool:
 
     # Save default agent configuration to workspace
     agent_config_path = default_workspace / "agent.json"
-    with open(agent_config_path, "w", encoding="utf-8") as f:
-        json.dump(
-            default_agent_config.model_dump(exclude_none=True),
-            f,
-            ensure_ascii=False,
-            indent=2,
-        )
+    atomic_write_config_json(
+        agent_config_path,
+        default_agent_config.model_dump(exclude_none=True),
+    )
 
     # Migrate existing workspace files from legacy default working dir.
     # When LANTAI_WORKING_DIR is customized, historical data may still exist

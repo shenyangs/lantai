@@ -21,6 +21,44 @@ def case(tmp_path, monkeypatch):
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize('enabled', [False, True])
+async def test_pause_resume_survives_restart_and_updates_projection(case, enabled):
+    manager, job = case
+    await manager.create_or_replace_job(job.model_copy(update={'enabled': not enabled}))
+    await manager.start()
+    runtime = manager._rt[job.id]
+    try:
+        control = manager.resume_job if enabled else manager.pause_job
+        await control(job.id)
+        assert (await manager.get_job(job.id)).enabled is enabled
+        assert manager._rt[job.id] is runtime, 'control must preserve in-flight concurrency ownership'
+        assert (manager.get_state(job.id).next_run_at is not None) is enabled
+        await manager.stop()
+        await manager.start()
+        assert (manager._scheduler.get_job(job.id).next_run_time is not None) is enabled
+    finally:
+        await manager.stop()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize('enabled', [False, True])
+async def test_pause_resume_storage_failure_does_not_change_live_schedule(case, monkeypatch, enabled):
+    manager, job = case
+    await manager.create_or_replace_job(job.model_copy(update={'enabled': not enabled}))
+    await manager.start()
+    before = manager._scheduler.get_job(job.id).next_run_time
+    monkeypatch.setattr(manager._repo, 'upsert_job', AsyncMock(side_effect=OSError('disk full')))
+    try:
+        control = manager.resume_job if enabled else manager.pause_job
+        with pytest.raises(OSError, match='disk full'):
+            await control(job.id)
+        assert manager._scheduler.get_job(job.id).next_run_time == before
+        assert (await manager.get_job(job.id)).enabled is not enabled
+    finally:
+        await manager.stop()
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize('scheduled', [False, True])
 async def test_stop_waits_for_executor_cleanup_and_terminal_write(case, tmp_path, scheduled):
     manager, job = case

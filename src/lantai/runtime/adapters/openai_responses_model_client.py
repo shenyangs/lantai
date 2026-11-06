@@ -18,6 +18,7 @@ from ...providers.openai_http import (
     create_openai_async_http_client,
     openai_endpoint_policy_receipt,
 )
+from ..attachment_context import attachment_context_text
 from ..instruction_trust import project_untrusted_tool_evidence
 from ..model_normalizer import media_payload_url
 from ..models import (
@@ -34,7 +35,14 @@ from ..tools import ToolCall
 def _responses_input(request: ModelRequest) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
     for message in request.messages:
-        text = message.text_content()
+        text_parts = [
+            (block.text or "")
+            if block.type == "text"
+            else attachment_context_text(block.data)
+            for block in message.content
+            if block.type in {"text", "file"}
+        ]
+        text = "\n".join(part for part in text_parts if part)
         multimodal_content: list[dict[str, Any]] = []
         if text:
             multimodal_content.append({"type": "input_text", "text": text})
@@ -90,6 +98,23 @@ def _responses_input(request: ModelRequest) -> list[dict[str, Any]]:
                     }
                 )
     return items
+
+
+def _responses_generation(generation: dict[str, Any]) -> dict[str, Any]:
+    """Translate token budgets before merging provider and per-round options."""
+
+    result = dict(generation)
+    max_tokens = result.pop("max_tokens", None)
+    max_completion_tokens = result.pop("max_completion_tokens", None)
+    if "max_output_tokens" not in result:
+        token_budget = (
+            max_completion_tokens
+            if max_completion_tokens is not None
+            else max_tokens
+        )
+        if token_budget is not None:
+            result["max_output_tokens"] = token_budget
+    return result
 
 
 def _tool_output_text(output: Any) -> str:
@@ -215,8 +240,8 @@ class OpenAIResponsesModelClient:
             payload["tools"] = tools
             if request.tool_choice is not None:
                 payload["tool_choice"] = request.tool_choice
-        payload.update(self.endpoint.generate_kwargs)
-        payload.update(request.generation)
+        payload.update(_responses_generation(self.endpoint.generate_kwargs))
+        payload.update(_responses_generation(request.generation))
         response_stream = await self._client.responses.create(**payload)
         async with closing_async_iterator(response_stream):
             yield ModelStreamEvent(kind="message_start", message_id=message_id)

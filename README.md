@@ -6,6 +6,8 @@
 
 Lantai is an experimental desktop AI assistant built with Electron, React and Python/FastAPI. This source snapshot is shared for learning, reuse and community forks. Active development is paused; it is **not a fully validated stable release**.
 
+**2026-11-06 源码更新：** 已合入基础可靠性修复，覆盖后端启动超时、配置原子保存、定时任务状态、Responses 模型接入、聊天发送与重试，以及浏览器确认恢复。完整源码和回归测试已更新，范围与验证结果见 [SOURCE_RELEASE.md](SOURCE_RELEASE.md)。本次没有发布新的安装包，也不改变下述维护承诺。
+
 ## 可以从这里获得什么
 
 - **一套完整应用的工程参考**：桌面窗口、Python 后端、模型 Provider、流式消息、工具执行和任务状态如何连接。
